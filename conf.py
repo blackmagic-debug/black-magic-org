@@ -31,6 +31,7 @@ extensions = [
     "myst_parser",
     "sphinxcontrib.asciinema",
     "sphinxcontrib.youtube",
+    "sphinx.ext.githubpages",
 ]
 
 myst_heading_anchors = 3
