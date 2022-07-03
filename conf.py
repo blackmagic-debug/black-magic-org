@@ -29,12 +29,25 @@ author = 'Piotr Esden-Tempski <piotr@esden.net>'
 # ones.
 extensions = [
     "myst_parser",
+	'sphinx.ext.todo',
+    "sphinx.ext.githubpages",
+	'sphinx.ext.graphviz',
+	'sphinx.ext.napoleon',
+	'sphinxcontrib.platformpicker',
     "sphinxcontrib.asciinema",
     "sphinxcontrib.youtube",
-    "sphinx.ext.githubpages",
 ]
 
+source_suffix = {
+	'.rst': 'restructuredtext',
+	'.md': 'markdown',
+}
+
+todo_include_todos = True
+
 myst_heading_anchors = 3
+
+napoleon_use_ivar = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
