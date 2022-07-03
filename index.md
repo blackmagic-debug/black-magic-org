@@ -21,6 +21,7 @@ upgrade
 
 knowledge/faq
 knowledge/terminology
+knowledge/links
 ```
 
 ```{toctree}
@@ -55,6 +56,7 @@ hacking/contrib
 hacking/hacking
 hacking/target-drivers
 hacking/target-cortex-m
+hacking/target-cortex-a
 ```
 
 [![Build Status](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml/badge.svg)](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml)
