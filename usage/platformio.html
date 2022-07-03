@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>PlatformIO &#8212; Black Magic Debug  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-custom.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/asciinema-player_2.6.1.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="STM32 Targets" href="../target-usage/stm32.html" />
+    <link rel="prev" title="Serial Wire Output" href="swo.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="platformio">
+<h1>PlatformIO<a class="headerlink" href="#platformio" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="https://platformio.org/?utm_source=github&amp;utm_medium=blackmagic">PlatformIO</a> is an open source ecosystem for IoT development with the cross-platform build system, library manager and <strong>full support for Black Magic Probe</strong>. It works on the popular host OS: macOS, Windows, Linux 32/64, Linux ARM (like Raspberry Pi, BeagleBone, CubieBoard).</p>
+<p><strong>Platforms:</strong> Atmel AVR, Atmel SAM, Espressif 32, Espressif 8266, Freescale Kinetis, Intel ARC32, Lattice iCE40, Maxim 32, Microchip PIC32, Nordic nRF51, Nordic nRF52, NXP LPC, Silicon Labs EFM32, ST STM32, Teensy, TI MSP430, TI Tiva, WIZNet W7500</p>
+<p><strong>Frameworks:</strong> Arduino, ARTIK SDK, CMSIS, Energia, ESP-IDF, libOpenCM3, mbed, Pumbaa, Simba, SPL, STM32Cube, WiringPi</p>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#pio-unified-debugger"><span class="std std-doc">PIO Unified Debugger</span></a></p></li>
+<li><p><a class="reference internal" href="#quick-start"><span class="std std-doc">Quick Start</span></a></p></li>
+<li><p><a class="reference internal" href="#debugging-from-cli"><span class="std std-doc">Debugging from CLI</span></a></p></li>
+<li><p><a class="reference internal" href="#advanced-configuration"><span class="std std-doc">Advanced configuration</span></a></p></li>
+<li><p><a class="reference internal" href="#issues-and-support"><span class="std std-doc">Issues and support</span></a></p></li>
+</ul>
+</section>
+<section id="pio-unified-debugger">
+<h2>PIO Unified Debugger<a class="headerlink" href="#pio-unified-debugger" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="http://docs.platformio.org/en/latest/plus/debugging.html?utm_source=github&amp;utm_medium=blackmagic">PIO Unified Debugger</a> is “1-click” solution with zero configuration for the multiple architectures and development platforms. It supports over 200 embedded boards and the most popular IDEs:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://docs.platformio.org/en/latest/ide/vscode.html?utm_source=github&amp;utm_medium=blackmagic#ide-vscode">VSCode</a></p></li>
+<li><p><a class="reference external" href="http://docs.platformio.org/en/latest/ide/atom.html?utm_source=github&amp;utm_medium=blackmagic#ide-atom">Atom</a></p></li>
+<li><p><a class="reference external" href="http://docs.platformio.org/en/latest/ide/eclipse.html?utm_source=github&amp;utm_medium=blackmagic#ide-eclipse">Eclipse</a></p></li>
+<li><p><a class="reference external" href="http://docs.platformio.org/en/latest/ide/sublimetext.html?utm_source=github&amp;utm_medium=blackmagic#ide-sublimetext">Sublime Text</a></p></li>
+</ul>
+<p>See a full list of <a class="reference external" href="http://docs.platformio.org/en/latest/plus/debugging.html?utm_source=github&amp;utm_medium=blackmagic#boards">compatible boards for Black Magic Probe</a> (“Debug” column).</p>
+<p><a class="reference external" href="https://platformio.org/platformio-ide?utm_source=github&amp;utm_medium=blackmagic"><img alt="PlatformIO IDE" src="https://raw.githubusercontent.com/platformio/platformio-docs/develop/_static/ide/vscode/platformio-ide-vscode.png" /></a></p>
+</section>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Install <a class="reference external" href="https://platformio.org/platformio-ide?utm_source=github&amp;utm_medium=blackmagic">PlatformIO IDE</a>.</p></li>
+<li><p>Create a new project using “PlatformIO Home &gt; New Project” wizard (🏠 icon on the toolbar)</p></li>
+<li><p>Edit <strong>Project Configuration File</strong> <a class="reference external" href="http://docs.platformio.org/en/latest/projectconf.html?utm_source=github&amp;utm_medium=blackmagic">platformio.ini</a> and set Black Magic Probe as default tool for debugging and programming/uploading, update <code class="docutils literal notranslate"><span class="pre">upload/debug</span></code> port following <a class="reference external" href="https://github.com/blacksphere/blackmagic/wiki/Useful-GDB-commands#connecting-gdb-to-the-black-magic-probe">this guide</a>:</p></li>
+</ol>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[env:someboard]</span><span class="w"></span>
+<span class="na">platform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span><span class="w"></span>
+<span class="na">framework</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span><span class="w"></span>
+<span class="na">board</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span><span class="w"></span>
+<span class="na">debug_tool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">blackmagic</span><span class="w"></span>
+<span class="na">upload_protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">blackmagic</span><span class="w"></span>
+<span class="na">upload_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">!!!UPDATE_ME!!!</span><span class="w"></span>
+<span class="na">monitor_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">!!!UPDATE_ME!!!</span><span class="w"></span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Start debug session:</p>
+<ul class="simple">
+<li><p>PlatformIO IDE for Atom: Menu &gt; PlatformIO &gt; Debug &gt; Start a debug session</p></li>
+<li><p>PlatformIO IDE for VSCode: Menu &gt; Debug &gt; Start Debugging</p></li>
+</ul>
+</li>
+<li><p>Happy debugging with PlatformIO!</p></li>
+</ol>
+</section>
+<section id="debugging-from-cli">
+<h2>Debugging from CLI<a class="headerlink" href="#debugging-from-cli" title="Permalink to this heading">¶</a></h2>
+<p>Further details in documentation for <a class="reference external" href="http://docs.platformio.org/en/latest/userguide/cmd_debug.html?utm_source=github&amp;utm_medium=blackmagic">platformio debug</a> command.</p>
+</section>
+<section id="advanced-configuration">
+<h2>Advanced configuration<a class="headerlink" href="#advanced-configuration" title="Permalink to this heading">¶</a></h2>
+<p>Please visit official PlatformIO documentation for the <a class="reference external" href="http://docs.platformio.org/en/latest/projectconf/section_env_debug.html?utm_source=github&amp;utm_medium=blackmagic">advanced debugging configuration</a>.</p>
+</section>
+<section id="issues-and-support">
+<h2>Issues and support<a class="headerlink" href="#issues-and-support" title="Permalink to this heading">¶</a></h2>
+<p>Please mail <a class="reference external" href="mailto:contact&#37;&#52;&#48;pioplus&#46;com?Subject=PlatformIO%20Unified%20Debugger%20and%20Black%20Magic%20Probe">contact<span>&#64;</span>pioplus<span>&#46;</span>com</a> or use our well-established <a class="reference external" href="https://community.platformio.org?utm_source=github&amp;utm_medium=blackmagic">PlatformIO Community</a> for questions and answers.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Black Magic Debug</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware.html">Supported Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrade.html">Firmware Upgrade</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/links.html">Links</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gdb-commands.html">GDB Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdb-automation.html">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traceswo.html">SWD - TRACESWO support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swo.html">Serial Wire Output</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PlatformIO</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/stm32.html">STM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hacking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/contrib.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/hacking.html">Firmware Hacking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-drivers.html">Adding Target Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-m.html">Cortex M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-a.html">Cortex A Targets</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="swo.html" title="previous chapter">Serial Wire Output</a></li>
+      <li>Next: <a href="../target-usage/stm32.html" title="next chapter">STM32 Targets</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Piotr Esden-Tempski <piotr@esden.net>.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/usage/platformio.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

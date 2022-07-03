@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Serial Wire Output &#8212; Black Magic Debug  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-custom.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/asciinema-player_2.6.1.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PlatformIO" href="platformio.html" />
+    <link rel="prev" title="SWD - TRACESWO support" href="traceswo.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="serial-wire-output">
+<h1>Serial Wire Output<a class="headerlink" href="#serial-wire-output" title="Permalink to this heading">¶</a></h1>
+<p>Serial Wire Output (SWO) allows the target to write tracing and logging to the host without using usb or serial port. All data goes over a single pin, the JTAG TDO pin.</p>
+<p>To set up SWO, you need to</p>
+<ul class="simple">
+<li><p>connect target and bmp</p></li>
+<li><p>configure the target processor</p></li>
+<li><p>configure bmp</p></li>
+<li><p>set up the viewer</p></li>
+</ul>
+<section id="wires">
+<h2>Wires<a class="headerlink" href="#wires" title="Permalink to this heading">¶</a></h2>
+<p>SWO needs a connection between target SWO out and BMP SWO in (PA10 on stm32f103).
+As the SWO pin is the JTAG TDO pin, you cannot run SWO when using JTAG. SWO is compatible with SWD, not with JTAG.</p>
+<p>A setup with blue pills might look like this:</p>
+<p><img alt="" src="https://raw.githubusercontent.com/koendv/Connecting-Black-Magic-Probe-and-Blue-Pill/master/bmp_bp.svg" /></p>
+</section>
+<section id="target-processor-setup">
+<h2>Target processor setup<a class="headerlink" href="#target-processor-setup" title="Permalink to this heading">¶</a></h2>
+<p>Registers must be set up to configure the SWO pin for output. Different processors have different SWO setup.
+You can setup SWO in viewer, debugger, or target.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/compuphase/Black-Magic-Probe-Book">bmtrace</a> configures target processor in the viewer, button <em>Configure target</em>. Supports stm32 and lpc.</p></li>
+<li><p><a class="reference external" href="https://github.com/orbcode/orbuculum">orbuculum</a> has scripts to configure the target in gdb, and stm32 c source to include in your build.</p></li>
+<li><p><a class="reference external" href="https://github.com/koendv/SerialWireOutput">SerialWireOutput</a> arduino library, does stm32 set up in code. Userland source for initializing, write() and flush().</p></li>
+</ul>
+</section>
+<section id="black-magic-probe">
+<h2>Black Magic Probe<a class="headerlink" href="#black-magic-probe" title="Permalink to this heading">¶</a></h2>
+<p>BMP receives SWO from the target and sends decoded SWO to a usb serial port, or undecoded SWO to a viewer. Target and probe:</p>
+<ul class="simple">
+<li><p>must speak the same protocol, async (NRZ) or Manchester</p></li>
+<li><p>at the same baud rate</p></li>
+</ul>
+<p>There are two SWO protocols: Manchester and asynchronous (aka NRZ). You can see what protocol your BMP speaks with <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">help</span></code>. The protocol is listed next to the <code class="docutils literal notranslate"><span class="pre">traceswo</span></code> command.</p>
+<p>Manchester coding auto-synchronizes. For asynchronous protocol, you have to configure the same baud rate in target and bmp. The default baud rate for async is 2250000.</p>
+<p>Black Magic Probe can do SWO decoding in the probe itself, or pass the undecoded SWO stream to an external viewer.</p>
+<section id="swo-decoding-in-bmp">
+<h3>SWO decoding in BMP<a class="headerlink" href="#swo-decoding-in-bmp" title="Permalink to this heading">¶</a></h3>
+<p>You can switch on traceswo decoding in BMP with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">monitor</span> <span class="n">traceswo</span> <span class="n">decode</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">traceswo</span> <span class="pre">decode</span></code> defaults to 2250000 baud (if using async) and decoding all channels. If using async, you can specify a baud rate. Optionally you can specify which stimulus channels to decode. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">monitor</span> <span class="n">traceswo</span> <span class="mi">4500000</span> <span class="n">decode</span> <span class="mi">0</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>sets speed to 4500000 baud, and decodes only channels 0 and 2.</p>
+<p>The decoded SWO stream is written to the usb uart. Viewing SWO is simply connecting to the usb uart.</p>
+</section>
+<section id="linux">
+<h3>linux<a class="headerlink" href="#linux" title="Permalink to this heading">¶</a></h3>
+<p>On linux, set up <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/blob/master/driver/99-blackmagic.rules">udev-rules</a> and type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyBmpTarg</span>
+</pre></div>
+</div>
+<p>If you have not set up udev-rules, connect to the second of the two serial ports, e.g <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/dev/ttyACM1</span></code>.
+If the SWO stream is not shown, check baud rate.</p>
+</section>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">¶</a></h3>
+<p>Black Magic Probe shows up in the device manager as two COM ports. For Windows 8 and 10, no drivers need to be installed for serial ports. For earlier versions, one can use an <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/master/driver">.inf file</a> that references the pre-installed serial driver. On Windows, connect <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuTTY</a> to the second of the two COM ports, labeled “Black Magic UART Port”.</p>
+<p>SWO decoding in the probe does not need any special utilities and works on every os. For setups that use only a single channel this may be all you need.</p>
+<p>For complex setups, especially with multiple channels, an external viewer may be more suitable.</p>
+</section>
+</section>
+<section id="external-viewer">
+<h2>External viewer<a class="headerlink" href="#external-viewer" title="Permalink to this heading">¶</a></h2>
+<p>You can switch on traceswo for external viewers with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">monitor</span> <span class="n">traceswo</span>
+</pre></div>
+</div>
+<p>The SWO stream is written to the usb trace port. (The usb trace port does not show up in /dev). If using async protocol, you can specify a baud rate: <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">traceswo</span> <span class="pre">1125000</span></code>. The default for async is 2250000.</p>
+<p>Viewers:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/compuphase/Black-Magic-Probe-Book">bmtrace</a> (graphical, windows, ubuntu). Configures bmp and target for you. Windows binaries.
+<img alt="" src="https://github.com/compuphase/Black-Magic-Probe-Book/raw/master/doc/bmtrace.png" /></p></li>
+<li><p><a class="reference external" href="https://github.com/orbcode/orbuculum">orbuculum</a> (linux, command line) Advanced. Has gdb init scripts and target c source in the Support/ directory.</p></li>
+<li><p><a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/blob/master/scripts/swolisten.c">swo_listen</a> (linux, command line)</p></li>
+<li><p><a class="reference external" href="https://github.com/nickd4/bmp_traceswo">bmp_traceswo</a> and <a class="reference external" href="https://github.com/tristanseifert/bmp_traceswo">fork</a> (linux, command line) <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/wiki/Serial-Wire-Debug-TRACESWO-support">detailed write-up</a></p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Black Magic Debug</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware.html">Supported Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrade.html">Firmware Upgrade</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/links.html">Links</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gdb-commands.html">GDB Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdb-automation.html">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traceswo.html">SWD - TRACESWO support</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Serial Wire Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platformio.html">PlatformIO</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/stm32.html">STM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hacking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/contrib.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/hacking.html">Firmware Hacking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-drivers.html">Adding Target Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-m.html">Cortex M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-a.html">Cortex A Targets</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="traceswo.html" title="previous chapter">SWD - TRACESWO support</a></li>
+      <li>Next: <a href="platformio.html" title="next chapter">PlatformIO</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Piotr Esden-Tempski <piotr@esden.net>.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/usage/swo.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

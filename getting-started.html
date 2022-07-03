@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Getting Started &#8212; Black Magic Debug  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="_static/asciinema-custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/asciinema-player_2.6.1.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Firmware Upgrade" href="upgrade.html" />
+    <link rel="prev" title="Supported Hardware" href="hardware.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h1>
+<section id="get-a-black-magic-probe">
+<h2>Get a Black Magic Probe<a class="headerlink" href="#get-a-black-magic-probe" title="Permalink to this heading">¶</a></h2>
+<p>If you don’t have one already, you’ll need to <a class="reference internal" href="index.html#getting-hardware"><span class="std std-doc">get a Black Magic Probe</span></a>.</p>
+</section>
+<section id="connecting-to-your-computer">
+<h2>Connecting to your computer<a class="headerlink" href="#connecting-to-your-computer" title="Permalink to this heading">¶</a></h2>
+<p>Connect the Black Magic Probe to your computer’s USB port with mini USB cable.  When connected via USB, the Black Magic probe will enumerate as a CDC-ACM device which the OS should present as a tty device or serial port.</p>
+<p>On Linux you can check the kernel log to find the device that was allocated:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>user@host ~ $ dmesg
+usb 1-1.1: new full-speed USB device number 58 using ehci-pci
+usb 1-1.1: New USB device found, idVendor=1d50, idProduct=6018
+usb 1-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+usb 1-1.1: Product: Black Magic Probe
+usb 1-1.1: Manufacturer: Black Sphere Technologies
+usb 1-1.1: SerialNumber: DDE6C7C4
+cdc_acm 1-1.1:1.0: This device cannot do calls on its own. It is not a modem.
+cdc_acm 1-1.1:1.0: ttyACM0: USB ACM device
+cdc_acm 1-1.1:1.2: This device cannot do calls on its own. It is not a modem.
+cdc_acm 1-1.1:1.2: ttyACM1: USB ACM device
+</pre></div>
+</div>
+<p>The first interface provides the GDB server, and the second provides a USB to UART adapter.</p>
+<p>On Windows, when you first connect, the Black Magic Probe should be detected as two COM ports. The first COM port is the GDB extended remote server and the second one is USB to Serial adapter on the back of the board. To find the allocated ports, check the Device Manager:</p>
+<p><img alt="Device Manager" src="_images/device_manager.png" /></p>
+<p><strong>Note:</strong> For older Windows versions (Windows 7 and older), you will be prompted to install a driver.  You can download the driver <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/master/driver">here</a>.</p>
+<p><strong>Note:</strong> If you are on Windows 10 and want to upgrade the firmware to the probe itself, you can install the <a class="reference external" href="http://zadig.akeo.ie/">libusbK</a> driver. This will give you access to the DFU interface of the Black Magic Probe and allow you to use dfu-util to upgrade the Black Magic Probe firmware. (You do not need to install this driver if you only plan to use the Black Magic Probe and do not need/want to upgrade the firmware.) Also, Windows 10 displays the BMP probe ports using the generic title, “USB Serial Device”, as seen below:</p>
+<p><img alt="Device Manager Windows 10" src="_images/device_manager_w10.png" /></p>
+</section>
+<section id="connecting-to-the-software">
+<h2>Connecting to the software<a class="headerlink" href="#connecting-to-the-software" title="Permalink to this heading">¶</a></h2>
+<p>To use the Black Magic Probe, you will need an ARM cross toolchain for developing and debugging embedded ARM Cortex applications on your computer.  The <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm">gcc-arm-embedded</a> toolchain is recommended.  The toolchain will include the GNU Debugger, GDB, for debugging ARM applications.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>user@host ~ $ arm-none-eabi-gdb
+GNU gdb (GNU Tools for ARM Embedded Processors) 7.6.0.20140228-cvs
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type &quot;show copying&quot;
+and &quot;show warranty&quot; for details.
+This GDB was configured as &quot;--host=i686-linux-gnu --target=arm-none-eabi&quot;.
+For bug reporting instructions, please see:
+&lt;http://www.gnu.org/software/gdb/bugs/&gt;.
+(gdb)
+</pre></div>
+</div>
+<p>The GDB remote debugging protocol is implemented over the Black Magic Probe’s CDC-ACM interface.  To connect your ARM GDB to the target device use the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(gdb) target extended-remote /dev/ttyACM0
+Remote debugging using /dev/ttyACM0
+(gdb) monitor jtag_scan
+Target voltage: 3.4V
+Device  IR Len  IDCODE      Description
+0       4       0x4BA00477  ARM Limited: ADIv5 JTAG-DP port.
+1       5       0x06413041  ST Microelectronics: STM32F4xx.
+
+Available Targets:
+No. Att Driver
+ 1      STM32F4xx
+
+(gdb) attach 1
+Attaching to Remote target
+0x080071b2 in ?? ()
+</pre></div>
+</div>
+<p>The command <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">swdp_scan</span></code> may be used to use the Serial-Wire Debug Protocol instead of JTAG to connect to the target.</p>
+<p>Once attached, all the standard GDB commands may be used to start and control
+the execution of the embedded application.  [[Useful GDB Commands]] provides a quick introduction.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Mac OS X use the <code class="docutils literal notranslate"><span class="pre">/dev/cu.usbmodem&lt;somenumber&gt;</span></code>. Don’t use the tty version of this device as this one will freeze gdb when it tries to open it.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, VCC is not enabled on either UART or JTAG/SWD, to prevent conflicts between multiple power sources. To enable the probe as a power source, you must use the <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">tpwr</span> <span class="pre">enable</span></code> gdb command.</p>
+</div>
+<p>On Windows, use the the COM port instead of <code class="docutils literal notranslate"><span class="pre">/dev/ttyACM0</span></code>.  For ports &gt;= COM10, add the prefix <code class="docutils literal notranslate"><span class="pre">\\.\</span></code>, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="n">extended</span><span class="o">-</span><span class="n">remote</span> <span class="n">COM3</span>
+<span class="n">target</span> <span class="n">extended</span><span class="o">-</span><span class="n">remote</span> \\<span class="o">.</span>\<span class="n">COM10</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is safe to always use the <code class="docutils literal notranslate"><span class="pre">\\.\</span></code> prefix even for ports &lt; COM10. So when you are writing scripts you can just always prefix the COM port number.</p>
+</div>
+</section>
+<section id="video-tutorial">
+<h2>Video Tutorial<a class="headerlink" href="#video-tutorial" title="Permalink to this heading">¶</a></h2>
+<p>Esden created a video walk-through of using Black Magic Probe with the 1Bitsy microcontroller board on Linux.</p>
+<div class="video_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/ANM0fdAqDow" style="border: 0; height: 345px; width: 560px">
+</iframe></div><p>If you have additional tutorial resources for the use of Black Magic Probe let us know so we can include them here.</p>
+</section>
+<section id="getting-started-with-open-source-cortex-m-development">
+<h2>Getting started with open-source Cortex-M development<a class="headerlink" href="#getting-started-with-open-source-cortex-m-development" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>See <a class="reference external" href="https://github.com/gsmcmullin/embedded-demo/raw/master/slides.pdf">this presentation</a>, porting a basic Unix program to an embedded Cortex-M3 using <a class="reference external" href="http://libopencm3.org/">libopencm3</a>.</p></li>
+<li><p>The <a class="reference external" href="https://launchpadlibrarian.net/268329726/readme.txt">gcc-arm-embedded readme</a> is also worth a read.</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Black Magic Debug</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Intro</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="hardware.html">Supported Hardware</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrade.html">Firmware Upgrade</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="knowledge/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knowledge/terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knowledge/links.html">Links</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage/gdb-commands.html">GDB Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/gdb-automation.html">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/traceswo.html">SWD - TRACESWO support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/swo.html">Serial Wire Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/platformio.html">PlatformIO</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="target-usage/stm32.html">STM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="target-usage/sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hacking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hacking/contrib.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking/hacking.html">Firmware Hacking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking/target-drivers.html">Adding Target Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking/target-cortex-m.html">Cortex M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking/target-cortex-a.html">Cortex A Targets</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="hardware.html" title="previous chapter">Supported Hardware</a></li>
+      <li>Next: <a href="upgrade.html" title="next chapter">Firmware Upgrade</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Piotr Esden-Tempski <piotr@esden.net>.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/getting-started.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

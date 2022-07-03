@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>GDB Flash Automation &#8212; Black Magic Debug  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-custom.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/asciinema-player_2.6.1.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Semihosting" href="semihosting.html" />
+    <link rel="prev" title="GDB Commands" href="gdb-commands.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="gdb-flash-automation">
+<h1>GDB Flash Automation<a class="headerlink" href="#gdb-flash-automation" title="Permalink to this heading">¶</a></h1>
+<p>In many cases it is useful to automatically flash and test the uploaded firmware. GDB has a built in scripting language as well as python bindings.</p>
+<p>Here is a collection of a few ways to automate the flashing process.</p>
+<p>There are many ways to accomplish this.</p>
+<section id="commandline">
+<h2>Commandline<a class="headerlink" href="#commandline" title="Permalink to this heading">¶</a></h2>
+<p>For example with the following “one liner”:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>arm-none-eabi-gdb -nx --batch <span class="se">\</span>
+  -ex <span class="s1">&#39;target extended-remote /dev/ttyACM0&#39;</span> <span class="se">\</span>
+  -ex <span class="s1">&#39;monitor swdp_scan&#39;</span> <span class="se">\</span>
+  -ex <span class="s1">&#39;attach 1&#39;</span> <span class="se">\</span>
+  -ex <span class="s1">&#39;load&#39;</span> <span class="se">\</span>
+  -ex <span class="s1">&#39;compare-sections&#39;</span> <span class="se">\</span>
+  -ex <span class="s1">&#39;kill&#39;</span> <span class="se">\</span>
+  yourbinary.elf
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember that <code class="docutils literal notranslate"><span class="pre">/dev/ttyACM0</span></code> is only valid on linux, you will need to use <code class="docutils literal notranslate"><span class="pre">COMx</span></code> for windows and <code class="docutils literal notranslate"><span class="pre">/dev/cu.usbmodemXXXXXXX1</span></code> for Mac OS.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As always you can use <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">jtag_scan</span></code> instead of <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">swdp_scan</span></code> to use JTAG protocol instead of SWD.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In cases when the target is not powered or you don’t have the VREF pin connected you will need to add <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">tpwr</span> <span class="pre">enable</span></code> to enable power to the target side of the level translators. (especially important for BMP V2.0 and V2.1 probes)</p>
+</div>
+<p>The above invocation can be simplified if you put most of the <code class="docutils literal notranslate"><span class="pre">-ex</span></code> commands into a GDB script file. You can create a file named for example <code class="docutils literal notranslate"><span class="pre">black_magic_probe_flash.scr</span></code> with the following content:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#monitor jtag_scan</span>
+<span class="n">monitor</span> <span class="n">swdp_scan</span>
+<span class="n">attach</span> <span class="mi">1</span>
+<span class="n">load</span>
+<span class="n">compare</span><span class="o">-</span><span class="n">sections</span>
+<span class="n">kill</span>
+</pre></div>
+</div>
+<p>Then the above invocation shrinks down to the following:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>arm-none-eabi-gdb -nx --batch <span class="se">\</span>
+  -ex <span class="s1">&#39;target extended-remote /dev/ttyACM0&#39;</span> <span class="se">\</span>
+  -x black_magic_probe_flash.scr <span class="se">\</span>
+  yourbinary.elf
+</pre></div>
+</div>
+</section>
+<section id="makefile">
+<h2>Makefile<a class="headerlink" href="#makefile" title="Permalink to this heading">¶</a></h2>
+<p>If you are using GNU Makefiles for your project you can add a <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">flash</span></code> target. Reusing the script from the <a class="reference internal" href="#commandline"><span class="std std-doc">Commandline</span></a> section above the target like that can look something like this:</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nf">flash</span><span class="o">:</span> <span class="n">yourbin</span>.<span class="n">flash</span>
+
+<span class="nv">BMP_PORT</span> <span class="o">?=</span> /dev/ttyACM0
+
+<span class="nf">%.flash</span><span class="o">:</span> %.<span class="n">elf</span>
+	@printf <span class="s2">&quot;  BMP </span><span class="k">$(</span>BMP_PORT<span class="k">)</span><span class="s2"> </span><span class="k">$(</span>*<span class="k">)</span><span class="s2">.elf (flash)\n&quot;</span>
+	<span class="k">$(</span>Q<span class="k">)$(</span>GDB<span class="k">)</span> -nx --batch <span class="se">\</span>
+	           -ex <span class="s1">&#39;target extended-remote $(BMP_PORT)&#39;</span> <span class="se">\</span>
+	           -x black_magic_probe_flash.scr <span class="se">\</span>
+	           <span class="k">$(</span>*<span class="k">)</span>.elf
+</pre></div>
+</div>
+<p>This is a very simple flash target. It assumes that your binary target ends with <code class="docutils literal notranslate"><span class="pre">.elf</span></code> suffix. You can call the target by running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">flash</span></code> and it will build the <code class="docutils literal notranslate"><span class="pre">yourbinary.elf</span></code>, flash it and test that the flash worked out.</p>
+<p>You can also call the target providing a different Black Magic Probe GDB serial port by calling for example: <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">flash</span> <span class="pre">BMP_PORT=/dev/cu.usbmodemXXXXXXX1</span></code> on Mac OS.</p>
+<p>Following is a more complicated make setup that automatically detects Black Magic Probe GDB serial ports.</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span>PREFIX		?= arm-none-eabi
+GDB		:= $(PREFIX)-gdb
+SCRIPT_DIR	:= scripts
+
+ifeq ($(BMP_PORT),)
+BMP_PORT_CANDIDATES := $(wildcard \
+/dev/serial/by-id/usb-Black_Sphere_Technologies_Black_Magic_Probe_*-if00 \
+/dev/cu.usbmodem*1)
+ifeq ($(words $(BMP_PORT_CANDIDATES)),1)
+BMP_PORT := $(BMP_PORT_CANDIDATES)
+else
+BMP_PORT = $(error Black Magic Probe gdb serial port not found, please provide the device name via the BMP_PORT variable parameter$(if \
+$(BMP_PORT_CANDIDATES), (found $(BMP_PORT_CANDIDATES))))
+endif
+endif
+%.flash: %.elf
+	@printf &quot;  BMP $(BMP_PORT) $(*).elf (flash)\n&quot;
+	$(Q)$(GDB) -nx --batch \
+	           -ex &#39;target extended-remote $(BMP_PORT)&#39; \
+	           -x $(SCRIPT_DIR)/black_magic_probe_flash.scr \
+	           $(*).elf
+</pre></div>
+</div>
+<p>For a full example using this kind of a makefile target you can look at the <a class="reference external" href="https://github.com/1Bitsy/1bitsy-locm3-template">1Bitsy template project</a>.</p>
+</section>
+<section id="windows-batch">
+<h2>Windows Batch<a class="headerlink" href="#windows-batch" title="Permalink to this heading">¶</a></h2>
+<p>You can use a similar technique on windows too. Here is a <code class="docutils literal notranslate"><span class="pre">.bat</span></code> that implements binary flashing:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="p">@</span><span class="k">echo</span> off
+<span class="c1">rem: Note %~dp0 get path of this batch file</span>
+<span class="c1">rem: Need to change drive if My Documents is on a drive other than C:</span>
+<span class="k">set</span> <span class="nv">driverLetter</span><span class="p">=</span><span class="nv">%~dp0</span>
+<span class="k">set</span> <span class="nv">driverLetter</span><span class="p">=</span><span class="nv">%driverLetter:~0,2%</span>
+<span class="nv">%driverLetter%</span>
+<span class="k">cd</span> <span class="nv">%~dp0</span>
+<span class="c1">rem: get all parameters that we will be using and make sure the slashes are all correct</span>
+<span class="k">set</span> <span class="nv">working_directory</span><span class="p">=</span><span class="nv">%~p0</span>
+<span class="k">set</span> <span class="nv">toolchain_path</span><span class="p">=</span><span class="nv">%~1</span>
+<span class="k">set</span> <span class="nv">toolchain_path</span><span class="p">=</span><span class="nv">%toolchain_path:/=\%</span>
+<span class="k">set</span> <span class="nv">bmp_gdb_port</span><span class="p">=</span><span class="nv">%2</span>
+<span class="k">set</span> <span class="nv">bmp_gdb_port</span><span class="p">=</span><span class="nv">%bmp_gdb_port:/=\%</span>
+<span class="k">set</span> <span class="nv">elf_file</span><span class="p">=</span><span class="nv">%3</span>
+<span class="k">set</span> <span class="nv">elf_file</span><span class="p">=</span><span class="nv">%elf_file:/=\%</span>
+<span class="nv">%toolchain_path%</span>\arm-none-eabi-gdb.exe --batch -nx <span class="se">^</span>
+<span class="se">	</span>-ex <span class="s2">&quot;target extended-remote </span><span class="nv">%bmp_gdb_port%</span><span class="s2">&quot;</span> <span class="se">^</span>
+<span class="se">	</span>-x <span class="nv">%working_directory%</span>..\shared\bmp_gdb_upload_swd.scr <span class="se">^</span>
+<span class="se">	</span><span class="nv">%elf_file%</span>
+</pre></div>
+</div>
+<p>This batch script takes three parameters: <code class="docutils literal notranslate"><span class="pre">toolchain</span> <span class="pre">path</span></code>, <code class="docutils literal notranslate"><span class="pre">Black</span> <span class="pre">Magic</span> <span class="pre">Probe</span> <span class="pre">GDB</span> <span class="pre">Port</span> <span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">binary</span> <span class="pre">elf</span> <span class="pre">file</span></code>
+You can call that batch script for example like this: <code class="docutils literal notranslate"><span class="pre">bmp_upload.bat</span> <span class="pre">C:\\gcc-arm-none-eabi\bin</span> <span class="pre">COM1</span> <span class="pre">yourbinary.elf</span></code></p>
+</section>
+<section id="in-production-batch-programming">
+<h2>In Production Batch Programming<a class="headerlink" href="#in-production-batch-programming" title="Permalink to this heading">¶</a></h2>
+<p>You can use the Black Magic Probe to bulk program large numbers of devices in production. The easiest way to accomplish that is to use one of the above techniques and run them in the loop. It is also useful to have audible response when the flash process has been successful. You can add an audio file playback at the end of the GDB script and it will only be played when the flash cycle has been successful.</p>
+<p>Here is a onliner loop for your unix system of choice:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> true<span class="p">;</span> <span class="k">do</span> sleep <span class="m">1</span><span class="p">;</span> arm-none-eabi-gdb --batch -nx <span class="se">\</span>
+  -ex <span class="s2">&quot;target extended-remote /dev/ttyACM0&quot;</span> <span class="se">\</span>
+  -x gdb_upload.scr <span class="se">\</span>
+  yourbinary.elf<span class="p">;</span> <span class="k">done</span>
+</pre></div>
+</div>
+<p>Note: It is useful to have a short period of sleep between the gdb invocations, otherwise it is difficult to break the loop with <code class="docutils literal notranslate"><span class="pre">Ctrl-C</span></code> key combination. Most modern unix systems support also shorter periods than 1 as parameter to the sleep command. You can call it with 0.5 for half a second sleep period.</p>
+<p>The newly added GDB flash script lines for audio response for Linux would look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shell</span> <span class="n">paplay</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">sounds</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">stereo</span><span class="o">/</span><span class="n">message</span><span class="o">.</span><span class="n">ogg</span>
+<span class="n">shell</span> <span class="n">sleep</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Note: The additional 3 seconds of sleep after a successful firmware upload gives the operator time to disconnect the Black Magic Probe from the target without accidentally flashing the target multiple times. If you pull the cable in the middle of the flash process you can end up with a half programmed or reerased target…</p>
+<p>And this is what those lines look like on Mac OS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shell</span> <span class="n">afplay</span> <span class="o">/</span><span class="n">System</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Sounds</span><span class="o">/</span><span class="n">Ping</span><span class="o">.</span><span class="n">aiff</span>
+<span class="n">shell</span> <span class="n">sleep</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Note: The additional 3 seconds of sleep after a successful firmware upload gives the operator time to disconnect the Black Magic Probe from the target without accidentally flashing the target multiple times. If you pull the cable in the middle of the flash process you can end up with a half programmed or reerased target…</p>
+<p>For convenience here is a full script that should work on an Ubuntu computer with a bunch of annotations as comments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print BMPM version</span>
+<span class="n">monitor</span> <span class="n">version</span>
+<span class="c1"># To make sure the target is not in a &quot;strange&quot; mode we tell BMPM to reset the</span>
+<span class="c1"># target using the reset pin before connecting to it.</span>
+<span class="n">monitor</span> <span class="n">connect_srst</span> <span class="n">enable</span>
+<span class="c1"># Enable target power (aka. provide power to the target side of the level shifters)</span>
+<span class="n">monitor</span> <span class="n">tpwr</span> <span class="n">enable</span>
+<span class="c1"># Scan for devices using SWD interface</span>
+<span class="n">monitor</span> <span class="n">swdp_scan</span>
+<span class="c1"># Alternatively scan for devices using JTAG. (comment out the above line...)</span>
+<span class="c1"># monitor jtag_scan</span>
+<span class="c1"># Attach to the newly found target if available. (if it fails the script exits)</span>
+<span class="n">attach</span> <span class="mi">1</span>
+<span class="c1"># Success! Lets make some sound!</span>
+<span class="n">shell</span> <span class="n">paplay</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">sounds</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">stereo</span><span class="o">/</span><span class="n">message</span><span class="o">.</span><span class="n">ogg</span>
+<span class="c1"># Load aka. flash the binary</span>
+<span class="n">load</span>
+<span class="c1"># Check if the flash matches the binary</span>
+<span class="n">compare</span><span class="o">-</span><span class="n">sections</span>
+<span class="c1"># Reset the target and disconnect</span>
+<span class="n">kill</span>
+<span class="c1"># Write to the terminal that we succeeded</span>
+<span class="n">echo</span> <span class="s2">&quot;Upload success!!!&quot;</span>
+<span class="c1"># Finished flashing success! Lets make some more sound!</span>
+<span class="n">shell</span> <span class="n">paplay</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">sounds</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">/</span><span class="n">stereo</span><span class="o">/</span><span class="n">system</span><span class="o">-</span><span class="n">ready</span><span class="o">.</span><span class="n">ogg</span>
+</pre></div>
+</div>
+</section>
+<section id="auto-detecting-the-gdb-port-in-windows-powershell">
+<h2>Auto-detecting the GDB port in Windows PowerShell<a class="headerlink" href="#auto-detecting-the-gdb-port-in-windows-powershell" title="Permalink to this heading">¶</a></h2>
+<p>It is not ideal to have to manually determine the serial port name and type it into the script invocation each time. The following command in Windows PowerShell will detect the GDB port and set an environment variable, which can then be used to call GDB.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Get-CimInstance -ClassName Win32_SerialPort -Filter &quot;PNPDeviceID like &#39;USB\\VID_1D50&amp;PID_6018&amp;MI_00%&#39;&quot; | `
+  Select -ExpandProperty DeviceID | Set-Variable -Name BMP_GDB_PORT
+
+echo $BMP_GDB_PORT
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Black Magic Debug</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware.html">Supported Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrade.html">Firmware Upgrade</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/links.html">Links</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gdb-commands.html">GDB Commands</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traceswo.html">SWD - TRACESWO support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swo.html">Serial Wire Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platformio.html">PlatformIO</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/stm32.html">STM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hacking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/contrib.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/hacking.html">Firmware Hacking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-drivers.html">Adding Target Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-m.html">Cortex M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-a.html">Cortex A Targets</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="gdb-commands.html" title="previous chapter">GDB Commands</a></li>
+      <li>Next: <a href="semihosting.html" title="next chapter">Semihosting</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Piotr Esden-Tempski <piotr@esden.net>.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/usage/gdb-automation.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

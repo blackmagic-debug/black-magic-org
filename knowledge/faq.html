@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>FAQ &#8212; Black Magic Debug  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-custom.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/asciinema-player_2.6.1.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Terminology" href="terminology.html" />
+    <link rel="prev" title="Firmware Upgrade" href="../upgrade.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="faq">
+<h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this heading">¶</a></h1>
+<section id="what-targets-are-currently-supported">
+<h2>What targets are currently supported?<a class="headerlink" href="#what-targets-are-currently-supported" title="Permalink to this heading">¶</a></h2>
+<p>The Black Magic probe currently supports ARMv6-M and ARMv7-M architecture targets, specifically Cortex-M0, Cortex-M3 and Cortex-M4.
+Any device with these cores should work with possibly the exception flash memory programming.</p>
+<p>Memory map and flash programming are supported for these specific implementations:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">efm32.c</span></code>: Silicon Labs EFM32, EZR32</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kinetis.c</span></code>: Freescale Kinetis KL25, KL27, KL02</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lmi.c</span></code>: Texas Instruments: LM3S, TM4C</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lpc11xx.c</span></code>: NXP LPC8xx, LPC11xx</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lpc15xx.c</span></code>: NXP LPC15xx</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lpc17xx.c</span></code>:  NXP LPC17xx</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lpc43xx.c</span></code>: NXP LPC43xx</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lpc546xx.c</span></code>: NXP LPC546</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">msp432.c</span></code>: MSP432P401</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nrf51.c</span></code>: Nordic nRF51, nRF52</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nxpke04.c</span></code>: Kinetis KE04</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rp.c</span></code>: Raspberry RP20240</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sam3x.c</span></code>: Atmel SAM3N, SAM3X, SAM3S, SAM3U, SAM4S</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sam4l.c</span></code>: Atmel SAM4L</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">samd.c</span></code>: Atmel SAM D20, D21</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">samx5x.c</span></code>: Atmel SAMx5xqq</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">samdx5x.c</span></code>:Atmel SAMD5x/E5x</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stm32f1.c</span></code>: ST Microelectronics STM32F0, STM32F1, STM32F3</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stm32f4.c</span></code>: ST Microelectronics STM32F2, STM32F4, STM32F7</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stm32g0.c</span></code>: ST Microelectronics G0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stm32h7.c</span></code>: ST Microelectronics H7</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stm32l0.c</span></code>: ST Microelectronics STM32L0, STM32L1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stm32l4.c</span></code>: ST Microelectronics STM32L4, STM32G0, STM32G4</p></li>
+</ul>
+<p>Last Updated: Sep 7, 2021</p>
+<p>As additions happen, you to update the firmware to profit from these additions.
+There is experimental support for Cortex-A (ARMv7-A architecture).  This is being used with success on Xilinx Zynq-7000 SoC (Dual-core Cortex-A9) and Raspberry Pi 2 (Quad-core Cortex-A7).</p>
+</section>
+<section id="where-can-i-get-the-hardware">
+<h2>Where can I get the hardware?<a class="headerlink" href="#where-can-i-get-the-hardware" title="Permalink to this heading">¶</a></h2>
+<p>The official Black Magic Probe hardware is available from multiple vendors. An up to date list is kept on the <span class="xref myst">project main page</span>.</p>
+</section>
+<section id="where-can-i-find-the-bmp-schematics">
+<h2>Where can I find the BMP schematics?<a class="headerlink" href="#where-can-i-find-the-bmp-schematics" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/blacksphere/blackmagic/wiki/files/bmpm_v2_1c_schematic.pdf">Black Magic Probe Mini v2.1</a></p></li>
+<li><p><a class="reference external" href="https://github.com/blacksphere/blackmagic/wiki/files/bmpm_v2_0f_schematic.pdf">Black Magic Probe Mini v2.0</a></p></li>
+<li><p><a class="reference external" href="https://github.com/blacksphere/blackmagic/wiki/files/blackmagic_mini.pdf">Black Magic Probe Mini</a></p></li>
+<li><p><a class="reference external" href="https://github.com/blacksphere/blackmagic/wiki/files/blackmagic-1.0.pdf">Original Black Magic Probe</a></p></li>
+</ul>
+</section>
+<section id="what-are-those-jtag-swd-connectors-and-cables">
+<h2>What are those JTAG/SWD connectors and cables?<a class="headerlink" href="#what-are-those-jtag-swd-connectors-and-cables" title="Permalink to this heading">¶</a></h2>
+<p>The JTAG/SWD connector is <a class="reference external" href="https://www.samtec.com/products/ftsh-105-01-f-dv-k">FTSH-105-01-F-DV-K from Samtec</a> (Buy: <a class="reference external" href="http://www.digikey.com/product-detail/en/FTSH-105-01-F-DV-K/FTSH-105-01-F-DV-K-ND/2649974">Digi-key</a>, <a class="reference external" href="https://1bitsquared.com/products/jtag-swd-smd-connector">1BitSquared</a>).</p>
+<p>The JTAG/SWD connector is a 0.05” (50mil/1.27mm) pitch, 2 row 10pin connector. The Samtec version is the only one that includes a keying shroud and does not occupy a large space on the PCB. There are other manufacturers that make connectors that can be used too. Here are a few options:</p>
+<ul class="simple">
+<li><p>Amphenol FCI 20021121-00010C4LF unshrouded SMD (Buy: <a class="reference external" href="https://www.digikey.com/product-detail/en/amphenol-fci/20021121-00010C4LF/609-3695-1-ND/2209147">Digi-key</a>)</p></li>
+<li><p>Amphenol FCI 20021111-00010T4LF unshrouded TH (Buy: <a class="reference external" href="https://www.digikey.com/product-detail/en/amphenol-fci/20021111-00010T4LF/609-3712-ND/2209072">Digi-key</a>)</p></li>
+<li><p>Amphenol FCI 20021521-00010T1LF shrouded SMD (Buy: <a class="reference external" href="https://www.digikey.com/product-detail/en/amphenol-fci/20021521-00010T1LF/609-4054-ND/2414951">Digi-key</a>)</p></li>
+<li><p>Amphenol FCI 20021211-00010T1LF shrouded TH (Buy: <a class="reference external" href="https://www.digikey.com/product-detail/en/amphenol-fci/20021211-00010T1LF/20021211-00010T1LF-ND/4244146">Digi-key</a>)</p></li>
+<li><p>CNC Tech 3220-10-0300-00 shrouded SMD (Buy: <a class="reference external" href="https://www.digikey.com/product-detail/en/cnc-tech/3220-10-0300-00/1175-1629-ND/3883266">Digi-key</a>)</p></li>
+<li><p>CNC Tech 3220-10-0100-00 shrouded TH (Buy: <a class="reference external" href="https://www.digikey.com/product-detail/en/cnc-tech/3220-10-0100-00/1175-1627-ND/3883661">Digi-key</a>)</p></li>
+<li><p>And many many more … 😸</p></li>
+</ul>
+<p>The JTAG/SWD cable is <a class="reference external" href="https://www.samtec.com/products/ffsd-05-d-06.00-01-n">FFSD-05-D-xx.xx-01-N</a> where the <code class="docutils literal notranslate"><span class="pre">x</span></code> stand for the length of the cable. Common length is 6 inches. (Buy: <a class="reference external" href="https://www.digikey.com/product-detail/en/samtec-inc/FFSD-05-D-06.00-01-N/SAM8218-ND/1106577">Digi-key</a>, <a class="reference external" href="https://1bitsquared.com/products/jtag-idc-cable">1BitSquared</a>)</p>
+<p>You can build your own JTAG/SWD ribbon cable using the following materials. (consider just an example there are many manufacturers making 1.27mm pitch IDC crimps and ribbons)</p>
+<ul class="simple">
+<li><p>CNC Tech 3230-10-0103-00 IDC crimp with polarizing key. (Buy: <a class="reference external" href="https://www.digikey.com/product-detail/en/cnc-tech/3230-10-0103-00/1175-1646-ND/3883463">Digi-key</a>)</p></li>
+<li><p>3M 3756/10 0.025” (0.64mm) pitch 10 conductor flat ribbon cable. (Buy: <a class="reference external" href="https://www.digikey.com/product-detail/en/3m/3756-10-100/ME10G-10-ND/5308218">Digi-key</a>)</p></li>
+</ul>
+</section>
+<section id="what-are-those-uart-connectors-and-cables">
+<h2>What are those UART connectors and cables?<a class="headerlink" href="#what-are-those-uart-connectors-and-cables" title="Permalink to this heading">¶</a></h2>
+<p>The UART connector is Molex PicoBlade 0532610471. (Buy: <a class="reference external" href="http://www.digikey.com/product-detail/en/0532610471/WM7622CT-ND/699109">Digi-key</a>).</p>
+<p>The UART cable can be built by hand using the following materials:</p>
+<ul class="simple">
+<li><p>Molex PicoBlade 050079-8000 26-28AWG or 50058-8000 28-32AWG crimp sockets. (Buy: <a class="reference external" href="https://www.digikey.com/product-detail/en/molex-llc/0500798000/WM1142CT-ND/467835">Digi-key</a> <a class="reference external" href="https://www.digikey.com/product-detail/en/molex-llc/50058-8000/WM1775CT-ND/242897">Digi-key</a>)</p></li>
+<li><p>Molex PicoBlade 0510210400 housing (Buy: <a class="reference external" href="https://www.digikey.com/product-detail/en/molex-llc/0510210400/WM1722-ND/242844">Digi-key</a>)</p></li>
+<li><p>Molex PicoBlade 0638271400 crimp tool (Buy: <a class="reference external" href="https://www.digikey.com/product-detail/en/molex/0638271400/WM15815-ND/6577355">Digi-key</a>) (Warning: if you don’t want to be very frustrated and destroy a lot of crimps skip trying to use cheaper options that claim to be compatible with the PicoBlade crimps, they are not.)</p></li>
+<li><p>26-32AWG wire of your choosing and whatever termination you need on the other side of the cable.</p></li>
+</ul>
+<p>The UART cable can also be built with pre crimped wires:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.digikey.com/product-detail/en/molex-llc/06-66-0012/WM2319-ND/2405453">Digi-key</a> red 150mm pre crimped cable</p></li>
+<li><p><a class="reference external" href="https://www.digikey.com/product-detail/en/molex-llc/06-66-0013/WM2320-ND/2405456">Digi-key</a> red 300mm pre crimped cable</p></li>
+<li><p><a class="reference external" href="https://1bitsquared.com/products/picoblade-wire-kit">1BitSquared</a> pre crimped cable assortment</p></li>
+</ul>
+<p>There are also pre made UART cables:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://1bitsquared.com/products/black-magic-01in-pin-header-serial-cable">1BitSquared</a> UART to 0.1” pin header pigtail cable.</p></li>
+<li><p><a class="reference external" href="https://1bitsquared.com/products/serial-interface-cable">1BitSquared</a> UART to <a class="reference external" href="http://paparazziuav.org">Paparazzi UAV</a> autopilot cable.</p></li>
+</ul>
+</section>
+<section id="where-can-i-find-different-jtag-swd-connectors-adapters-cables">
+<h2>Where can I find different JTAG/SWD connectors? (Adapters &amp; Cables)<a class="headerlink" href="#where-can-i-find-different-jtag-swd-connectors-adapters-cables" title="Permalink to this heading">¶</a></h2>
+<p>Many vendors provide adapters allowing easy connection between different JTAG/SWD and UART interfaces. For example <a class="reference external" href="https://1bitsquared.com/collections/embedded-hardware">1BitSquared</a> offers a wide range of different adapters and cables. There is also a collection of adapter designs that you can find on the <a class="reference external" href="https://github.com/1bitsquared/1b2-adapter-collection">1BitSquared GitHub Page</a> that you can use as basis for your custom adapter. If there is an adapter missing for your specific application it is usually quite easy to put one together using <a class="reference external" href="http://kicad.org/">KiCad</a> and order the needed board from <a class="reference external" href="https://oshpark.com/">OSHPark</a>.</p>
+</section>
+<section id="are-binary-firmware-images-available-for-download">
+<h2>Are binary firmware images available for download?<a class="headerlink" href="#are-binary-firmware-images-available-for-download" title="Permalink to this heading">¶</a></h2>
+<p>Automatically built firmware images for the official hardware are <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases">here</a>.</p>
+</section>
+<section id="how-can-i-access-memory-mapped-i-o-from-gdb">
+<h2>How can I access memory mapped I/O from GDB?<a class="headerlink" href="#how-can-i-access-memory-mapped-i-o-from-gdb" title="Permalink to this heading">¶</a></h2>
+<p>The peripheral registers are not included in the memory map provided to GDB.
+It is suggested that you add the command <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">mem</span> <span class="pre">inaccessible-by-default</span> <span class="pre">off</span></code> to
+your <code class="docutils literal notranslate"><span class="pre">.gdbinit</span></code> file.  That will allow you to access addresses outside of
+the memory map. It will treat anything outside of the memory map as
+RAM.</p>
+</section>
+<section id="how-do-i-prevent-memory-corruption-when-writing-to-flash-on-an-lpc-mcu">
+<h2>How do I prevent memory corruption when writing to flash on an LPC MCU?<a class="headerlink" href="#how-do-i-prevent-memory-corruption-when-writing-to-flash-on-an-lpc-mcu" title="Permalink to this heading">¶</a></h2>
+<p>The first 512 bytes of the address space are mapped to boot ROM by default. Once you write the <code class="docutils literal notranslate"><span class="pre">SYSMEMREMAP</span></code> register (address <code class="docutils literal notranslate"><span class="pre">0x40048000</span></code>) to have a value of 2, those 512 bytes are mapped to flash and all sections will match. The LPC bootloader automatically does this upon detecting valid user code, but the bootloader cannot run while you are holding the chip in reset with a debugger. See section 3.5.1 of the manual. In gdb, you can <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">{int}0x40048000</span> <span class="pre">=</span> <span class="pre">2</span></code> to achieve the same result.</p>
+<p>You can add the following to your <code class="docutils literal notranslate"><span class="pre">.gdbinit</span></code> to set the bit on startup.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">mem</span> <span class="n">inaccessible</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">default</span> <span class="n">off</span>
+<span class="nb">set</span> <span class="p">{</span><span class="nb">int</span><span class="p">}</span><span class="mh">0x40048000</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>This solution is known to work on the LPC8xx/LPC11xx families of chips. If you are using something different refer to the reference manual and look for <code class="docutils literal notranslate"><span class="pre">SYSMEMREMAP</span></code> register. If the address differs please add it to this FAQ item or let us know in the <a class="reference external" href="https://discord.gg/P7FYThy">Discord #blackmagic channel</a> or mailing list. For the discussion of this problem refer to issue <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/issues/99">#99</a>.</p>
+</section>
+<section id="it-s-annoying-to-look-up-an-always-changing-device-name-on-linux">
+<h2>It’s annoying to look up an always-changing device name on Linux.<a class="headerlink" href="#it-s-annoying-to-look-up-an-always-changing-device-name-on-linux" title="Permalink to this heading">¶</a></h2>
+<p>Use the bmp devices created under /dev/serial/by-id/usb-Black_Sp…-if00 or create a file named <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/99-blackmagic.rules</span></code> with the following contents:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Black Magic Probe
+# there are two connections, one for GDB and one for uart debugging
+  SUBSYSTEM==&quot;tty&quot;, ATTRS{interface}==&quot;Black Magic GDB Server&quot;, SYMLINK+=&quot;ttyBmpGdb&quot;
+  SUBSYSTEM==&quot;tty&quot;, ATTRS{interface}==&quot;Black Magic UART Port&quot;, SYMLINK+=&quot;ttyBmpTarg&quot;
+</pre></div>
+</div>
+<p>Then unplug / replug the probe, or restart the computer.</p>
+<p>Now you can access the probe at the stable names <code class="docutils literal notranslate"><span class="pre">/dev/ttyBmpGdb</span></code> and <code class="docutils literal notranslate"><span class="pre">/dev/ttyBmpTarg</span></code>.</p>
+</section>
+<section id="i-want-to-connect-to-a-black-magic-probe-on-another-machine">
+<h2>I want to connect to a Black Magic Probe on another machine.<a class="headerlink" href="#i-want-to-connect-to-a-black-magic-probe-on-another-machine" title="Permalink to this heading">¶</a></h2>
+<p>You can use stty and netcat.  On the machine with the probe connected, make a little TCP server on port 2000 with these commands:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>stty -F /dev/ttyBmpGdb raw -onlcr -iexten -echo -echoe -echok -echoctl -echoke
+nc -vkl -p 2000 &gt; /dev/ttyBmpGdb &lt; /dev/ttyBmbGdb
+</pre></div>
+</div>
+<p>In gdb on the remote machine, connect with <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">extended-remote</span> <span class="pre">hostname:2000</span></code> where <code class="docutils literal notranslate"><span class="pre">hostname</span></code> is the name or IP address of the machine running the probe.</p>
+</section>
+<section id="is-it-normal-that-my-black-magic-probe-is-warming-up-noticeably">
+<h2>Is it normal that my Black Magic Probe is warming up noticeably?<a class="headerlink" href="#is-it-normal-that-my-black-magic-probe-is-warming-up-noticeably" title="Permalink to this heading">¶</a></h2>
+<p>Yes, under normal operations the Black Magic Probe V2.1 is drawing 30-60mA. When using the <code class="docutils literal notranslate"><span class="pre">tpwr</span></code> functionality to supply power to a target like the 1Bitsy it can draw up to 120mA resulting in 0.6W of dissipated heat. The voltage regulator can heat up to 75°C under normal operations, it is rated for up to 125°C.</p>
+<p>The problem is fixes with firmware newer than Dec. 16 2020.</p>
+<p><img alt="Black Magic Probe Heatmap" src="../_images/BMP_V2_1_heat_image.jpg" /></p>
+</section>
+<section id="how-does-the-black-magic-probe-compare-to-the-st-link-programmer">
+<h2>How does the Black Magic Probe compare to the ST-Link programmer?<a class="headerlink" href="#how-does-the-black-magic-probe-compare-to-the-st-link-programmer" title="Permalink to this heading">¶</a></h2>
+<p>There are a few advantages of the Black Magic Probe. BMP is open-source, meaning that you can look inside it if you need or want to. We are getting support for new ARM Cortex-M based chips on a regular basis, so you are not limited to just the STM32. We have preliminary support for Cortex-A this will result in the ability to use the probe with Raspberry PI and Beagle Bone Black and many others. The Black Magic Probe also supports JTAG not only SWD, because not all microcontrollers use SWD. Also JTAG makes it possible to chain together more than one microcontroller. The GDB server is implemented on the probe itself, this means we do not use some proprietary protocol to talk to your debugger software, making the setup more repeatable and removing the need for custom config files. All you need to do is fire up GDB and connect to the virtual serial port of the Black Magic Probe, no special setup necessary. It is physically small, you can plug it into your hardware even if it is buried deeply inside your killer robot. We have equipped the Black Magic Probe V2.1 (this is the version the Kickstarter backers will receive) with dual supply level shifters that make it possible to connect to targets that run on voltages as low as 1.7V and as high as 5V. The transceivers are more robust than the STM32 GPIO meaning that if the BMP is connected wrongly to the target it is less likely you will hurt either the Black Magic Probe or your target. Also the Black Magic Probe comes with a TTL level UART providing a bonus USB to Serial capability that can be used simultaneously with the GDB JTAG/SWD debugger.</p>
+</section>
+<section id="why-is-xxx-not-supported">
+<h2>Why is XXX not supported?<a class="headerlink" href="#why-is-xxx-not-supported" title="Permalink to this heading">¶</a></h2>
+<p>If the device is not a ADIv5 device, because we currently only support ADIv5 devices. If it is a ADIv5 device, because nobody contributed the needed functions yet. Look on <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/pulls">Github</a> if there is a pending pull request for your target. Report success/failure in that PR to help us triage merge of the new hardware support.</p>
+</section>
+<section id="why-is-raspberry-pi-1-not-supported">
+<h2>Why is Raspberry Pi 1 not supported?<a class="headerlink" href="#why-is-raspberry-pi-1-not-supported" title="Permalink to this heading">¶</a></h2>
+<p>Because it is an old ARM TDMI architecture, that is not compitable with ADIv5. (if you want to work on adding support for this contact us on <a class="reference external" href="https://discord.gg/P7FYThy"><img alt="Discord" src="https://img.shields.io/discord/613131135903596547?logo=discord" /></a> we have some sample code that needs work, if you want to dig deep into protocol spec sheets this is a project for you. :) )</p>
+</section>
+<section id="why-is-raspberry-pi-3-not-supported">
+<h2>Why is Raspberry PI 3 not supported?<a class="headerlink" href="#why-is-raspberry-pi-3-not-supported" title="Permalink to this heading">¶</a></h2>
+<p>Because it is a 64Bit chip. We are working on adding 64bit support but it is not trivial. If you want to help with that contact us on <a class="reference external" href="https://discord.gg/P7FYThy"><img alt="Discord" src="https://img.shields.io/discord/613131135903596547?logo=discord" /></a>.</p>
+</section>
+<section id="why-is-beagle-bone-black-not-supported">
+<h2>Why is Beagle Bone Black not supported?<a class="headerlink" href="#why-is-beagle-bone-black-not-supported" title="Permalink to this heading">¶</a></h2>
+<p>Because Texas Instruments…. but we are working on it. :) If you want to help with that contact us on <a class="reference external" href="https://discord.gg/P7FYThy"><img alt="Discord" src="https://img.shields.io/discord/613131135903596547?logo=discord" /></a>.  See <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/issues/166">issue #166</a> for details.</p>
+</section>
+<section id="how-do-i-upgrade-to-a-more-recent-version">
+<h2>How do I upgrade to a more recent version?<a class="headerlink" href="#how-do-i-upgrade-to-a-more-recent-version" title="Permalink to this heading">¶</a></h2>
+<p>Follow the <a class="reference internal" href="../upgrade.html"><span class="doc std std-doc">upgrade</span></a> instructions.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Black Magic Debug</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware.html">Supported Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrade.html">Firmware Upgrade</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-commands.html">GDB Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-automation.html">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/traceswo.html">SWD - TRACESWO support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/swo.html">Serial Wire Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/platformio.html">PlatformIO</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/stm32.html">STM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hacking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/contrib.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/hacking.html">Firmware Hacking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-drivers.html">Adding Target Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-m.html">Cortex M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-a.html">Cortex A Targets</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../upgrade.html" title="previous chapter">Firmware Upgrade</a></li>
+      <li>Next: <a href="terminology.html" title="next chapter">Terminology</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Piotr Esden-Tempski <piotr@esden.net>.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/knowledge/faq.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

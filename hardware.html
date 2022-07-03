@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Supported Hardware &#8212; Black Magic Debug  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="_static/asciinema-custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/asciinema-player_2.6.1.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="getting-started.html" />
+    <link rel="prev" title="Black Magic Debug: The Plug&amp;Play MCU Debugger" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="supported-hardware">
+<h1>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Permalink to this heading">¶</a></h1>
+<p>Black Magic Probe firmware can be compiled for many different target platforms. Here is a short list with descriptions of different targets.</p>
+<section id="native-hardware">
+<h2>Native Hardware<a class="headerlink" href="#native-hardware" title="Permalink to this heading">¶</a></h2>
+<p>The following is a list of official hardware supported by the Native target that is the default compilation target of Black Magic Probe firmware.  All revisions of the native hardware work with the same firmware binary.</p>
+<section id="black-magic-probe-v2-3-bmp23">
+<h3>Black Magic Probe V2.3 (BMP23)<a class="headerlink" href="#black-magic-probe-v2-3-bmp23" title="Permalink to this heading">¶</a></h3>
+<p>TODO: Add photos</p>
+<p><strong>Status</strong> Active</p>
+<p><strong>Schematic</strong> TODO</p>
+<p>New slightly larger form factor than previous versions to accommodate the larger TQFP MCU package, AUX connector and additional flash chip. Following is a list of the main differences to the predecessor relevant to an end user.</p>
+<ul class="simple">
+<li><p>…</p></li>
+<li><p>…</p></li>
+</ul>
+</section>
+<section id="black-magic-probe-mini-v2-1-bmp21">
+<h3>Black Magic Probe Mini V2.1 (BMP21)<a class="headerlink" href="#black-magic-probe-mini-v2-1-bmp21" title="Permalink to this heading">¶</a></h3>
+<p>TODO: Add photos</p>
+<p><strong>Status</strong> Legacy (not in production)</p>
+<p><strong>Source</strong> <a class="reference internal" href="index.html#getting-hardware"><span class="std std-doc">Vendors</span></a></p>
+<p><strong>Schematic</strong> <a class="reference download internal" download="" href="_downloads/9268bd95a59bf58b68008004df51c31f/bmpm_v2_1c_schematic.pdf"><span class="xref download myst">bmpm_v2_1c_schematic.pdf</span></a><br />
+<strong>Schematic</strong> <a class="reference download internal" download="" href="_downloads/5a984c502435264dc19bc5e08c8b55cd/bmpm_v2_1e_schematic.pdf"><span class="xref download myst">bmpm_v2_1e_schematic.pdf</span></a></p>
+<p>Same form factor as the predecessor BMPM2. Following is a list of main differences to the predecessor relevant to an end user.</p>
+<ul class="simple">
+<li><p>Replaces the TXS0108 bidirectional level shifter with dual supply 74LVC2T45 bus transceivers. This improves the line drive strength and expands the target voltage range to 1.8V-5V (previous design was limited to 1.8V-3.3V)</p></li>
+<li><p>Dedicated reset line drive MOSFET circuitry with 10k pull-up ensuring good open-drain RST line drive with monitoring.</p></li>
+<li><p>Exposed the BMP side SWD lines on dedicated pads, allowing for easier programming and debugging of the probe firmware. It is much easier now to program and debug the BMP firmware using a second BMP. The pinout is compatible with the <a class="reference external" href="https://1bitsquared.com/products/jtag-swd-adapter">SWD adapter by 1Bitsquared</a>.</p></li>
+<li><p>Increased LED distance from each other for better visual separation.</p></li>
+<li><p>(V2.1e revision) Added a normally open jumper to allow the connection of the <code class="docutils literal notranslate"><span class="pre">TRACESWO</span></code> signal to <code class="docutils literal notranslate"><span class="pre">UART1_RX</span></code> on pin <code class="docutils literal notranslate"><span class="pre">PB7</span></code>. This pin is also the highest order bit of the hardware version. Because of that all BMPM V2.1e have the hardware version stored as a user <code class="docutils literal notranslate"><span class="pre">Data0</span></code> option byte at address <code class="docutils literal notranslate"><span class="pre">0x1FFFF804</span></code>. The hardware version corresponding to V2.1e is <code class="docutils literal notranslate"><span class="pre">0x04</span></code>. The firmware that implements the use the uart SWO decoding should check the presence of the hardware version in the option bytes first. (this feature is not yet supported in current blackmagic probe firmware)</p></li>
+</ul>
+<p><strong>3D Printed Cases</strong></p>
+<ul class="simple">
+<li><p>Michael McAvoy’s Black Magic Probe Case - With Fins: <a class="reference external" href="https://www.thingiverse.com/thing:2387688">Thingverse</a>, <a class="reference external" href="https://www.shapeways.com/product/ZCZRTYJJ9/case-black-magic-probe-with-fins">Shapeways</a></p></li>
+<li><p>Michael McAvoy’s Black Magic Probe Case - Flat: <a class="reference external" href="https://www.thingiverse.com/thing:2401662">Thingverse</a>, <a class="reference external" href="https://www.shapeways.com/product/JG6NTERVG/case-black-magic-probe-flat">Shapeways</a></p></li>
+</ul>
+</section>
+<section id="black-magic-probe-mini-v2-0-bmpm2">
+<h3>Black Magic Probe Mini V2.0 (BMPM2)<a class="headerlink" href="#black-magic-probe-mini-v2-0-bmpm2" title="Permalink to this heading">¶</a></h3>
+<p><img alt="" src="_images/bmpm2-black-final-top.jpg" />
+<img alt="" src="_images/bmpm2-black-final-bottom.jpg" /></p>
+<p><strong>Status</strong> Legacy (not in production)</p>
+<p><strong>Source</strong> <a class="reference internal" href="index.html#getting-hardware"><span class="std std-doc">Vendors</span></a></p>
+<p><strong>Schematic</strong> <a class="reference download internal" download="" href="_downloads/8bf67c1c2e126d2930992ace47b44728/bmpm_v2_0f_schematic.pdf"><span class="xref download myst">bmpm_v2_0f_schematic.pdf</span></a></p>
+<p>Same form factor as the predecessor BMPM1. Following is a list of main differences to the predecessor.</p>
+<ul class="simple">
+<li><p>Adds TXS0108 level shifter for wider range of targets. This will add support for low voltage targets that run on 1.8V.</p></li>
+<li><p>Uses two MOSFET to prevent powering the BMPM in reverse through the MOSFET body diodes.</p></li>
+<li><p>Uses USB Micro connector as it is by now more wide spread than USB Mini.</p></li>
+</ul>
+</section>
+<section id="black-magic-probe-mini-v1-0-bmpm1">
+<h3>Black Magic Probe Mini V1.0 (BMPM1)<a class="headerlink" href="#black-magic-probe-mini-v1-0-bmpm1" title="Permalink to this heading">¶</a></h3>
+<p><img alt="" src="_images/bmpm1-top.jpg" />
+<img alt="" src="_images/bmpm1-bottom.jpg" /></p>
+<p><strong>Status</strong> Legacy (not in production)</p>
+<p><strong>Source</strong> <a class="reference internal" href="index.html#getting-hardware"><span class="std std-doc">Getting Hardware</span></a></p>
+<p><strong>Schematic</strong> <a class="reference download internal" download="" href="_downloads/d4b43b749bb4437a9d5674c79bcce66c/blackmagic_mini.pdf"><span class="xref download myst">blackmagic_mini.pdf</span></a></p>
+<p>Small version of the Black Magic Probe also known as BMPM1. The form factor was inspired by the Floss JTAG FTDI based adapter. The board offers an ARM Cortex 0.05” 10Pin connector on the top of the board and a Molex Picoblade 4Pin UART serial connector on the back of the board.</p>
+<p>The board has a MOSFET to switch 3.3V power supply to the target in place of the jumper on the original Black Magic Probe.</p>
+<p>This board does not buffer the JTAG or serial pins in any way, they are connected directly to the STM32.</p>
+</section>
+<section id="black-magic-probe">
+<h3>Black Magic Probe<a class="headerlink" href="#black-magic-probe" title="Permalink to this heading">¶</a></h3>
+<p><img alt="" src="_images/bmp1-top.jpg" /></p>
+<p><strong>Status</strong> Legacy (not in production)</p>
+<p><strong>Schematic</strong> <a class="reference download internal" download="" href="_downloads/52c7082e5f743ca2c7934f478fb325d6/blackmagic-1.0.pdf"><span class="xref download myst">blackmagic-1.0.pdf</span></a></p>
+<p>The original first hardware. Offers a legacy ARM JTAG 0.1” 20Pin connector. Some of the pins of the 20Pin connector carry TX and RX of a serial interface. This makes the connector not 100% compatible to a default 20Pin JTAG connector.</p>
+<p>The board has a physical jumper to switch 3.3V power supply to the target.</p>
+<p>JTAG IO is buffered through a TXS0108 Texas Instruments bidirectional level shifter.  UART signals are connected directy to the STM32.</p>
+</section>
+</section>
+<section id="ftdi-target">
+<h2>FTDI target<a class="headerlink" href="#ftdi-target" title="Permalink to this heading">¶</a></h2>
+<p>It is possible to run the Black Magic Probe firmware on your PC and have it bit bang using a USB attached FTDI MPSSE capable adapter. Programming speed is a little slower, but BMP development may be faster due to no firmware upload needed and the inherent debugging messages on the starting console.</p>
+</section>
+<section id="st-link">
+<h2>ST Link<a class="headerlink" href="#st-link" title="Permalink to this heading">¶</a></h2>
+<p>You can compile the firmware for an ST Link debugger. These are often included on ST Discovery and Nucleo evaluation boards. You can replace <a class="reference external" href="http://esden.net/2014/12/29/black-magic-discovery/">the ST Link firmware on your discovery board</a> with Black Magic Probe firmware. Usually this leads to more stable operation and easier use than the ST tools. There are several tutorials for how to do it even if you don’t have a JTAG adapter yet and no way to bootstrap. :)</p>
+<p>For a generic STM32F103 board, look if the swlink platform can handle it. Swlink reuses the SWD pins.
+You can also follow <a class="reference external" href="https://medium.com/&#64;paramaggarwal/converting-an-stm32f103-board-to-a-black-magic-probe-c013cf2cc38c#.btn6lnwqe">these</a> instructions for a solution to not reuse the SWD pins.</p>
+</section>
+<section id="st-link-v2">
+<h2>ST Link V2<a class="headerlink" href="#st-link-v2" title="Permalink to this heading">¶</a></h2>
+<p>Restoring StlinkV2 BMP support with recent original ST firmware is a work in progress at the moment, according to the <a class="reference external" href="https://github.com/blacksphere/blackmagic/issues/504#issuecomment-525399540">issue #504</a>.</p>
+</section>
+<section id="f4-discovery">
+<h2>F4 Discovery<a class="headerlink" href="#f4-discovery" title="Permalink to this heading">¶</a></h2>
+<p>You can run the Black Magic Probe firmware on the “target” processor of an ST F4 discovery board. This among others useful if you want to bootstrap your F4 Discovery board ST Link programmer without having any other means of programming it.</p>
+</section>
+<section id="sw-link">
+<h2>SW Link<a class="headerlink" href="#sw-link" title="Permalink to this heading">¶</a></h2>
+<p>This target is the programmer integrated on the STM8S Discovery board.</p>
+</section>
+<section id="bluepill-blackpill-v1-minimal-development-boards">
+<h2>Bluepill/Blackpill V1 minimal development boards<a class="headerlink" href="#bluepill-blackpill-v1-minimal-development-boards" title="Permalink to this heading">¶</a></h2>
+<p>The swlink platform can also be used for development boards with header accessible SWD pins. Swlink firmware remaps SWD debug pins as bit-bang SWD output. Full JTAG and more infrastructure is accessible on the header rows.</p>
+</section>
+<section id="launchpad-icdi">
+<h2>Launchpad ICDI<a class="headerlink" href="#launchpad-icdi" title="Permalink to this heading">¶</a></h2>
+<p>This target is the programmer integrated on the TI Launchpad board.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Black Magic Debug</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Intro</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Supported Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrade.html">Firmware Upgrade</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="knowledge/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knowledge/terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knowledge/links.html">Links</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage/gdb-commands.html">GDB Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/gdb-automation.html">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/traceswo.html">SWD - TRACESWO support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/swo.html">Serial Wire Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/platformio.html">PlatformIO</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="target-usage/stm32.html">STM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="target-usage/sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hacking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hacking/contrib.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking/hacking.html">Firmware Hacking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking/target-drivers.html">Adding Target Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking/target-cortex-m.html">Cortex M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking/target-cortex-a.html">Cortex A Targets</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Black Magic Debug: The Plug&amp;Play MCU Debugger</a></li>
+      <li>Next: <a href="getting-started.html" title="next chapter">Getting Started</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Piotr Esden-Tempski <piotr@esden.net>.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/hardware.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

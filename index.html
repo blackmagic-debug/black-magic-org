@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Black Magic Debug: The Plug&amp;Play MCU Debugger &#8212; Black Magic Debug  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="_static/asciinema-custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/asciinema-player_2.6.1.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Supported Hardware" href="hardware.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <!-- Black Magic Debug documentation master file, created by
+   sphinx-quickstart on Fri Jul  1 21:16:13 2022.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+-->
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<p><a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml"><img alt="Build Status" src="https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml/badge.svg" /></a>
+<a class="reference external" href="https://discord.gg/P7FYThy"><img alt="Discord" src="https://img.shields.io/discord/613131135903596547?logo=discord" /></a></p>
+<section id="black-magic-debug-the-plug-play-mcu-debugger">
+<h1>Black Magic Debug: The Plug&amp;Play MCU Debugger<a class="headerlink" href="#black-magic-debug-the-plug-play-mcu-debugger" title="Permalink to this heading">¶</a></h1>
+<p><img alt="Black Magic Probe V2.3a" src="_images/bmp_v2_3a_iso.jpg" /></p>
+<section id="black-magic-debug-project-goals">
+<h2>Black Magic Debug Project Goals<a class="headerlink" href="#black-magic-debug-project-goals" title="Permalink to this heading">¶</a></h2>
+<p>The goal of this project is the creation of an easy to use. Mostly plug and play, JTAG/SWD debugger for embedded microcontrollers. Focusing on professional embedded software developers that prefer retaining control over their build systems and testing environments instead of relying on highly abstracted vendor tools that give the impression of simplicity at the cost of transparency.</p>
+</section>
+<section id="what-is-black-magic-debug">
+<h2>What is Black Magic Debug<a class="headerlink" href="#what-is-black-magic-debug" title="Permalink to this heading">¶</a></h2>
+<p>In most cases Black Magic Debug takes the form of a firmware for the Black Magic Probe hardware, and implements a <a class="reference external" href="https://www.sourceware.org/gdb/">GNU DeBugger (GDB)</a> server.</p>
+<p>The Black Magic GDB server features:</p>
+<ul class="simple">
+<li><p>Automatic target detection</p></li>
+<li><p>No need for target specific configuration scripts</p></li>
+<li><p>All protocol and target specific control is done through GDB monitor commands</p></li>
+<li><p>No “software in the middle” like OpenOCD required</p></li>
+<li><p>Easily scriptable thanks to the <a class="reference external" href="https://sourceware.org/gdb/onlinedocs/gdb/Command-Files.html">GDB scripting</a> capabilities</p></li>
+<li><p>Interface to the host computer is a standard USB CDC ACM device (virtual serial port), which does not require special drivers on Linux or OS X.</p></li>
+<li><p>Targets ARM Cortex-M and Cortex-A based microcontrollers</p></li>
+<li><p>Provides full debugging functionality, including: watchpoints, flash memory breakpoints, memory and register examination, flash memory programming, etc.</p></li>
+<li><p>[Semihosting / Host IO support] as well as [Serial Wire Debug TRACESWO support].</p></li>
+<li><p>Implements USB DFU class for easy firmware upgrade as updates become available.</p></li>
+<li><p>Works with Windows, Linux and Mac environments.</p></li>
+</ul>
+<p>All you need is to install the GNU <a class="reference external" href="https://en.wikipedia.org/wiki/Cross_compiler">cross compilation toolchain</a> installed, containing <a class="reference external" href="https://gcc.gnu.org/">GCC</a> and <a class="reference external" href="https://www.sourceware.org/gdb/">GDB</a> for your microcontroller installed, the microcontroller is supported by BMD, plug in the Black Magic Probe hardware running the Black Magic Debug firmware into your computer, and instruct your GDB to use the BMP as your remote target using the <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">extended_remote</span> <span class="pre">*serial_port*</span></code> command and you are off to the races.</p>
+<p>If you are an embedded development beginner Black Magic Probe is also a great choice for you. But expect more of a Unix command line experience than a Windows <a class="reference external" href="https://www.urbandictionary.com/define.php?term=klickibunti"><em>klickybunti</em></a> GUI.</p>
+<p>If there is anything unclear or hard to understand let us know. Our goal is to make the documentation on this website comprehensive enough that it is all you need to get started with microcontroller development and debugging using the Black Magic Probe.</p>
+</section>
+<section id="supported-targets">
+<h2>Supported Targets<a class="headerlink" href="#supported-targets" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference download internal" download="" href="_downloads/d90fd0fe7cd9fb9673a5afd8d191dbae/bmpm_ARM_Cortex-M_targets-2021-12.png"><span class="xref download myst"><img alt="" src="_images/bmpm_ARM_Cortex-M_targets-2021-12.png" /></span></a>
+<a class="reference download internal" download="" href="_downloads/961635cc581bdc90a531f2d7db0d1a9e/bmpm_ARM_Cortex-A_alpha_targets.png"><span class="xref download myst"><img alt="" src="_images/bmpm_ARM_Cortex-A_alpha_targets.png" /></span></a></p>
+</section>
+<section id="quick-demo">
+<h2>Quick Demo<a class="headerlink" href="#quick-demo" title="Permalink to this heading">¶</a></h2>
+<p>Here is a quick example of a GDB session using the Black Magic Probe.</p>
+<asciinema-player preload="1" font-size="15px" theme="monokai"  src="data:application/json;base64,eyJ2ZXJzaW9uIjogMiwgIndpZHRoIjogODAsICJoZWlnaHQiOiAyNSwgInRpbWVzdGFtcCI6IDE2NTY4MTE1MjUsICJpZGxlX3RpbWVfbGltaXQiOiAwLjUsICJlbnYiOiB7IlNIRUxMIjogIi9iaW4venNoIiwgIlRFUk0iOiAieHRlcm0ta2l0dHkifX0KWzAuMDEzNTQ2LCAibyIsICJcdTAwMWJbMG1cdTAwMWJbNDltXHUwMDFiWzM5bVx1MDAxYlsyN21cdTAwMWJbMjRtXHJcdTAwMWJbS1xyXG5cclxuXHUwMDFiWzJBXHUwMDFiN1x1MDAxYlswbVx1MDAxYls0OW1cdTAwMWJbMzltXHUwMDFiWzBtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzI1NW0g74yDXHUwMDFiWzBtXHUwMDFiWzM4OzU7MjU1bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzM4OzU7MjU1bSBcdTAwMWJbMG1cdTAwMWJbMzg7NTsyNTVtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbMzg7NTsyNDJt4pSCXHUwMDFiWzBtXHUwMDFiWzM4OzU7MjQybVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzM4OzU7MzFtIO+BvCBcdTAwMWJbMW1cdTAwMWJbMzg7NTszMW1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzM4OzU7Mzltflx1MDAxYlswbVx1MDAxYlszODs1OzM5bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzM4OzU7MzFtL1x1MDAxYlsxbVx1MDAxYlszODs1OzMxbVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbMzg7NTszOW1wd21sZWRmYWRlXHUwMDFiWzBtXHUwMDFiWzM4OzU7MzltXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbMzg7NTszMW1cdTAwMWJbMG1cdTAwMWJbMzg7NTszMW1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzMxbSBcdTAwMWJbMG1cdTAwMWJbMzg7NTszMW1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzQ5bVx1MDAxYlszODs1OzIzNG3ilpPilpLilpFcdTAwMWJbMG1cdTAwMWJbMzg7NTsyMzRtXHUwMDFiWzQ5bVx1MDAxYlszOW1cdTAwMWJbMzg7NTsyMzht4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAXHUwMDFiWzBtXHUwMDFiWzM4OzU7MjM4bVx1MDAxYls0OW1cdTAwMWJbMzg7NTsyMzRt4paR4paS4paTXHUwMDFiWzBtXHUwMDFiWzM4OzU7MjM0bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbMzg7NTs2Nm0gMTg6MjU6MjVcdTAwMWJbMG1cdTAwMWJbMzg7NTs2Nm1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzY2bSDvgJdcdTAwMWJbMG1cdTAwMWJbMzg7NTs2Nm1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzY2bSBcdTAwMWJbMG1cdTAwMWJbMzg7NTs2Nm1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzQ5bVx1MDAxYlszOW1cclxuXHUwMDFiWzBtXHUwMDFiWzQ5bVx1MDAxYlszOW1cdTAwMWJbMG1cdTAwMWJbNDltXHUwMDFiWzM4OzU7NzZt4p2vXHUwMDFiWzBtXHUwMDFiWzM4OzU7NzZtXHUwMDFiWzQ5bVx1MDAxYlszODs1Ozc2bVx1MDAxYlswbVx1MDAxYlszODs1Ozc2bVx1MDAxYls0OW1cdTAwMWJbMzBtXHUwMDFiWzBtXHUwMDFiWzMwbVx1MDAxYls0OW1cdTAwMWJbMzltIFx1MDAxYlswbVx1MDAxYls0OW1cdTAwMWJbMzltXHUwMDFiWz8yMDA0aCJdClswLjY1OTMyOCwgIm8iLCAiXHUwMDFiWz8yNWwiXQpbMC42NTk0NTEsICJvIiwgIlx1MDAxYjhcdTAwMWJbMG1cdTAwMWJbNDltXHUwMDFiWzM5bVx1MDAxYlsyN21cdTAwMWJbMjRtXHUwMDFiW0oiXQpbMC42NjA0MTEsICJvIiwgIlx1MDAxYl0yO2VzZGVudGVtQHRyaWFuYTp+L3B3bWxlZGZhZGVcdTAwMDdcdTAwMWJdMTt+L3B3bWxlZGZhZGVcdTAwMDciXQpbMC42NjA1MTIsICJvIiwgIlx1MDAxYlswbVx1MDAxYlszODs1OzMxbVx1MDAxYls0OW1cdTAwMWJbMzltXHUwMDFiWzI3bVx1MDAxYlsyNG1cdTAwMWJbMW1cdTAwMWJbN20lXHUwMDFiWzI3bVx1MDAxYlsxbVx1MDAxYlswbSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcclx1MDAxYlswbVx1MDAxYls0OW1cdTAwMWJbMzltXHUwMDFiWzI3bVx1MDAxYlsyNG1cdTAwMWJbSyJdClswLjY2MTc4MiwgIm8iLCAiXHJcdTAwMWJbMG1cdTAwMWJbMjdtXHUwMDFiWzI0bVx1MDAxYltKXHUwMDFiWzBtXHUwMDFiWzQ5bVx1MDAxYlszOW1cclxuXHUwMDFiW0FcdTAwMWJbMG1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzM4OzU7MjU1bSDvjINcdTAwMWJbMG1cdTAwMWJbMzg7NTsyNTVtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbMzg7NTsyNTVtIFx1MDAxYlswbVx1MDAxYlszODs1OzI1NW1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzI0Mm3ilIJcdTAwMWJbMG1cdTAwMWJbMzg7NTsyNDJtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbMzg7NTszMW0g74G8IFx1MDAxYlsxbVx1MDAxYlszODs1OzMxbVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbMzg7NTszOW1+XHUwMDFiWzBtXHUwMDFiWzM4OzU7MzltXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbMzg7NTszMW0vXHUwMDFiWzFtXHUwMDFiWzM4OzU7MzFtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzM5bXB3bWxlZGZhZGVcdTAwMWJbMG1cdTAwMWJbMzg7NTszOW1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzMxbVx1MDAxYlswbVx1MDAxYlszODs1OzMxbVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzM4OzU7MzFtIFx1MDAxYlswbVx1MDAxYlszODs1OzMxbVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbNDltXHUwMDFiWzM4OzU7MjM0beKWk+KWkuKWkVx1MDAxYlswbVx1MDAxYlszODs1OzIzNG1cdTAwMWJbNDltXHUwMDFiWzM5bVx1MDAxYlszODs1OzIzOG3ilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIBcdTAwMWJbMG1cdTAwMWJbMzg7NTsyMzhtXHUwMDFiWzQ5bVx1MDAxYlszODs1OzIzNG3ilpHilpLilpNcdTAwMWJbMG1cdTAwMWJbMzg7NTsyMzRtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzY2bSAxODoyNToyNVx1MDAxYlswbVx1MDAxYlszODs1OzY2bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzM4OzU7NjZtIO+Al1x1MDAxYlswbVx1MDAxYlszODs1OzY2bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzM4OzU7NjZtIFx1MDAxYlswbVx1MDAxYlszODs1OzY2bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbNDltXHUwMDFiWzM5bVxyXG5cdTAwMWJbMG1cdTAwMWJbNDltXHUwMDFiWzM5bVx1MDAxYlswbVx1MDAxYls0OW1cdTAwMWJbMzg7NTs3Nm3ina9cdTAwMWJbMG1cdTAwMWJbMzg7NTs3Nm1cdTAwMWJbNDltXHUwMDFiWzM4OzU7NzZtXHUwMDFiWzBtXHUwMDFiWzM4OzU7NzZtXHUwMDFiWzQ5bVx1MDAxYlszMG1cdTAwMWJbMG1cdTAwMWJbMzBtXHUwMDFiWzQ5bVx1MDAxYlszOW0gXHUwMDFiWzBtXHUwMDFiWzQ5bVx1MDAxYlszOW1cdTAwMWJbSyJdClswLjY2MTg0MywgIm8iLCAiXHUwMDFiWz8xaCJdClswLjY2MjA4NywgIm8iLCAiXHUwMDFiWz8xMmhcdTAwMWJbPzI1aCJdClswLjY2MjE1OCwgIm8iLCAiXHUwMDFiWz8yMDA0aCJdClsxLjExNTQ2MSwgIm8iLCAiYSJdClsxLjExODk2MywgIm8iLCAiXGJcdTAwMWJbMW1cdTAwMWJbMzFtYVx1MDAxYlswbVx1MDAxYlszOW0iXQpbMS4xMTkxODIsICJvIiwgIlxiXHUwMDFiWzFtXHUwMDFiWzMxbWFcdTAwMWJbMG1cdTAwMWJbMzltXHUwMDFiWzkwbXNjaWluZW1hIHJlYyAtaSAwLjUgLi4vYm1wX2RlbW8tMi5jYXN0XHUwMDFiWzM5bVx1MDAxYlszOEQiXQpbMS4xNzg2MDIsICJvIiwgIlxiXHUwMDFiWzFtXHUwMDFiWzMxbWFcdTAwMWJbMW1cdTAwMWJbMzFtclx1MDAxYlswbVx1MDAxYlszOW1cdTAwMWJbMzltIFx1MDAxYlszOW0gXHUwMDFiWzM5bSBcdTAwMWJbMzltIFx1MDAxYlszOW0gXHUwMDFiWzM5bSBcdTAwMWJbMzltIFx1MDAxYlszOW0gXHUwMDFiWzM5bSBcdTAwMWJbMzltIFx1MDAxYlszOW0gXHUwMDFiWzM5bSBcdTAwMWJbMzltIFx1MDAxYlszOW0gXHUwMDFiWzM5bSBcdTAwMWJbMzltIFx1MDAxYlszOW0gXHUwMDFiWzM5bSBcdTAwMWJbMzltIFx1MDAxYlszOW0gXHUwMDFiWzM5bSBcdTAwMWJbMzltIFx1MDAxYlszOW0gXHUwMDFiWzM5bSBcdTAwMWJbMzltIFx1MDAxYlszOW0gXHUwMDFiWzM5bSBcdTAwMWJbMzltIFx1MDAxYlszOW0gXHUwMDFiWzM5bSBcdTAwMWJbMzltIFx1MDAxYlszOW0gXHUwMDFiWzM5bSBcdTAwMWJbMzltIFx1MDAxYlszOW0gXHUwMDFiWzM5bSBcdTAwMWJbMzltIFx1MDAxYlszN0QiXQpbMS4xNzk5ODgsICJvIiwgIlxiXGJcdTAwMWJbMG1cdTAwMWJbMzJtYVx1MDAxYlswbVx1MDAxYlszMm1yXHUwMDFiWzM5bSJdClsxLjE4MDY3MywgIm8iLCAiXHUwMDFiWzkwbW0tbm9uZS1lYWJpLWdkYiBwd21sZWRmYWRlLmVsZlx1MDAxYlszOW1cdTAwMWJbMzBEIl0KWzEuMzMwMjk3LCAibyIsICJcYlxiXHUwMDFiWzMybWFcdTAwMWJbMzJtclx1MDAxYlszMm1tXHUwMDFiWzM5bSJdClsxLjMzNDMxLCAibyIsICJcYlxiXGJcdTAwMWJbMW1cdTAwMWJbMzFtYVx1MDAxYlsxbVx1MDAxYlszMW1yXHUwMDFiWzFtXHUwMDFiWzMxbW1cdTAwMWJbMG1cdTAwMWJbMzltIl0KWzIuMDAyNjk5LCAibyIsICJcdTAwMWJbMzltLVx1MDAxYlszOW1uXHUwMDFiWzM5bW9cdTAwMWJbMzltblx1MDAxYlszOW1lXHUwMDFiWzM5bS1cdTAwMWJbMzltZVx1MDAxYlszOW1hXHUwMDFiWzM5bWJcdTAwMWJbMzltaVx1MDAxYlszOW0tXHUwMDFiWzM5bWdcdTAwMWJbMzltZFx1MDAxYlszOW1iXHUwMDFiWzM5bSBcdTAwMWJbMzltcFx1MDAxYlszOW13XHUwMDFiWzM5bW1cdTAwMWJbMzltbFx1MDAxYlszOW1lXHUwMDFiWzM5bWRcdTAwMWJbMzltZlx1MDAxYlszOW1hXHUwMDFiWzM5bWRcdTAwMWJbMzltZVx1MDAxYlszOW0uXHUwMDFiWzM5bWVcdTAwMWJbMzltbFx1MDAxYlszOW1mIl0KWzIuMDA1ODQxLCAibyIsICJcdTAwMWJbMzJEXHUwMDFiWzBtXHUwMDFiWzMybWFcdTAwMWJbMG1cdTAwMWJbMzJtclx1MDAxYlswbVx1MDAxYlszMm1tXHUwMDFiWzMybS1cdTAwMWJbMzJtblx1MDAxYlszMm1vXHUwMDFiWzMybW5cdTAwMWJbMzJtZVx1MDAxYlszMm0tXHUwMDFiWzMybWVcdTAwMWJbMzJtYVx1MDAxYlszMm1iXHUwMDFiWzMybWlcdTAwMWJbMzJtLVx1MDAxYlszMm1nXHUwMDFiWzMybWRcdTAwMWJbMzJtYlx1MDAxYlszOW0gXHUwMDFiWzRtcFx1MDAxYls0bXdcdTAwMWJbNG1tXHUwMDFiWzRtbFx1MDAxYls0bWVcdTAwMWJbNG1kXHUwMDFiWzRtZlx1MDAxYls0bWFcdTAwMWJbNG1kXHUwMDFiWzRtZVx1MDAxYls0bS5cdTAwMWJbNG1lXHUwMDFiWzRtbFx1MDAxYls0bWZcdTAwMWJbMjRtIl0KWzIuMzg4MDI2LCAibyIsICJcdTAwMWJbPzFsIl0KWzIuMzg4MTUyLCAibyIsICJcdTAwMWJbPzIwMDRsIl0KWzIuMzkwODQ3LCAibyIsICJcdTAwMWJbPzI1bFxyXHJcdTAwMWJbQVx1MDAxYlswbVx1MDAxYlsyN21cdTAwMWJbMjRtXHUwMDFiW0pcdTAwMWJbMG1cdTAwMWJbNDltXHUwMDFiWzI3bVx1MDAxYlsyNG1cdTAwMWJbMzg7NTs3Nm3ina9cdTAwMWJbMG1cdTAwMWJbMzg7NTs3Nm1cdTAwMWJbNDltXHUwMDFiWzM5bVx1MDAxYlsyN21cdTAwMWJbMjRtIFx1MDAxYlszMm1hcm0tbm9uZS1lYWJpLWdkYlx1MDAxYlszOW0gXHUwMDFiWzRtcHdtbGVkZmFkZS5lbGZcdTAwMWJbMjRtXHUwMDFiW0tcdTAwMWJbPzEyaFx1MDAxYls/MjVoIl0KWzIuMzkwOTMzLCAibyIsICJcclxyXG4iXQpbMi4zOTE1OTYsICJvIiwgIlx1MDAxYl0yO2FybS1ub25lLWVhYmktZ2RiIHB3bWxlZGZhZGUuZWxmXHUwMDA3XHUwMDFiXTE7YXJtLW5vbmUtZWFiaS1nZGJcdTAwMDciXQpbMi40MDA5MjksICJvIiwgIlx1MDAxYlszNTsxbVx1MDAxYlszNTsxbUdOVSBnZGIgXHUwMDFiW21cdTAwMWJbMzU7MW0oR05VIEFybSBFbWJlZGRlZCBUb29sY2hhaW4gMTAuMy0yMDIxLjEwKSBcdTAwMWJbbVx1MDAxYlszNTsxbTEwLjIuOTAuMjAyMTA2MjEtZ2l0XHUwMDFiW21cdTAwMWJbMzU7MW1cclxuXHUwMDFiW21cdTAwMWJbbUNvcHlyaWdodCAoQykgMjAyMSBGcmVlIFNvZnR3YXJlIEZvdW5kYXRpb24sIEluYy5cclxuTGljZW5zZSBHUEx2Mys6IEdOVSBHUEwgdmVyc2lvbiAzIG9yIGxhdGVyIDxodHRwOi8vZ251Lm9yZy9saWNlbnNlcy9ncGwuaHRtbD5cclxuVGhpcyBpcyBmcmVlIHNvZnR3YXJlOiB5b3UgYXJlIGZyZWUgdG8gY2hhbmdlIGFuZCByZWRpc3RyaWJ1dGUgaXQuXHJcblRoZXJlIGlzIE5PIFdBUlJBTlRZLCB0byB0aGUgZXh0ZW50IHBlcm1pdHRlZCBieSBsYXcuXHJcblR5cGUgXCJzaG93IGNvcHlpbmdcIiBhbmQgXCJzaG93IHdhcnJhbnR5XCIgZm9yIGRldGFpbHMuXHJcblRoaXMgR0RCIHdhcyBjb25maWd1cmVkIGFzIFwiLS1ob3N0PXg4Nl82NC1saW51eC1nbnUgLS10YXJnZXQ9YXJtLW5vbmUtZWFiaVwiLlxyXG5UeXBlIFwic2hvdyBjb25maWd1cmF0aW9uXCIgZm9yIGNvbmZpZ3VyYXRpb24gZGV0YWlscy5cclxuRm9yIGJ1ZyByZXBvcnRpbmcgaW5zdHJ1Y3Rpb25zLCBwbGVhc2Ugc2VlOlxyXG48aHR0cHM6Ly93d3cuZ251Lm9yZy9zb2Z0d2FyZS9nZGIvYnVncy8+LlxyXG5GaW5kIHRoZSBHREIgbWFudWFsIGFuZCBvdGhlciBkb2N1bWVudGF0aW9uIHJlc291cmNlcyBvbmxpbmUgYXQ6XHJcbiAgICA8aHR0cDovL3d3dy5nbnUub3JnL3NvZnR3YXJlL2dkYi9kb2N1bWVudGF0aW9uLz4uXHJcblxyXG5Gb3IgaGVscCwgdHlwZSBcImhlbHBcIi5cclxuVHlwZSBcImFwcm9wb3Mgd29yZFwiIHRvIHNlYXJjaCBmb3IgY29tbWFuZHMgcmVsYXRlZCB0byBcIndvcmRcIi4uLlxyXG4iXQpbMi40MDExOTUsICJvIiwgIlJlYWRpbmcgc3ltYm9scyBmcm9tIFx1MDAxYlszMm1wd21sZWRmYWRlLmVsZlx1MDAxYlttLi4uXHJcbiJdClsyLjQwMTg0OCwgIm8iLCAiKGdkYikgIl0KWzQuMzcwMTksICJvIiwgInQiXQpbNC40NjY3NDQsICJvIiwgImEiXQpbNC41Mzg3NDUsICJvIiwgInIiXQpbNC43Nzg2ODgsICJvIiwgImdldCAiXQpbNS4yMDI2MTcsICJvIiwgImUiXQpbNS40OTA3NDIsICJvIiwgIngiXQpbNS42NjYwNTUsICJvIiwgInQiXQpbNS44MTA4MjUsICJvIiwgImVuZGVkLXJlbW90ZSAiXQpbNi44ODIzNjYsICJvIiwgIi8iXQpbNy4xMzA1NzEsICJvIiwgImQiXQpbNy4yMzQwMzQsICJvIiwgImUiXQpbNy4zNTQxMjMsICJvIiwgInYiXQpbNy43MDYzOTgsICJvIiwgIi8iXQpbOC4wNjYyNTIsICJvIiwgInQiXQpbOC4xNzg2MTgsICJvIiwgInQiXQpbOC4zMzAyMzQsICJvIiwgInkiXQpbOS45MzA2NTgsICJvIiwgIkIiXQpbMTAuMTcwOTI1LCAibyIsICJtIl0KWzEwLjMzMDY4NywgIm8iLCAicCJdClsxMC43OTUwMTMsICJvIiwgIkciXQpbMTEuMDM0MzA3LCAibyIsICJkIl0KWzExLjE5NDExNywgIm8iLCAiYiJdClsxMS43MjMwNjYsICJvIiwgIlxyXG4iXQpbMTEuNzIzMzM2LCAibyIsICJSZW1vdGUgZGVidWdnaW5nIHVzaW5nIC9kZXYvdHR5Qm1wR2RiXHJcbiJdClsxMS43MjU5NTMsICJvIiwgIihnZGIpICJdClsxMy41MzkwODUsICJvIiwgIm0iXQpbMTMuNjM0NTkyLCAibyIsICJvIl0KWzEzLjczMDY2MywgIm8iLCAibiJdClsxMy44NjY5NTksICJvIiwgIml0b3IgIl0KWzE1LjYxODk5MSwgIm8iLCAidiJdClsxNS42OTEzMDEsICJvIiwgImUiXQpbMTUuODI3MTQ2LCAibyIsICJyIl0KWzE2LjA4MzM4NywgIm8iLCAicyJdClsxNi40NDI3MDIsICJvIiwgImkiXQpbMTYuNjM1MzA4LCAibyIsICJvIl0KWzE2Ljc1NTE1LCAibyIsICJuIl0KWzE3LjA1OTEwNiwgIm8iLCAiXHJcbiJdClsxNy4wNTk1MzIsICJvIiwgIkJsYWNrIE1hZ2ljIFBybyJdClsxNy4wNTk1NjMsICJvIiwgImJlIHYxLjguMC03OS1nNmY3OTZkOTAtZGlydHkiXQpbMTcuMDU5Nzk3LCAibyIsICIsIEhhcmR3YXJlIFZlcnNpb24gNlxyXG4iXQpbMTcuMDYwODYxLCAibyIsICJDb3B5cmlnaHQgKEMpIDIwMjIgQmxhY2sgTWFnaWMgRGVidWcgUHJvamVjdFxyXG4iXQpbMTcuMDYxMTk1LCAibyIsICJMaWNlbnNlIEdQTHYzKzogR04iXQpbMTcuMDYxMjcyLCAibyIsICJVIEdQTCB2ZXJzaW9uIDMgb3IgIl0KWzE3LjA2MTMxNCwgIm8iLCAibGF0ZXIgPGh0dHA6Ly9nbnUub3JnL2xpY2Vuc2VzL2dwbC5odG1sPlxyXG5cclxuIl0KWzE3LjA2MTMzOSwgIm8iLCAiKGdkYikgIl0KWzE4LjM4NzI1OSwgIm8iLCAibSJdClsxOC40ODI2MTksICJvIiwgIm8iXQpbMTguNjE5MTU4LCAibyIsICJuIl0KWzE4LjcxNDQ1NCwgIm8iLCAiaSJdClsxOC44NTA2MzYsICJvIiwgInQiXQpbMTguOTM5MjEsICJvIiwgIm8iXQpbMTkuMDE5MDg2LCAibyIsICJyIl0KWzE5LjE3OTE0MywgIm8iLCAiICJdClsxOS4zNjMxODMsICJvIiwgImgiXQpbMTkuNDU4NzMyLCAibyIsICJlIl0KWzE5LjU3MDU0NCwgIm8iLCAibCJdClsxOS42NjcwODQsICJvIiwgInAiXQpbMTkuOTc5MjksICJvIiwgIlxyXG4iXQpbMTkuOTc5NTcsICJvIiwgIkdlbmVyYWwgY28iXQpbMTkuOTc5NTkyLCAibyIsICJtbWFuZHM6XHJcbiJdClsxOS45Nzk5MSwgIm8iLCAiXHR2ZXJzaW9uIC0tIERpc3BsIl0KWzE5Ljk3OTkyNiwgIm8iLCAiYXkgZmlybXdhcmUgdmVyIl0KWzE5Ljk4MDAwNiwgIm8iLCAic2lvbiBpbmZvXHJcbiJdClsxOS45ODAyNjYsICJvIiwgIlx0aGVscCAtLSBEaXNwIl0KWzE5Ljk4MDI4MSwgIm8iLCAibGF5IGhlbHAgZm8iXQpbMTkuOTgwMzA0LCAibyIsICJyIG1vbml0b3IgY29tbWFuZHNcclxuIl0KWzE5Ljk4MDYwOCwgIm8iLCAiXHRqdGFnX3NjYW4gLS0gIl0KWzE5Ljk4MDYyNCwgIm8iLCAiU2NhbiBKVEFHIGNoYWluIGYiXQpbMTkuOTgwNzAxLCAibyIsICJvciBkZXZpY2UiXQpbMTkuOTgwNzMyLCAibyIsICJzXHJcbiJdClsxOS45ODA5MzgsICJvIiwgIlx0c3dkcF9zY2FuIC0iXQpbMTkuOTgxMDEyLCAibyIsICItIFNjYW4gU1ctRFAgZm9yIGRldmljZXNcclxuIl0KWzE5Ljk4MTMxLCAibyIsICJcdGZyZXF1ZW5jeSAiXQpbMTkuOTgxMzI3LCAibyIsICItLSBzZXQgbWluaW11bSBoaWdoIGFuZCJdClsxOS45ODE0MTYsICJvIiwgIiBsb3cgdGltZXNcclxuIl0KWzE5Ljk4MTY0MywgIm8iLCAiXHR0YXJnZXRzICJdClsxOS45ODE2ODYsICJvIiwgIi0tIERpc3BsYXkgbGlzdCBvZiBhdmFpbGFibGUgdGFyZ2V0c1xyXG4iXQpbMTkuOTgxOTU3LCAibyIsICJcdG1vcnNlIl0KWzE5Ljk4MTk5LCAibyIsICIgLS0gRGlzcGxheSBtb3JzZSAiXQpbMTkuOTgyMDIyLCAibyIsICJlcnJvciBtZXNzYWdlXHJcbiJdClsxOS45ODI0MjEsICJvIiwgIlx0aGFsdF90aSJdClsxOS45ODI0NjIsICJvIiwgIm1lb3V0IC0tIFRpbWVvdXQgKG1zKSB0byB3YWl0IHVudGlsIENvcnQiXQpbMTkuOTgyNDk0LCAibyIsICJleC1NIGlzIGhhIl0KWzE5Ljk4MjUyNiwgIm8iLCAibHRlZDogKERlZmF1bHQgMjAwMClcclxuIl0KWzE5Ljk4MjgzNCwgIm8iLCAiXHRjbyJdClsxOS45ODI4NSwgIm8iLCAibm5lY3Rfc3JzdCAtLSBDb25maSJdClsxOS45ODI5MjMsICJvIiwgImd1cmUgY29ubmVjdCB1bmRlciBTUlNUOiAoZW5hYmxlfGRpc2FibGUpXHJcbiJdClsxOS45ODMyNDQsICJvIiwgIlx0aGFyZCJdClsxOS45ODMyNjgsICJvIiwgIl9zcnN0IC0tIl0KWzE5Ljk4MzI4OSwgIm8iLCAiIEZvcmNlIGEgcHVsc2Ugb24iXQpbMTkuOTgzMzIsICJvIiwgIiB0aGUgaGFyZCBTUlNUIGxpbmUgLSJdClsxOS45ODMzNDgsICJvIiwgIiBkaXNjb25uZWN0cyB0YXJnZXRcclxuIl0KWzE5Ljk4MzY0LCAibyIsICJcdHRwdyJdClsxOS45ODM2NjgsICJvIiwgInIgLS0gU3VwcGxpZXMgcG93ZSJdClsxOS45ODM2ODQsICJvIiwgInIgdG8gdGhlIHRhcmdldCJdClsxOS45ODM3MDksICJvIiwgIjogKGVuYWJsZSJdClsxOS45ODM3MTksICJvIiwgInxkaXNhYmxlKVxyXG4iXQpbMTkuOTg0MDg4LCAibyIsICJcdHRyYWMiXQpbMTkuOTg0MTEyLCAibyIsICJlc3dvIC0tICJdClsxOS45ODQxMzUsICJvIiwgIlN0YXJ0IHRyYWNlIGNhcHR1cmUsIl0KWzE5Ljk4NDE2MiwgIm8iLCAiIE1hbmNoZXN0ZXIgbW9kZTogKGRlY29kZSBjaGFubmVsIC4uLilcclxuIl0KWzE5Ljk4NDM4MywgIm8iLCAiXHRoZWFwaSJdClsxOS45ODQ0MTcsICJvIiwgIm5mbyAtLSAiXQpbMTkuOTg0NDQyLCAibyIsICJTZXQgc2VtaWhvc3RpbmcgaGVhcGluZm9cclxuIl0KWzE5Ljk4NDQ4MywgIm8iLCAiKGdkYikgIl0KWzIyLjU3MTM5OCwgIm8iLCAibSJdClsyMi42NDI3MjcsICJvIiwgIm8iXQpbMjIuNzc5Mjc0LCAibyIsICJuIl0KWzIyLjkyMzUyMSwgIm8iLCAiaSJdClsyMy4zNjI3NjgsICJvIiwgInQiXQpbMjMuNTA2ODI2LCAibyIsICJvIl0KWzIzLjU2Mjk4OCwgIm8iLCAiciJdClsyMy43MTQ3MzQsICJvIiwgIiAiXQpbMjQuMDU5Mzk2LCAibyIsICJzIl0KWzI0LjI0MzQ3LCAibyIsICJ3Il0KWzI0LjQwMjY0NSwgIm8iLCAiZCJdClsyNC43MjI4NzcsICJvIiwgInAiXQpbMjUuMDU5MTM2LCAibyIsICJfIl0KWzI1LjI1MDg4MSwgIm8iLCAicyJdClsyNS4zOTUzMTEsICJvIiwgImMiXQpbMjUuNDkxMjgyLCAibyIsICJhIl0KWzI1LjU2MzMzMywgIm8iLCAibiJdClsyNi4wOTk1NDYsICJvIiwgIlxyXG4iXQpbMjYuMDk5ODk1LCAibyIsICJUYXJnZXQgdiJdClsyNi4wOTk5NiwgIm8iLCAib2x0YWdlOiAyLjlWXHJcbiJdClsyNi4zMTE5NjIsICJvIiwgIkF2YWlsYWJsZSBUYXJnZXRzOlxyXG4iXQpbMjYuMzEyMDI5LCAibyIsICJOby4gQXR0IEQiXQpbMjYuMzEyMTI5LCAibyIsICJyaXZlciJdClsyNi4zMTIxNjIsICJvIiwgIlxyXG4iXQpbMjYuMzEyMzczLCAibyIsICIgMSAgICAgIFNUTSJdClsyNi4zMTI0NDgsICJvIiwgIjMyRjQweCBNNFxyXG4iXQpbMjYuMzEyNDk2LCAibyIsICIoZ2RiKSAiXQpbMjcuODU4OTc3LCAibyIsICJhIl0KWzI3Ljk2MzAwMywgIm8iLCAidCJdClsyOC4xMDc1MjYsICJvIiwgInRhY2giXQpbMjguMjU4Nzc1LCAibyIsICIgIl0KWzI4LjYwMzYyMSwgIm8iLCAiMSJdClsyOS43NzE1NzcsICJvIiwgIlxyXG4iXQpbMjkuNzcxNzI0LCAibyIsICJBdHRhY2hpbmcgdG8gcHJvZ3JhbTogL2hvbWUvZXNkZW50ZW0vcHdtbGVkZmFkZS9wd21sZWRmYWRlLmVsZiwgUmVtb3RlIHRhcmdldFxyXG4iXQpbMjkuNzg1MzgxLCAibyIsICJcdTAwMWJbMzRtMHhmZmZmZmZmZVx1MDAxYlttIGluIFx1MDAxYlszM20/P1x1MDAxYlttICgpXHJcbihnZGIpICJdClszMC41NDc0NTUsICJvIiwgImwiXQpbMzAuNjUxMDA1LCAibyIsICJvIl0KWzMwLjgxMTU5MywgIm8iLCAiYSJdClszMC45MTQ5NTksICJvIiwgImQiXQpbMzEuNjM1NzU5LCAibyIsICJcclxuIl0KWzMxLjkxMTA5MiwgIm8iLCAiTG9hZGluZyBzZWN0aW9uIC50ZXh0LCBzaXplIDB4ZjI0IGxtYSAweDgwMDAwMDBcclxuIl0KWzMxLjkzMjgwNSwgIm8iLCAiTG9hZGluZyBzZWN0aW9uIC5kYXRhLCBzaXplIDB4YyBsbWEgMHg4MDAwZjI0XHJcbiJdClszMS45Mzc4MDQsICJvIiwgIlN0YXJ0IGFkZHJlc3MgXHUwMDFiWzM0bTB4MDgwMDBiYjBcdTAwMWJbbSwgbG9hZCBzaXplIDM4ODhcclxuIl0KWzMxLjkzODE1MSwgIm8iLCAiVHJhbnNmZXIgcmF0ZTogMTIgS0Ivc2VjLCA3NzcgYnl0ZXMvd3JpdGUuXHJcbiJdClszMS45NTM3MDcsICJvIiwgIihnZGIpICJdClszMi42MzU0NjIsICJvIiwgInMiXQpbMzIuODAzMTUzLCAibyIsICJ0Il0KWzMyLjkxNTQ2MiwgIm8iLCAiYSJdClszMi45ODc2NTYsICJvIiwgInIiXQpbMzMuMTMwOTcyLCAibyIsICJ0Il0KWzMzLjc4NzYzNywgIm8iLCAiXHJcbiJdClszMy43ODc5MzgsICJvIiwgIlRoZSBwcm9ncmFtIGJlaW5nIGRlYnVnZ2VkIGhhcyBiZWVuIHN0YXJ0ZWQgYWxyZWFkeS5cclxuU3RhcnQgaXQgZnJvbSB0aGUgYmVnaW5uaW5nPyAoeSBvciBuKSAiXQpbMzUuMjI3NzIsICJvIiwgInkiXQpbMzUuNjY3NTc2LCAibyIsICJcclxuIl0KWzM1LjcxMzQxNywgIm8iLCAiVGVtcG9yYXJ5IGJyZWFrcG9pbnQgMSBhdCBcdTAwMWJbMzRtMHg4MDAwMzNhXHUwMDFiW206IGZpbGUgXHUwMDFiWzMybXB3bWxlZGZhZGUuY1x1MDAxYlttLCBsaW5lIDE0NC5cclxuTm90ZTogYXV0b21hdGljYWxseSB1c2luZyBoYXJkd2FyZSBicmVha3BvaW50cyBmb3IgcmVhZC1vbmx5IGFkZHJlc3Nlcy5cclxuU3RhcnRpbmcgcHJvZ3JhbTogL2hvbWUvZXNkZW50ZW0vcHdtbGVkZmFkZS9wd21sZWRmYWRlLmVsZiBcclxuIl0KWzM1Ljc2MzU1LCAibyIsICJcclxuIl0KWzM1Ljc2NDcwMiwgIm8iLCAiVGVtcG9yYXJ5IGJyZWFrcG9pbnQgMSwgXHUwMDFiWzMzbW1haW5cdTAwMWJbbSAoKSBhdCBcdTAwMWJbMzJtcHdtbGVkZmFkZS5jXHUwMDFiW206MTQ0XHJcbiJdClszNS43NjQ3NjgsICJvIiwgIjE0NFx0XHRidXR0b25fYm9vdCgpO1xyXG4oZ2RiKSAiXQpbMzYuODAzMjc5LCAibyIsICJuIl0KWzM2LjkyMzMxMSwgIm8iLCAiZSJdClszNy4xMjMzNTUsICJvIiwgIngiXQpbMzcuMjU5MTU4LCAibyIsICJ0Il0KWzM3LjY1OTg1OCwgIm8iLCAiXHJcbiJdClszNy42NzUxODEsICJvIiwgIjE0Nlx0XHRjbG9ja19zZXR1cCgpO1xyXG4oZ2RiKSAiXQpbMzguNDc1ODY4LCAibyIsICJcclxuIl0KWzM4LjUwMzE5OSwgIm8iLCAiMTQ3XHRcdGdwaW9fc2V0dXAoKTtcclxuKGdkYikgIl0KWzM5LjE1NTg1NywgIm8iLCAiXHJcbiJdClszOS4xNjkzODgsICJvIiwgIjE0OFx0XHR0aW1fc2V0dXAoKTtcclxuKGdkYikgIl0KWzM5Ljg3NTc2MywgIm8iLCAiXHJcbiJdClszOS44ODk2ODIsICJvIiwgIjE1MFx0XHRqMCA9IDA7XHJcbihnZGIpICJdCls0MC45NDczMjMsICJvIiwgImMiXQpbNDEuMDQzMjY2LCAibyIsICJvIl0KWzQxLjEzMTAyNiwgIm8iLCAibiJdCls0MS4yNzQ5NjcsICJvIiwgInRpbnVlIl0KWzQxLjg2NzI4OSwgIm8iLCAiXHJcbiJdCls0MS44Njc0NjEsICJvIiwgIkNvbnRpbnVpbmcuXHJcbiJdCls0NC42NDMzNzgsICJvIiwgIl5DIl0KWzQ0LjY0NzQ1OCwgIm8iLCAiXHJcblByb2dyYW0gcmVjZWl2ZWQgc2lnbmFsIFNJR0lOVCwgSW50ZXJydXB0LlxyXG4iXQpbNDQuNjQ4NzQ0LCAibyIsICJcdTAwMWJbMzRtMHgwODAwMDM5YVx1MDAxYlttIGluIFx1MDAxYlszM21tYWluXHUwMDFiW20gKCkgYXQgXHUwMDFiWzMybXB3bWxlZGZhZGUuY1x1MDAxYlttOjE2N1xyXG4xNjdcdFx0XHRmb3IgKGkgPSAwOyBpIDwgMjAwMDAwOyBpKyspIGFzbShcIm5vcFwiKTtcclxuKGdkYikgIl0KWzQ3LjYxOTQ1OSwgIm8iLCAicXVpdFxyXG4iXQpbNDcuNjE5NjA4LCAibyIsICJBIGRlYnVnZ2luZyBzZXNzaW9uIGlzIGFjdGl2ZS5cclxuXHJcblx0SW5mZXJpb3IgMSBbUmVtb3RlIHRhcmdldF0gd2lsbCBiZSBraWxsZWQuXHJcblxyXG5RdWl0IGFueXdheT8gKHkgb3IgbikgIl0KWzQ4LjM2NDExNiwgIm8iLCAieSJdCls0OC45NDAxODIsICJvIiwgIlxyXG4iXQpbNDguOTQyNjM1LCAibyIsICJcdTAwMWJbMW1cdTAwMWJbN20lXHUwMDFiWzI3bVx1MDAxYlsxbVx1MDAxYlswbSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcciBcciJdCls0OC45NDI3MzYsICJvIiwgIlx1MDAxYl0yO2VzZGVudGVtQHRyaWFuYTp+L3B3bWxlZGZhZGVcdTAwMDdcdTAwMWJdMTt+L3B3bWxlZGZhZGVcdTAwMDciXQpbNDguOTY5MDI5LCAibyIsICJcclx1MDAxYlswbVx1MDAxYlsyN21cdTAwMWJbMjRtXHUwMDFiW0pcdTAwMWJbMG1cdTAwMWJbNDltXHUwMDFiWzM5bVxyXG5cdTAwMWJbQVx1MDAxYlswbVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbMzg7NTsyNTVtIO+Mg1x1MDAxYlswbVx1MDAxYlszODs1OzI1NW1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzI1NW0gXHUwMDFiWzBtXHUwMDFiWzM4OzU7MjU1bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzM4OzU7MjQybeKUglx1MDAxYlswbVx1MDAxYlszODs1OzI0Mm1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzMxbSDvgbwgXHUwMDFiWzFtXHUwMDFiWzM4OzU7MzFtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzM5bX5cdTAwMWJbMG1cdTAwMWJbMzg7NTszOW1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzMxbS9cdTAwMWJbMW1cdTAwMWJbMzg7NTszMW1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzM4OzU7MzltcHdtbGVkZmFkZVx1MDAxYlswbVx1MDAxYlszODs1OzM5bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzM4OzU7MzFtXHUwMDFiWzBtXHUwMDFiWzM4OzU7MzFtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbMzg7NTszMW0gXHUwMDFiWzBtXHUwMDFiWzM4OzU7MzFtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYls0OW1cdTAwMWJbMzg7NTsyMzRt4paT4paS4paRXHUwMDFiWzBtXHUwMDFiWzM4OzU7MjM0bVx1MDAxYls0OW1cdTAwMWJbMzltXHUwMDFiWzM4OzU7MjM4beKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgFx1MDAxYlswbVx1MDAxYlszODs1OzIzOG1cdTAwMWJbNDltXHUwMDFiWzM4OzU7MjM0beKWkeKWkuKWk1x1MDAxYlswbVx1MDAxYlszODs1OzIzNG1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzM4OzU7MjQ4bSA0N3NcdTAwMWJbMG1cdTAwMWJbMzg7NTsyNDhtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbMzg7NTsyNDhtIO+Jklx1MDAxYlswbVx1MDAxYlszODs1OzI0OG1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzI0OG0gXHUwMDFiWzBtXHUwMDFiWzM4OzU7MjQ4bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzM4OzU7MjQ4bVx1MDAxYlswbVx1MDAxYlszODs1OzI0OG1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzY2bVx1MDAxYlszODs1OzI0Mm3ilIJcdTAwMWJbMG1cdTAwMWJbMzg7NTsyNDJtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYls0ODs1OzIzNG1cdTAwMWJbMzg7NTs2Nm0gMTg6MjY6MTRcdTAwMWJbMG1cdTAwMWJbMzg7NTs2Nm1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzY2bSDvgJdcdTAwMWJbIl0KWzQ4Ljk2OTA0NSwgIm8iLCAiMG1cdTAwMWJbMzg7NTs2Nm1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzQ4OzU7MjM0bVx1MDAxYlszODs1OzY2bSBcdTAwMWJbMG1cdTAwMWJbMzg7NTs2Nm1cdTAwMWJbNDg7NTsyMzRtXHUwMDFiWzQ5bVx1MDAxYlszOW1cclxuXHUwMDFiWzBtXHUwMDFiWzQ5bVx1MDAxYlszOW1cdTAwMWJbMG1cdTAwMWJbNDltXHUwMDFiWzM4OzU7NzZt4p2vXHUwMDFiWzBtXHUwMDFiWzM4OzU7NzZtXHUwMDFiWzQ5bVx1MDAxYlszODs1Ozc2bVx1MDAxYlswbVx1MDAxYlszODs1Ozc2bVx1MDAxYls0OW1cdTAwMWJbMzBtXHUwMDFiWzBtXHUwMDFiWzMwbVx1MDAxYls0OW1cdTAwMWJbMzltIFx1MDAxYlswbVx1MDAxYls0OW1cdTAwMWJbMzltXHUwMDFiW0siXQpbNDguOTY5MTM4LCAibyIsICJcdTAwMWJbPzFoIl0KWzQ4Ljk2OTc1NSwgIm8iLCAiXHUwMDFiWz8yMDA0aCJdCls1My40Njg1NTUsICJvIiwgIlx1MDAxYls/MjAwNGxcclxyXG4iXQo="></asciinema-player><p>The session goes through the following steps:</p>
+<ul class="simple">
+<li><p>Connecting to BMP -&gt; <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">extended</span> <span class="pre">remote</span> <span class="pre">&lt;serial</span> <span class="pre">port&gt;</span></code></p></li>
+<li><p>Scanning for targets using SWD -&gt; <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">swdp_scan</span></code></p></li>
+<li><p>Attaching to the detected target -&gt; <code class="docutils literal notranslate"><span class="pre">attach</span> <span class="pre">1</span></code></p></li>
+<li><p>Loading the project binary -&gt; <code class="docutils literal notranslate"><span class="pre">load</span></code></p></li>
+<li><p>Starting the firmware with a breakpoint set to the start of the <code class="docutils literal notranslate"><span class="pre">main</span></code> function -&gt; <code class="docutils literal notranslate"><span class="pre">start</span></code></p></li>
+<li><p>Stepping over the <code class="docutils literal notranslate"><span class="pre">main</span></code> function -&gt; <code class="docutils literal notranslate"><span class="pre">next</span></code>,<code class="docutils literal notranslate"><span class="pre">[enter,...]</span></code></p></li>
+<li><p>Continuing execution -&gt; <code class="docutils literal notranslate"><span class="pre">continue</span></code></p></li>
+<li><p>Breaking and detaching from the target -&gt; <code class="docutils literal notranslate"><span class="pre">CTRL-C,</span> <span class="pre">CTRL-D</span></code></p></li>
+</ul>
+</section>
+<section id="support-the-project">
+<h2>Support the Project<a class="headerlink" href="#support-the-project" title="Permalink to this heading">¶</a></h2>
+<p>The best way to support the project is purchasing the official <a class="reference internal" href="#getting-hardware"><span class="std std-doc">Black Magic Probe hardware</span></a>. If you would like to support the project beyond that please consider supporting these individuals and organizations:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/sponsors/esden">Piotr Esden-Tempski (GitHub Sponsors)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/sponsors/dragonmux">Rachel Mant (GitHub Sponsors)</a></p></li>
+<li><p><a class="reference external" href="https://www.patreon.com/1bitsquared">1BitSquared (Patreon)</a></p></li>
+</ul>
+</section>
+<section id="getting-hardware">
+<h2>Getting Hardware<a class="headerlink" href="#getting-hardware" title="Permalink to this heading">¶</a></h2>
+<p>The official Black Magic Probe hardware was specifically designed with Black Magic Debug in mind and the proceeds from the sales directly support and further the development of the software. See the <a class="reference internal" href="#support-the-project"><span class="std std-doc">Support the Project</span></a> section for other means of sponsoring the development of Black Magic Debug.</p>
+<p>The official Black Magic Probe hardware is available from these distributors in alphabetical order:</p>
+<ul class="simple">
+<li><p>DE: <a class="reference external" href="http://1bitsquared.de/products/black-magic-probe">1BitSquared Germany</a> Black Magic Probe V2.3 (Newest)</p></li>
+<li><p>USA: <a class="reference external" href="http://1bitsquared.com/collections/frontpage/products/black-magic-probe">1BitSquared US</a> Black Magic Probe V2.3 (Newest)</p></li>
+<li><p>USA: <a class="reference external" href="https://www.adafruit.com/product/3839">Adafruit Industries</a> Black Magic Probe with JTAG Cable and Serial Cable - V2.3 (Newest)</p></li>
+</ul>
+</section>
+<section id="other-hardware-supported-by-black-magic-debug">
+<h2>Other Hardware supported by Black Magic Debug:<a class="headerlink" href="#other-hardware-supported-by-black-magic-debug" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Stlink V2.1 and V3 based boards with a BMDA variant of the BMD (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=pc-stlinkv2</span></code>)</p></li>
+<li><p>LibFTDI based based boards boards with a BMDA variant of the BMD (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=libftdi</span></code>)</p></li>
+<li><p>StlinkV2 based boards with BMD ST-Link firmware (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=stlink</span> <span class="pre">ST_BOOTLOADER=1</span></code>) flashed with <a class="reference external" href="https://github.com/jeanthom/stlink-tool.git">stlink-tool</a> to unmodfied board, see <a class="reference external" href="https://github.com/blacksphere/blackmagic/tree/master/src/platforms/stlink">Readme.md</a>.</p></li>
+<li><p>StlinkV2 based boards with BMD ST-Link firmware (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=stlink</span></code>) with BMD own bootloader flashed to the board.</p></li>
+<li><p>STM8S Discovery (StlinkV1) and Bluepill board with BMD SW-Link firmware (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=swlink</span></code>)</p></li>
+<li><p>F4 Discovery (STM32F407) with BMD f4discovery firmware (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=f4discovery</span></code>)</p></li>
+<li><p>Blackpill V2 (STM32F411) (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=blackpillv2</span></code>)</p></li>
+<li><p>launchpad-icdi with BMD launchpad-icdi firmware (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=launchpad-icdi</span></code>)</p></li>
+<li><p>Hydrabus(?) (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=hydrabus</span></code>)</p></li>
+<li><p>TM4C(?) (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=tm4c</span></code>)</p></li>
+</ul>
+</section>
+<section id="black-magic-debug-app-bmda">
+<h2>Black Magic Debug App (BMDA)<a class="headerlink" href="#black-magic-debug-app-bmda" title="Permalink to this heading">¶</a></h2>
+<p>You can also compile the Black Magic Debug as a stand alone application instead of a firmware that you can flash onto a microcontroller. This mode resembles the way OpenOCD is used as an “application in the middle”.</p>
+<p>To compile BMDA you need to run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">PROBE_HOST=hosted</span></code>. The resulting application can be run on your computer and is able to detect all kinds of hardware probes including:</p>
+<ul class="simple">
+<li><p>Black Magic Probe</p></li>
+<li><p>FTDI adapters</p></li>
+<li><p>CMSIS_DAP capable debuggers</p></li>
+<li><p>JLink (slow)</p></li>
+<li><p>ST-Link V2/V3</p></li>
+</ul>
+</section>
+<section id="contact">
+<h2>Contact:<a class="headerlink" href="#contact" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>If you have questions or suggestions feel free to join us in our chat <a class="reference external" href="https://discord.gg/P7FYThy"><img alt="Discord" src="https://img.shields.io/discord/613131135903596547?logo=discord" /></a></p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Black Magic Debug</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hardware.html">Supported Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upgrade.html">Firmware Upgrade</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="knowledge/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knowledge/terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knowledge/links.html">Links</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage/gdb-commands.html">GDB Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/gdb-automation.html">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/traceswo.html">SWD - TRACESWO support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/swo.html">Serial Wire Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/platformio.html">PlatformIO</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="target-usage/stm32.html">STM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="target-usage/sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hacking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hacking/contrib.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking/hacking.html">Firmware Hacking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking/target-drivers.html">Adding Target Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking/target-cortex-m.html">Cortex M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking/target-cortex-a.html">Cortex A Targets</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="hardware.html" title="next chapter">Supported Hardware</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Piotr Esden-Tempski <piotr@esden.net>.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

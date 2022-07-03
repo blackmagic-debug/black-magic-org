@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>STM32 Targets &#8212; Black Magic Debug  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-custom.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/asciinema-player_2.6.1.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SAM3x-4x-x7x" href="sam3x-4x-x7x.html" />
+    <link rel="prev" title="PlatformIO" href="../usage/platformio.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="stm32-targets">
+<h1>STM32 Targets<a class="headerlink" href="#stm32-targets" title="Permalink to this heading">¶</a></h1>
+<p>Black Magic Probe supports a lot of targets from many manufacturers.
+Despite the effort to provide a unified way of handling the targets, some specificities exist.
+This page documents some of them.</p>
+<section id="stm32g0-otp-programming">
+<h2>STM32G0 OTP programming<a class="headerlink" href="#stm32g0-otp-programming" title="Permalink to this heading">¶</a></h2>
+<p>Many STM32 chips provide a One Time Programmable flash memory area. This area is typically used to store read-only data, e.g. secure keys or any very stable non volatile data. Program code is very likely not stored in this area.</p>
+<p>As of current master branch (November 2021), OTP programming is only supported for the STM32G0 series.</p>
+<p>It is <em>not recommended</em> to write the OTP area from GDB for at least two reasons:</p>
+<ul class="simple">
+<li><p>Due to a different page/block size of the OTP area compared to the main flash program memory, one can notice ARM GDB’s unexpected behaviour (as of version 8) in case of programming a file to areas with heterogeneous block sizes (in particular, some program code sections appear split when sent over the debug probe). Programming such a file will probably fail.</p></li>
+<li><p>OTP is by definition programmed once whereas GDB usage is likely to happen several times, especially invoking its <code class="docutils literal notranslate"><span class="pre">load</span></code> operation which would attempt to write the OTP area as many times as debugging a new firmware.</p></li>
+</ul>
+<p>For these reasons, the preferred way of OTP programming is done from <em>hosted</em> Blackmagic.</p>
+</section>
+<section id="programming-otp-from-hosted-blackmagic">
+<h2>Programming OTP from hosted blackmagic<a class="headerlink" href="#programming-otp-from-hosted-blackmagic" title="Permalink to this heading">¶</a></h2>
+<p>Before, make sure you have an OTP only binary data. The next chapter can help you doing that.</p>
+<p>STM32G0 non reversible operations (currently Read Out Protection level 2 and OTP programming) are protected with an <code class="docutils literal notranslate"><span class="pre">irreversible</span> <span class="pre">enable|disable</span></code> monitor command.</p>
+<p>Note: this monitor command may change any time in the future.</p>
+<p>Then, the start address of the OTP write has to be explicitly specified to prevent blackmagic from defaulting to 0x08000000 main flash start.</p>
+<p>Note that any multiple of 8 bytes sized data can be written to an 8-byte aligned <em>free</em> address (not already programmed with non 0xFF data).
+Consequently, one can program a piece of the entire OTP area and program the rest (or some of the rest) later.</p>
+<p>Typical usage:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ blackmagic -M <span class="s2">&quot;irreversible enable&quot;</span> -a 0x1FFF7000 otp_1024bytes.bin
+Irreversible operations: enabled
+Flash Write succeeded <span class="k">for</span> <span class="m">1024</span> bytes,    x.yyy kiB/s
+</pre></div>
+</div>
+<p>For a sub part of OTP:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ blackmagic -M <span class="s2">&quot;irreversible enable&quot;</span> -a 0x1FFF73E0 otp_8bytes.bin
+Irreversible operations: enabled
+Flash Write succeeded <span class="k">for</span> <span class="m">8</span> bytes,    <span class="m">1</span>.143 kiB/s
+</pre></div>
+</div>
+</section>
+<section id="preparing-an-otp-only-binary-data">
+<h2>Preparing an OTP only binary data<a class="headerlink" href="#preparing-an-otp-only-binary-data" title="Permalink to this heading">¶</a></h2>
+<p>Here is an example of defining OTP data in a C source file.
+As mentioned before, is is recommended to link this file only once, not along the program code.</p>
+<div class="highlight-ld notranslate"><div class="highlight"><pre><span></span>/* OTP */
+const uint32_t otp_tab[2] __attribute__ ((section (&quot;.otp&quot;))) = {
+	0xAABBAABB, 0xCCDDCCDD
+};
+</pre></div>
+</div>
+<p>The linker script can be populated with the .otp section as followed:</p>
+<div class="highlight-ld notranslate"><div class="highlight"><pre><span></span>MEMORY
+{
+	/* rom and ram definitions here */
+	otp (r) : ORIGIN = 0x1FFF7000, LENGTH = 1K
+}
+SECTIONS
+{
+	.otp : {
+		. = ALIGN(8);
+		KEEP(*(.otp))
+		. = ALIGN(8);
+	} &gt;otp
+}
+</pre></div>
+</div>
+<p>Once the linked elf file is generated, the output .otp section can be extracted with the objcopy binutil:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ arm-none-eabi-objcopy -j <span class="s2">&quot;.otp&quot;</span> -O binary firmware.elf otp_data.bin
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Black Magic Debug</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware.html">Supported Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrade.html">Firmware Upgrade</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/links.html">Links</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-commands.html">GDB Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-automation.html">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/traceswo.html">SWD - TRACESWO support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/swo.html">Serial Wire Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/platformio.html">PlatformIO</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">STM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hacking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/contrib.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/hacking.html">Firmware Hacking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-drivers.html">Adding Target Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-m.html">Cortex M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-a.html">Cortex A Targets</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../usage/platformio.html" title="previous chapter">PlatformIO</a></li>
+      <li>Next: <a href="sam3x-4x-x7x.html" title="next chapter">SAM3x-4x-x7x</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Piotr Esden-Tempski <piotr@esden.net>.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/target-usage/stm32.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>GDB Commands &#8212; Black Magic Debug  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-custom.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/asciinema-player_2.6.1.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="GDB Flash Automation" href="gdb-automation.html" />
+    <link rel="prev" title="Links" href="../knowledge/links.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="gdb-commands">
+<h1>GDB Commands<a class="headerlink" href="#gdb-commands" title="Permalink to this heading">¶</a></h1>
+<p>This page provides a brief summary of the most commonly used GDB commands with the Black Magic Probe.  It is provided just as an introduction, the <a class="reference external" href="https://sourceware.org/gdb/current/onlinedocs/gdb/">GDB Manual</a> should be consulted for more complete information.</p>
+<p>GDB’s online help system is also a good source of information.  Use the command <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">&lt;command&gt;</span></code> for more information about any GDB command.</p>
+<section id="connecting-to-the-black-magic-probe-and-target">
+<h2>Connecting to the Black Magic Probe and target<a class="headerlink" href="#connecting-to-the-black-magic-probe-and-target" title="Permalink to this heading">¶</a></h2>
+<section id="connecting-gdb-to-the-black-magic-probe">
+<h3>Connecting GDB to the Black Magic Probe<a class="headerlink" href="#connecting-gdb-to-the-black-magic-probe" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="n">extended</span><span class="o">-</span><span class="n">remote</span> <span class="o">&lt;</span><span class="n">port</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This command connects GDB to the Black Magic Probe for remote target debugging.  It does not perform any JTAG or SWD actions and does not attach GDB to the target processor.</p>
+<p>The port parameter should be the name of the serial interface of the GDB server provided by the Black Magic Probe.
+On Linux:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="n">extended</span><span class="o">-</span><span class="n">remote</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyACM0</span>
+<span class="n">target</span> <span class="n">extended</span><span class="o">-</span><span class="n">remote</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">serial</span><span class="o">/</span><span class="n">by</span><span class="o">-</span><span class="nb">id</span><span class="o">/</span><span class="n">usb</span><span class="o">-</span><span class="n">Black_Sphere_Technologies_Black_Magic_Probe_E2C0C4C6</span><span class="o">-</span><span class="n">if00</span>
+<span class="n">target</span> <span class="n">extended</span><span class="o">-</span><span class="n">remote</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyBmpGdb</span>
+</pre></div>
+</div>
+<p>On OS X:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="n">extended</span><span class="o">-</span><span class="n">remote</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">cu</span><span class="o">.</span><span class="n">usbmodemE2C0C4C6</span>
+</pre></div>
+</div>
+<p>On Windows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="n">extended</span><span class="o">-</span><span class="n">remote</span> <span class="n">COM3</span>
+<span class="n">target</span> <span class="n">extended</span><span class="o">-</span><span class="n">remote</span> \\<span class="o">.</span>\<span class="n">COM10</span>
+</pre></div>
+</div>
+</section>
+<section id="list-available-black-magic-probe-commands">
+<h3>List available Black Magic Probe commands<a class="headerlink" href="#list-available-black-magic-probe-commands" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">monitor</span> <span class="n">help</span>
+<span class="n">General</span> <span class="n">commands</span><span class="p">:</span>
+	<span class="n">version</span> <span class="o">--</span> <span class="n">Display</span> <span class="n">firmware</span> <span class="n">version</span> <span class="n">info</span>
+	<span class="n">help</span> <span class="o">--</span> <span class="n">Display</span> <span class="n">help</span> <span class="k">for</span> <span class="n">monitor</span> <span class="n">commands</span>
+	<span class="n">jtag_scan</span> <span class="o">--</span> <span class="n">Scan</span> <span class="n">JTAG</span> <span class="n">chain</span> <span class="k">for</span> <span class="n">devices</span>
+	<span class="n">swdp_scan</span> <span class="o">--</span> <span class="n">Scan</span> <span class="n">SW</span><span class="o">-</span><span class="n">DP</span> <span class="k">for</span> <span class="n">devices</span>
+	<span class="n">targets</span> <span class="o">--</span> <span class="n">Display</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">available</span> <span class="n">targets</span>
+	<span class="n">morse</span> <span class="o">--</span> <span class="n">Display</span> <span class="n">morse</span> <span class="n">error</span> <span class="n">message</span>
+	<span class="n">connect_srst</span> <span class="o">--</span> <span class="n">Configure</span> <span class="n">connect</span> <span class="n">under</span> <span class="n">SRST</span><span class="p">:</span> <span class="p">(</span><span class="n">enable</span><span class="o">|</span><span class="n">disable</span><span class="p">)</span>
+	<span class="n">hard_srst</span> <span class="o">--</span> <span class="n">Force</span> <span class="n">a</span> <span class="n">pulse</span> <span class="n">on</span> <span class="n">the</span> <span class="n">hard</span> <span class="n">SRST</span> <span class="n">line</span> <span class="o">-</span> <span class="n">disconnects</span> <span class="n">target</span>
+	<span class="n">debug_bmp</span> <span class="o">--</span> <span class="n">Output</span> <span class="n">BMP</span> <span class="s2">&quot;debug&quot;</span> <span class="n">strings</span> <span class="n">to</span> <span class="n">the</span> <span class="n">second</span> <span class="n">vcom</span><span class="p">:</span> <span class="p">(</span><span class="n">enable</span><span class="o">|</span><span class="n">disable</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The list of available commands is context sensitive. After connecting to certain targets the list of available commands changes. For example STM32 targets provide <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">erase_mass</span></code> that is not available until you scan for available targets and find the STM32 target.</p>
+</section>
+<section id="finding-connected-targets">
+<h3>Finding connected targets<a class="headerlink" href="#finding-connected-targets" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">monitor</span> <span class="n">jtag_scan</span>
+<span class="n">monitor</span> <span class="n">swdp_scan</span>
+</pre></div>
+</div>
+<p>These commands instruct the Black Magic Probe to scan for connected target devices using the JTAG or SWD interfaces.  Any currently connected target will be detached by this command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">monitor</span> <span class="n">tpwr</span> <span class="n">enable</span>
+</pre></div>
+</div>
+<p>Using black magic probe v2, there is a voltage translator present. By default, the voltage translator is off, and expects a Vtarget voltage present. If Vtarget is not connected to the target board, use the tpwr enable command to power translator with the onboard 3.3V regulator.</p>
+</section>
+<section id="attaching-to-a-target">
+<h3>Attaching to a target<a class="headerlink" href="#attaching-to-a-target" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">attach</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Attach GDB to a target device connected to the Black Magic Probe.  The argument must be a target id displayed in the output of one of the monitor commands above.  Attaching will not reset the target, for that use the <code class="docutils literal notranslate"><span class="pre">run</span></code> or <code class="docutils literal notranslate"><span class="pre">start</span></code> commands.</p>
+</section>
+<section id="enabling-access-to-memory-mapped-io-from-gdb">
+<h3>Enabling access to memory mapped IO from GDB<a class="headerlink" href="#enabling-access-to-memory-mapped-io-from-gdb" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">mem</span> <span class="n">inaccessible</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">default</span> <span class="n">off</span>
+</pre></div>
+</div>
+<p>This command instructs GDB to allow access to memory outside of the devices known memory map.  This is useful to allow access to memory mapped IO from GDB.</p>
+<p>Because the above are all common commands that you are likely to run every time you start GDB, you may want to include them in your <code class="docutils literal notranslate"><span class="pre">.gdbinit</span></code> file.  Create a text file named <code class="docutils literal notranslate"><span class="pre">.gdbinit</span></code> in your home directory or project directory from which you run GDB and it will execute these commands on startup.</p>
+</section>
+</section>
+<section id="loading-your-program-onto-the-target">
+<h2>Loading your program onto the target<a class="headerlink" href="#loading-your-program-onto-the-target" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">load</span> <span class="p">[</span><span class="n">filename</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This command will transfer your program binary to the target device.  If the program is linked at Flash memory addresses, the Flash will be erased and programmed accordingly.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">compare</span><span class="o">-</span><span class="n">sections</span>
+</pre></div>
+</div>
+<p>This command will compare a CRC32 of the target memory to the sections of your binary file and report if an inconsistency is found.  It is useful to verify the flash programming.</p>
+</section>
+<section id="debugging-with-gdb">
+<h2>Debugging with GDB<a class="headerlink" href="#debugging-with-gdb" title="Permalink to this heading">¶</a></h2>
+<section id="starting-your-program">
+<h3>Starting your program<a class="headerlink" href="#starting-your-program" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">start</span>
+<span class="n">run</span>
+</pre></div>
+</div>
+<p>These command reset and begin execution on the target.  <code class="docutils literal notranslate"><span class="pre">run</span></code> allows the target to run normally until interrupted or other event occurs, while <code class="docutils literal notranslate"><span class="pre">start</span></code> runs through the start-up code will halt on entry to the <code class="docutils literal notranslate"><span class="pre">main</span></code> function.</p>
+<p>While the target is running, it may be interrupted by typing Ctrl-C in the GDB console or sending GDB a SIGINT.</p>
+</section>
+<section id="setting-stop-conditions">
+<h3>Setting stop conditions<a class="headerlink" href="#setting-stop-conditions" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-gdb notranslate"><div class="highlight"><pre><span></span>break &lt;function&gt;
+break &lt;file&gt;:&lt;line&gt;
+watch &lt;var&gt;
+</pre></div>
+</div>
+<p>These commands set breakpoints and watchpoints.  Breakpoints will interrupt the target when a particular location in the program is reached, and watchpoints will interrupt the program when a particular variable is changed.</p>
+</section>
+<section id="examining-the-target-state">
+<h3>Examining the target state<a class="headerlink" href="#examining-the-target-state" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="o">&lt;</span><span class="n">expr</span><span class="o">&gt;</span>
+<span class="n">x</span> <span class="o">&lt;</span><span class="n">address</span><span class="o">&gt;</span>
+<span class="n">info</span> <span class="n">registers</span>
+</pre></div>
+</div>
+<p>These commands may be used to inspect target variables, memory or core registers.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dump</span> <span class="n">ihex</span> <span class="n">memory</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">start</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">stop</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This command can be used to dump the target memory contents to an Intel hex file.  There are other variants for alternative formats, use the command <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">dump</span></code> for more information.</p>
+</section>
+<section id="detaching-from-the-target-device">
+<h3>Detaching from the target device<a class="headerlink" href="#detaching-from-the-target-device" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detach</span>
+<span class="n">kill</span>
+</pre></div>
+</div>
+<p>These commands can be used to disconnect the Black Magic Probe from the target device.  <code class="docutils literal notranslate"><span class="pre">kill</span></code> will also reset the target on detach.</p>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Black Magic Debug</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware.html">Supported Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrade.html">Firmware Upgrade</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/links.html">Links</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GDB Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdb-automation.html">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traceswo.html">SWD - TRACESWO support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swo.html">Serial Wire Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platformio.html">PlatformIO</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/stm32.html">STM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hacking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/contrib.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/hacking.html">Firmware Hacking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-drivers.html">Adding Target Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-m.html">Cortex M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-a.html">Cortex A Targets</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../knowledge/links.html" title="previous chapter">Links</a></li>
+      <li>Next: <a href="gdb-automation.html" title="next chapter">GDB Flash Automation</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Piotr Esden-Tempski <piotr@esden.net>.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/usage/gdb-commands.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
