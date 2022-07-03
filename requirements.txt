@@ -1,5 +1,6 @@
 sphinx
 livereload
 myst-parser
-sphinxcontrib.asciinema
-sphinxcontrib.youtube
+sphinxcontrib-asciinema
+sphinxcontrib-youtube
+sphinxcontrib-platformpicker
