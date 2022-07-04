@@ -59,7 +59,9 @@ hacking/target-cortex-m
 hacking/target-cortex-a
 ```
 
+[![GitHub release](https://img.shields.io/github/v/release/blackmagic-debug/blackmagic.svg?logo=github)](https://github.com/blackmagic-debug/blackmagic/releases)
 [![Build Status](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml/badge.svg)](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml)
+[![GitHub stars](https://img.shields.io/github/stars/blackmagic-debug/blackmagic?logo=GitHub)](https://github.com/blackmagic-debug/blackmagic/stargazers)
 [![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy)
 
 # Black Magic Debug: The Plug&Play MCU Debugger
