@@ -5,6 +5,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link rel="icon" href="../_static/favicon/icon.svg" type="image/svg+xml">
+    <link rel="icon" href="../_static/favicon/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="../_static/favicon/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-57x57.png" sizes="57x57" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-60x60.png" sizes="60x60" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-72x72.png" sizes="72x72" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-76x76.png" sizes="76x76" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-96x96.png" sizes="96x96" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-114x114.png" sizes="114x114" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-120x120.png" sizes="120x120" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-144x144.png" sizes="144x144" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-152x152.png" sizes="152x152" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-180x180.png" sizes="180x180" type="image/png">
+    <link rel="android-icon" href="../_static/favicon/android-icon-192x192.png" sizes="192x192" type="image/png">
 
     <title>STM32 Targets &#8212; Black Magic Debug  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -82,26 +96,26 @@ Flash Write succeeded <span class="k">for</span> <span class="m">8</span> bytes,
 <h2>Preparing an OTP only binary data<a class="headerlink" href="#preparing-an-otp-only-binary-data" title="Permalink to this heading">¶</a></h2>
 <p>Here is an example of defining OTP data in a C source file.
 As mentioned before, is is recommended to link this file only once, not along the program code.</p>
-<div class="highlight-ld notranslate"><div class="highlight"><pre><span></span>/* OTP */
-const uint32_t otp_tab[2] __attribute__ ((section (&quot;.otp&quot;))) = {
-	0xAABBAABB, 0xCCDDCCDD
-};
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">OTP</span> <span class="o">*/</span>
+<span class="n">const</span> <span class="n">uint32_t</span> <span class="n">otp_tab</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">__attribute__</span> <span class="p">((</span><span class="n">section</span> <span class="p">(</span><span class="s2">&quot;.otp&quot;</span><span class="p">)))</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="mh">0xAABBAABB</span><span class="p">,</span> <span class="mh">0xCCDDCCDD</span>
+<span class="p">};</span>
 </pre></div>
 </div>
 <p>The linker script can be populated with the .otp section as followed:</p>
-<div class="highlight-ld notranslate"><div class="highlight"><pre><span></span>MEMORY
-{
-	/* rom and ram definitions here */
-	otp (r) : ORIGIN = 0x1FFF7000, LENGTH = 1K
-}
-SECTIONS
-{
-	.otp : {
-		. = ALIGN(8);
-		KEEP(*(.otp))
-		. = ALIGN(8);
-	} &gt;otp
-}
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MEMORY</span>
+<span class="p">{</span>
+	<span class="o">/*</span> <span class="n">rom</span> <span class="ow">and</span> <span class="n">ram</span> <span class="n">definitions</span> <span class="n">here</span> <span class="o">*/</span>
+	<span class="n">otp</span> <span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="p">:</span> <span class="n">ORIGIN</span> <span class="o">=</span> <span class="mh">0x1FFF7000</span><span class="p">,</span> <span class="n">LENGTH</span> <span class="o">=</span> <span class="mi">1</span><span class="n">K</span>
+<span class="p">}</span>
+<span class="n">SECTIONS</span>
+<span class="p">{</span>
+	<span class="o">.</span><span class="n">otp</span> <span class="p">:</span> <span class="p">{</span>
+		<span class="o">.</span> <span class="o">=</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+		<span class="n">KEEP</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="o">.</span><span class="n">otp</span><span class="p">))</span>
+		<span class="o">.</span> <span class="o">=</span> <span class="n">ALIGN</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+	<span class="p">}</span> <span class="o">&gt;</span><span class="n">otp</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Once the linked elf file is generated, the output .otp section can be extracted with the objcopy binutil:</p>

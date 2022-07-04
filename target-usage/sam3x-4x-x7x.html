@@ -5,6 +5,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link rel="icon" href="../_static/favicon/icon.svg" type="image/svg+xml">
+    <link rel="icon" href="../_static/favicon/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="../_static/favicon/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-57x57.png" sizes="57x57" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-60x60.png" sizes="60x60" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-72x72.png" sizes="72x72" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-76x76.png" sizes="76x76" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-96x96.png" sizes="96x96" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-114x114.png" sizes="114x114" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-120x120.png" sizes="120x120" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-144x144.png" sizes="144x144" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-152x152.png" sizes="152x152" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-180x180.png" sizes="180x180" type="image/png">
+    <link rel="android-icon" href="../_static/favicon/android-icon-192x192.png" sizes="192x192" type="image/png">
 
     <title>SAM3x-4x-x7x &#8212; Black Magic Debug  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -48,11 +62,8 @@ Despite the effort to provide a unified way of handling the targets, some specif
 This page documents some of them.</p>
 <section id="commands">
 <h2>Commands<a class="headerlink" href="#commands" title="Permalink to this heading">¶</a></h2>
-<section id="gpnvm-get-set">
-<h3>gpnvm (get|set)<a class="headerlink" href="#gpnvm-get-set" title="Permalink to this heading">¶</a></h3>
-<hr class="docutils" />
-<section id="get">
-<h4>Get<a class="headerlink" href="#get" title="Permalink to this heading">¶</a></h4>
+<section id="gpnvm-get">
+<h3>gpnvm get<a class="headerlink" href="#gpnvm-get" title="Permalink to this heading">¶</a></h3>
 <p>Show the current status of GPNVM bits</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpnvm</span> <span class="n">get</span>
 </pre></div>
@@ -62,8 +73,8 @@ This page documents some of them.</p>
 </pre></div>
 </div>
 </section>
-<section id="set">
-<h4>Set<a class="headerlink" href="#set" title="Permalink to this heading">¶</a></h4>
+<section id="gpnvm-set">
+<h3>gpnvm set<a class="headerlink" href="#gpnvm-set" title="Permalink to this heading">¶</a></h3>
 <p>Set or clear the masked GPNVM bits</p>
 <p>Valid bits range from 0 to 8 (see table)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpnvm</span> <span class="nb">set</span> <span class="o">&lt;</span><span class="n">mask</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
@@ -75,7 +86,7 @@ This page documents some of them.</p>
 </div>
 </section>
 <section id="bits">
-<h4>Bits<a class="headerlink" href="#bits" title="Permalink to this heading">¶</a></h4>
+<h3>Bits<a class="headerlink" href="#bits" title="Permalink to this heading">¶</a></h3>
 <p>SAMX7X</p>
 <table class="docutils align-default">
 <thead>
@@ -128,7 +139,6 @@ This page documents some of them.</p>
 </tbody>
 </table>
 <p><code class="docutils literal notranslate"><span class="pre">*Note:</span> <span class="pre">these</span> <span class="pre">bits</span> <span class="pre">only</span> <span class="pre">take</span> <span class="pre">effect</span> <span class="pre">after</span> <span class="pre">a</span> <span class="pre">reset,</span> <span class="pre">changing</span> <span class="pre">them</span> <span class="pre">via</span> <span class="pre">the</span> <span class="pre">gpnvm</span> <span class="pre">command</span> <span class="pre">will</span> <span class="pre">reset</span> <span class="pre">the</span> <span class="pre">target</span> <span class="pre">automatically</span></code></p>
-</section>
 </section>
 </section>
 </section>

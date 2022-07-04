@@ -5,6 +5,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link rel="icon" href="../_static/favicon/icon.svg" type="image/svg+xml">
+    <link rel="icon" href="../_static/favicon/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="../_static/favicon/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-57x57.png" sizes="57x57" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-60x60.png" sizes="60x60" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-72x72.png" sizes="72x72" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-76x76.png" sizes="76x76" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-96x96.png" sizes="96x96" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-114x114.png" sizes="114x114" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-120x120.png" sizes="120x120" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-144x144.png" sizes="144x144" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-152x152.png" sizes="152x152" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-180x180.png" sizes="180x180" type="image/png">
+    <link rel="android-icon" href="../_static/favicon/android-icon-192x192.png" sizes="192x192" type="image/png">
 
     <title>Adding Target Drivers &#8212; Black Magic Debug  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -115,33 +129,32 @@ It is the responsibility of the handler function to instantiate a new target wit
 </section>
 <section id="skeleton-driver">
 <h2>Skeleton Driver<a class="headerlink" href="#skeleton-driver" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>static int skeleton_flash_erase(struct target_flash *f,
-                                target_addr addr, size_t len) {…}
-static int skeleton_flash_write(struct target_flash *f,
-                                target_addr dest, const void *src, size_t len) {…}
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">skeleton_flash_erase</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">target_flash</span><span class="w"> </span><span class="o">*</span><span class="n">f</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                </span><span class="n">target_addr</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">skeleton_flash_write</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">target_flash</span><span class="w"> </span><span class="o">*</span><span class="n">f</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                </span><span class="n">target_addr</span><span class="w"> </span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"> </span><span class="p">{...}</span><span class="w"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">skeleton_add_flash</span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">target_flash</span><span class="w"> </span><span class="o">*</span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">f</span><span class="o">-&gt;</span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SKELETON_FLASH_BASE</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">f</span><span class="o">-&gt;</span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SKELETON_FLASH_SIZE</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">f</span><span class="o">-&gt;</span><span class="n">blocksize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SKELETON_BLOCKSIZE</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">f</span><span class="o">-&gt;</span><span class="n">erase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">skeleton_flash_erase</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">f</span><span class="o">-&gt;</span><span class="n">write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">skeleton_flash_write</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">target_add_flash</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
 
-static void skeleton_add_flash(target *t)
-{
-    struct target_flash *f = calloc(1, sizeof(*f));
-    f-&gt;start = SKELETON_FLASH_BASE;
-    f-&gt;length = SKELETON_FLASH_SIZE;
-    f-&gt;blocksize = SKELETON_BLOCKSIZE;
-    f-&gt;erase = skeleton_flash_erase;
-    f-&gt;write = skeleton_flash_write;
-    target_add_flash(t, f);
-}
-
-
-bool skeleton_probe(target *t)
-{
-    if (target_mem_read32(t, SKELETON_DEVID_ADDR) == SKELETON_DEVID) {
-        skeleton_add_flash(t);
-        return true;
-    } else {
-        return false;
-    }
-}
+<span class="kt">bool</span><span class="w"> </span><span class="nf">skeleton_probe</span><span class="p">(</span><span class="n">target</span><span class="w"> </span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">target_mem_read32</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">SKELETON_DEVID_ADDR</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">SKELETON_DEVID</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">skeleton_add_flash</span><span class="p">(</span><span class="n">t</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>

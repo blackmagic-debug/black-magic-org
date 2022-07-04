@@ -5,6 +5,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link rel="icon" href="../_static/favicon/icon.svg" type="image/svg+xml">
+    <link rel="icon" href="../_static/favicon/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="../_static/favicon/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-57x57.png" sizes="57x57" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-60x60.png" sizes="60x60" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-72x72.png" sizes="72x72" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-76x76.png" sizes="76x76" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-96x96.png" sizes="96x96" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-114x114.png" sizes="114x114" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-120x120.png" sizes="120x120" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-144x144.png" sizes="144x144" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-152x152.png" sizes="152x152" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-180x180.png" sizes="180x180" type="image/png">
+    <link rel="android-icon" href="../_static/favicon/android-icon-192x192.png" sizes="192x192" type="image/png">
 
     <title>GDB Flash Automation &#8212; Black Magic Debug  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -91,7 +105,7 @@
 <section id="makefile">
 <h2>Makefile<a class="headerlink" href="#makefile" title="Permalink to this heading">¶</a></h2>
 <p>If you are using GNU Makefiles for your project you can add a <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">flash</span></code> target. Reusing the script from the <a class="reference internal" href="#commandline"><span class="std std-doc">Commandline</span></a> section above the target like that can look something like this:</p>
-<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nf">flash</span><span class="o">:</span> <span class="n">yourbin</span>.<span class="n">flash</span>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nf">flash</span><span class="o">:</span> <span class="n">yourbin</span>.<span class="n">flash</span>
 
 <span class="nv">BMP_PORT</span> <span class="o">?=</span> /dev/ttyACM0
 
@@ -106,7 +120,7 @@
 <p>This is a very simple flash target. It assumes that your binary target ends with <code class="docutils literal notranslate"><span class="pre">.elf</span></code> suffix. You can call the target by running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">flash</span></code> and it will build the <code class="docutils literal notranslate"><span class="pre">yourbinary.elf</span></code>, flash it and test that the flash worked out.</p>
 <p>You can also call the target providing a different Black Magic Probe GDB serial port by calling for example: <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">flash</span> <span class="pre">BMP_PORT=/dev/cu.usbmodemXXXXXXX1</span></code> on Mac OS.</p>
 <p>Following is a more complicated make setup that automatically detects Black Magic Probe GDB serial ports.</p>
-<div class="highlight-make notranslate"><div class="highlight"><pre><span></span>PREFIX		?= arm-none-eabi
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span>PREFIX		?= arm-none-eabi
 GDB		:= $(PREFIX)-gdb
 SCRIPT_DIR	:= scripts
 
