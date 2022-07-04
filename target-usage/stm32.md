@@ -49,7 +49,7 @@ Flash Write succeeded for 8 bytes,    1.143 kiB/s
 
 Here is an example of defining OTP data in a C source file.
 As mentioned before, is is recommended to link this file only once, not along the program code.
-```ld
+```
 /* OTP */
 const uint32_t otp_tab[2] __attribute__ ((section (".otp"))) = {
 	0xAABBAABB, 0xCCDDCCDD
@@ -57,7 +57,7 @@ const uint32_t otp_tab[2] __attribute__ ((section (".otp"))) = {
 ```
 
 The linker script can be populated with the .otp section as followed:
-```ld
+```
 MEMORY
 {
 	/* rom and ram definitions here */
