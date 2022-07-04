@@ -76,10 +76,9 @@ struct target_flash {
 ## Skeleton Driver
 ```c
 static int skeleton_flash_erase(struct target_flash *f,
-                                target_addr addr, size_t len) {…}
+                                target_addr addr, size_t len) {...}
 static int skeleton_flash_write(struct target_flash *f,
-                                target_addr dest, const void *src, size_t len) {…}
-
+                                target_addr dest, const void *src, size_t len) {...}
 
 static void skeleton_add_flash(target *t)
 {
