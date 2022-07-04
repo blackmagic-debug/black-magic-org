@@ -68,6 +68,13 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'env']
 html_theme = 'alabaster'
 html_copy_source = False
 
+html_theme_options = {
+    'logo': 'blackmagic-logo.svg',
+    'github_user': 'blackmagic-debug',
+    'github_repo': 'blackmagic',
+    'description': 'The Plug&Play MCU Debugger',
+}
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
