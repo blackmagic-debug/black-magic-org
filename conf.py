@@ -38,6 +38,7 @@ extensions = [
     'sphinxcontrib.asciinema',
     'sphinxcontrib.youtube',
     'sphinx-favicon',
+    'sphinxext.opengraph',
 ]
 
 source_suffix = {
@@ -166,3 +167,7 @@ favicons = [
         "type": "image/png",
     },
 ]
+
+ogp_site_url = "https://black-magic.org"
+ogp_site_name = "Black Magic Debug"
+ogp_image = "_static/blackmagic-logo.png"

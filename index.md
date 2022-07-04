@@ -59,14 +59,14 @@ hacking/target-cortex-m
 hacking/target-cortex-a
 ```
 
-[![GitHub release](https://img.shields.io/github/v/release/blackmagic-debug/blackmagic.svg?logo=github)](https://github.com/blackmagic-debug/blackmagic/releases)
-[![Build Status](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml/badge.svg)](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml)
-[![GitHub stars](https://img.shields.io/github/stars/blackmagic-debug/blackmagic?logo=GitHub)](https://github.com/blackmagic-debug/blackmagic/stargazers)
-[![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy)
+[![](https://img.shields.io/github/v/release/blackmagic-debug/blackmagic.svg?logo=github)](https://github.com/blackmagic-debug/blackmagic/releases)
+[![](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml/badge.svg)](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml)
+[![](https://img.shields.io/github/stars/blackmagic-debug/blackmagic?logo=GitHub)](https://github.com/blackmagic-debug/blackmagic/stargazers)
+[![](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy)
 
 # Black Magic Debug: The Plug&Play MCU Debugger
 
-![Black Magic Probe V2.3a](_assets/bmp_v2_3a_iso.jpg)
+![](_assets/bmp_v2_3a_iso.jpg)
 
 ## Black Magic Debug Project Goals
 The goal of this project is the creation of an easy to use. Mostly plug and play, JTAG/SWD debugger for embedded microcontrollers. Focusing on professional embedded software developers that prefer retaining control over their build systems and testing environments instead of relying on highly abstracted vendor tools that give the impression of simplicity at the cost of transparency.
