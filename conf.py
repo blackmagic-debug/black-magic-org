@@ -21,6 +21,7 @@ project = 'Black Magic Debug'
 copyright = '2022, Piotr Esden-Tempski <piotr@esden.net>; 2022, Rachel Mant <git@dragonmux.network>'
 author = 'Piotr Esden-Tempski <piotr@esden.net>, Rachel Mant <git@dragonmux.network>'
 language  = 'en'
+html_baseurl = 'https://black-magic.org'
 
 # -- General configuration ---------------------------------------------------
 
@@ -28,14 +29,14 @@ language  = 'en'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "myst_parser",
-	'sphinx.ext.todo',
-    "sphinx.ext.githubpages",
-	'sphinx.ext.graphviz',
-	'sphinx.ext.napoleon',
-	'sphinxcontrib.platformpicker',
-    "sphinxcontrib.asciinema",
-    "sphinxcontrib.youtube",
+    'myst_parser',
+    'sphinx.ext.todo',
+    'sphinx.ext.githubpages',
+    'sphinx.ext.graphviz',
+    'sphinx.ext.napoleon',
+    'sphinxcontrib.platformpicker',
+    'sphinxcontrib.asciinema',
+    'sphinxcontrib.youtube',
 ]
 
 source_suffix = {
