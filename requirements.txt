@@ -4,3 +4,4 @@ myst-parser
 sphinxcontrib-asciinema
 sphinxcontrib-youtube
 sphinxcontrib-platformpicker
+sphinx-favicon

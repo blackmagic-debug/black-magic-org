@@ -37,6 +37,7 @@ extensions = [
     'sphinxcontrib.platformpicker',
     'sphinxcontrib.asciinema',
     'sphinxcontrib.youtube',
+    'sphinx-favicon',
 ]
 
 source_suffix = {
@@ -71,3 +72,90 @@ html_copy_source = False
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# Favicon settings
+favicons = [
+    {
+        "rel": "icon",
+        "static-file": "favicon/icon.svg",  # => use `_static/icon.svg`
+        "type": "image/svg+xml",
+    },
+    {
+        "rel": "icon",
+        "sizes": "16x16",
+        "static-file": "favicon/favicon-16x16.png",
+        "type": "image/png",
+    },
+    {
+        "rel": "icon",
+        "sizes": "32x32",
+        "static-file": "favicon/favicon-32x32.png",
+        "type": "image/png",
+    },
+    {
+        "rel": "apple-touch-icon",
+        "sizes": "57x57",
+        "static-file": "favicon/apple-touch-icon-57x57.png",
+        "type": "image/png",
+    },
+    {
+        "rel": "apple-touch-icon",
+        "sizes": "60x60",
+        "static-file": "favicon/apple-touch-icon-60x60.png",
+        "type": "image/png",
+    },
+    {
+        "rel": "apple-touch-icon",
+        "sizes": "72x72",
+        "static-file": "favicon/apple-touch-icon-72x72.png",
+        "type": "image/png",
+    },
+    {
+        "rel": "apple-touch-icon",
+        "sizes": "76x76",
+        "static-file": "favicon/apple-touch-icon-76x76.png",
+        "type": "image/png",
+    },
+    {
+        "rel": "apple-touch-icon",
+        "sizes": "96x96",
+        "static-file": "favicon/apple-touch-icon-96x96.png",
+        "type": "image/png",
+    },
+    {
+        "rel": "apple-touch-icon",
+        "sizes": "114x114",
+        "static-file": "favicon/apple-touch-icon-114x114.png",
+        "type": "image/png",
+    },
+    {
+        "rel": "apple-touch-icon",
+        "sizes": "120x120",
+        "static-file": "favicon/apple-touch-icon-120x120.png",
+        "type": "image/png",
+    },
+    {
+        "rel": "apple-touch-icon",
+        "sizes": "144x144",
+        "static-file": "favicon/apple-touch-icon-144x144.png",
+        "type": "image/png",
+    },
+    {
+        "rel": "apple-touch-icon",
+        "sizes": "152x152",
+        "static-file": "favicon/apple-touch-icon-152x152.png",
+        "type": "image/png",
+    },
+    {
+        "rel": "apple-touch-icon",
+        "sizes": "180x180",
+        "static-file": "favicon/apple-touch-icon-180x180.png",
+        "type": "image/png",
+    },
+    {
+        "rel": "android-icon",
+        "sizes": "192x192",
+        "static-file": "favicon/android-icon-192x192.png",
+        "type": "image/png",
+    },
+]
