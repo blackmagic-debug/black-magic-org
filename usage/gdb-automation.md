@@ -53,7 +53,7 @@ arm-none-eabi-gdb -nx --batch \
 
 If you are using GNU Makefiles for your project you can add a `make flash` target. Reusing the script from the [Commandline](#commandline) section above the target like that can look something like this:
 
-```make
+```makefile
 
 flash: yourbin.flash
 
@@ -74,7 +74,7 @@ You can also call the target providing a different Black Magic Probe GDB serial 
 
 Following is a more complicated make setup that automatically detects Black Magic Probe GDB serial ports.
 
-```make
+```makefile
 PREFIX		?= arm-none-eabi
 GDB		:= $(PREFIX)-gdb
 SCRIPT_DIR	:= scripts
