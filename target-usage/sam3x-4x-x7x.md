@@ -6,11 +6,7 @@ This page documents some of them.
 
 ## Commands
 
-### gpnvm (get|set)
-
-***
-
-#### Get
+### gpnvm get
 
 Show the current status of GPNVM bits
 
@@ -23,7 +19,7 @@ gpnvm get
 GPNVM: 0x00000040
 ```
 
-#### Set
+### gpnvm set
 
 Set or clear the masked GPNVM bits
 
@@ -38,7 +34,7 @@ gpnvm set <mask> <value>
 GPNVM: 0x000001C0
 ```
 
-#### Bits
+### Bits
 
 SAMX7X
 
