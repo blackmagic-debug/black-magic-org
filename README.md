@@ -26,12 +26,12 @@ locally on your own computer and preview it locally.
 
 If you have python3 available on your system the process is fairly simple.
 
-**fork the repository to your personal account**
+### fork the repository to your personal account
 If you want to contribute to the documentation it is probably a good idea to
 [fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the
 black-magic-org github repository first.
 
-**clone the website sources**
+### clone the website sources
 Now that you have a fork clone it and create a working branch.
 ```
 git clone <path to your user>/black-magic-org
@@ -43,7 +43,7 @@ something appropriate to your addition. The convention in black-magic is to use
 `feature/` and `fix/` prefixes to the branch names to indicate what kind of an
 addition this new work branch will be.
 
-**create and activate venv**
+### create and activate venv
 This venv is local to the repository as it will be pretty specific to this
 project.
 ```
@@ -51,17 +51,17 @@ python3 -m venv env
 source env/bin/activate
 ```
 
-**update pip**
+### update pip
 ```
 pip install --upgrade pip
 ```
 
-**install dependencies**
+### install dependencies
 ```
 pip install -r requirements.txt
 ```
 
-**start previewer**
+### start previewer
 We have a small script that starts a page preview server locally on your
 machine.
 ```
@@ -74,12 +74,13 @@ $ python ./run_livereload.py
 Now you can point your browser to http://127.0.0.1:5500, and you should see the
 Black Magic Debug website.
 
-**edit pages**
+### edit pages
+
 Now every time you edit one of the page markdown files the page will
 automatically update.
 
 Keep in mind that when you create a new page the live_preload does not always
 pick it up, so you might have to restart it from time to time.
 
-**contribute**
+### contribute
 We are looking forward to your contributions! :D
