@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://black-magic.org</id>
   <title>Blog</title>
-  <updated>2022-07-12T06:27:03.099743+00:00</updated>
+  <updated>2022-07-12T06:48:01.457774+00:00</updated>
   <link href="https://black-magic.org"/>
   <link href="https://black-magic.org/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.26">ABlog</generator>
@@ -44,7 +44,7 @@
       <name>Piotr Esden-Tempski</name>
     </author>
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
-&lt;p&gt;We are happy to announce the V1.8.0 release of Black Magic Debug. It is a big one since we did not make a stable release since October 2020!!! So this release is very much overdue. But that also means we have a lot of new and interesting things in this release.&lt;/p&gt;
+&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.8.0"&gt;V1.8.0 release&lt;/a&gt; of Black Magic Debug. It is a big one since we did not make a stable release since October 2020!!! So this release is very much overdue. But that also means we have a lot of new and interesting things in this release.&lt;/p&gt;
 &lt;/div&gt;
 </content>
     <link href="https://black-magic.org/blog/2022-05-30-release-v1_8_0.html" rel="alternate"/>
