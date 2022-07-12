@@ -39,6 +39,7 @@ extensions = [
     'sphinxcontrib.youtube',
     'sphinx-favicon',
     'sphinxext.opengraph',
+    'ablog',
 ]
 
 source_suffix = {
@@ -80,6 +81,24 @@ html_theme_options = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+html_sidebars = {
+    '**': [
+        'about.html',
+        'navigation.html',
+        'recentposts.html',
+        'archives.html',
+        'relations.html',
+        'searchbox.html',
+        'donate.html',
+    ]
+}
+
+blog_baseurl = "https://black-magic.org"
+
+blog_authors = {
+    'esden': ('Piotr Esden-Tempski', 'https://github.com/esden'),
+}
 
 # Favicon settings
 favicons = [

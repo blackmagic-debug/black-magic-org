@@ -71,6 +71,11 @@ hacking/target-cortex-a
 ## Black Magic Debug Project Goals
 The goal of this project is the creation of an easy to use. Mostly plug and play, JTAG/SWD debugger for embedded microcontrollers. Focusing on professional embedded software developers that prefer retaining control over their build systems and testing environments instead of relying on highly abstracted vendor tools that give the impression of simplicity at the cost of transparency.
 
+## Project News
+```{postlist} 10
+
+```
+
 ## What is Black Magic Debug
 
 In most cases Black Magic Debug takes the form of a firmware for the Black Magic Probe hardware, and implements a [GNU DeBugger (GDB)](https://www.sourceware.org/gdb/) server.

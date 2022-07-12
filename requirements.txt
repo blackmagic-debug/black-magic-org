@@ -6,3 +6,4 @@ sphinxcontrib-youtube
 sphinxcontrib-platformpicker
 sphinx-favicon
 sphinxext-opengraph
+ablog
