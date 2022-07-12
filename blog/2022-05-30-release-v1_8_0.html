@@ -1,0 +1,752 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <link rel="icon" href="../_static/favicon/icon.svg" type="image/svg+xml">
+    <link rel="icon" href="../_static/favicon/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="../_static/favicon/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-57x57.png" sizes="57x57" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-60x60.png" sizes="60x60" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-72x72.png" sizes="72x72" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-76x76.png" sizes="76x76" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-96x96.png" sizes="96x96" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-114x114.png" sizes="114x114" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-120x120.png" sizes="120x120" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-144x144.png" sizes="144x144" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-152x152.png" sizes="152x152" type="image/png">
+    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-180x180.png" sizes="180x180" type="image/png">
+    <link rel="android-icon" href="../_static/favicon/android-icon-192x192.png" sizes="192x192" type="image/png">
+
+<meta property="og:title" content="Stable Release V1.8.0" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://black-magic.org/blog/2022-05-30-release-v1_8_0.html" />
+  
+<meta property="og:site_name" content="Black Magic Debug" />
+  
+<meta property="og:description" content="We are happy to announce the V1.8.0 release of Black Magic Debug. It is a big one since we did not make a stable release since October 2020!!! So this release is very much overdue. But that also me..." />
+  
+<meta property="og:image" content="https://black-magic.org/_static/blackmagic-logo.png" />
+  
+<meta property="og:image:alt" content="Black Magic Debug" />
+  
+    <title>Stable Release V1.8.0 &#8212; Black Magic Debug  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/platformpicker.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/asciinema-player_2.6.1.js"></script>
+    <script src="../_static/platformpicker.js"></script>
+    <link rel="canonical" href="https://black-magic.org/blog/2022-05-30-release-v1_8_0.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../blog/atom.xml"
+  title="Blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+             <section id="stable-release-v1-8-0">
+<h1>Stable Release V1.8.0<a class="headerlink" href="#stable-release-v1-8-0" title="Permalink to this heading">¶</a></h1>
+<p>We are happy to announce the V1.8.0 release of Black Magic Debug. It is a big one since we did not make a stable release since October 2020!!! So this release is very much overdue. But that also means we have a lot of new and interesting things in this release.</p>
+<p>Here are some highlights:</p>
+<ul class="simple">
+<li><p>Added support for the new Black Magic Probe v2.3 hardware.</p></li>
+<li><p>Improved target scan reliability for devices that are asleep or using WFI.</p></li>
+<li><p>Black Magic App (BMA aka. hosted) now has better support of CMSIS-DAP probes.</p></li>
+<li><p>All python scripts and utilities were updated to run and require Python 3.</p></li>
+<li><p>Added GitHub Actions CI builds</p></li>
+<li><p>And a bunch of newly supported targets:</p>
+<ul>
+<li><p>WCH CH32F103</p></li>
+<li><p>GigaDevice GD32F1/F3</p></li>
+<li><p>GigaDevice GD32E23x</p></li>
+<li><p>NXP Kinetis K12 and placeholders for other K-Series MCUs</p></li>
+<li><p>NXP LPC11xx XL, LPC546xx, LPC802, LPC804, LPC832 and LPC834</p></li>
+<li><p>NXP MIMXRT10XX detection (no flash support)</p></li>
+<li><p>NXP S32K14x, S32K118, S32K148</p></li>
+<li><p>RaspberryPi RP2040</p></li>
+<li><p>Microchip SAMD09</p></li>
+<li><p>ST STM32G03/4/5/6/7/8/B/C, STM32G49x/G4Ax</p></li>
+<li><p>ST STM32H7B3/B0/A3 &amp; STM32H723/33/25/35/30</p></li>
+<li><p>ST STM32L55</p></li>
+<li><p>ST STM32WB55</p></li>
+<li><p>ST STM32WLxx</p></li>
+</ul>
+</li>
+</ul>
+<p>For more details please refer to the ChangeLog down below.</p>
+</section>
+<section id="legend-in-historical-context">
+<h1>Legend in Historical Context<a class="headerlink" href="#legend-in-historical-context" title="Permalink to this heading">¶</a></h1>
+<p>Black Magic Debug consists of multiple elements that have fairly similar naming that can be confusing. To make this Change Log bit easier to decipher here is a little bit of history and term explanation.</p>
+<p>Black Magic Debug (BMD) was originally designed as just a firmware for a purpose made hardware called Black Magic Probe (BMP) that can speak the GNU Debugger (GDB) “remote” serial protocol. The original BMP hardware is also called “native” as over time additional “Host” platforms were added that the firmware could be loaded onto. (such host hardware can be an STM32F4 discovery board, or ST-Link hardware and many more)</p>
+<p>Additionally BMD can also be compiled as a stand alone PC application, (we call it Black Magic App, or <strong>BMA</strong> and formally known as <strong>hosted</strong>) that can act as a software in the middle, similar to the way OpenOCD works. In this case BMP is only acting as a USB to JTAG/SWD translator and the Black Magic App (BMA) does all the heavy lifting. Additionally this also allows the use of BMA with other probe hardware running non Black Magic Firmware (BMF), like for example: JLink, ST-Link, sw-link, FTDI and more.</p>
+<ul class="simple">
+<li><p><strong>Black Magic Debug</strong> (abbreviated to <strong>BMD</strong>) - Is the project name, an umbrella describing the project but also sometimes acts as the term describing the software.</p></li>
+<li><p><strong>Black Magic Firmware</strong> (abbrev. <strong>BMF</strong>) - More specifically just the Black Magic Firmware that is loaded either onto Black Magic Probe hardware or onto any other supported host hardware.</p></li>
+<li><p><strong>Black Magic Hosted</strong> aka. <strong>Black Magic App</strong> (abbrev. <strong>BMA</strong>) - The Black Magic Debug system compiled as a PC application instead of a Firmware. Allowing it to be used in software in the middle mode instead of being contained to a hardware device. This is also sometimes just called “<strong>hosted</strong>” in the context of the project.</p></li>
+<li><p><strong>Black Magic Probe</strong> (abbrev. <strong>BMP</strong>) - The “<strong>native</strong>” Black Magic Debug (BMD) hardware that was specifically designed and intended for the BMD project. This is the hardware you can buy from 1BitSquared, Adafruit and other resellers as “the Black Magic Probe”.</p></li>
+<li><p><strong>Black Magic Core</strong> (Abbrev. BMC) - This describes the core code of the project that handles JTAG/SWD protocol, implements Flashing, target detection and all target specific functionality. It does not include host platform specific code like for example code that toggles GPIO.</p></li>
+<li><p><strong>Host Platform</strong> - Refers to the hardware that the BMD software (either Firmware or Application) runs on. It can be the PC, STM32, lm4f or some more specific hardware like Black Magic Probe aka. native, ST-Link, sw-link and so on.</p></li>
+<li><p><strong>Probe</strong> aka. <strong>Cable</strong> - Refers to the hardware that is connected between the PC running GDB (and/or BMA) and the Target (DUT). In the simplest case it is a USB to JTAG/SWD converter like an FTDI chip but in most cases it is a dedicated hardware running either our BMF or some other firmware.</p></li>
+<li><p><strong>Target</strong> - Refers to the Device Under Test (DUT), this is the hardware that the user wants to debug using BMD.</p></li>
+</ul>
+</section>
+<section id="changelog-v1-8">
+<h1>Changelog V1.8<a class="headerlink" href="#changelog-v1-8" title="Permalink to this heading">¶</a></h1>
+<section id="core-changes">
+<h2>Core Changes<a class="headerlink" href="#core-changes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>SWD debug: Immediately turn around SWDIO after reading with parity to avoid driving SWDIO until the next command. [JojoS] [UweBonnes]</p></li>
+<li><p>Try harder to read the <code class="docutils literal notranslate"><span class="pre">ROMTABLE</span></code> when the target is sleeping [UweBonnes]</p></li>
+<li><p>Remove forced halt from <code class="docutils literal notranslate"><span class="pre">cortexm_probe</span></code> [UweBonnes]</p></li>
+<li><p>Narrow down probing for targets based on the designer ID to decrease the size of the search tree and speed up detection [UweBonnes]</p></li>
+<li><p>Allow debugging of not fully supported (no flash routine) ARM Cortex-M targets [UweBonnes]</p></li>
+<li><p>Fix version.h generation for the <code class="docutils literal notranslate"><span class="pre">all_platforms</span></code> build target [UweBonnes]</p></li>
+<li><p>Print Morse code messages in plain text to the USB UART endpoint when built with <code class="docutils literal notranslate"><span class="pre">ENABLE_DEBUG</span></code> and <code class="docutils literal notranslate"><span class="pre">debug_bmp</span></code> is enabled [UweBonnes]</p></li>
+<li><p>Added documentation for building Black Magic PC Hosted in MSYS2 [stoyan-shopov]</p></li>
+<li><p>Added more cycles in <code class="docutils literal notranslate"><span class="pre">cortexm_halt_resume</span></code> to always keep the CPU going [UweBonnes]</p></li>
+<li><p>Store <code class="docutils literal notranslate"><span class="pre">CPUID</span></code> in target structure [UweBonnes]</p></li>
+<li><p>GDB: Fixed a lost of sync protocol error in GDB protocol <code class="docutils literal notranslate"><span class="pre">REMOTE_SOM</span></code> state [stoyan-shopov]</p></li>
+<li><p>command: Fixed a build error caused by <code class="docutils literal notranslate"><span class="pre">cortexm_wait_timeout</span></code> using signed integers [stoyan-shopov]</p></li>
+<li><p>JTAG: Added debug output verbosity of found devices [UweBonnes]</p></li>
+<li><p>version.h: Removed include from <code class="docutils literal notranslate"><span class="pre">platform.h</span></code> and consolidated identifier string generation, decreasing build churn [UweBonnes]</p></li>
+<li><p>CLI: Consolidated <code class="docutils literal notranslate"><span class="pre">mon</span> <span class="pre">version</span></code> output [UweBonnes]</p></li>
+<li><p>CLI: Added JTAG/SWD protocol frequency setting [UweBonnes]</p></li>
+<li><p>target: Changed <code class="docutils literal notranslate"><span class="pre">target_foreach</span></code> signature to return target count instead of a bool indicating that there are some targets present [UweBonnes]</p></li>
+<li><p>docs: Corrected and updated documentation describing the available baud rate limits for SWO usage [UweBonnes]</p></li>
+<li><p>firmware: Unify USB serial number handling [UweBonnes]</p></li>
+<li><p>Turn off the error LED on successful attach to target [compuphase]</p></li>
+<li><p>Remote JTAG: Fix bitmask calculation bug [UweBonnes]</p></li>
+<li><p>Remote JTAG: Split up large transactions [UweBonnes]</p></li>
+<li><p>GDB: Escape <code class="docutils literal notranslate"><span class="pre">*</span></code> in responses of the GDB remote serial protocol to avoid interpretation as RLE sequence start [compuphase]</p></li>
+<li><p>crc32: Abort with from <code class="docutils literal notranslate"><span class="pre">target_mem_read</span></code> when <code class="docutils literal notranslate"><span class="pre">generic_crc32</span></code> fails [UweBonnes]</p></li>
+<li><p>remote: Allow for packets to be larger than 256 bytes [UweBonnes]</p></li>
+<li><p>tpwr: Test VRef voltage before enabling target power (<code class="docutils literal notranslate"><span class="pre">mon</span> <span class="pre">tpwr</span></code>) to avoid potential power conflict [compuphase]</p></li>
+<li><p>GDB: Better error reporting when the monitor command fails [UweBonnes]</p></li>
+<li><p>GCC11 compilation fixes [jamesturton] [UweBonnes] [dragonmux]</p></li>
+<li><p>crc32: Define <code class="docutils literal notranslate"><span class="pre">start_time</span></code> when debug is enabled as it is used for crc32 benchmarking [xobs]</p></li>
+<li><p>doc: Update references from blacksphere to blackmagic-debug due to organization rename [esden]</p></li>
+<li><p>crc32: Fixed launchpad-icdi build [dragonmux]</p></li>
+<li><p>GDB: Cleaned up the sscanf usage in GDB Z packet handler [fabalthazar]</p></li>
+<li><p>GDB: Added putpacket2 which allows sending two sub messages as one [mean00]</p></li>
+<li><p>GDB: Fix unused variables and naming [mean00]</p></li>
+<li><p>GDB: Correct function naming scheme for consistency [mean00]</p></li>
+<li><p>GDB: Formatting cleanup [dragonmux]</p></li>
+<li><p>Updated Copyright monitor command output and iManufacturer strings to reflect the organization rename from Black Sphere Technologies to Black Magic Debug [esden]</p></li>
+</ul>
+</section>
+<section id="build-system-changes">
+<h2>Build system Changes<a class="headerlink" href="#build-system-changes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Remove no longer needed <code class="docutils literal notranslate"><span class="pre">libftdi</span></code> and <code class="docutils literal notranslate"><span class="pre">pc-stlinkv2</span></code> platforms [UweBonnes]</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">HOSTED_BMP_ONLY=1</span></code> option to allow for easier building of the PC-hosted Black Magic Debug Application when only BMP support is needed [UweBonnes] [stoyan-shopov]</p></li>
+<li><p>Fixed builds using newer GNU make versions that remove <code class="docutils literal notranslate"><span class="pre">-</span></code> prefix from <code class="docutils literal notranslate"><span class="pre">$(MAKEFLAGS)</span></code> [noahp]</p></li>
+<li><p>Compile with <code class="docutils literal notranslate"><span class="pre">-Os</span></code> by default. Can be overridden using <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">OPT_FLAGS=...</span></code>. SWD/JTAG bitbang code remains compiled using <code class="docutils literal notranslate"><span class="pre">-O3</span></code> for good bitbang speed [UweBonnes]</p></li>
+<li><p>Fixed compilation of BMA on MacOS where <code class="docutils literal notranslate"><span class="pre">hidapi-libusb</span></code> is called just <code class="docutils literal notranslate"><span class="pre">hidapi</span></code> [UweBonnes]</p></li>
+<li><p>Added linker flag to show memory usage [esden]</p></li>
+<li><p>Only build needed libopencm3 libraries [esden]</p></li>
+<li><p>Don’t try to report memory usage for BMA builds, as this breaks clang builds [esden]</p></li>
+</ul>
+</section>
+<section id="vcs-changes">
+<h2>VCS Changes<a class="headerlink" href="#vcs-changes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">src/artifacts</span></code> directory created when running <code class="docutils literal notranslate"><span class="pre">all_platforms</span></code> build to <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> [noahp]</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">.gitattributes</span></code> for better control of line endings [xobs]</p></li>
+</ul>
+</section>
+<section id="ci-system-changes">
+<h2>CI System Changes<a class="headerlink" href="#ci-system-changes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Updated travis to use bionic instead of trusty, which means we don’t need to build libftdi1 any more [UweBonnes]</p></li>
+<li><p>Added GitHub Actions for builds on push and run test build some PRs [Qyriad]</p></li>
+<li><p>Added BMA build to github actions to catch more potential issues [esden]</p></li>
+<li><p>Added libftdi1 and hidapi dependency installation [esden]</p></li>
+</ul>
+</section>
+<section id="script-utility-changes">
+<h2>Script/Utility Changes<a class="headerlink" href="#script-utility-changes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>all python script utilities (<code class="docutils literal notranslate"><span class="pre">dfu-convert.py</span></code>, , , ) ported to Python 3 [agners]</p></li>
+<li><p>stm32_mem.py: Allow UTF-8 characters in manufacturer ID, product ID and serial number [UweBonnes]</p></li>
+<li><p>stm32_mem.py: Wait longer for device to appear [UweBonnes]</p></li>
+<li><p>bootprog.py: Updated to run on python3 [esden]</p></li>
+<li><p>get_openocd_nrf51_ids.py: Updated to run on python3 [esden]</p></li>
+<li><p>gdb.py, hexprog.py: Updated to run on python3 [markrages]</p></li>
+<li><p>stm32_mem.py: More python3 port fixes, cosmetic cleanup and remove unnecessary Python 2 compatibility [schodet]</p></li>
+<li><p>dfu-convert.py: Update for Python 3 and drop Python 2 support [schodet]</p></li>
+<li><p>bootprog.py: Finish converting to Python 3 [schodet]</p></li>
+<li><p>dfu.py, gdb.py, get_openocd_nrf51_ids.py, hexprog.py, stm32_mem.py: More Python 3 updates, also changed the shebang to use python3 [schodet]</p></li>
+<li><p>stm32mem.py: Formatting changes and removal of unused imports [schodet]</p></li>
+<li><p>hexprog.py: Removed unused import and a semicolon that snuck in [schodet]</p></li>
+<li><p>gdb.py: Fixed error messages [schodet]</p></li>
+<li><p>bootprog.py: Use byte literals everywhere where applicable [schodet]</p></li>
+</ul>
+</section>
+<section id="arm-adiv5-changes">
+<h2>ARM (ADIv5) Changes:<a class="headerlink" href="#arm-adiv5-changes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>ARM debug: Check Debug Base address Early [UweBonnes]</p></li>
+<li><p>ARM debug: Reduce number of errors when CIDR read fails [UweBonnes]</p></li>
+<li><p>ARM debug: Store Access Port designer and part number in the <code class="docutils literal notranslate"><span class="pre">ap</span></code> structure [UweBonnes]</p></li>
+<li><p>ARM debug: Print designer number and part number when the device is not recognized [UweBonnes]</p></li>
+<li><p>ARM debug: Release devices from reset after scan [UweBonnes]</p></li>
+<li><p>ARM debug: Reworked the Access Port reference counting code [UweBonnes]</p></li>
+<li><p>ARM debug: Run <code class="docutils literal notranslate"><span class="pre">cortexm_prepare</span></code> on all suspected ARM Cortex-M instances to ensure all cores get detected (Fixes issue where the second CPU on STM32H745 is not visible) [UweBonnes]</p></li>
+<li><p>ARM debug: Abort <code class="docutils literal notranslate"><span class="pre">ROMTABLE</span></code> scan when CIDR0 is invalid after halting [UweBonnes]</p></li>
+<li><p>ARM debug: Fixed debug output in <code class="docutils literal notranslate"><span class="pre">adiv5_new_ap</span></code> [UweBonnes]</p></li>
+<li><p>ARM debug (SWD): Factored out packet request creation [UweBonnes]</p></li>
+<li><p>ARM debug: Always halt and release reset before scanning the romtable [UweBonnes]</p></li>
+<li><p>ARM debug: Catch timeout on <code class="docutils literal notranslate"><span class="pre">adiv5_ap_read_id</span></code> and abort [fabiobaltieri]</p></li>
+<li><p>ARM debug: Fix debug outputs on 32bit builds [UweBonnes]</p></li>
+<li><p>ARM debug: Recover from bad Access Port accesses [UweBonnes]</p></li>
+<li><p>ARM debug: Use <code class="docutils literal notranslate"><span class="pre">dp_low_write</span></code> in <code class="docutils literal notranslate"><span class="pre">adiv5_swdp_scan</span></code> to allow multidrop scan [UweBonnes]</p></li>
+<li><p>ARM debug: Added more ID Code decoding for debugging purposes [UweBonnes]</p></li>
+<li><p>ARM debug (SWD): added 8 clock cycles after <code class="docutils literal notranslate"><span class="pre">low_access</span></code> to move data through SW-DP, as required by ADIv5 [UweBonnes]</p></li>
+<li><p>ARM debug: Added an early check for valid designer ID [UweBonnes]</p></li>
+<li><p>ARM debug (JTAG): set ID Code for all platforms not just <code class="docutils literal notranslate"><span class="pre">PC_HOSTED</span></code> [UweBonnes]</p></li>
+<li><p>ARM debug: Fixed <code class="docutils literal notranslate"><span class="pre">dp</span></code> struct memory leak in <code class="docutils literal notranslate"><span class="pre">adiv5_dp_init</span></code> [UweBonnes]</p></li>
+<li><p>ARM debug: Added more <code class="docutils literal notranslate"><span class="pre">DPIDR</span></code> checks [UweBonnes]</p></li>
+<li><p>ARM debug (SWD): Simplify the <code class="docutils literal notranslate"><span class="pre">initial_dp</span></code> initialization with default values [UweBonnes]</p></li>
+<li><p>ARM debug: Tightened up the loop before the initial Cortex-M halt [UweBonnes]</p></li>
+<li><p>ARM debug: Fixed a MINDP case in <code class="docutils literal notranslate"><span class="pre">cortexm_initial_halt</span></code> [UweBonnes]</p></li>
+<li><p>ARM debug: Consolidate to only using low level functions in <code class="docutils literal notranslate"><span class="pre">cortexm_initial_halt</span></code> [UweBonnes]</p></li>
+<li><p>ARM debug (SWD): Remove excessive line resets [UweBonnes]</p></li>
+<li><p>ARM debug: Increment <code class="docutils literal notranslate"><span class="pre">TRNCNT</span></code> for the <code class="docutils literal notranslate"><span class="pre">DHCSR</span></code> write when trying to halt [UweBonnes]</p></li>
+<li><p>ARM debug: Don’t declare <code class="docutils literal notranslate"><span class="pre">start_time</span></code> with <code class="docutils literal notranslate"><span class="pre">ENABLE_DEBUG=1</span></code> [koendv]</p></li>
+<li><p>ARM debug: When connecting under reset keep the device halted until attach [UweBonnes]</p></li>
+<li><p>ARM debug (SWD): Reuse exception to avoid using the stack [mean00]</p></li>
+<li><p>ARM debug: Raise the access timeouts as 20ms is too low in some cases [dragonmux]</p></li>
+<li><p>ARM debug (SWD): Formatting consistency cleanups [dragonmux]</p></li>
+<li><p>ARM debug (SWD): Changed the low-level access code to retry till timeout [dragonmux]</p></li>
+</ul>
+</section>
+<section id="target-changes">
+<h2>Target Changes<a class="headerlink" href="#target-changes" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>stm32h7: Don’t <code class="docutils literal notranslate"><span class="pre">tc_printf</span></code> from flash functions [gsmcmullin]</p></li>
+<li><p>stm32: Use designer ID when probing [UweBonnes]</p></li>
+<li><p>nrf51: Indicate if the Access Port is protected or not [UweBonnes]</p></li>
+<li><p>samd: Propagate security bit state after change [UweBonnes]</p></li>
+<li><p>atsam: Fix protected SAM detection [UweBonnes]</p></li>
+<li><p>lpc11: Only print non zero ID codes [UweBonnes]</p></li>
+<li><p>cortex-m7: Report buggy core revision that locks up when single stepping [UweBonnes]</p></li>
+<li><p>stm32f1: Always read the <code class="docutils literal notranslate"><span class="pre">CPUID</span></code> code as some parts of the ROM table ID is not the same as <code class="docutils literal notranslate"><span class="pre">CPUID</span></code> (for example on STM32F042) [UweBonnes] [aam335]</p></li>
+<li><p>lpc15xx: Set designer ID to <code class="docutils literal notranslate"><span class="pre">43b</span></code> [UweBonnes] [JojoS]</p></li>
+<li><p>lpc546xx: Fixed flash support [noahp]</p></li>
+<li><p>stm32h7: Fixed some memory map errors [x37v]</p></li>
+<li><p>stm32f4: Corrected debug output print type for flash error masks [fabalthazar]</p></li>
+<li><p>stm32g43x/g44x: Fixed option bytes support [fabalthazar]</p></li>
+<li><p>ARM Cortex-M: Increased the max breakpoint count to 8 as M33 has up to 8 breakpoints [UweBonnes]</p></li>
+<li><p>samd5x: Detect unprotected SAMD5x only once [UweBonnes]</p></li>
+<li><p>common: Remove the use of static in targets allocating memory in the target structs instead [UweBonnes]</p></li>
+<li><p>rp2040: Flush cache after erase and write [jamesturton]</p></li>
+<li><p>rp2040: Increase spinner timeout to 500ms [jamesturton]</p></li>
+<li><p>rp2040: Added more debug logging during flash [jamesturton]</p></li>
+<li><p>rp2040: Increased <code class="docutils literal notranslate"><span class="pre">flash_range_program</span></code> timeout [jamesturton]</p></li>
+<li><p>rp2040: Show spinner only when called from monitor command [UweBonnes]</p></li>
+<li><p>ARM Cortex-M: Scan for cortex-m0+ lpc11xx to detect lpc80 [UweBonnes]</p></li>
+<li><p>lpc: More verbose debug output and added more definitions [UweBonnes]</p></li>
+<li><p>efm32: Rearranged the efm32_device_t struct to save flash space [UweBonnes]</p></li>
+<li><p>lpc11xx/lpc8c04: Do not expose top two system flash sectors [UweBonnes]</p></li>
+<li><p>lpc: Take care of protected pages on LPC80x devices [UweBonnes]</p></li>
+<li><p>nrf51: Added UICR erase command [bmellstrom-radinn] [vedderb]</p></li>
+<li><p>lpc: Fixed a Flash erase function bug [compuphase]</p></li>
+<li><p>target: <code class="docutils literal notranslate"><span class="pre">target_error_check</span></code> function hook now defaults to “no error” [UweBonnes]</p></li>
+<li><p>lpc: Fixed size format warning [neutered]</p></li>
+<li><p>ftdi: Corrected direction reporting in debug output [UweBonnes]</p></li>
+<li><p>remote_jtagtap: Fixed memory corruption in <code class="docutils literal notranslate"><span class="pre">jtagtap_tdi_tdo_seq</span></code> [UweBonnes]</p></li>
+<li><p>command: Corrected <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">version</span></code> output [UweBonnes]</p></li>
+<li><p>common: Made more functions static [UweBonnes]</p></li>
+<li><p>ARM debug: Removed leftover debug output from <code class="docutils literal notranslate"><span class="pre">cortexm_initial_halt</span></code> [UweBonnes]</p></li>
+<li><p>stm32f1: Check if unlock failed and propagate error [UweBonnes]</p></li>
+<li><p>stm32l4: Use target ID when available. Fixes STM32U5 crashes [UweBonnes]</p></li>
+<li><p>ARM Cortex-M: Fixed semihosting exit code return [koendv]</p></li>
+<li><p>stm32g0: Added OTP area programming support [fabalthazar]</p></li>
+<li><p>SWD scan: Return error on parity errors [UweBonnes]</p></li>
+<li><p>SWD scan: Initialize <code class="docutils literal notranslate"><span class="pre">target_id</span></code> [UweBonnes]</p></li>
+<li><p>samd: Parametrize memory and flash sizes [xobs]</p></li>
+<li><p>stm32wlxx: Add option bit support [fk0815]</p></li>
+<li><p>kinetis: Fixed GCC 11 related build error caused by ill-defined arguments [UweBonnes]</p></li>
+<li><p>samd: Added fine-grained bootloader and Flash locking support [arpadbuermen]</p></li>
+<li><p>jtag_scan: Fixed the underlying issue causing wrong ID Code getting to the handlers [dragonmux]</p></li>
+<li><p>jtag_scan: Removed the now redundant ID Code parameter from handlers [dragonmux]</p></li>
+<li><p>target: Cleaned up <code class="docutils literal notranslate"><span class="pre">target_new()</span></code> for the <code class="docutils literal notranslate"><span class="pre">check_error</span></code> callback [dragonmux]</p></li>
+<li><p>jtag_scan: Cleaned up <code class="docutils literal notranslate"><span class="pre">ones</span></code> array to use more correct init syntax [dragonmux]</p></li>
+<li><p>jtag_devs: Removed manufacturer descriptions for consistency [dragonmux]</p></li>
+<li><p>samd: Fixed the BMA build as the code assumed unsigned long was 32-bit [dragonmux]</p></li>
+<li><p>stm32f4: Move <code class="docutils literal notranslate"><span class="pre">DBGMCU_</span></code> handling to target specific code [UweBonnes]</p></li>
+<li><p>stm32f4: Attach logic cleanup by making sure we only set the extra bits needed when writing <code class="docutils literal notranslate"><span class="pre">DBGMCU_CR</span></code> [dragonmux]</p></li>
+<li><p>stm32g0: Temporarily enable DBG clock for detach in case it got disabled which can happen during Flash [mmoskal]</p></li>
+</ul>
+</section>
+<section id="targets-added">
+<h2>Targets Added<a class="headerlink" href="#targets-added" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>lpc546xx [eivindbergem] [noahp]</p></li>
+<li><p>STM32H7B3/B0/A3 (RM0455) &amp; STM32H723/33/25/35/30 (RM0468) [richardeoin]</p></li>
+<li><p>MIMXRT10XX detection (no flash support) [UweBonnes]</p></li>
+<li><p>Kinetis K12 and placeholders for other K-Series MCUs [jbuonagurio]</p></li>
+<li><p>NXP S32K118 [xobs]</p></li>
+<li><p>GD32F1/F3 [mean]</p></li>
+<li><p>GD32E23x [AerialX]</p></li>
+<li><p>NXP S32K148 [xobs]</p></li>
+<li><p>NXP LPC802, LPC804, LPC832 and LPC834 [compuphase]</p></li>
+<li><p>STM32G03/4/5/6/7/8/B/C [fabalthazar]</p></li>
+<li><p>STM32L55 [UweBonnes]</p></li>
+<li><p>STM32G49x/G4Ax [fabalthazar]</p></li>
+<li><p>STM32WLxx [fabiobaltieri]</p></li>
+<li><p>RP2040 [UweBonnes]</p></li>
+<li><p>NXP LPC11xx XL [compuphase]</p></li>
+<li><p>NXP s32k14x variants: s32k142, s32k142w, s32k144, s32k144w and s32k146 [neutered]</p></li>
+<li><p>STM32WB55 [DrZlo13]</p></li>
+<li><p>SAMD09 [xobs]</p></li>
+<li><p>CH32F1 [mean00]</p></li>
+</ul>
+</section>
+<section id="arch-ids-added">
+<h2>Arch IDs Added<a class="headerlink" href="#arch-ids-added" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Cortex-M7 TPIU [UweBonnes]</p></li>
+</ul>
+</section>
+<section id="designer-ids-added">
+<h2>Designer IDs Added<a class="headerlink" href="#designer-ids-added" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>CKS – 中科芯微 <code class="docutils literal notranslate"><span class="pre">0x555</span></code> [djix123]</p></li>
+<li><p>GigaDevice <code class="docutils literal notranslate"><span class="pre">0x751</span></code> [mean]</p></li>
+</ul>
+</section>
+<section id="device-descriptor-ids-added">
+<h2>Device Descriptor IDs Added:<a class="headerlink" href="#device-descriptor-ids-added" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Unknown ARM [dragonmux]</p></li>
+<li><p>Xilinx [dragonmux]</p></li>
+<li><p>Xambala: RVDBG013 [dragonmux]</p></li>
+<li><p>Gigadevice BSD [dragonmux]</p></li>
+</ul>
+</section>
+<section id="host-platform-changes">
+<h2>Host Platform Changes<a class="headerlink" href="#host-platform-changes" title="Permalink to this heading">¶</a></h2>
+<section id="added">
+<h3>Added<a class="headerlink" href="#added" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Added stm32f4x1 blackpillv2 as a variant of f4discovery [aam335]</p></li>
+</ul>
+</section>
+<section id="common">
+<h3>Common<a class="headerlink" href="#common" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>DFU/CDC-ACM: Consolidated usage of ST and BMP serial numbers [UweBonnes]</p></li>
+<li><p>Updated libopencm3 to <code class="docutils literal notranslate"><span class="pre">9c42fb</span></code> [UweBonnes]</p></li>
+<li><p>Correct the USB CDC <code class="docutils literal notranslate"><span class="pre">iface</span></code> struct to not indicate AT support as we are not a modem [Ho-Ro]</p></li>
+<li><p>Added space in the USB product string to consolidate the product string between the DFU bootloader and application firmware [Ho-Ro]</p></li>
+<li><p>Increase timer tick frequency from 10Hz to 100Hz [UweBonnes]</p></li>
+<li><p>Changed the CDCACM and DFU interface descriptors to point correctly to their respective string descriptors [UweBonnes]</p></li>
+<li><p>Decrease the amount of magic numbers in USB descriptors [UweBonnes]</p></li>
+</ul>
+</section>
+<section id="stm32-host-common-to-all-stm32-hosts">
+<h3>stm32 host (Common to all stm32 hosts)<a class="headerlink" href="#stm32-host-common-to-all-stm32-hosts" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Use libopencm3 defines for <code class="docutils literal notranslate"><span class="pre">UNIQUE_SERIAL</span></code> and <code class="docutils literal notranslate"><span class="pre">FLASH_SIZE</span></code> register locations [UweBonnes]</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">DFU_IFACE_STRING</span></code> for STM32F7 hosts [UweBonnes]</p></li>
+<li><p>Use DMA for USB USART TX/RX [Vestrel]</p></li>
+<li><p>Made DMA stream handling not STM32F4 specific [UweBonnes]</p></li>
+<li><p>Portability improvements to help with stlinkv3 support [UweBonnes]</p></li>
+<li><p>USB USART: Clear <code class="docutils literal notranslate"><span class="pre">USART_ICR</span></code> if provided [UweBonnes]</p></li>
+<li><p>Allow compilation for STM32F0 [UweBonnes]</p></li>
+<li><p>Added blocks to ISR template macros [esden]</p></li>
+<li><p>USB USART: Remove duplicate definition of <code class="docutils literal notranslate"><span class="pre">USBUSART_DMA_TX_ISR</span></code> [mikeditto]</p></li>
+</ul>
+</section>
+<section id="blackmagicprobe-aka-native-host">
+<h3>BlackMagicProbe aka. Native host<a class="headerlink" href="#blackmagicprobe-aka-native-host" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed high current draw issue that was causing the BMP hardware run hot [UweBonnes]</p></li>
+<li><p>Use DMA for USB USART TX/RX [Vestrel]</p></li>
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">hwversion</span></code> detection for hw rev 4 and newer [esden]</p></li>
+<li><p>Set vbus sense pin to PA15 for hw rev 5 [esden]</p></li>
+<li><p>Added hw rev 5 AUX interface definitions [esden]</p></li>
+<li><p>doc: Improved pinout legend comment block [esden]</p></li>
+<li><p>Added support for hw rev 6 [esden]</p></li>
+<li><p>Fixed USB USART support for hw rev 6 [esden]</p></li>
+<li><p>Fixed a <code class="docutils literal notranslate"><span class="pre">hwversion</span></code> issue with some older BMP revisions [esden]</p></li>
+</ul>
+</section>
+<section id="f4discovery-host">
+<h3>f4discovery host<a class="headerlink" href="#f4discovery-host" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Decreased JTAG slew rate to avoid ringing [UweBonnes]</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">BMP_BOOTLOADER</span></code> compile flag that allows building of the firmware for the ST bootloader instead of the Black Magic Debug bootloader [UweBonnes]</p></li>
+<li><p>Fixed sector_erase in the DFU bootloader on the f4 platform [UweBonnes]</p></li>
+<li><p>Use DMA for USB USART TX/RX [Vestrel]</p></li>
+<li><p>Fixed USB USART [jlutgen]</p></li>
+</ul>
+</section>
+<section id="st-link-host">
+<h3>ST-Link host<a class="headerlink" href="#st-link-host" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Reworked and improved documentation [UweBonnes]</p></li>
+<li><p>Decreased IO slew rate to avoid ringing [UweBonnes]</p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">dfu_upgrade</span></code> firmware (use commit <code class="docutils literal notranslate"><span class="pre">03a7b06e</span></code> if you still have the old bootloader and need to upgrade) [UweBonnes]</p></li>
+<li><p>Use DMA for USB USART TX/RX [Vestrel]</p></li>
+</ul>
+</section>
+<section id="sw-link-host">
+<h3>sw-link host<a class="headerlink" href="#sw-link-host" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Decreased IO slew rate to avoid ringing [UweBonnes]</p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">dfu_upgrade</span></code> firmware (use commit <code class="docutils literal notranslate"><span class="pre">03a7b06e</span></code> if you still have the old bootloader and need to upgrade) [UweBonnes]</p></li>
+<li><p>Use DMA for USB USART TX/RX [Vestrel]</p></li>
+<li><p>doc: corrected SWO/RX2 header location for blue pill [justinkb]</p></li>
+</ul>
+</section>
+<section id="hydrabus-host">
+<h3>Hydrabus host<a class="headerlink" href="#hydrabus-host" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Use DMA for USB USART TX/RX [Vestrel]</p></li>
+</ul>
+</section>
+<section id="lm4f-ti-icdi-host">
+<h3>lm4f (TI ICDI) host<a class="headerlink" href="#lm4f-ti-icdi-host" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Fix ICDI USB error Issue #748 [daguirrem]</p></li>
+</ul>
+</section>
+<section id="pc-host">
+<h3>PC host<a class="headerlink" href="#pc-host" title="Permalink to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>BMP: Added option to disable high level Black Magic Probe commands [UweBonnes]</p></li>
+<li><p>BMP: Report if the Black Magic Probe hardware is in bootloader mode. [UweBonnes]</p></li>
+<li><p>BMP: Fix JTAG high level function use. Fall back to low level when high level functions are not available yet. [UweBonnes]</p></li>
+<li><p>USB: Decreased report size to 64, otherwise MIMRXT10x0-EVK crashes when reading larger memory blocks [UweBonnes]</p></li>
+<li><p>Fixed core register read [UweBonnes]</p></li>
+<li><p>Corrected data length used with <code class="docutils literal notranslate"><span class="pre">read_block</span></code> [UweBonnes]</p></li>
+<li><p>BMP: Check for protocol version of the BMP and fall back to low level JTAG protocol when the remote version does not match. [UweBonnes]</p></li>
+<li><p>FTDI probe: Fix FTDI support by checking for <code class="docutils literal notranslate"><span class="pre">libftdi</span></code> version 1.5 or newer [UweBonnes]</p></li>
+<li><p>A bunch of memory leak fixes [UweBonnes]</p></li>
+<li><p>BMP: Deprecated the <code class="docutils literal notranslate"><span class="pre">-p</span></code> BMP serial port path option [UweBonnes]</p></li>
+<li><p>USB: Ignore USB hubs and print the device class when unable to open [UweBonnes]</p></li>
+<li><p>ST-Link v2 probe: Try harder to open an Access Port (problems seen on STM32L0) [UweBonnes]</p></li>
+<li><p>Wait for response based on the <code class="docutils literal notranslate"><span class="pre">cortexm_wait_timeout</span></code> as opposed to a define [UweBonnes]</p></li>
+<li><p>Print version with <code class="docutils literal notranslate"><span class="pre">-h</span></code> and <code class="docutils literal notranslate"><span class="pre">-p</span></code> options [UweBonnes]</p></li>
+<li><p>Read target voltage only once [UweBonnes]</p></li>
+<li><p>Remove duplicate <code class="docutils literal notranslate"><span class="pre">free</span></code> calls in <code class="docutils literal notranslate"><span class="pre">platform_adiv5_swdp_scan</span></code> and <code class="docutils literal notranslate"><span class="pre">jlink_adiv5_swdp</span></code> [UweBonnes]</p></li>
+<li><p>JLink: Added a catch for no target connected errors [UweBonnes]</p></li>
+<li><p>JLink: Removed SWD frequency setting as it is fixed for JLink [UweBonnes]</p></li>
+<li><p>JLink/swd_low_access: Fixed data direction during response read phase [UweBonnes]</p></li>
+<li><p>Recognize “J-Trace Cortex-M PRO V2” [eclig]</p></li>
+<li><p>Fixed a bug when no serial device is connected [UweBonnes]</p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">info.serial</span></code> when the USB device has no serial number [UweBonnes]</p></li>
+<li><p>Removed the FTDI include when building with <code class="docutils literal notranslate"><span class="pre">HOSTED_BMP_ONLY</span></code> build option set [xobs]</p></li>
+<li><p>Improve handling of the target power (<code class="docutils literal notranslate"><span class="pre">tpwr</span></code>) setting on the remote [UweBonnes]</p></li>
+<li><p>Fixed an issue where <code class="docutils literal notranslate"><span class="pre">-n</span></code> was not expecting an argument [UweBonnes]</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">-M</span></code> option that allows execution of target specific monitor commands [UweBonnes]</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">-m</span></code> option that allows selection of targets in an SWD multi-drop setup [UweBonnes]</p></li>
+<li><p>Decreased restrictions to product description strings to allow for RPi Pico pico-debug detection [UweBonnes]</p></li>
+<li><p>CLI: Reworked Flash/RAM printout [UweBonnes]</p></li>
+<li><p>serial_unix: Split read <code class="docutils literal notranslate"><span class="pre">select</span></code> timeout in seconds and milliseconds as millisecond values above 1000000 cause problems [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Retrieve probe firmware version [UweBonnes]</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">-w</span></code> option allowing the user to write a binary into the target flash [fabalthazar]</p></li>
+<li><p>Expanded <code class="docutils literal notranslate"><span class="pre">-V</span></code> option to work together with <code class="docutils literal notranslate"><span class="pre">-w</span></code> allowing a write/read/compare flash cycle [fabalthazar]</p></li>
+<li><p>FTDI: Corrected the include path [UweBonnes]</p></li>
+<li><p>BMP: Added nul (’\0’) termination to <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">version</span></code> and <code class="docutils literal notranslate"><span class="pre">serial</span></code> strings on linux systems [stoyan-shopov]</p></li>
+<li><p>BMP: Honor the <code class="docutils literal notranslate"><span class="pre">opt_list_only</span></code> (<code class="docutils literal notranslate"><span class="pre">-l</span></code>) parameter [UweBonnes]</p></li>
+<li><p>CLI: When no size is provided read the lowest memory block [UweBonnes]</p></li>
+<li><p>CLI: When JTAG scan fails automatically try SWD [UweBonnes]</p></li>
+<li><p>docs: Document the BMP only build in the README [UweBonnes]</p></li>
+<li><p>ST-Link: Detect STLink v3 in bootloader mode [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Fix <code class="docutils literal notranslate"><span class="pre">dap_read</span></code> handling when reading non word aligned data [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Handle ADI DP22 devices on probes without multidrop capability [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Cleanup and added v2 interface support [zyp]</p></li>
+<li><p>gdb: Added more verbose error messages [UweBonnes] [pshri]</p></li>
+<li><p>Compilation warning cleanup, including adding missing header includes [UweBonnes]</p></li>
+<li><p>CLI: Added help for <code class="docutils literal notranslate"><span class="pre">-l</span></code> option [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Fixed erroneous left over parameter to <code class="docutils literal notranslate"><span class="pre">dap_swdptap_init</span></code> [UweBonnes]</p></li>
+<li><p>BMP: Reject devices that have the same VID but not the BMP PID [UweBonnes]</p></li>
+<li><p>Use strncmp instead of strcmp for name comparisons to ignore any appended version numbers [UweBonnes]</p></li>
+<li><p>BMP: Autodetect more BMP string variants [UweBonnes]</p></li>
+<li><p>CLI: Fixed a file size bug [UweBonnes]</p></li>
+<li><p>CLI: Fix an issue where <code class="docutils literal notranslate"><span class="pre">opt_flash_size</span></code> was not set correctly in <code class="docutils literal notranslate"><span class="pre">FLASH_WRITE_VERIFY</span></code> mode [UweBonnes]</p></li>
+<li><p>BMP: Check for CMSIS-DAP only when no other probe found [UweBonnes]</p></li>
+<li><p>FTDI: Export and use reset functions [UweBonnes]</p></li>
+<li><p>ftdi_bmp: Fix setting bits and FTDI JTAG soft reset [UweBonnes]</p></li>
+<li><p>CLI: Added <code class="docutils literal notranslate"><span class="pre">-Rh</span></code> command that allows hardware reset from the command line [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Fixed <code class="docutils literal notranslate"><span class="pre">tdi_tdo_seq</span></code> [UweBonnes] partially reverted by [dragonmux]</p></li>
+<li><p>ftdi_bmp: Add more verbose debug output to <code class="docutils literal notranslate"><span class="pre">libftdi_jtagtap_tdi_tdo_seq()</span></code> [UweBonnes]</p></li>
+<li><p>ftdi_bmp: Fix error when compiling with <code class="docutils literal notranslate"><span class="pre">HOSTED_BMP_ONLY=1</span></code> [UweBonnes]</p></li>
+<li><p>Made <code class="docutils literal notranslate"><span class="pre">HOSTED_BMP_ONLY</span></code> the default to make compilation easier [UweBonnes]</p></li>
+<li><p>Set GCC as the default compiler [UweBonnes]</p></li>
+<li><p>Corrected platform delay calculation to result in ms sleep not us [UweBonnes]</p></li>
+<li><p>CLI: Increased speed by increasing worksize [UweBonnes]</p></li>
+<li><p>docs: Updated README to use <code class="docutils literal notranslate"><span class="pre">HOSTED_BMP_ONLY</span></code> vs <code class="docutils literal notranslate"><span class="pre">HOSTED_BMP</span></code> [amakovec]</p></li>
+<li><p>BMP: Removed duplicate <code class="docutils literal notranslate"><span class="pre">libusb_init</span></code> [UweBonnes]</p></li>
+<li><p>ftdi_bmp: Fixed bit select bug [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Copy command buffer in wait/retry loop, to prevent part of the command to be overwritten before it’s retried [zyp]</p></li>
+<li><p>BMP: Made the return values of the BMA in erase mode consistent and made <code class="docutils literal notranslate"><span class="pre">HOSTED_BMP_ONLY=0</span></code> default on Linux [fabalthazar]</p></li>
+<li><p>ST-Link: Added “ST-Link V3 no msd” ID [UweBonnes]</p></li>
+<li><p>BMP: Improved error propagation [UweBonnes]</p></li>
+<li><p>FTDI: Enable 60MHz on fast devices</p></li>
+<li><p>ST-Link V2: Read target ID on DPv2 devices [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Fix CMSIS-DAP related memory leak [UweBonnes]</p></li>
+<li><p>Set reset type on every device [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Only CMSIS internal use must differentiate between HID and Bulk access [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Always work on a copy of the buffer when calling <code class="docutils literal notranslate"><span class="pre">dbg_dap_cmd()</span></code> in a loop [UweBonnes]</p></li>
+<li><p>Export BMP_TYPE in ARM Debug Port handler [UweBonnes]</p></li>
+<li><p>ST-Link: Fix low level access to Access Port registers [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Print messages when transfers fail [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Link against <code class="docutils literal notranslate"><span class="pre">libhidapi-hidraw</span></code> instead of <code class="docutils literal notranslate"><span class="pre">libhidapi-libusb</span></code>. The latter detaches the kernel module and does not reattach it again [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Always trasfer 65 bytes with <code class="docutils literal notranslate"><span class="pre">hid_read|write()</span></code> [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Implement <code class="docutils literal notranslate"><span class="pre">srst_set_val()</span></code> [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Access Port reads are posted. Read from <code class="docutils literal notranslate"><span class="pre">RDBUFF</span></code> [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Removed <code class="docutils literal notranslate"><span class="pre">dp_low_read()</span></code> and use exception protected <code class="docutils literal notranslate"><span class="pre">dp_read()</span></code> instead [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Use exception in <code class="docutils literal notranslate"><span class="pre">wait_word()</span></code> [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Run time detect <code class="docutils literal notranslate"><span class="pre">DAP_SWD_SEQUENCE</span></code> [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Write only the necessary data in <code class="docutils literal notranslate"><span class="pre">dap_swdptap_seq_out</span></code> [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Added timeout to bulk commands [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Added error returns when bulk transfers time out [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Allow transfer sizes to deal with words [UweBonnes]</p></li>
+<li><p>CLI: Assert if Flashing succeeded or failed once the last buffer has been written [fabalthazar]</p></li>
+<li><p>CLI: Allowing the use of monitor commands as preliminary actions [fabalthazar]</p></li>
+<li><p>CMSIS-DAP: Make the assert parameter to <code class="docutils literal notranslate"><span class="pre">dap_srst_set_val</span></code> a <code class="docutils literal notranslate"><span class="pre">bool</span></code> [koendv]</p></li>
+<li><p>USB: Additionally to Hub device class also exclude Wireless device class when scanning for Probes [UweBonnes]</p></li>
+<li><p>JTAG: Write <code class="docutils literal notranslate"><span class="pre">DO</span></code> generation code in an endian-independent way [UweBonnes]</p></li>
+<li><p>FTDI: Fix crash caused by the use of an out of date variable [UweBonnes]</p></li>
+<li><p>USB: Restrict the scope of the probe type variable [UweBonnes]</p></li>
+<li><p>FTDI: Fix bad length calculation in the MPSSE version of <code class="docutils literal notranslate"><span class="pre">swdptap_seq_in()</span></code> [UweBonnes]</p></li>
+<li><p>CMSIS-DAP: Corrected <code class="docutils literal notranslate"><span class="pre">tdi_tdi_seq</span></code> to take into account that not all platforms have division [dragonmux]</p></li>
+<li><p>bmp_libusb: Formatting cleanup [dragonmux]</p></li>
+<li><p>bmp_libusb: Fixed some signed/unsigned issues and UB in <code class="docutils literal notranslate"><span class="pre">send_recv</span></code> [dragonmux]</p></li>
+<li><p>bmp_libusb: Rewrote the string reader logic to not violate the USB spec and properly handle libusb errors [dragonmux]</p></li>
+<li><p>ST-Link V2: Rewrote the serial number reading logic to not violate the USB spec and properly handle libusb errors [dragonmux]</p></li>
+<li><p>ST-Link V2: Fix <code class="docutils literal notranslate"><span class="pre">!found</span></code> check causing hosted to continue on anyway, and improved the error reporting from the device finder loop [dragonmux]</p></li>
+<li><p>platform: Formatting consistency improvements [dragonmux]</p></li>
+<li><p>ST-Link V2: Cleaned up the new error messages as they weren’t outputting nicely [dragonmux]</p></li>
+<li><p>CMSIS-DAP: Fixed some more communication issues [mubes] [dragonmux]</p></li>
+</ul>
+</section>
+</section>
+<section id="sponsors">
+<h2>Sponsors<a class="headerlink" href="#sponsors" title="Permalink to this heading">¶</a></h2>
+<p>This project is sponsored in parts by:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://1bitsquared.com">1BitSquared</a> - Design, Manufacture and distribution of open source embedded hardware development tools and platforms, as well as educational electronics. Thank you everyone who buys Black Magic Probes from 1BitSquared directly through our <a class="reference external" href="https://1bitsquared.com/products/black-magic-probe">stores</a> or indirectly through <a class="reference external" href="https://www.adafruit.com/product/3839">Adafruit</a>. The hardware sales allow us to continue supporting the Black Magic Debug project.</p></li>
+<li><p>All the generous <a class="reference external" href="https://www.patreon.com/1bitsquared">Patrons</a> and <a class="reference external" href="https://github.com/sponsors/esden">GitHub Sponsors</a> supporting esden’s work</p></li>
+<li><p>All the generous <a class="reference external" href="https://github.com/sponsors/dragonmux">GitHub Sponsors</a> supporting dragonmux’s work</p></li>
+</ul>
+</section>
+</section>
+
+<div class="section">
+    
+
+<div class="section">
+  <span style="float: left">
+     Previous:
+    
+    <a href="2022-01-20-organization-rename.html">
+       GitHub Organization Name Change
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+    
+  </span>
+</div>
+  
+</div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/blackmagic-logo.svg" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">The Plug&Play MCU Debugger</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=blackmagic-debug&repo=blackmagic&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware.html">Supported Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrade.html">Firmware Upgrade</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/links.html">Links</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-commands.html">GDB Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-automation.html">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/traceswo.html">SWD - TRACESWO support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/swo.html">Serial Wire Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/platformio.html">PlatformIO</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/stm32.html">STM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hacking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/contrib.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/hacking.html">Firmware Hacking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-drivers.html">Adding Target Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-m.html">Cortex M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-a.html">Cortex A Targets</a></li>
+</ul>
+
+
+<h3>
+  <a href="../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="2022-01-20-organization-rename.html"
+      >20 January - GitHub Organization Name Change</a
+    >
+  </li>
+  
+  <li>
+    <a href="2022-01-07-new-maintainer.html"
+      >07 January - New Project Maintainer</a
+    >
+  </li>
+  
+</ul>
+
+<h3>
+  <a href="archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="2022.html">2022 (3)</a>
+  </li>
+   
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Piotr Esden-Tempski <piotr@esden.net>; 2022, Rachel Mant <git@dragonmux.network>.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
