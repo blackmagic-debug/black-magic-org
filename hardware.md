@@ -8,7 +8,8 @@ The following is a list of official hardware supported by the Native target that
 
 ### Black Magic Probe V2.3 (BMP23)
 
-TODO: Add photos
+![](_assets/bmp23-top.jpg)
+![](_assets/bmp23-bottom.jpg)
 
 **Status** Active
 

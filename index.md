@@ -66,7 +66,7 @@ hacking/target-cortex-a
 
 # Black Magic Debug: The Plug&Play MCU Debugger
 
-![](_assets/bmp_v2_3a_iso.jpg)
+![](_assets/bmp_v2_3b_iso.jpg)
 
 ## Black Magic Debug Project Goals
 The goal of this project is the creation of an easy to use. Mostly plug and play, JTAG/SWD debugger for embedded microcontrollers. Focusing on professional embedded software developers that prefer retaining control over their build systems and testing environments instead of relying on highly abstracted vendor tools that give the impression of simplicity at the cost of transparency.
