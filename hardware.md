@@ -29,7 +29,8 @@ levant to an end user.
 
 ### Black Magic Probe Mini V2.1 (BMP21)
 
-TODO: Add photos
+![](_assets/bmpm21-top.jpg)
+![](_assets/bmpm21-bottom.jpg)
 
 **Status** Legacy (not in production)
 
