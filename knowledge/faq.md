@@ -75,9 +75,8 @@ The UART cable can be built by hand using the following materials:
 * 26-32AWG wire of your choosing and whatever termination you need on the other side of the cable.
 
 The UART cable can also be built with pre crimped wires:
-* [Digi-key](https://www.digikey.com/product-detail/en/molex-llc/06-66-0012/WM2319-ND/2405453) red 150mm pre crimped cable
-* [Digi-key](https://www.digikey.com/product-detail/en/molex-llc/06-66-0013/WM2320-ND/2405456) red 300mm pre crimped cable
-* [1BitSquared](https://1bitsquared.com/products/picoblade-wire-kit) pre crimped cable assortment
+* [Digi-key](https://www.digikey.com/short/08n0q938) Molex Picoblade pre-crimped cables, you can choose from all kinds of colors as well as doublesided or single sided crimps.
+* [1BitSquared](https://1bitsquared.com/products/picoblade-wire-kit) pre-crimped cable assortment
 
 There are also pre made UART cables:
 * [1BitSquared](https://1bitsquared.com/products/black-magic-01in-pin-header-serial-cable) UART to 0.1" pin header pigtail cable.
