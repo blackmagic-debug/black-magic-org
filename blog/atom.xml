@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://black-magic.org</id>
   <title>Blog</title>
-  <updated>2022-07-26T04:54:08.258165+00:00</updated>
+  <updated>2022-08-05T07:50:52.251549+00:00</updated>
   <link href="https://black-magic.org"/>
   <link href="https://black-magic.org/blog/atom.xml" rel="self"/>
-  <generator uri="https://ablog.readthedocs.org/" version="0.10.26">ABlog</generator>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.28">ABlog</generator>
   <entry>
     <id>https://black-magic.org/blog/2022-01-07-new-maintainer.html</id>
     <title>New Project Maintainer</title>
