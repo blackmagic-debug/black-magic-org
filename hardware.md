@@ -26,6 +26,7 @@ levant to an end user.
 * AUX connector for accessories (firmware support pending)
 * Mechanical layout allowing easier use of enclosures and mounting into bigger systems. For example: automated pogopin test equipment, automated Hardware In The Loop (HITL) Continous Integration (CI) systems
 * Improved layout, allowing further improvement of the Black Magic Debug firmware reliability and speed using hardware protocol acceleration (firmware support pending)
+* Uses a USB-C connector instead of Micro USB-B
 
 ### Black Magic Probe Mini V2.1 (BMP21)
 
