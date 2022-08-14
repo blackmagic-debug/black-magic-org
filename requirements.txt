@@ -7,3 +7,5 @@ sphinxcontrib-platformpicker
 sphinx-favicon
 sphinxext-opengraph
 ablog
+pinout
+cairosvg

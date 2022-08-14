@@ -1,0 +1,136 @@
+text {
+    font-family: Verdana, Georgia, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.pinlabel__leader{
+    stroke-width: 2;
+    fill: none;
+}
+
+.pinlabel__text{
+    dominant-baseline: central;
+    fill: #fff;
+    font-weight: bold;
+    stroke-width: 0;
+    text-anchor: middle;
+}
+
+.pwr .pinlabel__body{
+    fill: #C1292E;
+    stroke: rgb(0, 0, 0);
+}
+.pwr .pinlabel__leader{
+    stroke: #C1292E;
+}
+.pwr .swatch__body {
+    fill: #C1292E;
+    stroke: rgb(0, 0, 0);
+}
+.swd .pinlabel__body{
+    fill: #E89005;
+    stroke: rgb(0, 0, 0);
+}
+.swd .pinlabel__leader{
+    stroke: #E89005;
+}
+.swd .swatch__body {
+    fill: #E89005;
+    stroke: rgb(0, 0, 0);
+}
+.jtag .pinlabel__body{
+    fill: #2B59C3;
+    stroke: rgb(0, 0, 0);
+}
+.jtag .pinlabel__leader{
+    stroke: #2B59C3;
+}
+.jtag .swatch__body {
+    fill: #2B59C3;
+    stroke: rgb(0, 0, 0);
+}
+.uart .pinlabel__body{
+    fill: #4E148C;
+    stroke: rgb(0, 0, 0);
+}
+.uart .pinlabel__leader{
+    stroke: #4E148C;
+}
+.uart .swatch__body {
+    fill: #4E148C;
+    stroke: rgb(0, 0, 0);
+}
+.pin .pinlabel__body{
+    fill: #95B2B0;
+    stroke: rgb(0, 0, 0);
+}
+.pin .pinlabel__leader{
+    stroke: #95B2B0;
+}
+.pin .swatch__body {
+    fill: #95B2B0;
+    stroke: rgb(0, 0, 0);
+}
+.gnd .pinlabel__body{
+    fill: #210203;
+    stroke: rgb(0, 0, 0);
+}
+.gnd .pinlabel__leader{
+    stroke: #210203;
+}
+.gnd .swatch__body {
+    fill: #210203;
+}
+.rst .pinlabel__body{
+    fill: #E5F4E3;
+    stroke: rgb(0, 0, 0);
+}
+.rst .pinlabel__text{
+    fill: rgb(0, 0, 0);
+}
+.rst .pinlabel__leader{
+    stroke: #E5F4E3;
+}
+.rst .swatch__body {
+    fill: #E5F4E3;
+    stroke: rgb(0, 0, 0);
+}
+.nc .pinlabel__body{
+    fill: rgb(90, 90, 90);
+    stroke: rgb(0, 0, 0);
+}
+.nc .pinlabel__leader{
+    stroke: rgb(90, 90, 90);
+}
+.nc .swatch__body {
+    fill: rgb(90, 90, 90);
+    stroke: rgb(0, 0, 0);
+}
+
+.panel__inner {
+    fill: #fff;
+}
+.panel__outer {
+    fill: #333;
+}
+
+.legendentry text {
+    dominant-baseline: central;
+}
+
+.h1 {
+    font-size: 26px;
+    font-weight: bold;
+    font-style: italic;
+}
+.italic{
+    font-style: italic;
+}
+.strong{
+    font-weight: bold;
+}
+
+.panel--info .panel__inner{
+    fill: #f4f4f4;
+}

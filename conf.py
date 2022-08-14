@@ -4,6 +4,8 @@
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+import os
+
 # -- Path setup --------------------------------------------------------------
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -190,3 +192,7 @@ favicons = [
 ogp_site_url = "https://black-magic.org"
 ogp_site_name = "Black Magic Debug"
 ogp_image = "_static/blackmagic-logo.png"
+
+# Generate pinout diagrams
+
+os.system('./_pinouts/generate.py')
