@@ -2,7 +2,6 @@
 
 ```{post} January 07, 2022
 :author: esden
-:language: en
 ```
 
 Hi everyone! As some of you might know this project was created and maintained for many years by [Gareth McMullin](https://github.com/gsmcmullin). He has created a wonderful tool that we all use and love. You might have also noticed that Gareth did not have much time to dedicate to the project for the last few years. He asked me a while ago if I would be able to take over the project and become an official maintainer of Black Magic Debug. I did not have the necessary resources to dedicate to the project until very recently. But it is finally time, from now on I am officially taking on the position as the Black Magic Debug maintainer. :slight_smile:
