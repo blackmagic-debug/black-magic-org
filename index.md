@@ -21,6 +21,7 @@ upgrade
 
 knowledge/faq
 knowledge/terminology
+knowledge/pinouts
 knowledge/links
 ```
 
