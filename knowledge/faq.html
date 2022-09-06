@@ -119,12 +119,13 @@ Any device with these cores should work with possibly the exception flash memory
 <li><p><code class="docutils literal notranslate"><span class="pre">msp432.c</span></code>: MSP432P401</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">nrf51.c</span></code>: Nordic nRF51, nRF52</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">nxpke04.c</span></code>: Kinetis KE04</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">renesas.c</span></code>: Renesas RA, R7FAxxx</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rp.c</span></code>: Raspberry RP20240</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sam3x.c</span></code>: Atmel SAM3N, SAM3X, SAM3S, SAM3U, SAM4S</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sam3x.c</span></code>: Atmel SAM3N, SAM3X, SAM3S, SAM3U, SAM4S, SAMx7x</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">sam4l.c</span></code>: Atmel SAM4L</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">samd.c</span></code>: Atmel SAM D20, D21</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">samx5x.c</span></code>: Atmel SAMx5xqq</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">samdx5x.c</span></code>:Atmel SAMD5x/E5x</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">samx5x.c</span></code>: Atmel SAMx5xqq</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stm32f1.c</span></code>: ST Microelectronics STM32F0, STM32F1, STM32F3</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stm32f4.c</span></code>: ST Microelectronics STM32F2, STM32F4, STM32F7</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stm32g0.c</span></code>: ST Microelectronics G0</p></li>
@@ -132,7 +133,7 @@ Any device with these cores should work with possibly the exception flash memory
 <li><p><code class="docutils literal notranslate"><span class="pre">stm32l0.c</span></code>: ST Microelectronics STM32L0, STM32L1</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stm32l4.c</span></code>: ST Microelectronics STM32L4, STM32G0, STM32G4</p></li>
 </ul>
-<p>Last Updated: Sep 7, 2021</p>
+<p>Last Updated: Sep 6, 2022 (Partial update)</p>
 <p>As additions happen, you to update the firmware to profit from these additions.
 There is experimental support for Cortex-A (ARMv7-A architecture).  This is being used with success on Xilinx Zynq-7000 SoC (Dual-core Cortex-A9) and Raspberry Pi 2 (Quad-core Cortex-A7).</p>
 </section>
@@ -240,7 +241,7 @@ nc -vkl -p 2000 &gt; /dev/ttyBmpGdb &lt; /dev/ttyBmbGdb
 <section id="is-it-normal-that-my-black-magic-probe-is-warming-up-noticeably">
 <h2>Is it normal that my Black Magic Probe is warming up noticeably?<a class="headerlink" href="#is-it-normal-that-my-black-magic-probe-is-warming-up-noticeably" title="Permalink to this heading">¶</a></h2>
 <p>Yes, under normal operations the Black Magic Probe V2.1 is drawing 30-60mA. When using the <code class="docutils literal notranslate"><span class="pre">tpwr</span></code> functionality to supply power to a target like the 1Bitsy it can draw up to 120mA resulting in 0.6W of dissipated heat. The voltage regulator can heat up to 75°C under normal operations, it is rated for up to 125°C.</p>
-<p>The problem is fixes with firmware newer than Dec. 16 2020.</p>
+<p>The problem is fixed on firmware v1.8.0 and newer</p>
 <p><img alt="Black Magic Probe Heatmap" src="../_images/BMP_V2_1_heat_image.jpg" /></p>
 </section>
 <section id="how-does-the-black-magic-probe-compare-to-the-st-link-programmer">
@@ -249,19 +250,19 @@ nc -vkl -p 2000 &gt; /dev/ttyBmpGdb &lt; /dev/ttyBmbGdb
 </section>
 <section id="why-is-xxx-not-supported">
 <h2>Why is XXX not supported?<a class="headerlink" href="#why-is-xxx-not-supported" title="Permalink to this heading">¶</a></h2>
-<p>If the device is not a ADIv5 device, because we currently only support ADIv5 devices. If it is a ADIv5 device, because nobody contributed the needed functions yet. Look on <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/pulls">Github</a> if there is a pending pull request for your target. Report success/failure in that PR to help us triage merge of the new hardware support.</p>
+<p>Because nobody implemented the required functions yet. Look on <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/pulls">Github</a> if there is a pending pull request for your target. Consider testing PRs that try to implement the desired target to help us triage merge of new hardware support.</p>
 </section>
 <section id="why-is-raspberry-pi-1-not-supported">
 <h2>Why is Raspberry Pi 1 not supported?<a class="headerlink" href="#why-is-raspberry-pi-1-not-supported" title="Permalink to this heading">¶</a></h2>
-<p>Because it is an old ARM TDMI architecture, that is not compitable with ADIv5. (if you want to work on adding support for this contact us on <a class="reference external" href="https://discord.gg/P7FYThy"><img alt="Discord" src="https://img.shields.io/discord/613131135903596547?logo=discord" /></a> we have some sample code that needs work, if you want to dig deep into protocol spec sheets this is a project for you. :) )</p>
+<p>Because it is an old ARM TDMI architecture, that is not compatible with ADIv5. (if you want to work on adding support for this contact us on <a class="reference external" href="https://discord.gg/P7FYThy"><img alt="Discord" src="https://img.shields.io/discord/613131135903596547?logo=discord" /></a> we have some sample code that needs work, if you want to dig deep into protocol spec sheets this is a project for you. :) )</p>
 </section>
 <section id="why-is-raspberry-pi-3-not-supported">
 <h2>Why is Raspberry PI 3 not supported?<a class="headerlink" href="#why-is-raspberry-pi-3-not-supported" title="Permalink to this heading">¶</a></h2>
-<p>Because it is a 64Bit chip. We are working on adding 64bit support but it is not trivial. If you want to help with that contact us on <a class="reference external" href="https://discord.gg/P7FYThy"><img alt="Discord" src="https://img.shields.io/discord/613131135903596547?logo=discord" /></a>.</p>
+<p>Because it is a 64Bit architecture. We are working on adding 64bit support but it is not trivial. If you want to help with that contact us on <a class="reference external" href="https://discord.gg/P7FYThy"><img alt="Discord" src="https://img.shields.io/discord/613131135903596547?logo=discord" /></a>.</p>
 </section>
 <section id="why-is-beagle-bone-black-not-supported">
 <h2>Why is Beagle Bone Black not supported?<a class="headerlink" href="#why-is-beagle-bone-black-not-supported" title="Permalink to this heading">¶</a></h2>
-<p>Because Texas Instruments…. but we are working on it. :) If you want to help with that contact us on <a class="reference external" href="https://discord.gg/P7FYThy"><img alt="Discord" src="https://img.shields.io/discord/613131135903596547?logo=discord" /></a>.  See <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/issues/166">issue #166</a> for details.</p>
+<p>Because Texas Instruments… but we are working on it. :) If you want to help with that contact us on <a class="reference external" href="https://discord.gg/P7FYThy"><img alt="Discord" src="https://img.shields.io/discord/613131135903596547?logo=discord" /></a>. See <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/issues/166">issue #166</a> for details.</p>
 </section>
 <section id="how-do-i-upgrade-to-a-more-recent-version">
 <h2>How do I upgrade to a more recent version?<a class="headerlink" href="#how-do-i-upgrade-to-a-more-recent-version" title="Permalink to this heading">¶</a></h2>
