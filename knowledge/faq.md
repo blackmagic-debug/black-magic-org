@@ -137,7 +137,7 @@ In gdb on the remote machine, connect with `target extended-remote hostname:2000
 
 Yes, under normal operations the Black Magic Probe V2.1 is drawing 30-60mA. When using the `tpwr` functionality to supply power to a target like the 1Bitsy it can draw up to 120mA resulting in 0.6W of dissipated heat. The voltage regulator can heat up to 75°C under normal operations, it is rated for up to 125°C.
 
-The problem is fixes with firmware newer than Dec. 16 2020.
+The problem is fixed on firmware v1.8.0 and newer
 
 ![Black Magic Probe Heatmap](/_assets/BMP_V2_1_heat_image.jpg)
 
@@ -147,19 +147,19 @@ There are a few advantages of the Black Magic Probe. BMP is open-source, meaning
 
 ## Why is XXX not supported?
 
-If the device is not a ADIv5 device, because we currently only support ADIv5 devices. If it is a ADIv5 device, because nobody contributed the needed functions yet. Look on [Github](https://github.com/blackmagic-debug/blackmagic/pulls) if there is a pending pull request for your target. Report success/failure in that PR to help us triage merge of the new hardware support.
+Because nobody implemented the required functions yet. Look on [Github](https://github.com/blackmagic-debug/blackmagic/pulls) if there is a pending pull request for your target. Consider testing PRs that try to implement the desired target to help us triage merge of new hardware support.
 
 ## Why is Raspberry Pi 1 not supported?
 
-Because it is an old ARM TDMI architecture, that is not compitable with ADIv5. (if you want to work on adding support for this contact us on [![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy) we have some sample code that needs work, if you want to dig deep into protocol spec sheets this is a project for you. :) )
+Because it is an old ARM TDMI architecture, that is not compatible with ADIv5. (if you want to work on adding support for this contact us on [![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy) we have some sample code that needs work, if you want to dig deep into protocol spec sheets this is a project for you. :) )
 
 ## Why is Raspberry PI 3 not supported?
 
-Because it is a 64Bit chip. We are working on adding 64bit support but it is not trivial. If you want to help with that contact us on [![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy).
+Because it is a 64Bit architecture. We are working on adding 64bit support but it is not trivial. If you want to help with that contact us on [![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy).
 
 ## Why is Beagle Bone Black not supported?
 
-Because Texas Instruments.... but we are working on it. :) If you want to help with that contact us on [![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy).  See [issue #166](https://github.com/blackmagic-debug/blackmagic/issues/166) for details.
+Because Texas Instruments... but we are working on it. :) If you want to help with that contact us on [![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy). See [issue #166](https://github.com/blackmagic-debug/blackmagic/issues/166) for details.
 
 ## How do I upgrade to a more recent version?
 
