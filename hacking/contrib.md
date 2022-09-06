@@ -9,7 +9,7 @@
 
 ## Patch Policy (draft)
  - [@esden](https://github.com/esden) is the maintainer of the project.
- - [@dragonmux](https://github.com/dragonmux) is deupty maintainer answering to [@esden](https://github.com/esden)
+ - [@dragonmux](https://github.com/dragonmux) is deputy maintainer answering to [@esden](https://github.com/esden)
  - If you have any questions regarding the contribution process either contact [@esden](https://github.com/esden) or [@dragonmux](https://github.com/dragonmux)
  - Every Pull Request has to build and pass all tests on top of the `main` branch before it can be merged.
  - Every Pull Request requires review from one of the maintainers.
