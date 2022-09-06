@@ -17,12 +17,13 @@ Memory map and flash programming are supported for these specific implementation
 * `msp432.c`: MSP432P401
 * `nrf51.c`: Nordic nRF51, nRF52
 * `nxpke04.c`: Kinetis KE04
+* `renesas.c`: Renesas RA, R7FAxxx
 * `rp.c`: Raspberry RP20240
-* `sam3x.c`: Atmel SAM3N, SAM3X, SAM3S, SAM3U, SAM4S
+* `sam3x.c`: Atmel SAM3N, SAM3X, SAM3S, SAM3U, SAM4S, SAMx7x
 * `sam4l.c`: Atmel SAM4L
 * `samd.c`: Atmel SAM D20, D21
-* `samx5x.c`: Atmel SAMx5xqq
 * `samdx5x.c`:Atmel SAMD5x/E5x
+* `samx5x.c`: Atmel SAMx5xqq
 * `stm32f1.c`: ST Microelectronics STM32F0, STM32F1, STM32F3
 * `stm32f4.c`: ST Microelectronics STM32F2, STM32F4, STM32F7
 * `stm32g0.c`: ST Microelectronics G0
@@ -30,7 +31,7 @@ Memory map and flash programming are supported for these specific implementation
 * `stm32l0.c`: ST Microelectronics STM32L0, STM32L1
 * `stm32l4.c`: ST Microelectronics STM32L4, STM32G0, STM32G4
 
-Last Updated: Sep 7, 2021
+Last Updated: Sep 6, 2022 (Partial update)
 
 As additions happen, you to update the firmware to profit from these additions.
 There is experimental support for Cortex-A (ARMv7-A architecture).  This is being used with success on Xilinx Zynq-7000 SoC (Dual-core Cortex-A9) and Raspberry Pi 2 (Quad-core Cortex-A7).
