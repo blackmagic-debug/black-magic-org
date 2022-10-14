@@ -32,7 +32,7 @@ If you set one BMP to debug another, then you can load firmware using gdb into t
 
 [lpad]: https://launchpad.net/gcc-arm-embedded/
 [cable]: https://1bitsquared.com/products/black-magic-01in-pin-header-serial-cable
-[upd]: https://github.com/blackmagic-debug/blackmagic/wiki/Upgrading-Firmware
+[upd]: https://black-magic.org/upgrade.html
 
 ## Implementing the Driver
 
