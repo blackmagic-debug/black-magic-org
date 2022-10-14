@@ -9,7 +9,7 @@ Projects useful to BMP users:
 - [stm32flash](https://sourceforge.net/projects/stm32flash/) - Flash STM32 over built-in serial bootloader
 
 EDA tools:
-- [KiCad](http://kicad-pcb.org/)
+- [KiCad](https://www.kicad.org/)
 - [gEDA](http://www.geda-project.org/) / [PCB](http://pcb.geda-project.org/)
 
 MCU Debugger Software:
