@@ -13,5 +13,6 @@ initialise_monitor_handles();
 
 Arm Arduino users can use the semihosting library from the Library Manager.
 
-This document describes the low level interface on the ARM side:
-[Semihosting for AArch32 and AArch64](https://static.docs.arm.com/100863/0300/semihosting.pdf)
+These documents from ARM describes the low level interface the target must implement:
+
+* Semihosting for ARM (PDF)[https://documentation-service.arm.com/static/5e959afadbfe4826b648fcaa?token=#E8.CIHBDHFF] (HTML)[https://developer.arm.com/documentation/dui0058/d/semihosting/semihosting?lang=en]
