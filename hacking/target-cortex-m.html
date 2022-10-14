@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
     <link rel="icon" href="../_static/favicon/icon.svg" type="image/svg+xml">
     <link rel="icon" href="../_static/favicon/favicon-16x16.png" sizes="16x16" type="image/png">
     <link rel="icon" href="../_static/favicon/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -46,6 +46,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/asciinema-player_2.6.1.js"></script>
     <script src="../_static/platformpicker.js"></script>
     <link rel="canonical" href="https://black-magic.org/hacking/target-cortex-m.html" />
@@ -123,7 +124,7 @@
 <li><p>Picoblade Pin 3 (purple) =&gt; JTAG Plug pin 7</p></li>
 <li><p>Picoblade Pin 4 (black) =&gt; JTAG Plug pin 8 (or any even pin number above 2)</p></li>
 </ul>
-<p>If you set one BMP to debug another, then you can load firmware using gdb into the BMP. If you are simply building the firmware and evaluating its function by reading the output on <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> statements then you will need to use the <code class="docutils literal notranslate"><span class="pre">dfu-util</span></code> to update the firmware. (see <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/wiki/Upgrading-Firmware">Updating the Firmware</a>).</p>
+<p>If you set one BMP to debug another, then you can load firmware using gdb into the BMP. If you are simply building the firmware and evaluating its function by reading the output on <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> statements then you will need to use the <code class="docutils literal notranslate"><span class="pre">dfu-util</span></code> to update the firmware. (see <a class="reference external" href="https://black-magic.org/upgrade.html">Updating the Firmware</a>).</p>
 </section>
 <section id="implementing-the-driver">
 <h2>Implementing the Driver<a class="headerlink" href="#implementing-the-driver" title="Permalink to this heading">¶</a></h2>
@@ -328,7 +329,7 @@ Finally you will add a local, statically defined, function call which can write 
       &copy;2022, Piotr Esden-Tempski <piotr@esden.net>; 2022, Rachel Mant <git@dragonmux.network>.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.2.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>

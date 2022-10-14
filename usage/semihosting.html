@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
     <link rel="icon" href="../_static/favicon/icon.svg" type="image/svg+xml">
     <link rel="icon" href="../_static/favicon/favicon-16x16.png" sizes="16x16" type="image/png">
     <link rel="icon" href="../_static/favicon/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -46,6 +46,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/asciinema-player_2.6.1.js"></script>
     <script src="../_static/platformpicker.js"></script>
     <link rel="canonical" href="https://black-magic.org/usage/semihosting.html" />
@@ -111,8 +112,10 @@
 </pre></div>
 </div>
 <p>Arm Arduino users can use the semihosting library from the Library Manager.</p>
-<p>This document describes the low level interface on the ARM side:
-<a class="reference external" href="https://static.docs.arm.com/100863/0300/semihosting.pdf">Semihosting for AArch32 and AArch64</a></p>
+<p>These documents from ARM describes the low level interface the target must implement:</p>
+<ul class="simple">
+<li><p>Semihosting for ARM (PDF)[https://documentation-service.arm.com/static/5e959afadbfe4826b648fcaa?token=#E8.CIHBDHFF] (HTML)[https://developer.arm.com/documentation/dui0058/d/semihosting/semihosting?lang=en]</p></li>
+</ul>
 </section>
 
 <div class="section">
@@ -268,7 +271,7 @@
       &copy;2022, Piotr Esden-Tempski <piotr@esden.net>; 2022, Rachel Mant <git@dragonmux.network>.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.2.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>
