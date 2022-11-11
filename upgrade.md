@@ -91,7 +91,3 @@ An alternative solution is using `stm32_mem.py` script included in the Black Mag
 ```bash
 cd blackmagic && scripts/stm32_mem.py blackmagic.bin
 ```
-
-### Built-in Upgrade tool
-
-Instructions for Linux in [hacking section](https://github.com/blacksphere/blackmagic/wiki/Hacking#updating-firmware)
