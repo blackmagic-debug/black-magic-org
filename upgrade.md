@@ -10,7 +10,7 @@ Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware sel
 * You can find the bleeding cutting edge binaries uploaded as assets on the ["build and upload" GitHub actions page](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml), Click on the newest successful build and download the `blackmagic-firmware.zip` file. It contains binaries for all the supported platforms.
 * When using the daily builds expect breaking changes. Please report issues on [our issue page](https://github.com/blackmagic-debug/blackmagic/issues) or ask on our Discord server.
 
-Download and build, or directly install the bmputil tool
+Clone and build, or directly install the bmputil tool
 
 ```bash
 cargo install --git https://github.com/blackmagic-debug/bmputil
@@ -42,6 +42,25 @@ If `dfu-util` fails to switch your BMP into bootloader mode, or you feel like yo
 ```
 
 ## Windows
+
+### bmputil
+
+Download or compile a Black Magic Probe (BMP) firmware.
+
+Clone and build, or directly install the bmputil tool:
+
+```bash
+cargo install --git https://github.com/blackmagic-debug/bmputil
+```
+
+Plug in your Black Magic Probe and run the following command:
+
+```bash
+bmputil flash blackmagic-native.elf
+```
+
+bmputil will automatically take care of your driver needs as appropriate.
+Do **not** run Zadig on the DFU endpoint if using bmputil.
 
 ### dfu-util
 
