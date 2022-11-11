@@ -11,24 +11,28 @@ You can find the public API in [`target.h`](https://github.com/blackmagic-debug/
 Structure definitions and convenience functions for use in target implementations are defined in [target/target_internal.h](https://github.com/blackmagic-debug/blackmagic/blob/master/src/target/target_internal.h). Specific target implementations fill in the function pointers in these structures for their device specific implementations
 
 ## Raw JTAG Devices
+
 Supported JTAG devices are defined in [target/jtag_scan.c](https://github.com/blackmagic-debug/blackmagic/blob/master/src/target/jtag_scan.c#L35)
 
 The `.handler` function is called when a device IDCODE matches `.idcode` with `.idmask` applied.
 It is the responsibility of the handler function to instantiate a new target with `target_new` and fill in the access methods.
 
 These functions provide access to the JTAG IR and DR registers:
+
 ```c
 void jtag_dev_write_ir(jtag_dev_t *dev, uint32_t ir);
 void jtag_dev_shift_dr(jtag_dev_t *dev, uint8_t *dout, const uint8_t *din, int ticks);
 ```
 
 ## ARM implementations (ADIv5)
+
 This table is a list of known Coresight CIDR and PIDR values can be found in [target/adiv5.c](
 https://github.com/blackmagic-debug/blackmagic/blob/master/src/target/adiv5.c#L156)
 
 The ROM table is read from the ADIv5 Mem-AP, and the appropriate probe function is called in [target/adiv5.c](https://github.com/blackmagic-debug/blackmagic/blob/master/src/target/adiv5.c#L323).
 
 There is currently support for:
+
 - ARMv6-M/ARMv7-M ([target/cortexm.c](https://github.com/blackmagic-debug/blackmagic/blob/master/src/target/cortexm.c))
 - ARMv7-A ([target/cortexa.c](https://github.com/blackmagic-debug/blackmagic/blob/master/src/target/cortexa.c))
 
@@ -37,7 +41,9 @@ The [generic Cortex-M driver](https://github.com/blackmagic-debug/blackmagic/blo
 These probe functions should probe the target device, add any memories they support with `target_add_ram` and `target_add_flash`, and return `true` for any device they support, or return `false` otherwise.
 
 ## Flash programming
+
 The ADIv5 interface does not directly provide a way to write to flash. It's implemented differently for different target devices.  This is done by filling in the function pointers in a `struct target_flash` structure and calling `target_add_flash` on the target in the device specific probe function.
+
 ```c
 struct target_flash {
     target_addr start;      /* Base address for this block of flash memory */
@@ -74,6 +80,7 @@ struct target_flash {
 ```
 
 ## Skeleton Driver
+
 ```c
 static int skeleton_flash_erase(struct target_flash *f,
                                 target_addr addr, size_t len) {...}
