@@ -2,13 +2,32 @@
 
 ## Linux / MacOS
 
-### dfu-util
+### bmputil
 
-Download or compile a Black Magic Debug (BMD) firmware. Regarding firmware selection:
+Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection:
 
 * You can find the newest pre-built binaries on the [GitHub Release Page](https://github.com/blackmagic-debug/blackmagic/releases).
 * You can find the bleeding cutting edge binaries uploaded as assets on the ["build and upload" GitHub actions page](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml), Click on the newest successful build and download the `blackmagic-firmware.zip` file. It contains binaries for all the supported platforms.
 * When using the daily builds expect breaking changes. Please report issues on [our issue page](https://github.com/blackmagic-debug/blackmagic/issues) or ask on our Discord server.
+
+Download and build, or directly install the bmputil tool
+
+```bash
+cargo install --git https://github.com/blackmagic-debug/bmputil
+```
+
+Plug in your Black Magic Probe and run the following command:
+
+```bash
+bmputil flash blackmagic-native.elf
+```
+
+Provided you have suitable udev rules in play, this will already do everything you need and automatically reboot your unit back into the new firmware.
+
+### dfu-util
+
+Download or compile a Black Magic Debug (BMD) firmware.
+As with the [bmputil](#bmputil) section above, the same considerations exist with this method for firmware selection.
 
 Plug in the Black Magic Probe into your computer and run the following command:
 
