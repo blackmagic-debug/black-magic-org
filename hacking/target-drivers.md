@@ -4,11 +4,20 @@ This is a placeholder of cut-and-pasted text until I have a chance to write up s
 
 ## External target API
 
-You can find the public API in [`target.h`](https://github.com/blackmagic-debug/blackmagic/blob/master/src/include/target.h), used by the GDB server. Nothing outside of this header should be accessed from outside of `src/target/*`
+You can find the public API in [`target.h`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/include/target.h), used by the GDB server. Nothing defined in `src/target` outside of this header should be accessed from outside of `src/target/*`
 
 ## Internal target API
 
-Structure definitions and convenience functions for use in target implementations are defined in [target/target_internal.h](https://github.com/blackmagic-debug/blackmagic/blob/master/src/target/target_internal.h). Specific target implementations fill in the function pointers in these structures for their device specific implementations
+There are several internal API headers:
+
+* [`target/target_internal.h`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/target_internal.h)
+  This header contains structure definitions and convinence functions for use in target support implementations.
+  Specific target implementations fill in the function pointers in these structures for their device specific
+  implementations.
+* [`target/target_probe.h`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/target_probe.h)
+  This header contains declarations for all the *_probe functions so they're all declared in one central place.
+  This header works in tandem with `target/target_probe.c` to allow any target support implementation to be
+  switched off as-needed without this breaking the build.
 
 ## Raw JTAG Devices
 
