@@ -1,7 +1,5 @@
 # Adding Target Drivers
 
-This is a placeholder of cut-and-pasted text until I have a chance to write up some real documentation for the target API.
-
 ## External target API
 
 You can find the public API in [`target.h`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/include/target.h), used by the GDB server. Nothing defined in `src/target` outside of this header should be accessed from outside of `src/target/*`
