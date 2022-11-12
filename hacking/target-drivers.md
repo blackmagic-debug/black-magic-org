@@ -82,19 +82,48 @@ void jtag_dev_shift_dr(uint8_t dev_index, uint8_t *data_out, const uint8_t *data
 
 ## ARM implementations (ADIv5)
 
-This table is a list of known Coresight CIDR and PIDR values can be found in [target/adiv5.c](
-https://github.com/blackmagic-debug/blackmagic/blob/master/src/target/adiv5.c#L156)
+There are a few moving parts to the ADIv5 (ARM Debug Interface v5) implementation. The most important ones are:
 
-The ROM table is read from the ADIv5 Mem-AP, and the appropriate probe function is called in [target/adiv5.c](https://github.com/blackmagic-debug/blackmagic/blob/master/src/target/adiv5.c#L323).
+* The debug interface logic itself found in
+  [`target/adiv5.c`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/adiv5.c).
+* The generic logic for Cortex-M parts which is found in
+  [`target/cortexm.c`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/cortexm.c).
+  Please note, this presently supports the ARMv6-M and ARMv7-M profiles only.
+* The generic logic for Cortex-A parts whcih is found in
+  [`target/cortexa.c`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/cortexa.c).
+  Please note, this presently supports the ARMv7-M profile only.
 
-There is currently support for:
+### ADIv5 Coresight identification
 
-- ARMv6-M/ARMv7-M ([target/cortexm.c](https://github.com/blackmagic-debug/blackmagic/blob/master/src/target/cortexm.c))
-- ARMv7-A ([target/cortexa.c](https://github.com/blackmagic-debug/blackmagic/blob/master/src/target/cortexa.c))
+`adiv5.c` implements not just logic for accessing the Debug Port and Access Port components of an ADIv5 Coresight
+interface over either JTAG or SWD, but also implements the generic identification logic for devices using this
+specification.
 
-The [generic Cortex-M driver](https://github.com/blackmagic-debug/blackmagic/blob/master/src/target/cortexm.c#L257) calls probe functions for each supported vendor device.
+When a device is identified during scan that talks ADIv5, the various Coresight CIDR and PIDR values get read out
+automatically and decoded. A list of known component class values can be found at the top of `adiv5.c` and
+a list of known JEP-106 manufacturer codes (encoded in the PIDR register for each ROM table chunk that must be read)
+can be found in the [`target/adiv5.h`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/adiv5.h)
+header.
 
-These probe functions should probe the target device, add any memories they support with `target_add_ram` and `target_add_flash`, and return `true` for any device they support, or return `false` otherwise.
+Once an AP has been identified as belonging to either a Cortex-M or a Cortex-A core, the ADIv5 code dispatches to
+`cortexm_probe` or `cortexa_probe` accordingly.
+
+### Corex-M device handling
+
+Special consideration is made for ARM's JEP-106 which represents an ARM Cortex device which has not had its ROM
+tables customised by the device manufacturer. When the Cortex-M support encounters a device like this in
+`cortexm_probe`, the ARM part ID retreived from the ROM tables is used to identify which type of Cortex-M core
+is being probed, and further part identification is then dispatched on the core type.
+
+In either this case or the normal manufacturer-specific JEP-106 case, we then dispatch to one of a number of `_probe`
+routines that are then used to specifically identify the part and, on creating a positive part identification,
+configure any device-specific behaviour that needs to occur via the `target_s` structure, and if possible
+define any known RAM and Flash memory regions via `target_add_ram` and `target_add_flash` (the latter typically
+gets wrapped in a target-specific helper).
+
+Once a probe routine creates a positive identification on a part and configures the target structure and memory
+regions, it must return `true` to halt the probing process for the AP. If a probe routine fails to create a positive
+identification, it must return `false` as soon as possible.
 
 ## Flash programming
 
