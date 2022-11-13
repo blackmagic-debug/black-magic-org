@@ -1,14 +1,26 @@
-# Cortex M Targets
+# Cortex-M Targets
 
-Developing a new target driver for the Black Magic Probe is straight forward on many ARM platforms. This page collects some notes taken while developing drivers. As a convention, source files are referenced from the top level directory of the repository with a dot (.) so the directory for target files is `./src/target`.
+Developing a new target driver for the Black Magic Probe is straight forward on many ARM platforms.
+This page collects some notes taken while developing drivers.
+As a convention, source files are referenced from the top level directory of the repository with a dot (.)
+so the directory for target files is `./src/target`.
 
-## Hooking your Driver into the System
+## Hooking your target support into the system
 
-Your driver will typically be written in a single source file which should be in the `./src/target` directory and named with an obvious name. For example, drivers for the ST Micro STM32F1 series are in the file `src/target/stm32f1.c`
+Your driver will typically be written in a single source file which should be in the `./src/target` directory
+and named after the family you wish to add support for.
+For example, support for the ST Micro STM32F1 series are in the file `src/target/stm32f1.c`
 
-This file will define exactly one globally visible function named `<target>_probe` with the C prototype of `bool <target>_probe(target *t);` Any other functions or data you declare in this file should be declared `static` to avoid name collisions with other functions.
+This file will define exactly one globally visible function named `<target>_probe` with the C prototype of
+`bool <target>_probe(target *t);`. Any other functions or data you declare in this file should be declared
+`static` to avoid name collisions with other target implementations.
 
-You will modify three files to make your target part of the BMP build, the first is the make file, `./src/Makefile` which should have your source added to the `SRC =` definition. The second is `./src/target/cortexm.c` where you will add a line of the form `PROBE(<target>_probe);` in the sequence of other calls to probe functions. The third file will be `./src/target/target_internal.h` where you will add a prototype for your probe function.
+You will modify four files to make your target part of the BMP build, the first is the make file, `./src/Makefile`
+which should have your source added to the `SRC =` definition.The second is `./src/target/cortexm.c` where you will
+add a line of the form `PROBE(<target>_probe);` in the sequence of other calls to probe functions.
+The third file will be `./src/target/target_probe.h` where you will add a prototype for your probe function.
+Finally `./src/target/target_probe.c` where you will use the `TARGET_PROBE_WEAK_NOP` macro to add a weak linked
+stub for your probe function.
 
 A typical target driver will be updates to these three files and your new `./src/target/<target>.c` file.
 
