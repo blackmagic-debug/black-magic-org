@@ -23,10 +23,11 @@ Once you have a DEBUG enabled build you can connect to the BMP's non-GDB serial 
 To set up one BMP debugging a second BMP is not particularly difficult but it can be unwieldly. Start with the BMP that is going to run the new target code, connect its SWD, SCLK, tPWR, and GND pins on the PICOBlade connector under the chip, to the second BMP unit. If you have the mini-10 to JTAG adapter board and a picoblade serial port cable, you can push the connectors on the serial port cable on to the pins in the 10 pin JTAG port.
 
 The connection sequence from the Picoblade (with the [1BitSquared cable][cable]) to the JTAG connector is;
-  * Picoblade Pin 1 (red) => JTAG Plug pin 1
-  * Picoblade Pin 2 (green) => JTAG Plug pin 9
-  * Picoblade Pin 3 (purple) => JTAG Plug pin 7
-  * Picoblade Pin 4 (black) => JTAG Plug pin 8 (or any even pin number above 2)
+
+* Picoblade Pin 1 (red) => JTAG Plug pin 1
+* Picoblade Pin 2 (green) => JTAG Plug pin 9
+* Picoblade Pin 3 (purple) => JTAG Plug pin 7
+* Picoblade Pin 4 (black) => JTAG Plug pin 8 (or any even pin number above 2)
 
 If you set one BMP to debug another, then you can load firmware using gdb into the BMP. If you are simply building the firmware and evaluating its function by reading the output on `DEBUG` statements then you will need to use the `dfu-util` to update the firmware. (see [Updating the Firmware][upd]).
 
@@ -43,9 +44,11 @@ The functions `target_mem_read32` and `target_mem_write32` will read and write l
 That section will also typically document what memory configurations are available based on information contained in the CHIPID register. Your probe function will use this information to confirm that the target is something you recognize, and then decode the parameters in register according to the datasheet to identify FLASH address location and size, and RAM address location and size.
 
 ### Adding RAM
+
 For each discontinuous region of RAM your code will call `target_add_ram` with the pointer to the target structure, the address of the RAM chunk, and its size in bytes. Each time you call this function, an additional chunk of RAM is added to the gdb memory map for the target.
 
 ### Adding FLASH
+
 As you did with RAM you will need to tell gdb about the size(s) and addresses of programmable readonly memory (FLASH) on the device. Because every device tends to have a slightly different way of programming things, adding a segment of FLASH memory means adding the address and size of FLASH, and then adding pointers to functions that can erase and write the flash (reading is handled by just reading memory).
 
 Some FLASH memories can only be erased all at once, some can be erased in variable sized sectors, and others can be erased in pages of fixed size. A _region_ is FLASH at a given address, and of a given length, that has the same erase and programming requirements.
@@ -69,7 +72,7 @@ If the command fails you should return `false` and if it succeeds you should ret
 
 ## Special Handling
 
-If you have recognized the target, filled out the `target_s` structure for it, populated the memory map and potentially added a new command or two, the final steps are to set the name of your driver in the `driver` string pointer of the target structure and decide if you need any special reset handling. Special reset handling comes in two forms, avoiding system reset and extra care after reset. 
+If you have recognized the target, filled out the `target_s` structure for it, populated the memory map and potentially added a new command or two, the final steps are to set the name of your driver in the `driver` string pointer of the target structure and decide if you need any special reset handling. Special reset handling comes in two forms, avoiding system reset and extra care after reset.
 
 Some targets can lose debugger state and detach if you assert system reset. This is not supposed to happen according to the ARM documents but it has been known to be an issue. You can tell the generic Cortex M driver not to use sRST by setting an option `CORTEXM_TOPT_INHIBIT_SRST` in the `target_options` field of the target structure. Normally when the BMP is trying to reset the target it will call `platform_srst_set_val` with a `true` state followed by a `false` state to assert reset. If you find this causes your target to detach or get lost, use the `CORTEXM_TOPT_INHIBIT_SRST` option to tell the generic driver not to do that. You need only set the option in your `target_options` during the probe function.
 
@@ -90,4 +93,4 @@ Implementation of a new Cortex M target driver requires that you write code that
 
 Once you've done that you have a new target driver for the BMP.
 
-After adding flash, if there are any special commands for this target that are useful you add them by 
+After adding flash, if there are any special commands for this target that are useful you add them by
