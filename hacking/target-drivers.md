@@ -110,7 +110,7 @@ Once an AP has been identified as belonging to either a Cortex-M or a Cortex-A c
 
 Special consideration is made for ARM's JEP-106 which represents an ARM Cortex device which has not had its ROM
 tables customised by the device manufacturer. When the Cortex-M support encounters a device like this in
-`cortexm_probe`, the ARM part ID retreived from the ROM tables is used to identify which type of Cortex-M core
+`cortexm_probe`, the ARM part ID retrieved from the ROM tables is used to identify which type of Cortex-M core
 is being probed, and further part identification is then dispatched on the core type.
 
 In either this case or the normal manufacturer-specific JEP-106 case, we then dispatch to one of a number of `_probe`
@@ -125,8 +125,8 @@ identification, it must return `false` as soon as possible.
 
 ## Flash programming
 
-None of the generic target support is able to provide a generic way to erase or write Flash, as this is implemented
-differently for each target device. Instead, as part of writing target support, you must supply suitable Flash
+None of the generic targets are able to provide a generic way to erase or write Flash, as this is implemented
+differently for each target device. Instead, as part of the writing target support, you must supply suitable Flash
 erase and write routines. The target layer then interacts with the Flash of your target through these routines,
 which may even be specific to specific Flash regions depending on how the Flash/NVM controller in the target
 device works.
@@ -239,7 +239,7 @@ typedef struct target_flash {
 
 Below is a skeleton for adding support for a new target. Please note that it is preferred to forward declare the Flash
 routines and define them after `*_add_flash` and `*_probe`. Functionally it makes no difference, but this improves
-the navicability of the resulting target support.
+the navigability of the resulting target support.
 
 ```c
 /* Declare the license you wish to use here */
@@ -302,7 +302,7 @@ and also define a weak linked stub for it in
 The existing stubs should serve as a decent example for how to do this.
 
 If you wish your new target support to provide functionality like mass erase, there are members in the target structure
-such as `t->mass_erase` specifically for this and shoudl be populated in your probe routine
+such as `t->mass_erase` specifically for this and should be populated in your probe routine.
 Similarly, if you wish to add custom commands for your target, you need to build a `command_s` structure array at the top of your target suppport implementation and register it in the probe routine with `target_add_commands()`.
 An example of how to define this custom command block follows:
 
