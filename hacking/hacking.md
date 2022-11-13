@@ -40,7 +40,7 @@ on the command line like e.g.:
 make CROSS_COMPILE=arm-cortexm3-eabi-
 ```
 
-This will result in binary files:
+This will result in the following binary files:
 
 * `blackmagic.elf` - ELF binary of the Black Magic debug probe.
 * `blackmagic.bin` - Flat binary of the Black Magic debug probe, load at `0x8002000`.
@@ -50,13 +50,13 @@ This will result in binary files:
 ## Alternative Hardware
 
 A number of users have contributed alternative hardware designs that are compatible with the native firmware.
-Some of these designs are in the [hardware repo](https://github.com/blackmagic-debug/blackmagic-hardware/tree/master/contrib). Check the `README.md` files for details. E.g. to compile a BMP for an STLINKV2 to run as alternative to the ST firmware, compile
+Some of these designs are in the [hardware repo](https://github.com/blackmagic-debug/blackmagic-hardware/tree/master/contrib). Check the `README.md` files for details. For instance, to compile a BMP for an ST-Link v2 to run as alternative to the ST firmware, compile:
 
 ```bash
 make PROBE_HOST=stlink ST_BOOTLOADER=1
 ```
 
-replug the STLink to get into the bootlaoder and load with [stlink-tools] (<https://github.com/jeanthom/stlink-tool>)
+then replug the STLink to get into the bootlaoder and load with [stlink-tools] (<https://github.com/jeanthom/stlink-tool>)
 
 ```bash
 stlink-tools blackmagic.bin
@@ -69,7 +69,7 @@ Sid Price wrote a detailed step by step guide describing [how to set up CygWin a
 ### Compiling as a PC application
 
 The Black Magic application can also be compiled as a native PC application.
-Supported probes are BMP (with recent firmware), StlinkV2/3, FTDI-MPSSE probes, JLINK and CMSIS-Dap.
+Supported probes are BMP (with recent firmware), ST-Link v2/v3, FTDI-MPSSE probes, JLink and CMSIS-DAP.
 
 Compile the application with the command:
 

@@ -31,22 +31,22 @@ If you wish to interface with the target serial port having built the firmware w
 then you will also need to install a serial program such as minicom or screen.
 
 We advise using the official ARM toolchain even over any distribution toolchain you might be able to install
-from a package manager. You can aquire the official toolchain in one of two flavours - the older
+from a package manager. You can acquire the official toolchain in one of two flavours - the older
 [GNU Arm Embedded Toolchain](https://developer.arm.com/downloads/-/gnu-rm) flavour,
 and the newer [Arm GNU Toolchain](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads) flavour.
-Both should work, however the project author currently test with and use the older toolchain flavour.
+Both should work, however the project authors currently test with and use the older toolchain flavour.
 
-the Black Magic Firmware supports two kinds of debugging, however to use them may require disabling some target
+The Black Magic Firmware supports two kinds of debugging, however, using them may require disabling some target
 support to free up enough Flash space for the extra code and data needed. The first kind of debugging uses
 debug statements littered through the code and the secondary serial connection. You can enable this by passing
 `ENABLE_DEBUG` to the build, as in `make ENABLE_DEBUG=1`. The second kind of debugging is for Black Magic Inception
 and involves switching to debug optimisations and enabling debug information generation in the build. This can be
-achieved by passing `OPT_FLAGS` to the build, as in `make OPT_FLAGS="-Og -g"` - these approaches are not mutually
+achieved by passing `OPT_FLAGS` to the build, as in `make OPT_FLAGS="-Og -g"` -- these approaches are not mutually
 exclusive of each other and can both be enabled at the same time by combining the make arguments:
 `make ENABLE_DEBUG=1 OPT_FLAGS="-Og -g"`.
 
-If instead of trying to do debug builds to fit in Flash you need a more general approach **and do not need to debug
-the JTAG or SWD bitbanging routines**, you can alternatively use BMDA (Black Magic Debug App) which carries none
+If instead of trying to do debug builds to fit in Flash you need a more general approach and **do not** need to debug
+the JTAG or SWD bitbanging routines, you can alternatively use BMDA (Black Magic Debug App) which carries none
 of the restrictions of the firmware. To do this, simply build with the following options to Make:
 `make PROBE_HOST=hosted ENABLE_DEBUG=1 ASAN=1 OPT_FLAGS="-Og -g"`.
 Even though `ASAN=1` is optional, it is *strongly* advised you enable this when doing development on BMP.
@@ -58,7 +58,7 @@ can set up Black Magic Inception, detailed in the following section.
 
 ## Black Magic Inception
 
-There are a couple of generations of this. The older generation uses the auxilary serial connector on BMP which
+There are a couple of generations of this. The older generation uses the auxiliary serial connector on BMP which
 happens to be directly attached to the SWD pins of the processor on BMP, and the newer generation has a dedicated
 pinheader connector for the purpose.
 
