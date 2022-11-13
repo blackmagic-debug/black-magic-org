@@ -26,26 +26,82 @@ A typical target driver will be updates to these three files and your new `./src
 
 ## Setting up a Development Environment
 
-There are two components to setting up the environment, one is compiling the code which should probably use the [GCC ARM Embedded][lpad] toolchain that is available on launchpad.net.
+You will need three things for a functioning development environment: GNU Make, bmputil, and a compiler.
+If you wish to interface with the target serial port having built the firmware with debugging enabled,
+then you will also need to install a serial program such as minicom or screen.
 
-To enable debugging code in the BMP, you should set the environment variable `ENABLE_DEBUG` prior to making the sources. You can do that in a couple of ways, either on the command line with syntax like `bash$ ENABLE_DEBUG=1 make` or in the shell environment with `bash$ export ENABLE_DEBUG=1` I found the latter to be more useful.
+We advise using the official ARM toolchain even over any distribution toolchain you might be able to install
+from a package manager. You can aquire the official toolchain in one of two flavours - the older
+[GNU Arm Embedded Toolchain](https://developer.arm.com/downloads/-/gnu-rm) flavour,
+and the newer [Arm GNU Toolchain](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads) flavour.
+Both should work, however the project author currently test with and use the older toolchain flavour.
 
-Once you have a DEBUG enabled build you can connect to the BMP's non-GDB serial port for debug messages. They will appear if, in your gdb session, you issue the command `mon debug_bmp enable`. Alternatively, the serial port connector has the SWD pins for the BMP's processor! So you can debug a new BMP target with a second BMP as the first BMP's debugger. When debugging with another BMP device the debug messages who up in the second BMP devices gdb session as it uses semi-hosting to direct them out.
+the Black Magic Firmware supports two kinds of debugging, however to use them may require disabling some target
+support to free up enough Flash space for the extra code and data needed. The first kind of debugging uses
+debug statements littered through the code and the secondary serial connection. You can enable this by passing
+`ENABLE_DEBUG` to the build, as in `make ENABLE_DEBUG=1`. The second kind of debugging is for Black Magic Inception
+and involves switching to debug optimisations and enabling debug information generation in the build. This can be
+achieved by passing `OPT_FLAGS` to the build, as in `make OPT_FLAGS="-Og -g"` - these approaches are not mutually
+exclusive of each other and can both be enabled at the same time by combining the make arguments:
+`make ENABLE_DEBUG=1 OPT_FLAGS="-Og -g"`.
 
-To set up one BMP debugging a second BMP is not particularly difficult but it can be unwieldly. Start with the BMP that is going to run the new target code, connect its SWD, SCLK, tPWR, and GND pins on the PICOBlade connector under the chip, to the second BMP unit. If you have the mini-10 to JTAG adapter board and a picoblade serial port cable, you can push the connectors on the serial port cable on to the pins in the 10 pin JTAG port.
+If instead of trying to do debug builds to fit in Flash you need a more general approach **and do not need to debug
+the JTAG or SWD bitbanging routines**, you can alternatively use BMDA (Black Magic Debug App) which carries none
+of the restrictions of the firmware. To do this, simply build with the following options to Make:
+`make PROBE_HOST=hosted ENABLE_DEBUG=1 ASAN=1 OPT_FLAGS="-Og -g"`.
+Even though `ASAN=1` is optional, it is *strongly* advised you enable this when doing development on BMP.
 
-The connection sequence from the Picoblade (with the [1BitSquared cable][cable]) to the JTAG connector is;
+With the firmware variant, once you have a debug-enabled build you can connect to the BMP's non-GDB serial port
+to get the additional debug messages. The extra messages are only enabled if you issue `monitor debug_bmp enable`
+(or a shortening such as `mon debug en`) from in GDB after connecting in to your BMP as normal. Alternatively, you
+can set up Black Magic Inception, detailed in the following section.
 
-* Picoblade Pin 1 (red) => JTAG Plug pin 1
-* Picoblade Pin 2 (green) => JTAG Plug pin 9
-* Picoblade Pin 3 (purple) => JTAG Plug pin 7
-* Picoblade Pin 4 (black) => JTAG Plug pin 8 (or any even pin number above 2)
+## Black Magic Inception
 
-If you set one BMP to debug another, then you can load firmware using gdb into the BMP. If you are simply building the firmware and evaluating its function by reading the output on `DEBUG` statements then you will need to use the `dfu-util` to update the firmware. (see [Updating the Firmware][upd]).
+There are a couple of generations of this. The older generation uses the auxilary serial connector on BMP which
+happens to be directly attached to the SWD pins of the processor on BMP, and the newer generation has a dedicated
+pinheader connector for the purpose.
 
-[lpad]: https://launchpad.net/gcc-arm-embedded/
-[cable]: https://1bitsquared.com/products/black-magic-01in-pin-header-serial-cable
-[upd]: https://black-magic.org/upgrade.html
+### Debugging the older generation
+
+With the older generation, you can debug a new BMP target with a second BMP as the first BMP's debugger.
+When debugging with another BMP device the debug messages who up in the second BMP devices gdb session as
+it uses semi-hosting to direct them out.
+
+To set up one BMP debugging a second BMP is not particularly difficult but it can be unwieldly. Start with the
+BMP that is going to run the new target code, connect its SWD, SCLK, tPWR/vRef, and GND pins on the PicoBlade
+connector on the rear side of the board, to the second BMP unit. If you have the mini-10 to JTAG adapter board
+and a PicoBlade serial port cable, you can push the connectors on the serial port cable on to the pins on the
+10-pin debug target connector.
+
+The connection sequence from the PicoBlade
+(with the [1BitSquared cable](https://1bitsquared.com/products/black-magic-01in-pin-header-serial-cable))
+to the 10-pin debug target connector is:
+
+* PicoBlade Pin 1 (red) => 10-pin connector pin 1
+* PicoBlade Pin 2 (green) => 10-pin connector pin 4
+* PicoBlade Pin 3 (purple) => 10-pin connector pin 2
+* PicoBlade Pin 4 (black) => 10-pin connector pin 3 or 5
+
+For more information on what connections are being made here, see the [pinout glossary](../knowledge/pinouts.md).
+
+If you are using an older generation BMP that uses the 20-pin ARM debug connector, you will instead want to connect
+the green wire to pin 9 of the JTAG connector, purple to pin 7, and black to any even pin on the JTAG connector
+other than pin 2.
+
+If you set one BMP to debug another, then you can load firmware using GDB into the BMP. If you are simply building
+the firmware and evaluating its function by reading the output from `DEBUG_*` statements then you will need to use
+`bmputil` or `dfu-util` to update the firmware. (see [Updating the Firmware](../upgrade.md)).
+
+### Debugging newer generations
+
+With newer generation BMPs, there is a dedicated set of 0.05" (1.27mm) pin headers provided to allow connecting
+one BMP to another using a
+[1BitSquared JTAG SWD adaptor](https://1bitsquared.com/collections/accessories/products/jtag-swd-adapter)
+or the 5-pin variant of this which includes the ~RST signal too.
+
+To use this, simply plug the adaptor in as labeled on the BMP you want to debug, connect a 10-pin IDC cable between it
+and the second BMP you are using as the first's debugger, and proceed as you would on the older generation boards.
 
 ## Implementing the Driver
 
