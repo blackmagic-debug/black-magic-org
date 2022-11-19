@@ -115,18 +115,18 @@ That section will also typically document what memory configurations are availab
 
 For each discontinuous region of RAM your code will call `target_add_ram` with the pointer to the target structure, the address of the RAM chunk, and its size in bytes. Each time you call this function, an additional chunk of RAM is added to the gdb memory map for the target.
 
-### Adding FLASH
+### Adding Flash
 
-As you did with RAM you will need to tell gdb about the size(s) and addresses of programmable readonly memory (FLASH) on the device. Because every device tends to have a slightly different way of programming things, adding a segment of FLASH memory means adding the address and size of FLASH, and then adding pointers to functions that can erase and write the flash (reading is handled by just reading memory).
+As you did with RAM you will need to tell gdb about the size(s) and addresses of programmable read-only memory (Flash) on the device. Because every device tends to have a slightly different way of programming things, adding a segment of Flash memory means adding the address and size of Flash, and then adding pointers to functions that can erase and write the Flash (reading is handled by just reading memory).
 
-Some FLASH memories can only be erased all at once, some can be erased in variable sized sectors, and others can be erased in pages of fixed size. A _region_ is FLASH at a given address, and of a given length, that has the same erase and programming requirements.
+Some Flash memories can only be erased all at once, some can be erased in variable sized sectors, and others can be erased in pages of fixed size. A _region_ is Flash at a given address, and of a given length, that has the same erase and programming requirements.
 
-You describe these in your target driver by populating a `target_flash` structure. This structure has members for the start, length, and blocksize of the FLASH you are describing. The blocksize is the smallest individual unit of flash that can be **erased**. So if your FLASH says that it must be erased in 8K byte segments, then your blocksize is 8192. If your FLASH can be erased a page at a time and a page is 256 bytes, then your blocksize is 256. You finish that off by adding a function call to a local, statically defined, function that can erase flash. It will be passed an address and a length which is compatible with your stated blocksize when your flash needs to be erased.
+You describe these in your target driver by populating a `target_flash` structure. This structure has members for the start, length, and blocksize of the Flash you are describing. The blocksize is the smallest individual unit of Flash that can be **erased**. So if your Flash says that it must be erased in 8K byte segments, then your blocksize is 8192. If your Flash can be erased a page at a time and a page is 256 bytes, then your blocksize is 256. You finish that off by adding a function call to a local, statically defined, function that can erase Flash. It will be passed an address and a length which is compatible with your stated blocksize when your Flash needs to be erased.
 
-The next section of this structure is for writing. It is simplest to set the write function call to the internal BMP function called `target_flash_write_buffered`. For the done function you set it to the internal function `target_flash_done_buffered`. Now you set the value `bufsize` to be the "writable unit" of flash (so one sector or one page depending on the flash) and the field `erased` to the state flash is in when it is erased (typically 0xff).
-Finally you will add a local, statically defined, function call which can write one buffer's worth of data to the flash. That function will be passed an address on a buffer boundary, and a buffer's worth of data to write.
+The next section of this structure is for writing. It is simplest to set the write function call to the internal BMP function called `target_flash_write_buffered`. For the done function you set it to the internal function `target_flash_done_buffered`. Now you set the value `bufsize` to be the "writable unit" of Flash (so one sector or one page depending on the Flash) and the field `erased` to the state Flash is in when it is erased (typically 0xff).
+Finally you will add a local, statically defined, function call which can write one buffer's worth of data to the Flash. That function will be passed an address on a buffer boundary, and a buffer's worth of data to write.
 
-Then you will add the flash segment by calling `target_add_flash` with the target pointer and a pointer to your `target_flash` structure.
+Then you will add the Flash segment by calling `target_add_flash` with the target pointer and a pointer to your `target_flash` structure.
 
 ### Custom Commands
 
