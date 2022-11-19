@@ -58,15 +58,15 @@ can set up Black Magic Inception, detailed in the following section.
 
 ## Black Magic Inception
 
-There are a couple of generations of this. The older generation uses the auxiliary serial connector on BMP which
-happens to be directly attached to the SWD pins of the processor on BMP, and the newer generation has a dedicated
-pinheader connector for the purpose.
+There are a couple of generations of this. The older generation (v2.0 hardware and older) uses the auxiliary
+serial connector on BMP which happens to be directly attached to the SWD pins of the processor on BMP, and
+the newer generation (v2.1 hardware and newer) has a dedicated pinheader connector for the purpose.
 
 ### Debugging the older generation
 
-With the older generation, you can debug a new BMP target with a second BMP as the first BMP's debugger.
-When debugging with another BMP device the debug messages who up in the second BMP devices gdb session as
-it uses semi-hosting to direct them out.
+With the older generation (v2.0 hardware and older), you can debug a new BMP target with a second BMP as
+the first BMP's debugger. When debugging with another BMP device the debug messages who up in the second
+BMP devices gdb session as it uses semi-hosting to direct them out.
 
 To set up one BMP debugging a second BMP is not particularly difficult but it can be unwieldly. Start with the
 BMP that is going to run the new target code, connect its SWD, SCLK, tPWR/vRef, and GND pins on the PicoBlade
@@ -95,8 +95,8 @@ the firmware and evaluating its function by reading the output from `DEBUG_*` st
 
 ### Debugging newer generations
 
-With newer generation BMPs, there is a dedicated set of 0.05" (1.27mm) pin headers provided to allow connecting
-one BMP to another using a
+With newer generation (v2.1 hardware and newer) BMPs, there is a dedicated set of 0.05" (1.27mm) pin headers
+provided to allow connecting one BMP to another using a
 [1BitSquared JTAG SWD adaptor](https://1bitsquared.com/collections/accessories/products/jtag-swd-adapter)
 or the 5-pin variant of this which includes the ~RST signal too.
 
