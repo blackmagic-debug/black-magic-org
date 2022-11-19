@@ -19,21 +19,15 @@
     <link rel="apple-touch-icon" href="_static/favicon/apple-touch-icon-152x152.png" sizes="152x152" type="image/png">
     <link rel="apple-touch-icon" href="_static/favicon/apple-touch-icon-180x180.png" sizes="180x180" type="image/png">
     <link rel="android-icon" href="_static/favicon/android-icon-192x192.png" sizes="192x192" type="image/png">
-
 <meta property="og:title" content="Firmware Upgrade" />
-  
 <meta property="og:type" content="website" />
-  
 <meta property="og:url" content="https://black-magic.org/upgrade.html" />
-  
 <meta property="og:site_name" content="Black Magic Debug" />
-  
-<meta property="og:description" content="Linux / MacOS: DFU-Util: Download or compile a Black Magic Debug (BMD) firmware. Regarding firmware selection: You can find the newest pre-built binaries on the GitHub Release Page., You can find t..." />
-  
+<meta property="og:description" content="Linux / MacOS: bmputil: Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection: You can find the newest pre-built binaries on the GitHub Release Page., You can find ..." />
 <meta property="og:image" content="https://black-magic.org/_static/blackmagic-logo.png" />
-  
 <meta property="og:image:alt" content="Black Magic Debug" />
-  
+<meta name="description" content="Linux / MacOS: bmputil: Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection: You can find the newest pre-built binaries on the GitHub Release Page., You can find ..." />
+
     <title>Firmware Upgrade &#8212; Black Magic Debug  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
@@ -105,16 +99,30 @@
 <h1>Firmware Upgrade<a class="headerlink" href="#firmware-upgrade" title="Permalink to this heading">¶</a></h1>
 <section id="linux-macos">
 <h2>Linux / MacOS<a class="headerlink" href="#linux-macos" title="Permalink to this heading">¶</a></h2>
-<section id="dfu-util">
-<h3>DFU-Util<a class="headerlink" href="#dfu-util" title="Permalink to this heading">¶</a></h3>
-<p>Download or compile a Black Magic Debug (BMD) firmware. Regarding firmware selection:</p>
+<section id="bmputil">
+<h3>bmputil<a class="headerlink" href="#bmputil" title="Permalink to this heading">¶</a></h3>
+<p>Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection:</p>
 <ul class="simple">
 <li><p>You can find the newest pre-built binaries on the <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases">GitHub Release Page</a>.</p></li>
 <li><p>You can find the bleeding cutting edge binaries uploaded as assets on the <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml">“build and upload” GitHub actions page</a>, Click on the newest successful build and download the <code class="docutils literal notranslate"><span class="pre">blackmagic-firmware.zip</span></code> file. It contains binaries for all the supported platforms.</p></li>
 <li><p>When using the daily builds expect breaking changes. Please report issues on <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/issues">our issue page</a> or ask on our Discord server.</p></li>
 </ul>
+<p>Clone and build, or directly install the bmputil tool</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cargo install --git https://github.com/blackmagic-debug/bmputil
+</pre></div>
+</div>
+<p>Plug in your Black Magic Probe and run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bmputil flash blackmagic-native.elf
+</pre></div>
+</div>
+<p>Provided you have suitable udev rules in play, this will already do everything you need and automatically reboot your unit back into the new firmware.</p>
+</section>
+<section id="dfu-util">
+<h3>dfu-util<a class="headerlink" href="#dfu-util" title="Permalink to this heading">¶</a></h3>
+<p>Download or compile a Black Magic Debug (BMD) firmware.
+As with the <a class="reference internal" href="#bmputil"><span class="std std-doc">bmputil</span></a> section above, the same considerations exist with this method for firmware selection.</p>
 <p>Plug in the Black Magic Probe into your computer and run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dfu</span><span class="o">-</span><span class="n">util</span> <span class="o">-</span><span class="n">d</span> <span class="mi">1</span><span class="n">d50</span><span class="p">:</span><span class="mi">6018</span><span class="p">,:</span><span class="mi">6017</span> <span class="o">-</span><span class="n">s</span> <span class="mh">0x08002000</span><span class="p">:</span><span class="n">leave</span> <span class="o">-</span><span class="n">D</span> <span class="n">blackmagic</span><span class="o">-</span><span class="n">native</span><span class="o">.</span><span class="n">bin</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo dfu-util -d 1d50:6018,:6017 -s 0x08002000:leave -D blackmagic-native.bin
 </pre></div>
 </div>
 <p>You will need to install <a class="reference external" href="http://dfu-util.sourceforge.net/"><code class="docutils literal notranslate"><span class="pre">dfu-util</span></code></a> package. On MacOS you can use homebrew, macports or fink depending on your preferred package manager. You will need version 0.8.0 or greater to support the dfuse commands.</p>
@@ -127,10 +135,24 @@
 <section id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">¶</a></h2>
 <section id="id1">
-<h3>DFU-Util<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<h3>bmputil<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<p>Download or compile a Black Magic Probe (BMP) firmware.</p>
+<p>Clone and build, or directly install the bmputil tool:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cargo install --git https://github.com/blackmagic-debug/bmputil
+</pre></div>
+</div>
+<p>Plug in your Black Magic Probe and run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bmputil flash blackmagic-native.elf
+</pre></div>
+</div>
+<p>bmputil will automatically take care of your driver needs as appropriate.
+Do <strong>not</strong> run Zadig on the DFU endpoint if using bmputil.</p>
+</section>
+<section id="id2">
+<h3>dfu-util<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <p>Download or compile a Black Magic Probe (BMP) firmware.</p>
 <p>Plug in the Black Magic Probe into your computer and run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dfu</span><span class="o">-</span><span class="n">util</span><span class="o">.</span><span class="n">exe</span> <span class="o">-</span><span class="n">d</span> <span class="mi">1</span><span class="n">d50</span><span class="p">:</span><span class="mi">6018</span><span class="p">,:</span><span class="mi">6017</span> <span class="o">-</span><span class="n">s</span> <span class="mh">0x08002000</span><span class="p">:</span><span class="n">leave</span> <span class="o">-</span><span class="n">D</span> <span class="n">blackmagic</span><span class="o">.</span><span class="n">bin</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dfu-util.exe -d 1d50:6018,:6017 -s 0x08002000:leave -D blackmagic.bin
 </pre></div>
 </div>
 <p>You will need to download the Windows release of <a class="reference external" href="http://dfu-util.sourceforge.net/"><code class="docutils literal notranslate"><span class="pre">dfu-util</span></code></a> package.</p>
@@ -148,13 +170,9 @@
 <section id="using-stm32-mem-py">
 <h2>Using stm32-mem.py<a class="headerlink" href="#using-stm32-mem-py" title="Permalink to this heading">¶</a></h2>
 <p>An alternative solution is using <code class="docutils literal notranslate"><span class="pre">stm32_mem.py</span></code> script included in the Black Magic Debug source repository. It is not the recommended way of updating the Black Magic Probe as <code class="docutils literal notranslate"><span class="pre">dfu-util</span></code> is easier to install without the need to clone the Black Magic Debug repository and all the associated source code.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">blackmagic</span> <span class="o">&amp;&amp;</span> <span class="n">scripts</span><span class="o">/</span><span class="n">stm32_mem</span><span class="o">.</span><span class="n">py</span> <span class="n">blackmagic</span><span class="o">.</span><span class="n">bin</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> blackmagic <span class="o">&amp;&amp;</span> scripts/stm32_mem.py blackmagic.bin
 </pre></div>
 </div>
-<section id="built-in-upgrade-tool">
-<h3>Built-in Upgrade tool<a class="headerlink" href="#built-in-upgrade-tool" title="Permalink to this heading">¶</a></h3>
-<p>Instructions for Linux in <a class="reference external" href="https://github.com/blacksphere/blackmagic/wiki/Hacking#updating-firmware">hacking section</a></p>
-</section>
 </section>
 </section>
 
@@ -224,7 +242,7 @@
 <li class="toctree-l1"><a class="reference internal" href="hacking/contrib.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hacking/hacking.html">Firmware Hacking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hacking/target-drivers.html">Adding Target Drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hacking/target-cortex-m.html">Cortex M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking/target-cortex-m.html">Cortex-M Targets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hacking/target-cortex-a.html">Cortex A Targets</a></li>
 </ul>
 
@@ -311,7 +329,7 @@
       &copy;2022, Piotr Esden-Tempski <piotr@esden.net>; 2022, Rachel Mant <git@dragonmux.network>.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.2.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>
