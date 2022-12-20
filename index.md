@@ -94,7 +94,7 @@ The Black Magic GDB server features:
 * Implements USB DFU class for easy firmware upgrade as updates become available.
 * Works with Windows, Linux and Mac environments.
 
-All you need is to install the GNU [cross compilation toolchain](https://en.wikipedia.org/wiki/Cross_compiler) installed, containing [GCC](https://gcc.gnu.org/) and [GDB](https://www.sourceware.org/gdb/) for your microcontroller installed, the microcontroller is supported by BMD, plug in the Black Magic Probe hardware running the Black Magic Debug firmware into your computer, and instruct your GDB to use the BMP as your remote target using the `target extended_remote *serial_port*` command and you are off to the races.
+All you need is to install the GNU [cross compilation toolchain](https://en.wikipedia.org/wiki/Cross_compiler) installed, containing [GCC](https://gcc.gnu.org/) and [GDB](https://www.sourceware.org/gdb/) for your microcontroller installed, the microcontroller is supported by BMD, plug in the Black Magic Probe hardware running the Black Magic Debug firmware into your computer, and instruct your GDB to use the BMP as your remote target using the `target extended-remote *serial_port*` command and you are off to the races.
 
 If you are an embedded development beginner Black Magic Probe is also a great choice for you. But expect more of a Unix command line experience than a Windows [*klickybunti*](https://www.urbandictionary.com/define.php?term=klickibunti) GUI.
 
@@ -116,7 +116,7 @@ Here is a quick example of a GDB session using the Black Magic Probe.
 ```
 
 The session goes through the following steps:
-* Connecting to BMP -> `target extended remote <serial port>`
+* Connecting to BMP -> `target extended-remote <serial port>`
 * Scanning for targets using SWD -> `monitor swdp_scan`
 * Attaching to the detected target -> `attach 1`
 * Loading the project binary -> `load`
