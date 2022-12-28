@@ -105,11 +105,11 @@
 </section>
 <section id="arm-cortex-debug-connectors">
 <h2>ARM Cortex Debug Connectors<a class="headerlink" href="#arm-cortex-debug-connectors" title="Permalink to this heading">¶</a></h2>
-<p>There are two main connectors that are standard are very common on boards that use ARM Cortex Microcontrollers.</p>
+<p>There are several main connectors that are standard/very common on boards that use ARM Cortex Microcontrollers.</p>
 <section id="arm-cortex-10pin-debug-connector">
 <h3>ARM Cortex 10pin Debug Connector<a class="headerlink" href="#arm-cortex-10pin-debug-connector" title="Permalink to this heading">¶</a></h3>
 <p><img alt="" src="../_images/arm-cortex-10-legend.svg" /></p>
-<p>This is the connector provided on the Black Magic Probe debugger and is the most common JTAG/SVD connector. Keep in mind that since Black Magic Probe V2.3 we provide jumpers on the back side of the PCB allowing the user to change the connector to the <a class="reference internal" href="#black-magic-debug-unified-connector-bmdu"><span class="std std-doc">Black Magic Debug Unified Connector (BMDU)</span></a>.</p>
+<p>This is the connector provided on the Black Magic Probe debugger and is the most common JTAG/SWD connector. Keep in mind that since Black Magic Probe V2.3 we provide jumpers on the back side of the PCB allowing the user to change the connector to the <a class="reference internal" href="#black-magic-debug-unified-connector-bmdu"><span class="std std-doc">Black Magic Debug Unified Connector (BMDU)</span></a>.</p>
 </section>
 <section id="arm-cortex-20pin-debug-trace-connector">
 <h3>ARM Cortex 20pin Debug &amp; Trace Connector<a class="headerlink" href="#arm-cortex-20pin-debug-trace-connector" title="Permalink to this heading">¶</a></h3>
@@ -126,7 +126,7 @@
 <section id="stmicroelectronics-stdc14">
 <h2>STMicroelectronics STDC14<a class="headerlink" href="#stmicroelectronics-stdc14" title="Permalink to this heading">¶</a></h2>
 <p><img alt="" src="../_images/stdc14-legend.svg" /></p>
-<p>This is a custom connector that STMicroelectronics invented. It is backwards compatible with the <a class="reference internal" href="#arm-cortex-10pin-debug-connector"><span class="std std-doc">ARM Cortex 10Pin Debug Connector</span></a>. One can plug in the 14pin ribbon cable into the 10pin debug connector if the connector is not fully shrouded. The connector will then overhand two pins on each side of the connector. If your target has this connector you can connect the Black Magic Probe by connecting a 14pin ribbon cable to the Black Magic Probe (<a class="reference external" href="https://1bitsquared.com/products/stdc14-idc-cable">1BitSquared</a> is offering these cables in their store).</p>
+<p>This is a custom connector that STMicroelectronics invented. It is backwards compatible with the <a class="reference internal" href="#arm-cortex-10pin-debug-connector"><span class="std std-doc">ARM Cortex 10Pin Debug Connector</span></a>, so one can plug a 14pin ribbon cable into a 10pin debug connector if the connector is not fully shrouded. The ribbon cable will then overhang the connector by two pins on each side. If your target has this 14pin connector you can connect the Black Magic Probe by connecting a 14pin ribbon cable to the Black Magic Probe (<a class="reference external" href="https://1bitsquared.com/products/stdc14-idc-cable">1BitSquared</a> is offering these cables in their store).</p>
 </section>
 </section>
 

@@ -100,7 +100,7 @@
 <p>Black Magic Probe firmware can be compiled for many different target platforms. Here is a short list with descriptions of different targets.</p>
 <section id="native-hardware">
 <h2>Native Hardware<a class="headerlink" href="#native-hardware" title="Permalink to this heading">¶</a></h2>
-<p>The following is a list of official hardware supported by the Native target that is the default compilation target of Black Magic Probe firmware.  All revisions of the native hardware work with the same firmware binary.</p>
+<p>The following is a list of official hardware supported by the native target that is the default compilation target of Black Magic Probe firmware.  All revisions of the native hardware work with the same firmware binary.</p>
 <section id="black-magic-probe-v2-3-bmp23">
 <h3>Black Magic Probe V2.3 (BMP23)<a class="headerlink" href="#black-magic-probe-v2-3-bmp23" title="Permalink to this heading">¶</a></h3>
 <p><img alt="" src="_images/bmp23-top.jpg" />
@@ -108,14 +108,13 @@
 <p><strong>Status</strong> Active</p>
 <p><strong>Source</strong> <a class="reference internal" href="index.html#getting-hardware"><span class="std std-doc">Vendors</span></a></p>
 <p><strong>Schematic</strong> TODO</p>
-<p>New slightly larger form factor than previous versions to accommodate the larger TQFP MCU package, AUX connector and additional flash chip. Following is a list of the main differences to the predecessor relevant to an end user.
-levant to an end user.</p>
+<p>New, slightly larger form factor than previous versions to accommodate the larger TQFP MCU package, AUX connector and additional flash chip. Following is a list of the main differences to the predecessor relevant to an end user.</p>
 <ul class="simple">
-<li><p>Added jumpers allowing the connection of the UART TX/RX pins to the JTAG/SWD connector resulting in a “Unified debug” connector</p></li>
-<li><p>TraceSWO UART, decoding hardware support added (firmwrare support pending)</p></li>
+<li><p>Added jumpers allowing the connection of the UART TX/RX pins to the JTAG/SWD connector resulting in a “unified debug” connector</p></li>
+<li><p>TraceSWO UART, decoding hardware support added (firmware support pending)</p></li>
 <li><p>Added 16 MByte on board flash (firmware support pending)</p></li>
 <li><p>AUX connector for accessories (firmware support pending)</p></li>
-<li><p>Mechanical layout allowing easier use of enclosures and mounting into bigger systems. For example: automated pogopin test equipment, automated Hardware In The Loop (HITL) Continous Integration (CI) systems</p></li>
+<li><p>Mechanical layout allowing easier use of enclosures and mounting into bigger systems. For example: automated pogopin test equipment, automated Hardware In The Loop (HITL) Continuous Integration (CI) systems</p></li>
 <li><p>Improved layout, allowing further improvement of the Black Magic Debug firmware reliability and speed using hardware protocol acceleration (firmware support pending)</p></li>
 <li><p>Uses a USB-C connector instead of Micro USB-B</p></li>
 </ul>
@@ -134,7 +133,7 @@ levant to an end user.</p>
 <li><p>Dedicated reset line drive MOSFET circuitry with 10k pull-up ensuring good open-drain RST line drive with monitoring.</p></li>
 <li><p>Exposed the BMP side SWD lines on dedicated pads, allowing for easier programming and debugging of the probe firmware. It is much easier now to program and debug the BMP firmware using a second BMP. The pinout is compatible with the <a class="reference external" href="https://1bitsquared.com/products/jtag-swd-adapter">SWD adapter by 1Bitsquared</a>.</p></li>
 <li><p>Increased LED distance from each other for better visual separation.</p></li>
-<li><p>(V2.1e revision) Added a normally open jumper to allow the connection of the <code class="docutils literal notranslate"><span class="pre">TRACESWO</span></code> signal to <code class="docutils literal notranslate"><span class="pre">UART1_RX</span></code> on pin <code class="docutils literal notranslate"><span class="pre">PB7</span></code>. This pin is also the highest order bit of the hardware version. Because of that all BMPM V2.1e have the hardware version stored as a user <code class="docutils literal notranslate"><span class="pre">Data0</span></code> option byte at address <code class="docutils literal notranslate"><span class="pre">0x1FFFF804</span></code>. The hardware version corresponding to V2.1e is <code class="docutils literal notranslate"><span class="pre">0x04</span></code>. The firmware that implements the use the uart SWO decoding should check the presence of the hardware version in the option bytes first. (this feature is not yet supported in current blackmagic probe firmware)</p></li>
+<li><p>(V2.1e revision) Added a normally open jumper to allow the connection of the <code class="docutils literal notranslate"><span class="pre">TRACESWO</span></code> signal to <code class="docutils literal notranslate"><span class="pre">UART1_RX</span></code> on pin <code class="docutils literal notranslate"><span class="pre">PB7</span></code>. This pin is also the highest order bit of the hardware version. Because of that, all BMPM V2.1e have the hardware version stored as a user <code class="docutils literal notranslate"><span class="pre">Data0</span></code> option byte at address <code class="docutils literal notranslate"><span class="pre">0x1FFFF804</span></code>. The hardware version corresponding to V2.1e is <code class="docutils literal notranslate"><span class="pre">0x04</span></code>. Firmware that implements UART SWO decoding should check the hardware version in the option bytes first. (this feature is not yet supported in current blackmagic probe firmware)</p></li>
 </ul>
 <p><strong>3D Printed Cases</strong></p>
 <ul class="simple">
