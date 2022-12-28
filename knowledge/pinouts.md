@@ -10,13 +10,13 @@ This connector is backwards compatible with the ubiquitous [ARM Cortex 10pin Deb
 
 ## ARM Cortex Debug Connectors
 
-There are two main connectors that are standard are very common on boards that use ARM Cortex Microcontrollers.
+There are several main connectors that are standard/very common on boards that use ARM Cortex Microcontrollers.
 
 ### ARM Cortex 10pin Debug Connector
 
 ![](../_pinouts/arm-cortex-10-legend.svg)
 
-This is the connector provided on the Black Magic Probe debugger and is the most common JTAG/SVD connector. Keep in mind that since Black Magic Probe V2.3 we provide jumpers on the back side of the PCB allowing the user to change the connector to the [Black Magic Debug Unified Connector (BMDU)](#black-magic-debug-unified-connector-bmdu).
+This is the connector provided on the Black Magic Probe debugger and is the most common JTAG/SWD connector. Keep in mind that since Black Magic Probe V2.3 we provide jumpers on the back side of the PCB allowing the user to change the connector to the [Black Magic Debug Unified Connector (BMDU)](#black-magic-debug-unified-connector-bmdu).
 
 ### ARM Cortex 20pin Debug & Trace Connector
 
