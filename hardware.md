@@ -4,7 +4,7 @@ Black Magic Probe firmware can be compiled for many different target platforms. 
 
 ## Native Hardware
 
-The following is a list of official hardware supported by the Native target that is the default compilation target of Black Magic Probe firmware.  All revisions of the native hardware work with the same firmware binary.
+The following is a list of official hardware supported by the native target that is the default compilation target of Black Magic Probe firmware.  All revisions of the native hardware work with the same firmware binary.
 
 ### Black Magic Probe V2.3 (BMP23)
 
@@ -17,9 +17,9 @@ The following is a list of official hardware supported by the Native target that
 
 **Schematic** TODO
 
-New slightly larger form factor than previous versions to accommodate the larger TQFP MCU package, AUX connector and additional flash chip. Following is a list of the main differences to the predecessor relevant to an end user.
+New, slightly larger form factor than previous versions to accommodate the larger TQFP MCU package, AUX connector and additional flash chip. Following is a list of the main differences to the predecessor relevant to an end user.
 
-* Added jumpers allowing the connection of the UART TX/RX pins to the JTAG/SWD connector resulting in a "Unified debug" connector
+* Added jumpers allowing the connection of the UART TX/RX pins to the JTAG/SWD connector resulting in a "unified debug" connector
 * TraceSWO UART, decoding hardware support added (firmware support pending)
 * Added 16 MByte on board flash (firmware support pending)
 * AUX connector for accessories (firmware support pending)
