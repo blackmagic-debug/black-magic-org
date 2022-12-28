@@ -22,7 +22,7 @@ The third file will be `./src/target/target_probe.h` where you will add a protot
 Finally `./src/target/target_probe.c` where you will use the `TARGET_PROBE_WEAK_NOP` macro to add a weak linked
 stub for your probe function.
 
-A typical target driver will be updates to these three files and your new `./src/target/<target>.c` file.
+A typical target driver will be updates to these four files and your new `./src/target/<target>.c` file.
 
 ## Setting up a Development Environment
 
@@ -105,9 +105,12 @@ and the second BMP you are using as the first's debugger, and proceed as you wou
 
 ## Implementing the Driver
 
-The first step in implementing the driver is to implement the `<target>_probe` function. This function has three very important things to do, first it has to identify whether or not you are talking to a target you recognize, second it has to create a memory map describing that target's resources, and finally it has to initialize the function pointers in the target structure to point to routines that can erase and program the target's on board flash memory.
+The first step in implementing the driver is to implement the `<target>_probe` function. This function has three very important things to do:
+  1. it has to identify whether or not you are talking to a target you recognize
+  2. it has to create a memory map describing that target's resources
+  3. it has to initialize the function pointers in the target structure to point to routines that can erase and program the target's on board flash memory.
 
-The functions `target_mem_read32` and `target_mem_write32` will read and write long words in the target's address space. Generally the debug unit has access to all of the address space unless the chip has been put into a protected mode. It is useful for your target driver to provide a target specific command for removing protected mode (see **Custom Commands** below). The register that the probe code will read on Cortex M processors is called the chip ID register or CHIPID. Where it is in the address space will be documented in the data sheet or reference manual for the chip.
+The functions `target_mem_read32` and `target_mem_write32` will read and write long words in the target's address space. Generally the debug unit has access to all of the address space unless the chip has been put into a protected mode. It is useful for your target driver to provide a target specific command for removing protected mode (see **Custom Commands** below). The register that the probe code will read on Cortex-M processors is called the chip ID register or CHIPID. Where it is in the address space will be documented in the data sheet or reference manual for the chip.
 
 That section will also typically document what memory configurations are available based on information contained in the CHIPID register. Your probe function will use this information to confirm that the target is something you recognize, and then decode the parameters in register according to the datasheet to identify FLASH address location and size, and RAM address location and size.
 
@@ -117,7 +120,7 @@ For each discontinuous region of RAM your code will call `target_add_ram` with t
 
 ### Adding Flash
 
-As you did with RAM you will need to tell gdb about the size(s) and addresses of programmable read-only memory (Flash) on the device. Because every device tends to have a slightly different way of programming things, adding a segment of Flash memory means adding the address and size of Flash, and then adding pointers to functions that can erase and write the Flash (reading is handled by just reading memory).
+As you did with RAM, you will need to tell gdb about the size(s) and addresses of programmable read-only memory (Flash) on the device. Because every device tends to have a slightly different way of programming things, adding a segment of Flash memory means adding the address and size of Flash, and then adding pointers to functions that can erase and write the Flash (reading is handled by just reading memory).
 
 Some Flash memories can only be erased all at once, some can be erased in variable sized sectors, and others can be erased in pages of fixed size. A _region_ is Flash at a given address, and of a given length, that has the same erase and programming requirements.
 
@@ -130,7 +133,7 @@ Then you will add the Flash segment by calling `target_add_flash` with the targe
 
 ### Custom Commands
 
-You have the option to add some additional commands to the target. These will become part of the acceptable commands to the 'mon' command in gdb. So if you added a new command `erase-protection`. Then typing `mon erase-protection` would invoke it.
+You have the option to add some additional commands to the target. These will become part of the acceptable commands to the 'mon' command in gdb. So if you added a new command `erase-protection`, typing `mon erase-protection` would invoke it.
 
 Commands are added using a `command_s` structure of three pointers, the first is the string for the command, the second pointer is a pointer to the local function that implements that command, and the third is a help string that is printed when someone types `mon help <your-command>`.
 
@@ -150,15 +153,13 @@ Another situation that can arise is that asserting reset causes other things to 
 
 When you start this process you will have a data sheet, a fresh build the BMP firmware, and a lot of questions. Bring up strategy for a new target works well if you proceed in the following way;
 
-  1. **Verify you can identify your target** -- When you run your firmware for the first time attached ot your target you should be able to type `mon swdp_scan` and see your driver name come back as the available target. If you added `DEBUG` statements to your poll function they would appear on the debug terminal (either the second serial port or the debugging BMP's gdb session).
+  1. **Verify you can identify your target** -- When you run your firmware for the first time attached to your target you should be able to type `mon swdp_scan` and see your driver name come back as the available target. If you added `DEBUG` statements to your poll function they would appear on the debug terminal (either the second serial port or the debugging BMP's gdb session).
   2. **Verify you can Erase and Program Flash** -- This is a bit trickier, one technique is to create a simple C program with some `const unint8_t` arrays that contain recognizable data in them. Loading that file from gdb will tell the BMP to flash it into your target and you can use the gdb memory inspection tools to verify it arrived intact. A useful gdb command here is `compare-sections` which will compare the .elf file with what gdb can see in memory. If they don't match your flash programming is _not working_. You can dump out memory to a file using the gdb command `dump bin memory <filename> addr1 addr2` so the first 8K of memory might be `dump bin mem 8k-mem-dump.bin 0x0 0x2000`.
   3. **Verify you can start and interrupt a running program.** -- At this point it is quite useful to have a minimal "blinker" program that will toggle and LED or GPIO pin that you can monitor on an oscilloscope ready to run. Load this program with the working flash functions and tell gdb to run it. It should start and the GPIO should begin toggling, then use ^C to interrupt and verify the program stops and gdb gives you the source line where the code was interrupted.
   4. **Verify you can set a breakpoint and single step.** -- If you have a runnable "Blinky" program then you can set a breakpoint on the `main` function. Run the program and confirm that it stops when it hits the break point. Use the `step` command to single step forward and then the `cont` command to resume execution.
 
 ## Summary
 
-Implementation of a new Cortex M target driver requires that you write code that can positively identify that your target is being talked to,  erase and program your target's FLASH memory, manage resets so that the debugger can function across system resets, and any special commands that might be needed for target specific features. You can debug the development through either `printf` like features of the DEBUG statements or by using another BMP to run gdb on the firmware in the first one. Using a simple "blinky" type program and some recognizable data structures you can verify the basic functions of gdb with respect to your target.
+Implementation of a new Cortex-M target driver requires that you write code that can positively identify that your target is being talked to, erase and program your target's FLASH memory, manage resets so that the debugger can function across system resets, and any special commands that might be needed for target-specific features. You can debug the development through either `printf` like features of the DEBUG statements or by using another BMP to run gdb on the firmware in the first one. Using a simple "blinky" type program and some recognizable data structures you can verify the basic functions of gdb with respect to your target.
 
 Once you've done that you have a new target driver for the BMP.
-
-After adding flash, if there are any special commands for this target that are useful you add them by
