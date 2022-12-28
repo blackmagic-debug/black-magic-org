@@ -18,13 +18,12 @@ The following is a list of official hardware supported by the Native target that
 **Schematic** TODO
 
 New slightly larger form factor than previous versions to accommodate the larger TQFP MCU package, AUX connector and additional flash chip. Following is a list of the main differences to the predecessor relevant to an end user.
-levant to an end user.
 
 * Added jumpers allowing the connection of the UART TX/RX pins to the JTAG/SWD connector resulting in a "Unified debug" connector
-* TraceSWO UART, decoding hardware support added (firmwrare support pending)
+* TraceSWO UART, decoding hardware support added (firmware support pending)
 * Added 16 MByte on board flash (firmware support pending)
 * AUX connector for accessories (firmware support pending)
-* Mechanical layout allowing easier use of enclosures and mounting into bigger systems. For example: automated pogopin test equipment, automated Hardware In The Loop (HITL) Continous Integration (CI) systems
+* Mechanical layout allowing easier use of enclosures and mounting into bigger systems. For example: automated pogopin test equipment, automated Hardware In The Loop (HITL) Continuous Integration (CI) systems
 * Improved layout, allowing further improvement of the Black Magic Debug firmware reliability and speed using hardware protocol acceleration (firmware support pending)
 * Uses a USB-C connector instead of Micro USB-B
 
