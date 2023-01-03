@@ -120,15 +120,15 @@ This page documents some of them.</p>
 <p>Note that any multiple of 8 bytes sized data can be written to an 8-byte aligned <em>free</em> address (not already programmed with non 0xFF data).
 Consequently, one can program a piece of the entire OTP area and program the rest (or some of the rest) later.</p>
 <p>Typical usage:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ blackmagic -M <span class="s2">&quot;irreversible enable&quot;</span> -a 0x1FFF7000 otp_1024bytes.bin
-Irreversible operations: enabled
-Flash Write succeeded <span class="k">for</span> <span class="m">1024</span> bytes,    x.yyy kiB/s
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>blackmagic<span class="w"> </span>-M<span class="w"> </span><span class="s2">&quot;irreversible enable&quot;</span><span class="w"> </span>-a<span class="w"> </span>0x1FFF7000<span class="w"> </span>otp_1024bytes.bin
+Irreversible<span class="w"> </span>operations:<span class="w"> </span>enabled
+Flash<span class="w"> </span>Write<span class="w"> </span>succeeded<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">1024</span><span class="w"> </span>bytes,<span class="w">    </span>x.yyy<span class="w"> </span>kiB/s
 </pre></div>
 </div>
 <p>For a sub part of OTP:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ blackmagic -M <span class="s2">&quot;irreversible enable&quot;</span> -a 0x1FFF73E0 otp_8bytes.bin
-Irreversible operations: enabled
-Flash Write succeeded <span class="k">for</span> <span class="m">8</span> bytes,    <span class="m">1</span>.143 kiB/s
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>blackmagic<span class="w"> </span>-M<span class="w"> </span><span class="s2">&quot;irreversible enable&quot;</span><span class="w"> </span>-a<span class="w"> </span>0x1FFF73E0<span class="w"> </span>otp_8bytes.bin
+Irreversible<span class="w"> </span>operations:<span class="w"> </span>enabled
+Flash<span class="w"> </span>Write<span class="w"> </span>succeeded<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">8</span><span class="w"> </span>bytes,<span class="w">    </span><span class="m">1</span>.143<span class="w"> </span>kiB/s
 </pre></div>
 </div>
 </section>
@@ -159,7 +159,7 @@ As mentioned before, is is recommended to link this file only once, not along th
 </pre></div>
 </div>
 <p>Once the linked elf file is generated, the output .otp section can be extracted with the objcopy binutil:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ arm-none-eabi-objcopy -j <span class="s2">&quot;.otp&quot;</span> -O binary firmware.elf otp_data.bin
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>arm-none-eabi-objcopy<span class="w"> </span>-j<span class="w"> </span><span class="s2">&quot;.otp&quot;</span><span class="w"> </span>-O<span class="w"> </span>binary<span class="w"> </span>firmware.elf<span class="w"> </span>otp_data.bin
 </pre></div>
 </div>
 </section>

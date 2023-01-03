@@ -129,14 +129,14 @@
 <li><p>Create a new project using “PlatformIO Home &gt; New Project” wizard (🏠 icon on the toolbar)</p></li>
 <li><p>Edit <strong>Project Configuration File</strong> <a class="reference external" href="http://docs.platformio.org/en/latest/projectconf.html?utm_source=github&amp;utm_medium=blackmagic">platformio.ini</a> and set Black Magic Probe as default tool for debugging and programming/uploading, update <code class="docutils literal notranslate"><span class="pre">upload/debug</span></code> port following <a class="reference external" href="https://github.com/blacksphere/blackmagic/wiki/Useful-GDB-commands#connecting-gdb-to-the-black-magic-probe">this guide</a>:</p></li>
 </ol>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[env:someboard]</span><span class="w"></span>
-<span class="na">platform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span><span class="w"></span>
-<span class="na">framework</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span><span class="w"></span>
-<span class="na">board</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span><span class="w"></span>
-<span class="na">debug_tool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">blackmagic</span><span class="w"></span>
-<span class="na">upload_protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">blackmagic</span><span class="w"></span>
-<span class="na">upload_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">!!!UPDATE_ME!!!</span><span class="w"></span>
-<span class="na">monitor_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">!!!UPDATE_ME!!!</span><span class="w"></span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[env:someboard]</span>
+<span class="na">platform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span>
+<span class="na">framework</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span>
+<span class="na">board</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span>
+<span class="na">debug_tool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">blackmagic</span>
+<span class="na">upload_protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">blackmagic</span>
+<span class="na">upload_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">!!!UPDATE_ME!!!</span>
+<span class="na">monitor_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">!!!UPDATE_ME!!!</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">

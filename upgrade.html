@@ -108,11 +108,11 @@
 <li><p>When using the daily builds expect breaking changes. Please report issues on <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/issues">our issue page</a> or ask on our Discord server.</p></li>
 </ul>
 <p>Clone and build, or directly install the bmputil tool</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cargo install --git https://github.com/blackmagic-debug/bmputil
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cargo<span class="w"> </span>install<span class="w"> </span>--git<span class="w"> </span>https://github.com/blackmagic-debug/bmputil
 </pre></div>
 </div>
 <p>Plug in your Black Magic Probe and run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bmputil flash blackmagic-native.elf
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bmputil<span class="w"> </span>flash<span class="w"> </span>blackmagic-native.elf
 </pre></div>
 </div>
 <p>Provided you have suitable udev rules in play, this will already do everything you need and automatically reboot your unit back into the new firmware.</p>
@@ -122,7 +122,7 @@
 <p>Download or compile a Black Magic Debug (BMD) firmware.
 As with the <a class="reference internal" href="#bmputil"><span class="std std-doc">bmputil</span></a> section above, the same considerations exist with this method for firmware selection.</p>
 <p>Plug in the Black Magic Probe into your computer and run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo dfu-util -d 1d50:6018,:6017 -s 0x08002000:leave -D blackmagic-native.bin
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>dfu-util<span class="w"> </span>-d<span class="w"> </span>1d50:6018,:6017<span class="w"> </span>-s<span class="w"> </span>0x08002000:leave<span class="w"> </span>-D<span class="w"> </span>blackmagic-native.bin
 </pre></div>
 </div>
 <p>You will need to install <a class="reference external" href="http://dfu-util.sourceforge.net/"><code class="docutils literal notranslate"><span class="pre">dfu-util</span></code></a> package. On MacOS you can use homebrew, macports or fink depending on your preferred package manager. You will need version 0.8.0 or greater to support the dfuse commands.</p>
@@ -138,11 +138,11 @@ As with the <a class="reference internal" href="#bmputil"><span class="std std-d
 <h3>bmputil<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <p>Download or compile a Black Magic Probe (BMP) firmware.</p>
 <p>Clone and build, or directly install the bmputil tool:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cargo install --git https://github.com/blackmagic-debug/bmputil
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cargo<span class="w"> </span>install<span class="w"> </span>--git<span class="w"> </span>https://github.com/blackmagic-debug/bmputil
 </pre></div>
 </div>
 <p>Plug in your Black Magic Probe and run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bmputil flash blackmagic-native.elf
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bmputil<span class="w"> </span>flash<span class="w"> </span>blackmagic-native.elf
 </pre></div>
 </div>
 <p>bmputil will automatically take care of your driver needs as appropriate.
@@ -152,7 +152,7 @@ Do <strong>not</strong> run Zadig on the DFU endpoint if using bmputil.</p>
 <h3>dfu-util<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <p>Download or compile a Black Magic Probe (BMP) firmware.</p>
 <p>Plug in the Black Magic Probe into your computer and run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dfu-util.exe -d 1d50:6018,:6017 -s 0x08002000:leave -D blackmagic.bin
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dfu-util.exe<span class="w"> </span>-d<span class="w"> </span>1d50:6018,:6017<span class="w"> </span>-s<span class="w"> </span>0x08002000:leave<span class="w"> </span>-D<span class="w"> </span>blackmagic.bin
 </pre></div>
 </div>
 <p>You will need to download the Windows release of <a class="reference external" href="http://dfu-util.sourceforge.net/"><code class="docutils literal notranslate"><span class="pre">dfu-util</span></code></a> package.</p>
@@ -170,7 +170,7 @@ Do <strong>not</strong> run Zadig on the DFU endpoint if using bmputil.</p>
 <section id="using-stm32-mem-py">
 <h2>Using stm32-mem.py<a class="headerlink" href="#using-stm32-mem-py" title="Permalink to this heading">¶</a></h2>
 <p>An alternative solution is using <code class="docutils literal notranslate"><span class="pre">stm32_mem.py</span></code> script included in the Black Magic Debug source repository. It is not the recommended way of updating the Black Magic Probe as <code class="docutils literal notranslate"><span class="pre">dfu-util</span></code> is easier to install without the need to clone the Black Magic Debug repository and all the associated source code.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> blackmagic <span class="o">&amp;&amp;</span> scripts/stm32_mem.py blackmagic.bin
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>blackmagic<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>scripts/stm32_mem.py<span class="w"> </span>blackmagic.bin
 </pre></div>
 </div>
 </section>

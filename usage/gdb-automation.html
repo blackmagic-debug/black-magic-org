@@ -103,14 +103,14 @@
 <section id="commandline">
 <h2>Commandline<a class="headerlink" href="#commandline" title="Permalink to this heading">¶</a></h2>
 <p>For example with the following “one liner”:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>arm-none-eabi-gdb -nx --batch <span class="se">\</span>
-  -ex <span class="s1">&#39;target extended-remote /dev/ttyACM0&#39;</span> <span class="se">\</span>
-  -ex <span class="s1">&#39;monitor swdp_scan&#39;</span> <span class="se">\</span>
-  -ex <span class="s1">&#39;attach 1&#39;</span> <span class="se">\</span>
-  -ex <span class="s1">&#39;load&#39;</span> <span class="se">\</span>
-  -ex <span class="s1">&#39;compare-sections&#39;</span> <span class="se">\</span>
-  -ex <span class="s1">&#39;kill&#39;</span> <span class="se">\</span>
-  yourbinary.elf
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>arm-none-eabi-gdb<span class="w"> </span>-nx<span class="w"> </span>--batch<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-ex<span class="w"> </span><span class="s1">&#39;target extended-remote /dev/ttyACM0&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-ex<span class="w"> </span><span class="s1">&#39;monitor swdp_scan&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-ex<span class="w"> </span><span class="s1">&#39;attach 1&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-ex<span class="w"> </span><span class="s1">&#39;load&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-ex<span class="w"> </span><span class="s1">&#39;compare-sections&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-ex<span class="w"> </span><span class="s1">&#39;kill&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yourbinary.elf
 </pre></div>
 </div>
 <div class="admonition note">
@@ -135,26 +135,26 @@
 </pre></div>
 </div>
 <p>Then the above invocation shrinks down to the following:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>arm-none-eabi-gdb -nx --batch <span class="se">\</span>
-  -ex <span class="s1">&#39;target extended-remote /dev/ttyACM0&#39;</span> <span class="se">\</span>
-  -x black_magic_probe_flash.scr <span class="se">\</span>
-  yourbinary.elf
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>arm-none-eabi-gdb<span class="w"> </span>-nx<span class="w"> </span>--batch<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-ex<span class="w"> </span><span class="s1">&#39;target extended-remote /dev/ttyACM0&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-x<span class="w"> </span>black_magic_probe_flash.scr<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yourbinary.elf
 </pre></div>
 </div>
 </section>
 <section id="makefile">
 <h2>Makefile<a class="headerlink" href="#makefile" title="Permalink to this heading">¶</a></h2>
 <p>If you are using GNU Makefiles for your project you can add a <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">flash</span></code> target. Reusing the script from the <a class="reference internal" href="#commandline"><span class="std std-doc">Commandline</span></a> section above the target like that can look something like this:</p>
-<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nf">flash</span><span class="o">:</span> <span class="n">yourbin</span>.<span class="n">flash</span>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nf">flash</span><span class="o">:</span><span class="w"> </span><span class="n">yourbin</span>.<span class="n">flash</span>
 
-<span class="nv">BMP_PORT</span> <span class="o">?=</span> /dev/ttyACM0
+<span class="nv">BMP_PORT</span><span class="w"> </span><span class="o">?=</span><span class="w"> </span>/dev/ttyACM0
 
-<span class="nf">%.flash</span><span class="o">:</span> %.<span class="n">elf</span>
-	@printf <span class="s2">&quot;  BMP </span><span class="k">$(</span>BMP_PORT<span class="k">)</span><span class="s2"> </span><span class="k">$(</span>*<span class="k">)</span><span class="s2">.elf (flash)\n&quot;</span>
-	<span class="k">$(</span>Q<span class="k">)$(</span>GDB<span class="k">)</span> -nx --batch <span class="se">\</span>
-	           -ex <span class="s1">&#39;target extended-remote $(BMP_PORT)&#39;</span> <span class="se">\</span>
-	           -x black_magic_probe_flash.scr <span class="se">\</span>
-	           <span class="k">$(</span>*<span class="k">)</span>.elf
+<span class="nf">%.flash</span><span class="o">:</span><span class="w"> </span>%.<span class="n">elf</span>
+<span class="w">	</span>@printf<span class="w"> </span><span class="s2">&quot;  BMP </span><span class="k">$(</span>BMP_PORT<span class="k">)</span><span class="s2"> </span><span class="k">$(</span>*<span class="k">)</span><span class="s2">.elf (flash)\n&quot;</span>
+<span class="w">	</span><span class="k">$(</span>Q<span class="k">)$(</span>GDB<span class="k">)</span><span class="w"> </span>-nx<span class="w"> </span>--batch<span class="w"> </span><span class="se">\</span>
+<span class="w">	           </span>-ex<span class="w"> </span><span class="s1">&#39;target extended-remote $(BMP_PORT)&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">	           </span>-x<span class="w"> </span>black_magic_probe_flash.scr<span class="w"> </span><span class="se">\</span>
+<span class="w">	           </span><span class="k">$(</span>*<span class="k">)</span>.elf
 </pre></div>
 </div>
 <p>This is a very simple flash target. It assumes that your binary target ends with <code class="docutils literal notranslate"><span class="pre">.elf</span></code> suffix. You can call the target by running <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">flash</span></code> and it will build the <code class="docutils literal notranslate"><span class="pre">yourbinary.elf</span></code>, flash it and test that the flash worked out.</p>
@@ -216,10 +216,10 @@ You can call that batch script for example like this: <code class="docutils lite
 <h2>In Production Batch Programming<a class="headerlink" href="#in-production-batch-programming" title="Permalink to this heading">¶</a></h2>
 <p>You can use the Black Magic Probe to bulk program large numbers of devices in production. The easiest way to accomplish that is to use one of the above techniques and run them in the loop. It is also useful to have audible response when the flash process has been successful. You can add an audio file playback at the end of the GDB script and it will only be played when the flash cycle has been successful.</p>
 <p>Here is a onliner loop for your unix system of choice:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> true<span class="p">;</span> <span class="k">do</span> sleep <span class="m">1</span><span class="p">;</span> arm-none-eabi-gdb --batch -nx <span class="se">\</span>
-  -ex <span class="s2">&quot;target extended-remote /dev/ttyACM0&quot;</span> <span class="se">\</span>
-  -x gdb_upload.scr <span class="se">\</span>
-  yourbinary.elf<span class="p">;</span> <span class="k">done</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span>arm-none-eabi-gdb<span class="w"> </span>--batch<span class="w"> </span>-nx<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-ex<span class="w"> </span><span class="s2">&quot;target extended-remote /dev/ttyACM0&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-x<span class="w"> </span>gdb_upload.scr<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>yourbinary.elf<span class="p">;</span><span class="w"> </span><span class="k">done</span>
 </pre></div>
 </div>
 <p>Note: It is useful to have a short period of sleep between the gdb invocations, otherwise it is difficult to break the loop with <code class="docutils literal notranslate"><span class="pre">Ctrl-C</span></code> key combination. Most modern unix systems support also shorter periods than 1 as parameter to the sleep command. You can call it with 0.5 for half a second sleep period.</p>

@@ -103,13 +103,13 @@
 <h2>Getting the project source<a class="headerlink" href="#getting-the-project-source" title="Permalink to this heading">¶</a></h2>
 <p>The project resides in a <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic">GitHub git repository</a></p>
 <p>Clone this repository (or fork and clone) using your desired method. Typically:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/blackmagic-debug/blackmagic.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/blackmagic-debug/blackmagic.git
 </pre></div>
 </div>
 <p>The project uses <a class="reference external" href="http://www.libopencm3.org/">libopencm3</a>, which is included as a git submodule. If you don’t provide the <code class="docutils literal notranslate"><span class="pre">--recursive</span></code> parameter above you will have to initialize and check out locm3 as a submodule:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /path/to/blackmagic
-git submodule init
-git submodule update
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/blackmagic
+git<span class="w"> </span>submodule<span class="w"> </span>init
+git<span class="w"> </span>submodule<span class="w"> </span>update
 </pre></div>
 </div>
 </section>
@@ -124,7 +124,7 @@ The default makefile assumes the target prefix is <code class="docutils literal 
 </div>
 <p>is needded. If your compilers uses some other prefix,  you can override this
 on the command line like e.g.:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-cortexm3-eabi-
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-cortexm3-eabi-
 </pre></div>
 </div>
 <p>This will result in the following binary files:</p>
@@ -139,11 +139,11 @@ on the command line like e.g.:</p>
 <h2>Alternative Hardware<a class="headerlink" href="#alternative-hardware" title="Permalink to this heading">¶</a></h2>
 <p>A number of users have contributed alternative hardware designs that are compatible with the native firmware.
 Some of these designs are in the <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic-hardware/tree/master/contrib">hardware repo</a>. Check the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> files for details. For instance, to compile a BMP for an ST-Link v2 to run as alternative to the ST firmware, compile:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make <span class="nv">PROBE_HOST</span><span class="o">=</span>stlink <span class="nv">ST_BOOTLOADER</span><span class="o">=</span><span class="m">1</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nv">PROBE_HOST</span><span class="o">=</span>stlink<span class="w"> </span><span class="nv">ST_BOOTLOADER</span><span class="o">=</span><span class="m">1</span>
 </pre></div>
 </div>
-<p>then replug the STLink to get into the bootlaoder and load with [stlink-tools] (<a class="reference external" href="https://github.com/jeanthom/stlink-tool">https://github.com/jeanthom/stlink-tool</a>)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>stlink-tools blackmagic.bin
+<p>then replug the STLink to get into the bootloader and load with [stlink-tools] (<a class="reference external" href="https://github.com/jeanthom/stlink-tool">https://github.com/jeanthom/stlink-tool</a>)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>stlink-tools<span class="w"> </span>blackmagic.bin
 </pre></div>
 </div>
 </section>
@@ -155,7 +155,7 @@ Some of these designs are in the <a class="reference external" href="https://git
 <p>The Black Magic application can also be compiled as a native PC application.
 Supported probes are BMP (with recent firmware), ST-Link v2/v3, FTDI-MPSSE probes, JLink and CMSIS-DAP.</p>
 <p>Compile the application with the command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make <span class="nv">PROBE_HOST</span><span class="o">=</span>hosted
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nv">PROBE_HOST</span><span class="o">=</span>hosted
 </pre></div>
 </div>
 </section>
@@ -163,7 +163,7 @@ Supported probes are BMP (with recent firmware), ST-Link v2/v3, FTDI-MPSSE probe
 <section id="enabling-debug-messages">
 <h2>Enabling DEBUG() messages<a class="headerlink" href="#enabling-debug-messages" title="Permalink to this heading">¶</a></h2>
 <p>Easiest way is to compile a PC-hosted BMP. Run blackmagic -v 1 so that all infos are printed on the controlling terminal. Argument to -v is a bitmask, with -v 31 very verbose. If you do not succeed in compiling PC-hosted, use following steps as a last resort to compile in the debug messages when building the firmware:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make <span class="nv">ENABLE_DEBUG</span><span class="o">=</span><span class="m">1</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nv">ENABLE_DEBUG</span><span class="o">=</span><span class="m">1</span>
 </pre></div>
 </div>
 <p>Then enable debug messages in gdb with the new command</p>
@@ -171,7 +171,7 @@ Supported probes are BMP (with recent firmware), ST-Link v2/v3, FTDI-MPSSE probe
 </pre></div>
 </div>
 <p>The debug messages appear on the debug UART. On a BMP the USB UART device is used.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>screen /dev/ttyACM2 <span class="m">115200</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>screen<span class="w"> </span>/dev/ttyACM2<span class="w"> </span><span class="m">115200</span>
 </pre></div>
 </div>
 <p>Exit the screen session by type crt-a + ctl-.</p>
