@@ -10,8 +10,8 @@
 - [PIO Unified Debugger](#pio-unified-debugger)
 - [Quick Start](#quick-start)
 - [Debugging from CLI](#debugging-from-cli)
-- [Advanced configuration](#advanced-configuration)  
-- [Issues and support](#issues-and-support)   
+- [Advanced configuration](#advanced-configuration)
+- [Issues and support](#issues-and-support)
 
 ## PIO Unified Debugger
 

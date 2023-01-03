@@ -1,7 +1,7 @@
 # Using RTT
 
 When debugging ARM processors, there are multiple ways for the target to print debug messages on
-the host: 
+the host:
  * a dedicated UART port (USB to Serial) aka. AUX Serial
  * Semihosting
  * Serial Wire Output (SWO)

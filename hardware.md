@@ -36,7 +36,7 @@ New, slightly larger form factor than previous versions to accommodate the large
 
 **Source** [Vendors](index.md#getting-hardware)
 
-**Schematic** [bmpm_v2_1c_schematic.pdf](_assets/bmpm_v2_1c_schematic.pdf)  
+**Schematic** [bmpm_v2_1c_schematic.pdf](_assets/bmpm_v2_1c_schematic.pdf)
 **Schematic** [bmpm_v2_1e_schematic.pdf](_assets/bmpm_v2_1e_schematic.pdf)
 
 Same form factor as the predecessor BMPM2. Following is a list of main differences to the predecessor relevant to an end user.
@@ -48,7 +48,7 @@ Same form factor as the predecessor BMPM2. Following is a list of main differenc
 * (V2.1e revision) Added a normally open jumper to allow the connection of the `TRACESWO` signal to `UART1_RX` on pin `PB7`. This pin is also the highest order bit of the hardware version. Because of that, all BMPM V2.1e have the hardware version stored as a user `Data0` option byte at address `0x1FFFF804`. The hardware version corresponding to V2.1e is `0x04`. Firmware that implements UART SWO decoding should check the hardware version in the option bytes first. (this feature is not yet supported in current blackmagic probe firmware)
 
 **3D Printed Cases**
-* Michael McAvoy's Black Magic Probe Case - With Fins: [Thingverse](https://www.thingiverse.com/thing:2387688), [Shapeways](https://www.shapeways.com/product/ZCZRTYJJ9/case-black-magic-probe-with-fins) 
+* Michael McAvoy's Black Magic Probe Case - With Fins: [Thingverse](https://www.thingiverse.com/thing:2387688), [Shapeways](https://www.shapeways.com/product/ZCZRTYJJ9/case-black-magic-probe-with-fins)
 * Michael McAvoy's Black Magic Probe Case - Flat: [Thingverse](https://www.thingiverse.com/thing:2401662), [Shapeways](https://www.shapeways.com/product/JG6NTERVG/case-black-magic-probe-flat)
 
 ### Black Magic Probe Mini V2.0 (BMPM2)
@@ -101,7 +101,7 @@ JTAG IO is buffered through a TXS0108 Texas Instruments bidirectional level shif
 
 ## FTDI target
 
-It is possible to run the Black Magic Probe firmware on your PC and have it bit bang using a USB attached FTDI MPSSE capable adapter. Programming speed is a little slower, but BMP development may be faster due to no firmware upload needed and the inherent debugging messages on the starting console. 
+It is possible to run the Black Magic Probe firmware on your PC and have it bit bang using a USB attached FTDI MPSSE capable adapter. Programming speed is a little slower, but BMP development may be faster due to no firmware upload needed and the inherent debugging messages on the starting console.
 
 ## ST Link
 
