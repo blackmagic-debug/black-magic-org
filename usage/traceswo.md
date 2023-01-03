@@ -12,9 +12,9 @@ Mostly the TRACESWO pin will be used as a convenient way to get printf() style o
 
 A simple Linux application is available to dump Black Magic Probe TRACESWO output to stdout. This will be fine for basic usage. See https://github.com/nickd4/bmp_traceswo, it also contains some sample code to insert in your STM32 application showing how to set up and use the ITM and TPIU for printf() style output. It would be good if this could be extended to give examples for other major families such as the NXP ARM chips, etc.
 
-Note that the STM32 case is a bit peculiar (contains a so-called Pelican TPIU at a non-ARM-mandated address), so you will need this example to get started. The code in the example is derived from here:  
-https://mcuoneclipse.com/2016/10/17/tutorial-using-single-wire-output-swo-with-arm-cortex-m-and-eclipse  
-A better example is here, which is cleaner and also shows how to enable the TRACESWO pin, missing above:  
+Note that the STM32 case is a bit peculiar (contains a so-called Pelican TPIU at a non-ARM-mandated address), so you will need this example to get started. The code in the example is derived from here:
+https://mcuoneclipse.com/2016/10/17/tutorial-using-single-wire-output-swo-with-arm-cortex-m-and-eclipse
+A better example is here, which is cleaner and also shows how to enable the TRACESWO pin, missing above:
 http://forum.segger.com/index.php?page=Thread&threadID=608
 
 The major IDEs are also able to interpret TRACESWO packets, in particular the formatted style, which might be more appropriate for advanced usage, with separate windows for different streams, and search, filtering etc. It is uncertain whether these support the Black Magic Probe's TRACESWO endpoint, if so please insert instructions.

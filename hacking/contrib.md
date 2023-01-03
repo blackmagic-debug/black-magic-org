@@ -22,4 +22,3 @@ without further testing assuming they conform to style and don't do anything stu
  - If the code is orphaned and no maintainer can be found in reasonable time, the patch author may take over as the new maintainer.
  - The current maintainer should be noted in the copyright banner at the top of the file in question.
  - The Github request review feature of pull requests should be used to request a review from the maintainer.
-

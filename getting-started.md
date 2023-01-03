@@ -100,4 +100,3 @@ If you have additional tutorial resources for the use of Black Magic Probe let u
 ## Getting started with open-source Cortex-M development
 - See [this presentation](https://github.com/gsmcmullin/embedded-demo/raw/master/slides.pdf), porting a basic Unix program to an embedded Cortex-M3 using [libopencm3](http://libopencm3.org/).
 - The [gcc-arm-embedded readme](https://launchpadlibrarian.net/268329726/readme.txt) is also worth a read.
-
