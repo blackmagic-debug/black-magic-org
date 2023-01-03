@@ -9,7 +9,7 @@ You can find the public API in [`target.h`](https://github.com/blackmagic-debug/
 There are several internal API headers:
 
 * [`target/target_internal.h`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/target_internal.h)
-  This header contains structure definitions and convinence functions for use in target support implementations.
+  This header contains structure definitions and convenience functions for use in target support implementations.
   Specific target implementations fill in the function pointers in these structures for their device specific
   implementations.
 * [`target/target_probe.h`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/target_probe.h)
@@ -87,7 +87,7 @@ There are a few moving parts to the ADIv5 (ARM Debug Interface v5) implementatio
 * The generic logic for Cortex-M parts which is found in
   [`target/cortexm.c`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/cortexm.c).
   Please note, this presently supports the ARMv6-M and ARMv7-M profiles only.
-* The generic logic for Cortex-A parts whcih is found in
+* The generic logic for Cortex-A parts which is found in
   [`target/cortexa.c`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/cortexa.c).
   Please note, this presently supports the ARMv7-M profile only.
 
@@ -303,7 +303,7 @@ The existing stubs should serve as a decent example for how to do this.
 
 If you wish your new target support to provide functionality like mass erase, there are members in the target structure
 such as `t->mass_erase` specifically for this and should be populated in your probe routine.
-Similarly, if you wish to add custom commands for your target, you need to build a `command_s` structure array at the top of your target suppport implementation and register it in the probe routine with `target_add_commands()`.
+Similarly, if you wish to add custom commands for your target, you need to build a `command_s` structure array at the top of your target support implementation and register it in the probe routine with `target_add_commands()`.
 An example of how to define this custom command block follows:
 
 ```c

@@ -56,7 +56,7 @@ Some of these designs are in the [hardware repo](https://github.com/blackmagic-d
 make PROBE_HOST=stlink ST_BOOTLOADER=1
 ```
 
-then replug the STLink to get into the bootlaoder and load with [stlink-tools] (<https://github.com/jeanthom/stlink-tool>)
+then replug the STLink to get into the bootloader and load with [stlink-tools] (<https://github.com/jeanthom/stlink-tool>)
 
 ```bash
 stlink-tools blackmagic.bin

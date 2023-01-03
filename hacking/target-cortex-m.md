@@ -68,7 +68,7 @@ With the older generation (v2.0 hardware and older), you can debug a new BMP tar
 the first BMP's debugger. When debugging with another BMP device the debug messages who up in the second
 BMP devices gdb session as it uses semi-hosting to direct them out.
 
-To set up one BMP debugging a second BMP is not particularly difficult but it can be unwieldly. Start with the
+To set up one BMP debugging a second BMP is not particularly difficult but it can be unwieldy. Start with the
 BMP that is going to run the new target code, connect its SWD, SCLK, tPWR/vRef, and GND pins on the PicoBlade
 connector on the rear side of the board, to the second BMP unit. If you have the mini-10 to JTAG adapter board
 and a PicoBlade serial port cable, you can push the connectors on the serial port cable on to the pins on the

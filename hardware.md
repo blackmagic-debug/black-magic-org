@@ -97,7 +97,7 @@ The original first hardware. Offers a legacy ARM JTAG 0.1" 20Pin connector. Some
 
 The board has a physical jumper to switch 3.3V power supply to the target.
 
-JTAG IO is buffered through a TXS0108 Texas Instruments bidirectional level shifter.  UART signals are connected directy to the STM32.
+JTAG IO is buffered through a TXS0108 Texas Instruments bidirectional level shifter.  UART signals are connected directly to the STM32.
 
 ## FTDI target
 
