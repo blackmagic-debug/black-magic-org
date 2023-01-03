@@ -145,7 +145,7 @@ The official Black Magic Probe hardware is available from these distributors in 
 ## Other Hardware supported by Black Magic Debug:
  * Stlink V2.1 and V3 based boards with a BMDA variant of the BMD (`PROBE_HOST=pc-stlinkv2`)
  * LibFTDI based based boards boards with a BMDA variant of the BMD (`PROBE_HOST=libftdi`)
- * StlinkV2 based boards with BMD ST-Link firmware (`PROBE_HOST=stlink ST_BOOTLOADER=1`) flashed with [stlink-tool](https://github.com/jeanthom/stlink-tool.git) to unmodfied board, see [Readme.md](https://github.com/blacksphere/blackmagic/tree/master/src/platforms/stlink).
+ * StlinkV2 based boards with BMD ST-Link firmware (`PROBE_HOST=stlink ST_BOOTLOADER=1`) flashed with [stlink-tool](https://github.com/jeanthom/stlink-tool.git) to unmodified board, see [Readme.md](https://github.com/blacksphere/blackmagic/tree/master/src/platforms/stlink).
  * StlinkV2 based boards with BMD ST-Link firmware (`PROBE_HOST=stlink`) with BMD own bootloader flashed to the board.
  * STM8S Discovery (StlinkV1) and Bluepill board with BMD SW-Link firmware (`PROBE_HOST=swlink`)
  * F4 Discovery (STM32F407) with BMD f4discovery firmware (`PROBE_HOST=f4discovery`)
