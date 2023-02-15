@@ -6,7 +6,15 @@ In the world of JTAG/SWD debuggers there is a plethora of different connectors. 
 
 ![](../_pinouts/unified-legend.svg)
 
-This connector is backwards compatible with the ubiquitous [ARM Cortex 10pin Debug connector](#arm-cortex-10pin-debug-connector). We have introduced this connector on the Black Magic Probe V2.3 hardware. To add the UART connections you will have to adjust the jumpers on the back of the board. You have to disconnect the default connection on the RX pin with an exacto blade and then solder together the alternate connection on RX and TX jumpers. (TODO: Add Black Magic Probe V2.3 documentation)
+This connector is backwards compatible with the ubiquitous [ARM Cortex 10pin Debug connector](#arm-cortex-10pin-debug-connector). We have introduced this connector on the Black Magic Probe V2.3 hardware. To add the UART connections you will have to adjust the jumpers on the back of the board:
+
+- Cut the default RX jumpers with a sharp hobby knife. (These are the middle pad and the pad closest to the board edge.) You might want to test them using the continuity function on a multimeter to make sure they're disconnected.
+- Solder together the middle RX pad and the RX pad farthest from the board edge.
+- Solder together the TX jumpers. (They default to unconnected.)
+
+(TODO: Add Black Magic Probe V2.3 documentation)
+
+A drawback of configuring the BMDU jumpers this way is that connecting to a standard SWD connector might render the UART pins on the PicoBlade connector unusable while the SWD connector is attached. This is because a standard SWD connector will probably short the UART RX pin to GND, and might short the UART TX pin to GND. You can revert the solder jumpers to their default configuration if this is a problem.
 
 ## ARM Cortex Debug Connectors
 
