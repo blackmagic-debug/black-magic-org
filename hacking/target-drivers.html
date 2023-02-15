@@ -196,8 +196,8 @@ header.</p>
 <p>Once an AP has been identified as belonging to either a Cortex-M or a Cortex-A core, the ADIv5 code dispatches to
 <code class="docutils literal notranslate"><span class="pre">cortexm_probe</span></code> or <code class="docutils literal notranslate"><span class="pre">cortexa_probe</span></code> accordingly.</p>
 </section>
-<section id="corex-m-device-handling">
-<h3>Corex-M device handling<a class="headerlink" href="#corex-m-device-handling" title="Permalink to this heading">¶</a></h3>
+<section id="cortex-m-device-handling">
+<h3>Cortex-M device handling<a class="headerlink" href="#cortex-m-device-handling" title="Permalink to this heading">¶</a></h3>
 <p>Special consideration is made for ARM’s JEP-106 which represents an ARM Cortex device which has not had its ROM
 tables customised by the device manufacturer. When the Cortex-M support encounters a device like this in
 <code class="docutils literal notranslate"><span class="pre">cortexm_probe</span></code>, the ARM part ID retrieved from the ROM tables is used to identify which type of Cortex-M core
@@ -550,7 +550,7 @@ An example of how to define this custom command block follows:</p>
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
 

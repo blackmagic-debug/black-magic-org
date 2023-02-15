@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://black-magic.org</id>
   <title>Blog</title>
-  <updated>2023-01-03T16:42:56.572370+00:00</updated>
+  <updated>2023-02-15T05:02:44.625406+00:00</updated>
   <link href="https://black-magic.org"/>
   <link href="https://black-magic.org/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
