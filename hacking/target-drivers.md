@@ -106,7 +106,7 @@ header.
 Once an AP has been identified as belonging to either a Cortex-M or a Cortex-A core, the ADIv5 code dispatches to
 `cortexm_probe` or `cortexa_probe` accordingly.
 
-### Corex-M device handling
+### Cortex-M device handling
 
 Special consideration is made for ARM's JEP-106 which represents an ARM Cortex device which has not had its ROM
 tables customised by the device manufacturer. When the Cortex-M support encounters a device like this in
