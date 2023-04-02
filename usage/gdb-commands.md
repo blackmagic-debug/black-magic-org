@@ -1,6 +1,6 @@
 # GDB Commands
 
-This page provides a brief summary of the most commonly used GDB commands with the Black Magic Probe.  It is provided just as an introduction, the [GDB Manual](https://sourceware.org/gdb/current/onlinedocs/gdb/) should be consulted for more complete information.
+This page provides a brief summary of the most commonly used GDB commands with the Black Magic Probe.  It is provided just as an introduction, the [GDB Manual](https://sourceware.org/gdb/current/onlinedocs/gdb) should be consulted for more complete information.
 
 GDB's online help system is also a good source of information.  Use the command `help <command>` for more information about any GDB command.
 
