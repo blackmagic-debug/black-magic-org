@@ -2,54 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://black-magic.org</id>
   <title>Blog</title>
-  <updated>2023-02-15T05:02:44.625406+00:00</updated>
+  <updated>2023-04-27T13:47:17.736640+00:00</updated>
   <link href="https://black-magic.org"/>
   <link href="https://black-magic.org/blog/atom.xml" rel="self"/>
-  <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.3">ABlog</generator>
   <entry>
-    <id>https://black-magic.org/blog/2022-01-07-new-maintainer.html</id>
-    <title>New Project Maintainer</title>
-    <updated>2022-01-07T00:00:00+00:00</updated>
+    <id>https://black-magic.org/blog/2022-07-21-release-v1_8_2.html</id>
+    <title>Stable Release V1.8.2</title>
+    <updated>2022-07-21T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
     </author>
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
-&lt;p&gt;Hi everyone! As some of you might know this project was created and maintained for many years by &lt;a class="reference external" href="https://github.com/gsmcmullin"&gt;Gareth McMullin&lt;/a&gt;. He has created a wonderful tool that we all use and love. You might have also noticed that Gareth did not have much time to dedicate to the project for the last few years. He asked me a while ago if I would be able to take over the project and become an official maintainer of Black Magic Debug. I did not have the necessary resources to dedicate to the project until very recently. But it is finally time, from now on I am officially taking on the position as the Black Magic Debug maintainer. :slight_smile:&lt;/p&gt;
+&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.8.2"&gt;V1.8.2 bugfix point release&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </content>
-    <link href="https://black-magic.org/blog/2022-01-07-new-maintainer.html" rel="alternate"/>
-    <summary>Hi everyone! As some of you might know this project was created and maintained for many years by Gareth McMullin. He has created a wonderful tool that we all use and love. You might have also noticed that Gareth did not have much time to dedicate to the project for the last few years. He asked me a while ago if I would be able to take over the project and become an official maintainer of Black Magic Debug. I did not have the necessary resources to dedicate to the project until very recently. But it is finally time, from now on I am officially taking on the position as the Black Magic Debug maintainer. :slight_smile:</summary>
-    <published>2022-01-07T00:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://black-magic.org/blog/2022-01-20-organization-rename.html</id>
-    <title>GitHub Organization Name Change</title>
-    <updated>2022-01-20T00:00:00+00:00</updated>
-    <author>
-      <name>Piotr Esden-Tempski</name>
-    </author>
-    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
-&lt;p&gt;Hey everyone! As announced in the “New Maintainer” post we have now renamed the github organization from &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;blacksphere&lt;/span&gt;&lt;/code&gt; to &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;blackmagic-debug&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-</content>
-    <link href="https://black-magic.org/blog/2022-01-20-organization-rename.html" rel="alternate"/>
-    <summary>Hey everyone! As announced in the “New Maintainer” post we have now renamed the github organization from blacksphere to blackmagic-debug.</summary>
-    <published>2022-01-20T00:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://black-magic.org/blog/2022-05-30-release-v1_8_0.html</id>
-    <title>Stable Release V1.8.0</title>
-    <updated>2022-05-30T00:00:00+00:00</updated>
-    <author>
-      <name>Piotr Esden-Tempski</name>
-    </author>
-    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
-&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.8.0"&gt;V1.8.0 release&lt;/a&gt; of Black Magic Debug. It is a big one since we did not make a stable release since October 2020!!! So this release is very much overdue. But that also means we have a lot of new and interesting things in this release.&lt;/p&gt;
-&lt;/div&gt;
-</content>
-    <link href="https://black-magic.org/blog/2022-05-30-release-v1_8_0.html" rel="alternate"/>
-    <summary>We are happy to announce the V1.8.0 release of Black Magic Debug. It is a big one since we did not make a stable release since October 2020!!! So this release is very much overdue. But that also means we have a lot of new and interesting things in this release.</summary>
-    <published>2022-05-30T00:00:00+00:00</published>
+    <link href="https://black-magic.org/blog/2022-07-21-release-v1_8_2.html" rel="alternate"/>
+    <summary>We are happy to announce the V1.8.2 bugfix point release of Black Magic Debug.</summary>
+    <published>2022-07-21T00:00:00+00:00</published>
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2022-07-13-release-v1_8_1.html</id>
@@ -67,18 +37,48 @@
     <published>2022-07-13T00:00:00+00:00</published>
   </entry>
   <entry>
-    <id>https://black-magic.org/blog/2022-07-21-release-v1_8_2.html</id>
-    <title>Stable Release V1.8.2</title>
-    <updated>2022-07-21T00:00:00+00:00</updated>
+    <id>https://black-magic.org/blog/2022-05-30-release-v1_8_0.html</id>
+    <title>Stable Release V1.8.0</title>
+    <updated>2022-05-30T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
     </author>
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
-&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.8.2"&gt;V1.8.2 bugfix point release&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.8.0"&gt;V1.8.0 release&lt;/a&gt; of Black Magic Debug. It is a big one since we did not make a stable release since October 2020!!! So this release is very much overdue. But that also means we have a lot of new and interesting things in this release.&lt;/p&gt;
 &lt;/div&gt;
 </content>
-    <link href="https://black-magic.org/blog/2022-07-21-release-v1_8_2.html" rel="alternate"/>
-    <summary>We are happy to announce the V1.8.2 bugfix point release of Black Magic Debug.</summary>
-    <published>2022-07-21T00:00:00+00:00</published>
+    <link href="https://black-magic.org/blog/2022-05-30-release-v1_8_0.html" rel="alternate"/>
+    <summary>We are happy to announce the V1.8.0 release of Black Magic Debug. It is a big one since we did not make a stable release since October 2020!!! So this release is very much overdue. But that also means we have a lot of new and interesting things in this release.</summary>
+    <published>2022-05-30T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://black-magic.org/blog/2022-01-20-organization-rename.html</id>
+    <title>GitHub Organization Name Change</title>
+    <updated>2022-01-20T00:00:00+00:00</updated>
+    <author>
+      <name>Piotr Esden-Tempski</name>
+    </author>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;Hey everyone! As announced in the “New Maintainer” post we have now renamed the github organization from &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;blacksphere&lt;/span&gt;&lt;/code&gt; to &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;blackmagic-debug&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="https://black-magic.org/blog/2022-01-20-organization-rename.html" rel="alternate"/>
+    <summary>Hey everyone! As announced in the “New Maintainer” post we have now renamed the github organization from blacksphere to blackmagic-debug.</summary>
+    <published>2022-01-20T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://black-magic.org/blog/2022-01-07-new-maintainer.html</id>
+    <title>New Project Maintainer</title>
+    <updated>2022-01-07T00:00:00+00:00</updated>
+    <author>
+      <name>Piotr Esden-Tempski</name>
+    </author>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;Hi everyone! As some of you might know this project was created and maintained for many years by &lt;a class="reference external" href="https://github.com/gsmcmullin"&gt;Gareth McMullin&lt;/a&gt;. He has created a wonderful tool that we all use and love. You might have also noticed that Gareth did not have much time to dedicate to the project for the last few years. He asked me a while ago if I would be able to take over the project and become an official maintainer of Black Magic Debug. I did not have the necessary resources to dedicate to the project until very recently. But it is finally time, from now on I am officially taking on the position as the Black Magic Debug maintainer. :slight_smile:&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="https://black-magic.org/blog/2022-01-07-new-maintainer.html" rel="alternate"/>
+    <summary>Hi everyone! As some of you might know this project was created and maintained for many years by Gareth McMullin. He has created a wonderful tool that we all use and love. You might have also noticed that Gareth did not have much time to dedicate to the project for the last few years. He asked me a while ago if I would be able to take over the project and become an official maintainer of Black Magic Debug. I did not have the necessary resources to dedicate to the project until very recently. But it is finally time, from now on I am officially taking on the position as the Black Magic Debug maintainer. :slight_smile:</summary>
+    <published>2022-01-07T00:00:00+00:00</published>
   </entry>
 </feed>

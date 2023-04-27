@@ -5,21 +5,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-    <link rel="icon" href="../_static/favicon/icon.svg" type="image/svg+xml">
-    <link rel="icon" href="../_static/favicon/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="icon" href="../_static/favicon/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-57x57.png" sizes="57x57" type="image/png">
-    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-60x60.png" sizes="60x60" type="image/png">
-    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-72x72.png" sizes="72x72" type="image/png">
-    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-76x76.png" sizes="76x76" type="image/png">
-    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-96x96.png" sizes="96x96" type="image/png">
-    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-114x114.png" sizes="114x114" type="image/png">
-    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-120x120.png" sizes="120x120" type="image/png">
-    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-144x144.png" sizes="144x144" type="image/png">
-    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-152x152.png" sizes="152x152" type="image/png">
-    <link rel="apple-touch-icon" href="../_static/favicon/apple-touch-icon-180x180.png" sizes="180x180" type="image/png">
-    <link rel="android-icon" href="../_static/favicon/android-icon-192x192.png" sizes="192x192" type="image/png">
-<meta property="og:title" content="GDB Flash Automation" />
+    <link rel="icon" type="image/svg+xml" href="../_static/favicon/icon.svg">
+    <link rel="icon" sizes="16x16" type="image/png" href="../_static/favicon/favicon-16x16.png">
+    <link rel="icon" sizes="32x32" type="image/png" href="../_static/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="57x57" type="image/png" href="../_static/favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" type="image/png" href="../_static/favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" type="image/png" href="../_static/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" type="image/png" href="../_static/favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="96x96" type="image/png" href="../_static/favicon/apple-touch-icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="114x114" type="image/png" href="../_static/favicon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" type="image/png" href="../_static/favicon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" type="image/png" href="../_static/favicon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="../_static/favicon/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" type="image/png" href="../_static/favicon/apple-touch-icon-180x180.png">
+    <link rel="android-icon" sizes="192x192" type="image/png" href="../_static/favicon/android-icon-192x192.png"><meta property="og:title" content="GDB Flash Automation" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://black-magic.org/usage/gdb-automation.html" />
 <meta property="og:site_name" content="Black Magic Debug" />
@@ -36,9 +35,6 @@
     <link rel="stylesheet" type="text/css" href="../_static/asciinema-custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/platformpicker.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/asciinema-player_2.6.1.js"></script>
@@ -47,44 +43,23 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Semihosting" href="semihosting.html" />
-    <link rel="prev" title="GDB Commands" href="gdb-commands.html" /> 
+    <link rel="prev" title="GDB Commands" href="gdb-commands.html" />
+
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
- 
+
+
 <link
   rel="alternate"
   type="application/atom+xml"
   href="../blog/atom.xml"
   title="Blog"
 />
- 
-<style type="text/css">
-  ul.ablog-archive {
-    list-style: none;
-    overflow: auto;
-    margin-left: 0px;
-  }
-  ul.ablog-archive li {
-    float: left;
-    margin-right: 5px;
-    font-size: 80%;
-  }
-  ul.postlist a {
-    font-style: italic;
-  }
-  ul.postlist-style-disc {
-    list-style-type: disc;
-  }
-  ul.postlist-style-none {
-    list-style-type: none;
-  }
-  ul.postlist-style-circle {
-    list-style-type: circle;
-  }
-</style>
+
+
 
   </head><body>
   
@@ -95,7 +70,8 @@
           
 
           <div class="body" role="main">
-             <section id="gdb-flash-automation">
+            
+<section id="gdb-flash-automation">
 <h1>GDB Flash Automation<a class="headerlink" href="#gdb-flash-automation" title="Permalink to this heading">¶</a></h1>
 <p>In many cases it is useful to automatically flash and test the uploaded firmware. GDB has a built in scripting language as well as python bindings.</p>
 <p>Here is a collection of a few ways to automate the flashing process.</p>
@@ -144,7 +120,7 @@
 </section>
 <section id="makefile">
 <h2>Makefile<a class="headerlink" href="#makefile" title="Permalink to this heading">¶</a></h2>
-<p>If you are using GNU Makefiles for your project you can add a <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">flash</span></code> target. Reusing the script from the <a class="reference internal" href="#commandline"><span class="std std-doc">Commandline</span></a> section above the target like that can look something like this:</p>
+<p>If you are using GNU Makefiles for your project you can add a <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">flash</span></code> target. Reusing the script from the <a class="reference internal" href="#commandline">Commandline</a> section above the target like that can look something like this:</p>
 <div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nf">flash</span><span class="o">:</span><span class="w"> </span><span class="n">yourbin</span>.<span class="n">flash</span>
 
 <span class="nv">BMP_PORT</span><span class="w"> </span><span class="o">?=</span><span class="w"> </span>/dev/ttyACM0
@@ -276,8 +252,9 @@ echo $BMP_GDB_PORT
 </section>
 </section>
 
-<div class="section">
-   
+<div class="section ablog__blog_comments">
+  
+  
 </div>
 
           </div>
@@ -348,53 +325,62 @@ echo $BMP_GDB_PORT
 </ul>
 
 
+
+<div class="ablog-sidebar-item ablog__recentposts">
 <h3>
   <a href="../blog.html">Recent Posts</a>
 </h3>
 <ul>
-   
+  
+  
   <li>
-    <a href="../blog/2022-07-21-release-v1_8_2.html"
-      >21 July - Stable Release V1.8.2</a
-    >
+    <a href="../blog/2022-07-21-release-v1_8_2.html">
+      21 July - Stable Release V1.8.2
+    </a>
   </li>
   
   <li>
-    <a href="../blog/2022-07-13-release-v1_8_1.html"
-      >13 July - Stable Release V1.8.1</a
-    >
+    <a href="../blog/2022-07-13-release-v1_8_1.html">
+      13 July - Stable Release V1.8.1
+    </a>
   </li>
   
   <li>
-    <a href="../blog/2022-05-30-release-v1_8_0.html"
-      >30 May - Stable Release V1.8.0</a
-    >
+    <a href="../blog/2022-05-30-release-v1_8_0.html">
+      30 May - Stable Release V1.8.0
+    </a>
   </li>
   
   <li>
-    <a href="../blog/2022-01-20-organization-rename.html"
-      >20 January - GitHub Organization Name Change</a
-    >
+    <a href="../blog/2022-01-20-organization-rename.html">
+      20 January - GitHub Organization Name Change
+    </a>
   </li>
   
   <li>
-    <a href="../blog/2022-01-07-new-maintainer.html"
-      >07 January - New Project Maintainer</a
-    >
+    <a href="../blog/2022-01-07-new-maintainer.html">
+      07 January - New Project Maintainer
+    </a>
   </li>
   
 </ul>
+</div>
 
+
+<div class="ablog-sidebar-item ablog__archive">
 <h3>
   <a href="../blog/archive.html">Archives</a>
 </h3>
 <ul>
-   
+  
+  
   <li>
     <a href="../blog/2022.html">2022 (5)</a>
   </li>
-   
+  
+  
 </ul>
+</div>
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
@@ -430,7 +416,7 @@ echo $BMP_GDB_PORT
       &copy;2022, Piotr Esden-Tempski <piotr@esden.net>; 2022, Rachel Mant <git@dragonmux.network>.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.2.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
