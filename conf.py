@@ -39,7 +39,7 @@ extensions = [
     'sphinxcontrib.platformpicker',
     'sphinxcontrib.asciinema',
     'sphinxcontrib.youtube',
-    'sphinx-favicon',
+    'sphinx_favicon',
     'sphinxext.opengraph',
     'ablog',
 ]
