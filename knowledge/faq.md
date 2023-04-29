@@ -33,7 +33,7 @@ Memory map and flash programming are supported for these specific implementation
 
 Last Updated: Sep 6, 2022 (Partial update)
 
-As additions happen, you to update the firmware to profit from these additions.
+As additions happen, you can update the firmware to profit from these additions.
 There is experimental support for Cortex-A (ARMv7-A architecture).  This is being used with success on Xilinx Zynq-7000 SoC (Dual-core Cortex-A9) and Raspberry Pi 2 (Quad-core Cortex-A7).
 
 
