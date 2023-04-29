@@ -42,10 +42,10 @@ There is experimental support for Cortex-A (ARMv7-A architecture).  This is bein
 The official Black Magic Probe hardware is available from multiple vendors. An up to date list is kept on the [project main page](index.md#getting-hardware).
 
 ## Where can I find the BMP schematics?
- * [Black Magic Probe Mini v2.1](https://github.com/blacksphere/blackmagic/wiki/files/bmpm_v2_1c_schematic.pdf)
- * [Black Magic Probe Mini v2.0](https://github.com/blacksphere/blackmagic/wiki/files/bmpm_v2_0f_schematic.pdf)
- * [Black Magic Probe Mini](https://github.com/blacksphere/blackmagic/wiki/files/blackmagic_mini.pdf)
- * [Original Black Magic Probe](https://github.com/blacksphere/blackmagic/wiki/files/blackmagic-1.0.pdf)
+ * [Black Magic Probe Mini v2.1](https://github.com/blackmagic-debug/blackmagic/wiki/files/bmpm_v2_1c_schematic.pdf)
+ * [Black Magic Probe Mini v2.0](https://github.com/blackmagic-debug/blackmagic/wiki/files/bmpm_v2_0f_schematic.pdf)
+ * [Black Magic Probe Mini](https://github.com/blackmagic-debug/blackmagic/wiki/files/blackmagic_mini.pdf)
+ * [Original Black Magic Probe](https://github.com/blackmagic-debug/blackmagic/wiki/files/blackmagic-1.0.pdf)
 
 ## What are those JTAG/SWD connectors and cables?
 The JTAG/SWD connector is [FTSH-105-01-F-DV-K from Samtec](https://www.samtec.com/products/ftsh-105-01-f-dv-k) (Buy: [Digi-key](http://www.digikey.com/product-detail/en/FTSH-105-01-F-DV-K/FTSH-105-01-F-DV-K-ND/2649974), [1BitSquared](https://1bitsquared.com/products/jtag-swd-smd-connector)).
