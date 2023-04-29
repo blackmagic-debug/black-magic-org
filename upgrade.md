@@ -1,6 +1,6 @@
 # Firmware Upgrade
 
-## Linux / MacOS
+## Linux / macOS
 
 ### bmputil
 
@@ -35,7 +35,7 @@ Plug in the Black Magic Probe into your computer and run the following command:
 sudo dfu-util -d 1d50:6018,:6017 -s 0x08002000:leave -D blackmagic-native.bin
 ```
 
-You will need to install [`dfu-util`](http://dfu-util.sourceforge.net/) package. On MacOS you can use homebrew, macports or fink depending on your preferred package manager. You will need version 0.8.0 or greater to support the dfuse commands.
+You will need to install [`dfu-util`](http://dfu-util.sourceforge.net/) package. On macOS you can use homebrew, macports or fink depending on your preferred package manager. You will need version 0.8.0 or greater to support the dfuse commands.
 
 ```{note}
 If `dfu-util` fails to switch your BMP into bootloader mode, or you feel like you might have **bricked** your BMP, you can also plug in your BMP while holding down the button. This will force the BMP to stay in the bootloader on power up.
