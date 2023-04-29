@@ -71,7 +71,7 @@ hacking/target-cortex-a
 ![](_assets/bmp_v2_3b_iso.jpg)
 
 ## Black Magic Debug Project Goals
-The goal of this project is the creation of an easy to use. Mostly plug and play, JTAG/SWD debugger for embedded microcontrollers. Focusing on professional embedded software developers that prefer retaining control over their build systems and testing environments instead of relying on highly abstracted vendor tools that give the impression of simplicity at the cost of transparency.
+The goal of this project is the creation of an easy to use, mostly plug-and-play, JTAG/SWD debugger for embedded microcontrollers. Focusing on professional embedded software developers that prefer retaining control over their build systems and testing environments instead of relying on highly abstracted vendor tools that give the impression of simplicity at the cost of transparency.
 
 ## Project News
 ```{postlist} 10
@@ -95,11 +95,11 @@ The Black Magic GDB server features:
 * Implements USB DFU class for easy firmware upgrade as updates become available.
 * Works with Windows, Linux and Mac environments.
 
-All you need is to install the GNU [cross compilation toolchain](https://en.wikipedia.org/wiki/Cross_compiler) installed, containing [GCC](https://gcc.gnu.org/) and [GDB](https://www.sourceware.org/gdb/) for your microcontroller installed, the microcontroller is supported by BMD, plug in the Black Magic Probe hardware running the Black Magic Debug firmware into your computer, and instruct your GDB to use the BMP as your remote target using the `target extended-remote *serial_port*` command and you are off to the races.
+All you need is to install the [GNU cross compilation toolchain](https://en.wikipedia.org/wiki/Cross_compiler), containing [GCC](https://gcc.gnu.org/) and [GDB](https://www.sourceware.org/gdb/) for your microcontroller. Plug the Black Magic Probe hardware, running the Black Magic Debug firmware, into your computer. Instruct your GDB to use the BMP as your remote target using the `target extended-remote *serial_port*` command and you are off to the races. Further details are found in [Getting Started](https://black-magic.org/getting-started.html).
 
 If you are an embedded development beginner Black Magic Probe is also a great choice for you. But expect more of a Unix command line experience than a Windows [*klickybunti*](https://www.urbandictionary.com/define.php?term=klickibunti) GUI.
 
-If there is anything unclear or hard to understand let us know. Our goal is to make the documentation on this website comprehensive enough that it is all you need to get started with microcontroller development and debugging using the Black Magic Probe.
+If anything is unclear or hard to understand [let us know](https://black-magic.org/index.html#contact). Our goal is to make the documentation on this website comprehensive enough that it is all you need to get started with microcontroller development and debugging using the Black Magic Probe.
 
 ## Supported Targets
 
