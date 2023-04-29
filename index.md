@@ -143,16 +143,14 @@ The official Black Magic Probe hardware is available from these distributors in 
  * USA: [Adafruit Industries](https://www.adafruit.com/product/3839) Black Magic Probe with JTAG Cable and Serial Cable - V2.3 (Newest)
 
 ## Other Hardware supported by Black Magic Debug:
- * ST-Link V2.1 and V3 based boards with a BMDA variant of the BMD (`PROBE_HOST=pc-stlinkv2`)
- * LibFTDI based based boards boards with a BMDA variant of the BMD (`PROBE_HOST=libftdi`)
- * ST-Link V2 based boards with BMD ST-Link firmware (`PROBE_HOST=stlink ST_BOOTLOADER=1`) flashed with [stlink-tool](https://github.com/jeanthom/stlink-tool.git) to unmodified board, see [Readme.md](https://github.com/blackmagic-debug/blackmagic/tree/master/src/platforms/stlink).
- * ST-Link V2 based boards with BMD ST-Link firmware (`PROBE_HOST=stlink`) with BMD own bootloader flashed to the board.
- * STM8S Discovery (ST-Link V1) and Bluepill board with BMD SW-Link firmware (`PROBE_HOST=swlink`)
- * F4 Discovery (STM32F407) with BMD f4discovery firmware (`PROBE_HOST=f4discovery`)
- * Blackpill V2 (STM32F411) (`PROBE_HOST=blackpillv2`)
- * launchpad-icdi with BMD launchpad-icdi firmware (`PROBE_HOST=launchpad-icdi`)
- * Hydrabus(?) (`PROBE_HOST=hydrabus`)
- * TM4C(?) (`PROBE_HOST=tm4c`)
+ * ST-Link V2, V2.1. See [stlink](https://github.com/blackmagic-debug/blackmagic/tree/master/src/platforms/stlink)
+ * ST_Link V3. See [stlinkv3](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlinkv3) 
+ * STM8S Discovery (ST-Link V1) and Blue Pill. See [swlink](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/swlink)
+ * F4 Discovery (STM32F407). See [f4discovery](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/f4discovery)
+ * Black Pill V2 (STM32F411). See [blackpillv2](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpillv2)
+ * TI LaunchPad Tiva C. See [launchpad-icdi](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/launchpad-icdi)
+ * [HydraBus](https://hydrabus.com/). See [hydrabus](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/hydrabus)
+ * [96Boards Carbon](https://www.96boards.org/product/carbon/). See [96_carbon](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/96b_carbon)
 
 ## Black Magic Debug App (BMDA)
 
