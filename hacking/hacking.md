@@ -56,12 +56,6 @@ Some of these designs are in the [hardware repo](https://github.com/blackmagic-d
 make PROBE_HOST=stlink ST_BOOTLOADER=1
 ```
 
-then replug the ST-Link to get into the bootloader and load with [stlink-tools] (<https://github.com/jeanthom/stlink-tool>)
-
-```bash
-stlink-tools blackmagic.bin
-```
-
 ## Building on Windows
 
 Sid Price wrote a detailed step by step guide describing [how to set up CygWin and compile the Black Magic Probe firmware](http://www.sidprice.com/2018/05/23/cortex-m-debugging-probe/).
