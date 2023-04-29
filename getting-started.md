@@ -68,7 +68,7 @@ Attaching to Remote target
 The command `monitor swdp_scan` may be used to use the Serial-Wire Debug Protocol instead of JTAG to connect to the target.
 
 Once attached, all the standard GDB commands may be used to start and control
-the execution of the embedded application. [GDB Commands](https://black-magic.org/usage/gdb-commands.html) provides a quick introduction.
+the execution of the embedded application. [GDB Commands](usage/gdb-commands.md) provides a quick introduction.
 
 ```{note}
 On macOS use the `/dev/cu.usbmodem<somenumber>`. Don't use the tty version of this device as this one will freeze gdb when it tries to open it.

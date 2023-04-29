@@ -2,7 +2,7 @@
 
 Black Magic Debug consists of multiple elements that have fairly similar naming that can be confusing. To make this Change Log bit easier to decipher here is a little bit of history and term explanation.
 
-Black Magic Debug (BMD) was originally designed as just a firmware for a purpose made hardware called Black Magic Probe (BMP) that can speak the GNU Debugger (GDB) “remote” serial protocol. The original BMP hardware is also called “native” as over time additional “Host” platforms were added that the firmware could be loaded onto. (such host hardware can be an STM32F4 discovery board, or ST-Link hardware and many more)
+Black Magic Debug (BMD) was originally designed as just a firmware for a purpose made hardware called Black Magic Probe (BMP) that can speak the GNU Debugger (GDB) “remote” serial protocol. The original BMP hardware is also called “native” as over time additional “Host” platforms were added that the firmware could be loaded onto. (Such host hardware can be an STM32F4 discovery board, or ST-Link hardware and [many more](../hardware.md)).
 
 Additionally BMD can also be compiled as a stand alone PC application, (we call it Black Magic App, or **BMA** and formally known as **hosted**) that can act as a software in the middle, similar to the way OpenOCD works. In this case BMP is only acting as a USB to JTAG/SWD translator and the Black Magic App (BMA) does all the heavy lifting. Additionally this also allows the use of BMA with other probe hardware running non Black Magic Firmware (BMF), like for example: JLink, ST-Link, sw-link, FTDI and more.
 
