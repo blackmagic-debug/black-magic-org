@@ -103,20 +103,20 @@ JTAG IO is buffered through a TXS0108 Texas Instruments bidirectional level shif
 
 It is possible to run the Black Magic Probe firmware on your PC and have it bit bang using a USB attached FTDI MPSSE capable adapter. Programming speed is a little slower, but BMP development may be faster due to no firmware upload needed and the inherent debugging messages on the starting console.
 
-## ST Link
+## ST-Link
 
-You can compile the firmware for an ST Link debugger. These are often included on ST Discovery and Nucleo evaluation boards. You can replace [the ST Link firmware on your discovery board](http://esden.net/2014/12/29/black-magic-discovery/) with Black Magic Probe firmware. Usually this leads to more stable operation and easier use than the ST tools. There are several tutorials for how to do it even if you don't have a JTAG adapter yet and no way to bootstrap. :)
+You can compile the firmware for an ST-Link debugger. These are often included on ST Discovery and Nucleo evaluation boards. You can replace [the ST-Link firmware on your discovery board](http://esden.net/2014/12/29/black-magic-discovery/) with Black Magic Probe firmware. Usually this leads to more stable operation and easier use than the ST tools. There are several tutorials for how to do it even if you don't have a JTAG adapter yet and no way to bootstrap. :)
 
 For a generic STM32F103 board, look if the swlink platform can handle it. Swlink reuses the SWD pins.
 You can also follow [these](https://medium.com/@paramaggarwal/converting-an-stm32f103-board-to-a-black-magic-probe-c013cf2cc38c#.btn6lnwqe) instructions for a solution to not reuse the SWD pins.
 
-## ST Link V2
+## ST-Link V2
 
-Restoring StlinkV2 BMP support with recent original ST firmware is a work in progress at the moment, according to the [issue #504](https://github.com/blacksphere/blackmagic/issues/504#issuecomment-525399540).
+Restoring ST-Link V2 BMP support with recent original ST firmware is a work in progress at the moment, according to the [issue #504](https://github.com/blacksphere/blackmagic/issues/504#issuecomment-525399540).
 
 ## F4 Discovery
 
-You can run the Black Magic Probe firmware on the "target" processor of an ST F4 discovery board. This among others useful if you want to bootstrap your F4 Discovery board ST Link programmer without having any other means of programming it.
+You can run the Black Magic Probe firmware on the "target" processor of an ST F4 discovery board. This among others useful if you want to bootstrap your F4 Discovery board ST-Link programmer without having any other means of programming it.
 
 ## SW Link
 
