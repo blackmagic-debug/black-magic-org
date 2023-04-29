@@ -112,7 +112,7 @@ You can also follow [these](https://medium.com/@paramaggarwal/converting-an-stm3
 
 ## ST-Link V2
 
-Restoring ST-Link V2 BMP support with recent original ST firmware is a work in progress at the moment, according to the [issue #504](https://github.com/blacksphere/blackmagic/issues/504#issuecomment-525399540).
+Restoring ST-Link V2 BMP support with recent original ST firmware is a work in progress at the moment, according to the [issue #504](https://github.com/blackmagic-debug/blackmagic/issues/504#issuecomment-525399540).
 
 ## F4 Discovery
 
