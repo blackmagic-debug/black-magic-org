@@ -95,7 +95,3 @@ Exit the screen session by type crt-a + ctl-\\.
 ## Updating firmware
 
 Follow instructions in [Firmware Upgrade Section](/upgrade.md).
-
-## Checks before providing pull requests
-
-Before providing a pull request, please check and remove trailing whitespace: git rebase --whitespace=fix ... Test that all platforms compile: cd src; make all_platforms. As long as your patch request is not applied and you detect an error or omission in an earlier step not yet applied, consider rewriting the history (git rebase -i ...) to correct in the first place and not adding the correction as a patch on top.
