@@ -5,7 +5,7 @@
 * Join the [mailing list](http://sourceforge.net/p/blackmagicdebug/mailman/)
 * Edit this wiki
 * Use [Linux kernel coding style](https://www.kernel.org/doc/html/latest/process/coding-style.html)
-* Submit changes with [Github pull-requests](https://guides.github.com/introduction/flow/)
+* Submit changes with [GitHub pull-requests](https://guides.github.com/introduction/flow/)
 
 ## Patch Policy (draft)
  - [@esden](https://github.com/esden) is the maintainer of the project.
@@ -21,4 +21,4 @@
 without further testing assuming they conform to style and don't do anything stupid.  The author becomes the maintainer for that target.
  - If the code is orphaned and no maintainer can be found in reasonable time, the patch author may take over as the new maintainer.
  - The current maintainer should be noted in the copyright banner at the top of the file in question.
- - The Github request review feature of pull requests should be used to request a review from the maintainer.
+ - The GitHub request review feature of pull requests should be used to request a review from the maintainer.

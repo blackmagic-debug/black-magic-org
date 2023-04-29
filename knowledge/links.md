@@ -1,9 +1,9 @@
 # Links
 
 Projects useful to BMP users:
-- [atom-gdb-debugger](https://atom.io/packages/atom-gdb-debugger) - GDB integration for Github's [Atom editor](https://atom.io/)
+- [atom-gdb-debugger](https://atom.io/packages/atom-gdb-debugger) - GDB integration for GitHub's [Atom editor](https://atom.io/)
 - [gcc-arm-embedded](https://launchpad.net/gcc-arm-embedded) - GNU ARM Embedded Toolchain
-- [libopencm3](http://libopencm3.org/) ([on Github](https://github.com/libopencm3/libopencm3)) - Open source Cortex-M microcontroller library ([examples](https://github.com/libopencm3/libopencm3-examples))
+- [libopencm3](http://libopencm3.org/) ([on GitHub](https://github.com/libopencm3/libopencm3)) - Open source Cortex-M microcontroller library ([examples](https://github.com/libopencm3/libopencm3-examples))
 - [gdb](https://www.gnu.org/software/gdb/) - The GNU Project Debugger
 - [dfu-util](http://dfu-util.sourceforge.net/) - Device Firmware Upgrade Utilities
 - [stm32flash](https://sourceforge.net/projects/stm32flash/) - Flash STM32 over built-in serial bootloader
