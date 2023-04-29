@@ -3,7 +3,7 @@
 ## General
 * Join the [Discord channel](https://discord.gg/P7FYThy)
 * Join the [mailing list](http://sourceforge.net/p/blackmagicdebug/mailman/)
-* Edit this wiki
+* Edit this [website on GitHub](https://github.com/blackmagic-debug/black-magic-org)
 * Use [Linux kernel coding style](https://www.kernel.org/doc/html/latest/process/coding-style.html)
 * Submit changes with [GitHub pull-requests](https://guides.github.com/introduction/flow/)
 
