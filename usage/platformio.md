@@ -30,7 +30,7 @@ See a full list of [compatible boards for Black Magic Probe](http://docs.platfor
 
 1. Install [PlatformIO IDE](https://platformio.org/platformio-ide?utm_source=github&utm_medium=blackmagic).
 2. Create a new project using "PlatformIO Home > New Project" wizard (🏠 icon on the toolbar)
-3. Edit **Project Configuration File** [platformio.ini](http://docs.platformio.org/en/latest/projectconf.html?utm_source=github&utm_medium=blackmagic) and set Black Magic Probe as default tool for debugging and programming/uploading, update `upload/debug` port following [this guide](https://black-magic.org/usage/gdb-commands.html):
+3. Edit **Project Configuration File** [platformio.ini](http://docs.platformio.org/en/latest/projectconf.html?utm_source=github&utm_medium=blackmagic) and set Black Magic Probe as default tool for debugging and programming/uploading, update `upload/debug` port following [this guide](gdb-commands.md):
 
 ```ini
 [env:someboard]

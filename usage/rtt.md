@@ -180,7 +180,7 @@ without specifying an identifier string.
 
 ## Operating Systems
 
-[Configuration](https://black-magic.org/getting-started.html) instructions for Windows, Linux and MacOS.
+[Configuration](../getting-started.md) instructions for Windows, Linux and MacOS.
 
 ### Windows
 
