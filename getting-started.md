@@ -3,7 +3,7 @@
 If you don't have one already, you'll need to [get a Black Magic Probe](index.md#getting-hardware).
 
 ## Connecting to your computer
-Connect the Black Magic Probe to your computer's USB port with mini USB cable.  When connected via USB, the Black Magic probe will enumerate as a CDC-ACM device which the OS should present as a tty device or serial port.
+Connect the Black Magic Probe to your computer's USB port.  When connected via USB, the Black Magic Probe will enumerate as a CDC-ACM device which the OS should present as a tty device or serial port.
 
 On Linux you can check the kernel log to find the device that was allocated:
 ```
@@ -68,7 +68,7 @@ Attaching to Remote target
 The command `monitor swdp_scan` may be used to use the Serial-Wire Debug Protocol instead of JTAG to connect to the target.
 
 Once attached, all the standard GDB commands may be used to start and control
-the execution of the embedded application.  [[Useful GDB Commands]] provides a quick introduction.
+the execution of the embedded application. [GDB Commands](https://black-magic.org/usage/gdb-commands.html) provides a quick introduction.
 
 ```{note}
 On macOS use the `/dev/cu.usbmodem<somenumber>`. Don't use the tty version of this device as this one will freeze gdb when it tries to open it.
