@@ -50,13 +50,13 @@ This will result in the following binary files:
 ## Alternative Hardware
 
 A number of users have contributed alternative hardware designs that are compatible with the native firmware.
-Some of these designs are in the [hardware repo](https://github.com/blackmagic-debug/blackmagic-hardware/tree/master/contrib). Check the `README.md` files for details. For instance, to compile a BMP for an ST-Link v2 to run as alternative to the ST firmware, compile:
+Some of these designs are in the [hardware repo](https://github.com/blackmagic-debug/blackmagic-hardware/tree/master/contrib). Check the `README.md` files for details. For instance, to compile a BMP for an ST-Link V2 to run as alternative to the ST firmware, compile:
 
 ```bash
 make PROBE_HOST=stlink ST_BOOTLOADER=1
 ```
 
-then replug the STLink to get into the bootloader and load with [stlink-tools] (<https://github.com/jeanthom/stlink-tool>)
+then replug the ST-Link to get into the bootloader and load with [stlink-tools] (<https://github.com/jeanthom/stlink-tool>)
 
 ```bash
 stlink-tools blackmagic.bin
