@@ -68,8 +68,7 @@ Sid Price wrote a detailed step by step guide describing [how to set up CygWin a
 
 ### Compiling as a PC application
 
-The Black Magic application can also be compiled as a native PC application.
-Supported probes are BMP (with recent firmware), ST-Link v2/v3, FTDI-MPSSE probes, JLink and CMSIS-DAP.
+The Black Magic Debug Application can also be compiled as a native PC application.
 
 Compile the application with the command:
 

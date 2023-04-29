@@ -99,24 +99,29 @@ The board has a physical jumper to switch 3.3V power supply to the target.
 
 JTAG IO is buffered through a TXS0108 Texas Instruments bidirectional level shifter.  UART signals are connected directly to the STM32.
 
-## FTDI target
+## Black Magic Debug App
 
-It is possible to run the Black Magic Probe firmware on your PC and have it bit bang using a USB attached FTDI MPSSE capable adapter. Programming speed is a little slower, but BMP development may be faster due to no firmware upload needed and the inherent debugging messages on the starting console.
+It is possible to use the Black Magic Debug App on your PC.
+Supported probes are:
+- Black Magic Probe (with recent firmware)
+- ST-Link v2/v3
+- FTDI-MPSSE adapter
+- JLink
+- CMSIS-DAP.
+
+Programming speed is a little slower but BMP development may be faster since no firmware upload is needed.
 
 ## ST-Link
 
-You can compile the firmware for an ST-Link debugger. These are often included on ST Discovery and Nucleo evaluation boards. You can replace [the ST-Link firmware on your discovery board](http://esden.net/2014/12/29/black-magic-discovery/) with Black Magic Probe firmware. Usually this leads to more stable operation and easier use than the ST tools. There are several tutorials for how to do it even if you don't have a JTAG adapter yet and no way to bootstrap. :)
-
-For a generic STM32F103 board, look if the swlink platform can handle it. Swlink reuses the SWD pins.
-You can also follow [these](https://medium.com/@paramaggarwal/converting-an-stm32f103-board-to-a-black-magic-probe-c013cf2cc38c#.btn6lnwqe) instructions for a solution to not reuse the SWD pins.
+You can compile the firmware for an ST-Link debugger. These are often included on ST Discovery and Nucleo evaluation boards. You can replace [the ST-Link firmware on your discovery board](http://esden.net/2014/12/29/black-magic-discovery/) with Black Magic Probe Firmware. Usually this leads to more stable operation and easier use than the ST tools. There are several tutorials how to do it, even if you don't have a JTAG adapter yet and no way to bootstrap. :)
 
 ## ST-Link V2
 
-Restoring ST-Link V2 BMP support with recent original ST firmware is a work in progress at the moment, according to the [issue #504](https://github.com/blackmagic-debug/blackmagic/issues/504#issuecomment-525399540).
+Instructions to restore an ST-Link V2 with recent original ST firmware are found on [GitHub stlink](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlink#reverting-to-original-st-firmware-with-running-bmp-firmware).
 
 ## F4 Discovery
 
-You can run the Black Magic Probe firmware on the "target" processor of an ST F4 discovery board. This among others useful if you want to bootstrap your F4 Discovery board ST-Link programmer without having any other means of programming it.
+You can run the Black Magic Probe firmware on the "target" processor of an ST F4 discovery board. This is useful if you want to bootstrap your F4 Discovery board ST-Link programmer without having any other means of programming it.
 
 ## SW Link
 
@@ -124,8 +129,10 @@ This target is the programmer integrated on the STM8S Discovery board.
 
 ## Bluepill/Blackpill V1 minimal development boards
 
-The swlink platform can also be used for development boards with header accessible SWD pins. Swlink firmware remaps SWD debug pins as bit-bang SWD output. Full JTAG and more infrastructure is accessible on the header rows.
+The swlink platform can also be used for development boards with header accessible SWD pins. Swlink firmware remaps the SWD debug pins as bit-bang SWD output. Full JTAG and more infrastructure is accessible on the header rows.
 
-## Launchpad ICDI
+You can also follow [these](https://medium.com/@paramaggarwal/converting-an-stm32f103-board-to-a-black-magic-probe-c013cf2cc38c#.btn6lnwqe) instructions for a solution to not reuse the SWD debug pins.
 
-This target is the programmer integrated on the TI Launchpad board.
+## LaunchPad ICDI
+
+This target is the programmer integrated on the TI LaunchPad board.
