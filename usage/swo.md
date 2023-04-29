@@ -81,4 +81,4 @@ Viewers:
 ![](https://github.com/compuphase/Black-Magic-Probe-Book/raw/master/doc/bmtrace.png)
 * [orbuculum](https://github.com/orbcode/orbuculum) (linux, command line) Advanced. Has gdb init scripts and target c source in the Support/ directory.
 * [swo_listen](https://github.com/blackmagic-debug/blackmagic/blob/master/scripts/swolisten.c) (linux, command line)
-* [bmp_traceswo](https://github.com/nickd4/bmp_traceswo) and [fork](https://github.com/tristanseifert/bmp_traceswo) (linux, command line) [detailed write-up](https://github.com/blackmagic-debug/blackmagic/wiki/Serial-Wire-Debug-TRACESWO-support)
+* [bmp_traceswo](https://github.com/nickd4/bmp_traceswo) and [fork](https://github.com/tristanseifert/bmp_traceswo) (linux, command line) [detailed write-up](https://black-magic.org/usage/traceswo.html)
