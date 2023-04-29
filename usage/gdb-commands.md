@@ -18,7 +18,7 @@ target extended-remote /dev/ttyACM0
 target extended-remote /dev/serial/by-id/usb-Black_Sphere_Technologies_Black_Magic_Probe_E2C0C4C6-if00
 target extended-remote /dev/ttyBmpGdb
 ```
-On OS X:
+On macOS:
 ```
 target extended-remote /dev/cu.usbmodemE2C0C4C6
 ```

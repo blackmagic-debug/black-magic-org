@@ -20,7 +20,7 @@ arm-none-eabi-gdb -nx --batch \
 ```
 
 ```{note}
-Remember that `/dev/ttyACM0` is only valid on linux, you will need to use `COMx` for windows and `/dev/cu.usbmodemXXXXXXX1` for Mac OS.
+Remember that `/dev/ttyACM0` is only valid on linux, you will need to use `COMx` for windows and `/dev/cu.usbmodemXXXXXXX1` for macOS.
 ```
 ```{note}
 As always you can use `monitor jtag_scan` instead of `monitor swdp_scan` to use JTAG protocol instead of SWD.
@@ -153,7 +153,7 @@ shell sleep 3
 
 Note: The additional 3 seconds of sleep after a successful firmware upload gives the operator time to disconnect the Black Magic Probe from the target without accidentally flashing the target multiple times. If you pull the cable in the middle of the flash process you can end up with a half programmed or reerased target...
 
-And this is what those lines look like on Mac OS:
+And this is what those lines look like on macOS:
 
 ```
 shell afplay /System/Library/Sounds/Ping.aiff

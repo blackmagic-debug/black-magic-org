@@ -88,7 +88,7 @@ The Black Magic GDB server features:
 * All protocol and target specific control is done through GDB monitor commands
 * No "software in the middle" like OpenOCD required
 * Easily scriptable thanks to the [GDB scripting](https://sourceware.org/gdb/onlinedocs/gdb/Command-Files.html) capabilities
-* Interface to the host computer is a standard USB CDC ACM device (virtual serial port), which does not require special drivers on Linux or OS X.
+* Interface to the host computer is a standard USB CDC ACM device (virtual serial port), which does not require special drivers on Linux or macOS.
 * Targets ARM Cortex-M and Cortex-A based microcontrollers
 * Provides full debugging functionality, including: watchpoints, flash memory breakpoints, memory and register examination, flash memory programming, etc.
 * [Semihosting / Host IO support] as well as [Serial Wire Debug TRACESWO support].

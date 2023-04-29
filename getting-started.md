@@ -71,7 +71,7 @@ Once attached, all the standard GDB commands may be used to start and control
 the execution of the embedded application.  [[Useful GDB Commands]] provides a quick introduction.
 
 ```{note}
-On Mac OS X use the `/dev/cu.usbmodem<somenumber>`. Don't use the tty version of this device as this one will freeze gdb when it tries to open it.
+On macOS use the `/dev/cu.usbmodem<somenumber>`. Don't use the tty version of this device as this one will freeze gdb when it tries to open it.
 ```
 
 ```{note}

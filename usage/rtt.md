@@ -14,7 +14,7 @@ The RTT solution implemented in BMD uses a novel way to detect RTT automatically
 
 ## Usage
 
-This example uses Linux as operating system. For Windows and MacOS see the [Operating Systems](#operating-systems) section.
+This example uses Linux as operating system. For Windows and macOS see the [Operating Systems](#operating-systems) section.
 
 In one window open a terminal emulator (minicom, putty, etc) and connect to the USB UART:
 ```
@@ -232,9 +232,9 @@ gdb
 (gdb) run
 ```
 
-### MacOS
+### macOS
 
-On MacOS the tty devices have different names than on Linux. On connecting a BMP to the
+On macOS the tty devices have different names than on Linux. On connecting a BMP to the
 computer, 4 devices are created: 2 'tty' and 2 'cu' devices. GDB connects to the first cu device
 (e.g.: `target extended-remote /dev/cu.usbmodemDDCEC9EC1`), while RTT is connected to the
 second tty device (`minicom -c on -D /dev/tty.usbmodemDDCEC9EC3`). In full:
