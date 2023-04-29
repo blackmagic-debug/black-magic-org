@@ -148,7 +148,7 @@ The official Black Magic Probe hardware is available from these distributors in 
  * STM8S Discovery (ST-Link V1) and Blue Pill. See [swlink](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/swlink)
  * F4 Discovery (STM32F407). See [f4discovery](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/f4discovery)
  * Black Pill V2 (STM32F411). See [blackpillv2](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpillv2)
- * TI LaunchPad Tiva C. See [launchpad-icdi](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/launchpad-icdi)
+ * TI LaunchPad Tiva C onboard programmer. See [launchpad-icdi](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/launchpad-icdi)
  * [HydraBus](https://hydrabus.com/). See [hydrabus](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/hydrabus)
  * [96Boards Carbon](https://www.96boards.org/product/carbon/). See [96_carbon](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/96b_carbon)
 
