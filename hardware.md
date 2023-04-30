@@ -128,7 +128,7 @@ You can run the Black Magic Probe firmware on the "target" processor of an ST F4
 This target is the programmer integrated on the STM8S Discovery board.
 
 ## Blue Pill / Black Pill development boards with STM32F1
-Either the `stlink` or `stlink` platform can be used for Blue Pill or Black Pill development boards with STM32F1.
+Either the `stlink` or `swlink` platform can be used for Blue Pill or Black Pill development boards with STM32F1.
 
 ### stlink
 
