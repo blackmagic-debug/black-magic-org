@@ -143,9 +143,9 @@ The official Black Magic Probe hardware is available from these distributors in 
  * USA: [Adafruit Industries](https://www.adafruit.com/product/3839) Black Magic Probe with JTAG Cable and Serial Cable - V2.3 (Newest)
 
 ## Other Hardware supported by Black Magic Debug:
- * ST-Link v2, v2.1. See [stlink](https://github.com/blackmagic-debug/blackmagic/tree/master/src/platforms/stlink)
+ * ST-Link v2, v2.1 and Blue Pill. See [stlink](https://github.com/blackmagic-debug/blackmagic/tree/master/src/platforms/stlink)
  * ST_Link v3. See [stlinkv3](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlinkv3) 
- * STM8S Discovery (ST-Link V1) and Blue Pill. See [swlink](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/swlink)
+ * STM8S Discovery (ST-Link V1). See [swlink](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/swlink)
  * F4 Discovery (STM32F407). See [f4discovery](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/f4discovery)
  * Black Pill v2 (STM32F411). See [blackpillv2](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpillv2)
  * TI LaunchPad Tiva C onboard programmer. See [launchpad-icdi](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/launchpad-icdi)

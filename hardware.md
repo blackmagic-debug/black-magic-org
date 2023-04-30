@@ -141,6 +141,11 @@ The `stlink` platform does not reuse the SWD debug pins.
 
 For the detailed pinout see [stlink platform.h](https://github.com/blackmagic-debug/blackmagic/blob/main/src/platforms/stlink/platform.h).
 
+The code can be build using
+```
+make PROBE_HOST=stlink BLUEPILL=1
+```
+
 ### swlink
 
 The `swlink` platform remaps the SWD debug pins as bit-bang SWD output. Full JTAG and more infrastructure is accessible on the header rows.
