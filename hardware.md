@@ -127,11 +127,30 @@ You can run the Black Magic Probe firmware on the "target" processor of an ST F4
 
 This target is the programmer integrated on the STM8S Discovery board.
 
-## Bluepill/Blackpill V1 minimal development boards
+## Blue Pill / Black Pill development boards with STM32F1
+Either the `stlink` or `stlink` platform can be used for Blue Pill or Black Pill development boards with STM32F1.
 
-The swlink platform can also be used for development boards with header accessible SWD pins. Swlink firmware remaps the SWD debug pins as bit-bang SWD output. Full JTAG and more infrastructure is accessible on the header rows.
+### stlink
 
-You can also follow [these](https://medium.com/@paramaggarwal/converting-an-stm32f103-board-to-a-black-magic-probe-c013cf2cc38c#.btn6lnwqe) instructions for a solution to not reuse the SWD debug pins.
+The `stlink` platform does not reuse the SWD debug pins.
+
+| Function | Pin  |
+| -------- | ---- |
+| SWDIO    | PB14 |
+| SWCLK    | PA5  |
+
+For the detailed pinout see [stlink platform.h](https://github.com/blackmagic-debug/blackmagic/blob/main/src/platforms/stlink/platform.h).
+
+### swlink
+
+The `swlink` platform remaps the SWD debug pins as bit-bang SWD output. Full JTAG and more infrastructure is accessible on the header rows.
+
+| Function | Pin  |
+| -------- | ---- |
+| SWDIO    | PA13 |
+| SWCLK    | PA14 |
+
+For the detailed pinout see [swlink platform.h](https://github.com/blackmagic-debug/blackmagic/blob/main/src/platforms/swlink/platform.h).
 
 ## LaunchPad ICDI
 
