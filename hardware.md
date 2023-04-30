@@ -101,13 +101,13 @@ JTAG IO is buffered through a TXS0108 Texas Instruments bidirectional level shif
 
 ## Black Magic Debug App
 
-It is possible to use the Black Magic Debug App on your PC.
-Supported probes are:
-- Black Magic Probe (with recent firmware)
-- ST-Link v2/v3
-- FTDI-MPSSE adapter
-- JLink
-- CMSIS-DAP.
+The Black Magic Debug project can also be compiled as a desktop program named Black Magic Debug App.
+When compiled in this way it can support using the following adaptor types to talk with your hardware:
+* BMP with a firmware version of at least v1.6.2
+* ST-Link v2 and v3
+* FTDI-MPSSE devices
+* SEGGER J-Link probes
+* CMSIS-DAP adapters
 
 Programming speed is a little slower but BMP development may be faster since no firmware upload is needed.
 
