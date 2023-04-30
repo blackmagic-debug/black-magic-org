@@ -17,9 +17,11 @@ bmputil flash blackmagic-native.elf
 ```
 
 ### Linux / macOS
+
 Provided you have suitable udev rules in play, this will already do everything you need and automatically reboot your unit back into the new firmware.
 
 ### Windows
+
 bmputil will automatically take care of the needed drivers.
 Do **not** run Zadig on the DFU endpoint if using bmputil.
 
@@ -29,6 +31,7 @@ Download or compile the Black Magic Debug (BMD) firmware.
 As with the [bmputil](#bmputil) section above, the same considerations exist with this method for firmware selection.
 
 ### Linux / macOS
+
 You will need to install [`dfu-util`](http://dfu-util.sourceforge.net/) package. On macOS you can use homebrew, macports or fink depending on your preferred package manager. You will need version 0.8.0 or greater to support the dfuse commands.
 
 Plug in the Black Magic Probe into your computer and run the following command:
@@ -38,6 +41,7 @@ sudo dfu-util -d 1d50:6018,:6017 -s 0x08002000:leave -D blackmagic-native.bin
 ```
 
 ### Windows
+
 You will need to download the Windows release of [`dfu-util`](http://dfu-util.sourceforge.net/) package.
 
 Plug in the Black Magic Probe into your computer and run the following command:
@@ -53,6 +57,7 @@ On first run Zadig may not see the 6017 PID. Once the dfu exe runs and detaches 
 ```
 
 ### Closing remarks
+
 To upgrade non-native hardware see the readme of the different [platforms on GitHub](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms).
 
 ```{note}
