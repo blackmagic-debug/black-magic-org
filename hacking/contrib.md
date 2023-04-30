@@ -23,11 +23,6 @@ without further testing assuming they conform to style and don't do anything stu
  - The current maintainer should be noted in the copyright banner at the top of the file in question.
  - The GitHub request review feature of pull requests should be used to request a review from the maintainer.
 
-## Checks before providing pull requests
+## Checks before providing a pull request
 
-Before providing a pull request, please:
-- Check and remove trailing whitespace: `git rebase --whitespace=fix ...`
-- Test that all platforms compile: `cd src; make all_platforms`.
-- As long as your patch request is not applied and you detect an error or omission in an earlier commit, consider rewriting the history (`git rebase -i ...`) to correct in the first place and not adding the correction as a patch on top.
-
-Please also read the [Contribution Guidelines](https://github.com/blackmagic-debug/blackmagic/blob/main/CONTRIBUTING.md).
+Before providing a pull request, please read the [Contribution Guidelines](https://github.com/blackmagic-debug/blackmagic/blob/main/CONTRIBUTING.md).
