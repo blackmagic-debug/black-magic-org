@@ -115,9 +115,9 @@ Programming speed is a little slower but BMP development may be faster since no 
 
 You can compile the firmware for an ST-Link debugger. These are often included on ST Discovery and Nucleo evaluation boards. You can replace [the ST-Link firmware on your discovery board](http://esden.net/2014/12/29/black-magic-discovery/) with Black Magic Probe Firmware. Usually this leads to more stable operation and easier use than the ST tools. There are several tutorials how to do it, even if you don't have a JTAG adapter yet and no way to bootstrap. :)
 
-## ST-Link V2
+## ST-Link v2
 
-Instructions to restore an ST-Link V2 with recent original ST firmware are found on [GitHub stlink](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlink#reverting-to-original-st-firmware-with-running-bmp-firmware).
+Instructions to restore an ST-Link v2 with recent original ST firmware are found on [GitHub stlink](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlink#reverting-to-original-st-firmware-with-running-bmp-firmware).
 
 ## F4 Discovery
 
