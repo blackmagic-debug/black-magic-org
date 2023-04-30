@@ -117,7 +117,7 @@ You can compile the firmware for an ST-Link debugger. These are often included o
 
 ## ST-Link v2
 
-Instructions to restore an ST-Link v2 with recent original ST firmware are found on [GitHub stlink](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlink#reverting-to-original-st-firmware-with-running-bmp-firmware).
+Instructions to restore an ST-Link v2 with recent original ST firmware can be found on [GitHub in the stlink platform README](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlink#reverting-to-original-st-firmware-with-running-bmp-firmware).
 
 ## F4 Discovery
 
