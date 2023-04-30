@@ -143,6 +143,7 @@ The official Black Magic Probe hardware is available from these distributors in 
  * USA: [Adafruit Industries](https://www.adafruit.com/product/3839) Black Magic Probe with JTAG Cable and Serial Cable - V2.3 (Newest)
 
 ## Other Hardware supported by Black Magic Debug:
+
  * ST-Link v2, v2.1 and Blue Pill. See [stlink](https://github.com/blackmagic-debug/blackmagic/tree/master/src/platforms/stlink)
  * ST_Link v3. See [stlinkv3](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlinkv3) 
  * STM8S Discovery (ST-Link V1). See [swlink](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/swlink)
@@ -154,14 +155,7 @@ The official Black Magic Probe hardware is available from these distributors in 
 
 ## Black Magic Debug App (BMDA)
 
-You can also compile the Black Magic Debug as a stand alone application instead of a firmware that you can flash onto a microcontroller. This mode resembles the way OpenOCD is used as an "application in the middle".
-
-To compile BMDA you need to run `make PROBE_HOST=hosted`. The resulting application can be run on your computer and is able to detect all kinds of hardware probes including:
-* Black Magic Probe
-* FTDI adapters
-* CMSIS_DAP capable debuggers
-* JLink (slow)
-* ST-Link v2/v3
+You can also compile the Black Magic Debug as a stand alone application instead of a firmware that you can flash onto a microcontroller. This mode resembles the way OpenOCD is used as an "application in the middle". Please find more details on the [hardware page](hardware.md#black-magic-debug-app).
 
 ## Contact:
 * If you have questions or suggestions feel free to join us in our chat [![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy)

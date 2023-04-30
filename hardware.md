@@ -102,7 +102,10 @@ JTAG IO is buffered through a TXS0108 Texas Instruments bidirectional level shif
 ## Black Magic Debug App
 
 The Black Magic Debug project can also be compiled as a desktop program named Black Magic Debug App.
-When compiled in this way it can support using the following adaptor types to talk with your hardware:
+
+To compile BMDA you need to run `make PROBE_HOST=hosted`.
+
+When compiled in this way it can support using the following adapter types to talk with your hardware:
 * BMP with a firmware version of at least v1.6.2
 * ST-Link v2 and v3
 * FTDI-MPSSE devices
