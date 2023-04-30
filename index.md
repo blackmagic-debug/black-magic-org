@@ -143,11 +143,11 @@ The official Black Magic Probe hardware is available from these distributors in 
  * USA: [Adafruit Industries](https://www.adafruit.com/product/3839) Black Magic Probe with JTAG Cable and Serial Cable - V2.3 (Newest)
 
 ## Other Hardware supported by Black Magic Debug:
- * ST-Link V2, V2.1. See [stlink](https://github.com/blackmagic-debug/blackmagic/tree/master/src/platforms/stlink)
- * ST_Link V3. See [stlinkv3](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlinkv3) 
+ * ST-Link v2, v2.1. See [stlink](https://github.com/blackmagic-debug/blackmagic/tree/master/src/platforms/stlink)
+ * ST_Link v3. See [stlinkv3](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlinkv3) 
  * STM8S Discovery (ST-Link V1) and Blue Pill. See [swlink](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/swlink)
  * F4 Discovery (STM32F407). See [f4discovery](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/f4discovery)
- * Black Pill V2 (STM32F411). See [blackpillv2](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpillv2)
+ * Black Pill v2 (STM32F411). See [blackpillv2](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpillv2)
  * TI LaunchPad Tiva C onboard programmer. See [launchpad-icdi](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/launchpad-icdi)
  * [HydraBus](https://hydrabus.com/). See [hydrabus](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/hydrabus)
  * [96Boards Carbon](https://www.96boards.org/product/carbon/). See [96_carbon](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/96b_carbon)
@@ -161,7 +161,7 @@ To compile BMDA you need to run `make PROBE_HOST=hosted`. The resulting applicat
 * FTDI adapters
 * CMSIS_DAP capable debuggers
 * JLink (slow)
-* ST-Link V2/V3
+* ST-Link v2/v3
 
 ## Contact:
 * If you have questions or suggestions feel free to join us in our chat [![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy)
