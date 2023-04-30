@@ -60,9 +60,9 @@ make PROBE_HOST=stlink ST_BOOTLOADER=1
 
 Sid Price wrote a detailed step by step guide describing [how to set up CygWin and compile the Black Magic Probe firmware](http://www.sidprice.com/2018/05/23/cortex-m-debugging-probe/).
 
-### Compiling as a PC application
+### Compiling as a desktop program
 
-The Black Magic Debug Application can also be compiled as a native PC application.
+The Black Magic Debug project can also be compiled as a desktop program named Black Magic Debug App.
 
 Compile the application with the command:
 
