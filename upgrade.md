@@ -43,10 +43,19 @@ If `dfu-util` fails to switch your BMP into bootloader mode, or you feel like yo
 
 ### stlink-tool
 
-An ST-Link can be used to upgrade the firmware using [stlink-tool](<https://github.com/jeanthom/stlink-tool>).
+The firmware on an ST-Link can be upgraded using [dragonmux/stlink-tool](https://github.com/dragonmux/stlink-tool/tree/feature/compilation-fixes).
+
+The linked repository is forked from [UweBonnes/stlink-tool](https://github.com/UweBonnes/stlink-tool), which in turn is a fork from [jeanthom/stlink-tool](https://github.com/jeanthom/stlink-tool). The link points to a specific branch named `compilation-fixes`. Please ensure to checkout to to this branch after cloning the repository, as both UweBonnes and dragonmux have made fixes that are not included in the repository by jeanthom.
+
+
+To upgrade, run the following command:
 
 ```bash
-stlink-tools blackmagic.bin
+stlink-tool blackmagic.bin
+```
+
+```{note}
+This software upgrades the firmware of the ST-Link probe, **not** the firmware of a target connected to the probe. Therefore please ensure you want to upgrade the firmware of the ST-Link probe, and use a blackmagic.bin file built specifically for ST-Link.
 ```
 
 ## Windows
@@ -99,8 +108,17 @@ If `dfu-util` fails to switch your BMP into bootloader mode, or you feel like yo
 
 ### stlink-tool
 
-An ST-Link can be used to upgrade the firmware using [stlink-tool](<https://github.com/jeanthom/stlink-tool>).
+The firmware on an ST-Link can be upgraded using [dragonmux/stlink-tool](https://github.com/dragonmux/stlink-tool/tree/feature/compilation-fixes).
+
+The linked repository is forked from [UweBonnes/stlink-tool](https://github.com/UweBonnes/stlink-tool), which in turn is a fork from [jeanthom/stlink-tool](https://github.com/jeanthom/stlink-tool). The link points to a specific branch named `compilation-fixes`. Please ensure to checkout to to this branch after cloning the repository, as both UweBonnes and dragonmux have made fixes that are not included in the repository by jeanthom.
+
+
+To upgrade, run the following command:
 
 ```bash
-stlink-tools blackmagic.bin
+stlink-tool blackmagic.bin
+```
+
+```{note}
+This software upgrades the firmware of the ST-Link probe, **not** the firmware of a target connected to the probe. Therefore please ensure you want to upgrade the firmware of the ST-Link probe, and use a blackmagic.bin file built specifically for ST-Link.
 ```
