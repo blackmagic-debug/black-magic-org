@@ -44,7 +44,7 @@ This will result in the following binary files:
 
 * `blackmagic.elf` - ELF binary of the Black Magic debug probe.
 * `blackmagic.bin` - Flat binary of the Black Magic debug probe, load at `0x8002000`.
-* `blackmagic_dfu` - ELF binary of the Black Magic DFU bootloader.
+* `blackmagic_dfu.elf` - ELF binary of the Black Magic DFU bootloader.
 * `blackmagic_dfu.bin` - Flat binary of the DFU bootloader, load at `0x8000000`.
 
 ## Alternative Hardware
