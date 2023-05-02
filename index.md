@@ -11,7 +11,7 @@
 
 hardware
 firmware-installation
-upgrade
+firmware-upgrade
 getting-started
 ```
 

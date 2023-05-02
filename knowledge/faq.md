@@ -164,4 +164,4 @@ Because Texas Instruments... but we are working on it. :) If you want to help wi
 
 ## How do I upgrade to a more recent version?
 
-Follow the [upgrade](/upgrade.md) instructions.
+Follow the [upgrade](/firmware-upgrade.md) instructions.

@@ -2,7 +2,7 @@
 
 The Black Magic Firmware can be installed on hardware that did not previously contain Black Magic Firmware. We refer to this as a clean install.
 
-If your board already has the Black Magic Firmware installed, please refer to [Firmware Upgrade](./upgrade.md) to upgrade your Black Magic Probe with the latest firmware.
+If your board already has the Black Magic Firmware installed, please refer to [Firmware Upgrade](./firmware-upgrade.md) to upgrade your Black Magic Probe with the latest firmware.
 
 To perform a clean install, multiple types of hardware can be used in combination with different software utilities. This section lists the options to perform a clean install by hardware, to enable you to select the right software utility for the hardware you have at hand. The options covered are:
 - USB to Serial/UART/TTL converter, i.e. FTDI interface, if the targeted hardware has the built-in ST serial UART bootloader
