@@ -35,12 +35,17 @@ General commands:
 	version -- Display firmware version info
 	help -- Display help for monitor commands
 	jtag_scan -- Scan JTAG chain for devices
-	swdp_scan -- Scan SW-DP for devices
+	swdp_scan -- Scan SW-DP for devices: [TARGET_ID]
+	auto_scan -- Automatically scan all chain types for devices
+	frequency -- set minimum high and low times: [FREQ]
 	targets -- Display list of available targets
 	morse -- Display morse error message
-	connect_srst -- Configure connect under SRST: (enable|disable)
-	hard_srst -- Force a pulse on the hard SRST line - disconnects target
-	debug_bmp -- Output BMP "debug" strings to the second vcom: (enable|disable)
+	halt_timeout -- Timeout to wait until Cortex-M is halted: [TIMEOUT, default 2000ms]
+	connect_rst -- Configure connect under reset: [enable|disable]
+	reset -- Pulse the nRST line - disconnects target: [PULSE_LEN, default 0ms]
+	tdi_low_reset -- Pulse nRST with TDI set low to attempt to wake certain targets up (eg LPC82x)
+	traceswo -- Start trace capture, NRZ mode: [BAUDRATE] [decode [CHANNEL_NR ...]]
+	heapinfo -- Set semihosting heapinfo: HEAPINFO HEAP_BASE HEAP_LIMIT STACK_BASE STACK_LIMIT
 ```
 
 The list of available commands is context sensitive. After connecting to certain targets the list of available commands changes. For example STM32 targets provide `monitor erase_mass` that is not available until you scan for available targets and find the STM32 target.
