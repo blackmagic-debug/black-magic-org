@@ -50,6 +50,8 @@ General commands:
 
 The list of available commands is context sensitive. After connecting to certain targets the list of available commands changes. For example STM32 targets provide `monitor erase_mass` that is not available until you scan for available targets and find the STM32 target.
 
+Please note that the commands do not support units, only plain integers (e.g. use `halt_timeout 5000`, not `halt_timeout 5s`).
+
 ### Finding connected targets
 ```
 monitor jtag_scan
