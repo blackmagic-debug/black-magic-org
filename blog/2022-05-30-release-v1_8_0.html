@@ -168,7 +168,7 @@
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">HOSTED_BMP_ONLY=1</span></code> option to allow for easier building of the PC-hosted Black Magic Debug Application when only BMP support is needed [UweBonnes] [stoyan-shopov]</p></li>
 <li><p>Fixed builds using newer GNU make versions that remove <code class="docutils literal notranslate"><span class="pre">-</span></code> prefix from <code class="docutils literal notranslate"><span class="pre">$(MAKEFLAGS)</span></code> [noahp]</p></li>
 <li><p>Compile with <code class="docutils literal notranslate"><span class="pre">-Os</span></code> by default. Can be overridden using <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">OPT_FLAGS=...</span></code>. SWD/JTAG bitbang code remains compiled using <code class="docutils literal notranslate"><span class="pre">-O3</span></code> for good bitbang speed [UweBonnes]</p></li>
-<li><p>Fixed compilation of BMA on MacOS where <code class="docutils literal notranslate"><span class="pre">hidapi-libusb</span></code> is called just <code class="docutils literal notranslate"><span class="pre">hidapi</span></code> [UweBonnes]</p></li>
+<li><p>Fixed compilation of BMA on macOS where <code class="docutils literal notranslate"><span class="pre">hidapi-libusb</span></code> is called just <code class="docutils literal notranslate"><span class="pre">hidapi</span></code> [UweBonnes]</p></li>
 <li><p>Added linker flag to show memory usage [esden]</p></li>
 <li><p>Only build needed libopencm3 libraries [esden]</p></li>
 <li><p>Don’t try to report memory usage for BMA builds, as this breaks clang builds [esden]</p></li>

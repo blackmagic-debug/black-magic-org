@@ -152,35 +152,87 @@
 <p>JTAG IO is buffered through a TXS0108 Texas Instruments bidirectional level shifter.  UART signals are connected directly to the STM32.</p>
 </section>
 </section>
-<section id="ftdi-target">
-<h2>FTDI target<a class="headerlink" href="#ftdi-target" title="Permalink to this heading">¶</a></h2>
-<p>It is possible to run the Black Magic Probe firmware on your PC and have it bit bang using a USB attached FTDI MPSSE capable adapter. Programming speed is a little slower, but BMP development may be faster due to no firmware upload needed and the inherent debugging messages on the starting console.</p>
+<section id="black-magic-debug-app">
+<h2>Black Magic Debug App<a class="headerlink" href="#black-magic-debug-app" title="Permalink to this heading">¶</a></h2>
+<p>The Black Magic Debug project can also be compiled as a desktop program named Black Magic Debug App.</p>
+<p>To compile BMDA you need to run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">PROBE_HOST=hosted</span></code>.</p>
+<p>When compiled in this way it can support using the following adapter types to talk with your hardware:</p>
+<ul class="simple">
+<li><p>BMP with a firmware version of at least v1.6.2</p></li>
+<li><p>ST-Link v2 and v3</p></li>
+<li><p>FTDI-MPSSE devices</p></li>
+<li><p>SEGGER J-Link probes</p></li>
+<li><p>CMSIS-DAP adapters</p></li>
+</ul>
+<p>Programming speed is a little slower but BMP development may be faster since no firmware upload is needed.</p>
 </section>
 <section id="st-link">
-<h2>ST Link<a class="headerlink" href="#st-link" title="Permalink to this heading">¶</a></h2>
-<p>You can compile the firmware for an ST Link debugger. These are often included on ST Discovery and Nucleo evaluation boards. You can replace <a class="reference external" href="http://esden.net/2014/12/29/black-magic-discovery/">the ST Link firmware on your discovery board</a> with Black Magic Probe firmware. Usually this leads to more stable operation and easier use than the ST tools. There are several tutorials for how to do it even if you don’t have a JTAG adapter yet and no way to bootstrap. :)</p>
-<p>For a generic STM32F103 board, look if the swlink platform can handle it. Swlink reuses the SWD pins.
-You can also follow <a class="reference external" href="https://medium.com/&#64;paramaggarwal/converting-an-stm32f103-board-to-a-black-magic-probe-c013cf2cc38c#.btn6lnwqe">these</a> instructions for a solution to not reuse the SWD pins.</p>
+<h2>ST-Link<a class="headerlink" href="#st-link" title="Permalink to this heading">¶</a></h2>
+<p>You can compile the firmware for an ST-Link debugger. These are often included on ST Discovery and Nucleo evaluation boards. You can replace <a class="reference external" href="http://esden.net/2014/12/29/black-magic-discovery/">the ST-Link firmware on your discovery board</a> with Black Magic Probe Firmware. Usually this leads to more stable operation and easier use than the ST tools. There are several tutorials how to do it, even if you don’t have a JTAG adapter yet and no way to bootstrap. :)</p>
 </section>
 <section id="st-link-v2">
-<h2>ST Link V2<a class="headerlink" href="#st-link-v2" title="Permalink to this heading">¶</a></h2>
-<p>Restoring StlinkV2 BMP support with recent original ST firmware is a work in progress at the moment, according to the <a class="reference external" href="https://github.com/blacksphere/blackmagic/issues/504#issuecomment-525399540">issue #504</a>.</p>
+<h2>ST-Link v2<a class="headerlink" href="#st-link-v2" title="Permalink to this heading">¶</a></h2>
+<p>Instructions to restore an ST-Link v2 with recent original ST firmware can be found on <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlink#reverting-to-original-st-firmware-with-running-bmp-firmware">GitHub in the stlink platform README</a>.</p>
 </section>
 <section id="f4-discovery">
 <h2>F4 Discovery<a class="headerlink" href="#f4-discovery" title="Permalink to this heading">¶</a></h2>
-<p>You can run the Black Magic Probe firmware on the “target” processor of an ST F4 discovery board. This among others useful if you want to bootstrap your F4 Discovery board ST Link programmer without having any other means of programming it.</p>
+<p>You can run the Black Magic Probe firmware on the “target” processor of an ST F4 discovery board. This is useful if you want to bootstrap your F4 Discovery board ST-Link programmer without having any other means of programming it.</p>
 </section>
 <section id="sw-link">
 <h2>SW Link<a class="headerlink" href="#sw-link" title="Permalink to this heading">¶</a></h2>
 <p>This target is the programmer integrated on the STM8S Discovery board.</p>
 </section>
-<section id="bluepill-blackpill-v1-minimal-development-boards">
-<h2>Bluepill/Blackpill V1 minimal development boards<a class="headerlink" href="#bluepill-blackpill-v1-minimal-development-boards" title="Permalink to this heading">¶</a></h2>
-<p>The swlink platform can also be used for development boards with header accessible SWD pins. Swlink firmware remaps SWD debug pins as bit-bang SWD output. Full JTAG and more infrastructure is accessible on the header rows.</p>
+<section id="blue-pill-black-pill-development-boards-with-stm32f1">
+<h2>Blue Pill / Black Pill development boards with STM32F1<a class="headerlink" href="#blue-pill-black-pill-development-boards-with-stm32f1" title="Permalink to this heading">¶</a></h2>
+<p>Either the <code class="docutils literal notranslate"><span class="pre">stlink</span></code> or <code class="docutils literal notranslate"><span class="pre">swlink</span></code> platform can be used for Blue Pill or Black Pill development boards with STM32F1.</p>
+<section id="stlink">
+<h3>stlink<a class="headerlink" href="#stlink" title="Permalink to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">stlink</span></code> platform does not reuse the SWD debug pins.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Pin</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SWDIO</p></td>
+<td><p>PB14</p></td>
+</tr>
+<tr class="row-odd"><td><p>SWCLK</p></td>
+<td><p>PA5</p></td>
+</tr>
+</tbody>
+</table>
+<p>For the detailed pinout see <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/blob/main/src/platforms/stlink/platform.h">stlink platform.h</a>.</p>
+<p>The code can be build using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">PROBE_HOST</span><span class="o">=</span><span class="n">stlink</span> <span class="n">BLUEPILL</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="swlink">
+<h3>swlink<a class="headerlink" href="#swlink" title="Permalink to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">swlink</span></code> platform remaps the SWD debug pins as bit-bang SWD output. Full JTAG and more infrastructure is accessible on the header rows.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Pin</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SWDIO</p></td>
+<td><p>PA13</p></td>
+</tr>
+<tr class="row-odd"><td><p>SWCLK</p></td>
+<td><p>PA14</p></td>
+</tr>
+</tbody>
+</table>
+<p>For the detailed pinout see <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/blob/main/src/platforms/swlink/platform.h">swlink platform.h</a>.</p>
+</section>
 </section>
 <section id="launchpad-icdi">
-<h2>Launchpad ICDI<a class="headerlink" href="#launchpad-icdi" title="Permalink to this heading">¶</a></h2>
-<p>This target is the programmer integrated on the TI Launchpad board.</p>
+<h2>LaunchPad ICDI<a class="headerlink" href="#launchpad-icdi" title="Permalink to this heading">¶</a></h2>
+<p>This target is the programmer integrated on the TI LaunchPad board.</p>
 </section>
 </section>
 

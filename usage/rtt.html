@@ -86,7 +86,7 @@ set during compilation. For more details refer to the <a class="reference intern
 <p>The RTT solution implemented in BMD uses a novel way to detect RTT automatically, making it fast and convenient.</p>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
-<p>This example uses Linux as operating system. For Windows and MacOS see the <a class="reference internal" href="#operating-systems">Operating Systems</a> section.</p>
+<p>This example uses Linux as operating system. For Windows and macOS see the <a class="reference internal" href="#operating-systems">Operating Systems</a> section.</p>
 <p>In one window open a terminal emulator (minicom, putty, etc) and connect to the USB UART:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ minicom -c on -D /dev/ttyBmpTarg
 </pre></div>
@@ -251,7 +251,7 @@ without specifying an identifier string.</p>
 </section>
 <section id="operating-systems">
 <h2>Operating Systems<a class="headerlink" href="#operating-systems" title="Permalink to this heading">¶</a></h2>
-<p><a class="reference external" href="https://black-magic.org/getting-started.html">Configuration</a> instructions for Windows, Linux and MacOS.</p>
+<p><a class="reference internal" href="../getting-started.html"><span class="std std-doc">Configuration</span></a> instructions for Windows, Linux and MacOS.</p>
 <section id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">¶</a></h3>
 <p>After configuration, Black Magic Probe shows up in Windows as two <em>USB Serial (CDC)</em> ports.</p>
@@ -298,8 +298,8 @@ lrwxrwxrwx 1 root root 7 Dec 13 07:29 /dev/ttyBmpTarg -&gt; ttyACM2
 </div>
 </section>
 <section id="macos">
-<h3>MacOS<a class="headerlink" href="#macos" title="Permalink to this heading">¶</a></h3>
-<p>On MacOS the tty devices have different names than on Linux. On connecting a BMP to the
+<h3>macOS<a class="headerlink" href="#macos" title="Permalink to this heading">¶</a></h3>
+<p>On macOS the tty devices have different names than on Linux. On connecting a BMP to the
 computer, 4 devices are created: 2 ‘tty’ and 2 ‘cu’ devices. GDB connects to the first cu device
 (e.g.: <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">extended-remote</span> <span class="pre">/dev/cu.usbmodemDDCEC9EC1</span></code>), while RTT is connected to the
 second tty device (<code class="docutils literal notranslate"><span class="pre">minicom</span> <span class="pre">-c</span> <span class="pre">on</span> <span class="pre">-D</span> <span class="pre">/dev/tty.usbmodemDDCEC9EC3</span></code>). In full:</p>

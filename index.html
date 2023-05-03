@@ -22,10 +22,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://black-magic.org/index.html" />
 <meta property="og:site_name" content="Black Magic Debug" />
-<meta property="og:description" content="Black Magic Debug Project Goals: The goal of this project is the creation of an easy to use. Mostly plug and play, JTAG/SWD debugger for embedded microcontrollers. Focusing on professional embedded..." />
+<meta property="og:description" content="Black Magic Debug Project Goals: The goal of this project is the creation of an easy to use, mostly plug-and-play, JTAG/SWD debugger for embedded microcontrollers. The project focuses on profession..." />
 <meta property="og:image" content="https://black-magic.org/_static/blackmagic-logo.png" />
 <meta property="og:image:alt" content="Black Magic Debug" />
-<meta name="description" content="Black Magic Debug Project Goals: The goal of this project is the creation of an easy to use. Mostly plug and play, JTAG/SWD debugger for embedded microcontrollers. Focusing on professional embedded..." />
+<meta name="description" content="Black Magic Debug Project Goals: The goal of this project is the creation of an easy to use, mostly plug-and-play, JTAG/SWD debugger for embedded microcontrollers. The project focuses on profession..." />
 
     <title>Black Magic Debug: The Plug&amp;Play MCU Debugger &#8212; Black Magic Debug  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -94,7 +94,7 @@
 <p><img alt="" src="_images/bmp_v2_3b_iso.jpg" /></p>
 <section id="black-magic-debug-project-goals">
 <h2>Black Magic Debug Project Goals<a class="headerlink" href="#black-magic-debug-project-goals" title="Permalink to this heading">¶</a></h2>
-<p>The goal of this project is the creation of an easy to use. Mostly plug and play, JTAG/SWD debugger for embedded microcontrollers. Focusing on professional embedded software developers that prefer retaining control over their build systems and testing environments instead of relying on highly abstracted vendor tools that give the impression of simplicity at the cost of transparency.</p>
+<p>The goal of this project is the creation of an easy to use, mostly plug-and-play, JTAG/SWD debugger for embedded microcontrollers. The project focuses on professional embedded software developers that prefer retaining control over their build systems and testing environments instead of relying on highly abstracted vendor tools that give the impression of simplicity at the cost of transparency.</p>
 </section>
 <section id="project-news">
 <h2>Project News<a class="headerlink" href="#project-news" title="Permalink to this heading">¶</a></h2>
@@ -116,16 +116,16 @@
 <li><p>All protocol and target specific control is done through GDB monitor commands</p></li>
 <li><p>No “software in the middle” like OpenOCD required</p></li>
 <li><p>Easily scriptable thanks to the <a class="reference external" href="https://sourceware.org/gdb/onlinedocs/gdb/Command-Files.html">GDB scripting</a> capabilities</p></li>
-<li><p>Interface to the host computer is a standard USB CDC ACM device (virtual serial port), which does not require special drivers on Linux or OS X.</p></li>
+<li><p>Interface to the host computer is a standard USB CDC ACM device (virtual serial port), which does not require special drivers on Linux or macOS.</p></li>
 <li><p>Targets ARM Cortex-M and Cortex-A based microcontrollers</p></li>
 <li><p>Provides full debugging functionality, including: watchpoints, flash memory breakpoints, memory and register examination, flash memory programming, etc.</p></li>
 <li><p>[Semihosting / Host IO support] as well as [Serial Wire Debug TRACESWO support].</p></li>
 <li><p>Implements USB DFU class for easy firmware upgrade as updates become available.</p></li>
 <li><p>Works with Windows, Linux and Mac environments.</p></li>
 </ul>
-<p>All you need is to install the GNU <a class="reference external" href="https://en.wikipedia.org/wiki/Cross_compiler">cross compilation toolchain</a> installed, containing <a class="reference external" href="https://gcc.gnu.org/">GCC</a> and <a class="reference external" href="https://www.sourceware.org/gdb/">GDB</a> for your microcontroller installed, the microcontroller is supported by BMD, plug in the Black Magic Probe hardware running the Black Magic Debug firmware into your computer, and instruct your GDB to use the BMP as your remote target using the <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">extended-remote</span> <span class="pre">*serial_port*</span></code> command and you are off to the races.</p>
+<p>All you need is to install the <a class="reference external" href="https://en.wikipedia.org/wiki/Cross_compiler">GNU cross compilation toolchain</a>, containing <a class="reference external" href="https://gcc.gnu.org/">GCC</a> and <a class="reference external" href="https://www.sourceware.org/gdb/">GDB</a> for your microcontroller. Plug the Black Magic Probe hardware, running the Black Magic Debug firmware, into your computer. Instruct your GDB to use the BMP as your remote target using the <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">extended-remote</span> <span class="pre">*serial_port*</span></code> command and you are off to the races. Further details are found in <a class="reference internal" href="getting-started.html"><span class="std std-doc">Getting Started</span></a>.</p>
 <p>If you are an embedded development beginner Black Magic Probe is also a great choice for you. But expect more of a Unix command line experience than a Windows <a class="reference external" href="https://www.urbandictionary.com/define.php?term=klickibunti"><em>klickybunti</em></a> GUI.</p>
-<p>If there is anything unclear or hard to understand let us know. Our goal is to make the documentation on this website comprehensive enough that it is all you need to get started with microcontroller development and debugging using the Black Magic Probe.</p>
+<p>If anything is unclear or hard to understand <a class="reference internal" href="#contact"><span class="std std-ref">let us know</span></a>. Our goal is to make the documentation on this website comprehensive enough that it is all you need to get started with microcontroller development and debugging using the Black Magic Probe.</p>
 </section>
 <section id="supported-targets">
 <h2>Supported Targets<a class="headerlink" href="#supported-targets" title="Permalink to this heading">¶</a></h2>
@@ -169,29 +169,19 @@
 <section id="other-hardware-supported-by-black-magic-debug">
 <h2>Other Hardware supported by Black Magic Debug:<a class="headerlink" href="#other-hardware-supported-by-black-magic-debug" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>Stlink V2.1 and V3 based boards with a BMDA variant of the BMD (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=pc-stlinkv2</span></code>)</p></li>
-<li><p>LibFTDI based based boards boards with a BMDA variant of the BMD (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=libftdi</span></code>)</p></li>
-<li><p>StlinkV2 based boards with BMD ST-Link firmware (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=stlink</span> <span class="pre">ST_BOOTLOADER=1</span></code>) flashed with <a class="reference external" href="https://github.com/jeanthom/stlink-tool.git">stlink-tool</a> to unmodified board, see <a class="reference external" href="https://github.com/blacksphere/blackmagic/tree/master/src/platforms/stlink">Readme.md</a>.</p></li>
-<li><p>StlinkV2 based boards with BMD ST-Link firmware (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=stlink</span></code>) with BMD own bootloader flashed to the board.</p></li>
-<li><p>STM8S Discovery (StlinkV1) and Bluepill board with BMD SW-Link firmware (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=swlink</span></code>)</p></li>
-<li><p>F4 Discovery (STM32F407) with BMD f4discovery firmware (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=f4discovery</span></code>)</p></li>
-<li><p>Blackpill V2 (STM32F411) (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=blackpillv2</span></code>)</p></li>
-<li><p>launchpad-icdi with BMD launchpad-icdi firmware (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=launchpad-icdi</span></code>)</p></li>
-<li><p>Hydrabus(?) (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=hydrabus</span></code>)</p></li>
-<li><p>TM4C(?) (<code class="docutils literal notranslate"><span class="pre">PROBE_HOST=tm4c</span></code>)</p></li>
+<li><p>ST-Link v2, v2.1 and Blue Pill. See <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/master/src/platforms/stlink">stlink</a></p></li>
+<li><p>ST_Link v3. See <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlinkv3">stlinkv3</a></p></li>
+<li><p>STM8S Discovery (ST-Link V1). See <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/swlink">swlink</a></p></li>
+<li><p>F4 Discovery (STM32F407). See <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/f4discovery">f4discovery</a></p></li>
+<li><p>Black Pill v2 (STM32F411). See <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpillv2">blackpillv2</a></p></li>
+<li><p>TI LaunchPad Tiva C onboard programmer. See <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/launchpad-icdi">launchpad-icdi</a></p></li>
+<li><p><a class="reference external" href="https://hydrabus.com/">HydraBus</a>. See <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/hydrabus">hydrabus</a></p></li>
+<li><p><a class="reference external" href="https://www.96boards.org/product/carbon/">96Boards Carbon</a>. See <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/96b_carbon">96_carbon</a></p></li>
 </ul>
 </section>
 <section id="black-magic-debug-app-bmda">
 <h2>Black Magic Debug App (BMDA)<a class="headerlink" href="#black-magic-debug-app-bmda" title="Permalink to this heading">¶</a></h2>
-<p>You can also compile the Black Magic Debug as a stand alone application instead of a firmware that you can flash onto a microcontroller. This mode resembles the way OpenOCD is used as an “application in the middle”.</p>
-<p>To compile BMDA you need to run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">PROBE_HOST=hosted</span></code>. The resulting application can be run on your computer and is able to detect all kinds of hardware probes including:</p>
-<ul class="simple">
-<li><p>Black Magic Probe</p></li>
-<li><p>FTDI adapters</p></li>
-<li><p>CMSIS_DAP capable debuggers</p></li>
-<li><p>JLink (slow)</p></li>
-<li><p>ST-Link V2/V3</p></li>
-</ul>
+<p>You can also compile the Black Magic Debug as a stand alone application instead of a firmware that you can flash onto a microcontroller. This mode resembles the way OpenOCD is used as an “application in the middle”. Please find more details on the <a class="reference internal" href="hardware.html#black-magic-debug-app"><span class="std std-ref">hardware page</span></a>.</p>
 </section>
 <section id="contact">
 <h2>Contact:<a class="headerlink" href="#contact" title="Permalink to this heading">¶</a></h2>

@@ -22,10 +22,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://black-magic.org/getting-started.html" />
 <meta property="og:site_name" content="Black Magic Debug" />
-<meta property="og:description" content="Get a Black Magic Probe: If you don’t have one already, you’ll need to get a Black Magic Probe. Connecting to your computer: Connect the Black Magic Probe to your computer’s USB port with mini USB ..." />
+<meta property="og:description" content="Get a Black Magic Probe: If you don’t have one already, you’ll need to get a Black Magic Probe. Connecting to your computer: Connect the Black Magic Probe to your computer’s USB port. When connecte..." />
 <meta property="og:image" content="https://black-magic.org/_static/blackmagic-logo.png" />
 <meta property="og:image:alt" content="Black Magic Debug" />
-<meta name="description" content="Get a Black Magic Probe: If you don’t have one already, you’ll need to get a Black Magic Probe. Connecting to your computer: Connect the Black Magic Probe to your computer’s USB port with mini USB ..." />
+<meta name="description" content="Get a Black Magic Probe: If you don’t have one already, you’ll need to get a Black Magic Probe. Connecting to your computer: Connect the Black Magic Probe to your computer’s USB port. When connecte..." />
 
     <title>Getting Started &#8212; Black Magic Debug  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -79,7 +79,7 @@
 </section>
 <section id="connecting-to-your-computer">
 <h2>Connecting to your computer<a class="headerlink" href="#connecting-to-your-computer" title="Permalink to this heading">¶</a></h2>
-<p>Connect the Black Magic Probe to your computer’s USB port with mini USB cable.  When connected via USB, the Black Magic probe will enumerate as a CDC-ACM device which the OS should present as a tty device or serial port.</p>
+<p>Connect the Black Magic Probe to your computer’s USB port.  When connected via USB, the Black Magic Probe will enumerate as a CDC-ACM device which the OS should present as a tty device or serial port.</p>
 <p>On Linux you can check the kernel log to find the device that was allocated:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>user@host ~ $ dmesg
 usb 1-1.1: new full-speed USB device number 58 using ehci-pci
@@ -137,10 +137,10 @@ Attaching to Remote target
 </div>
 <p>The command <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">swdp_scan</span></code> may be used to use the Serial-Wire Debug Protocol instead of JTAG to connect to the target.</p>
 <p>Once attached, all the standard GDB commands may be used to start and control
-the execution of the embedded application.  [[Useful GDB Commands]] provides a quick introduction.</p>
+the execution of the embedded application. <a class="reference internal" href="usage/gdb-commands.html"><span class="std std-doc">GDB Commands</span></a> provides a quick introduction.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>On Mac OS X use the <code class="docutils literal notranslate"><span class="pre">/dev/cu.usbmodem&lt;somenumber&gt;</span></code>. Don’t use the tty version of this device as this one will freeze gdb when it tries to open it.</p>
+<p>On macOS use the <code class="docutils literal notranslate"><span class="pre">/dev/cu.usbmodem&lt;somenumber&gt;</span></code>. Don’t use the tty version of this device as this one will freeze gdb when it tries to open it.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

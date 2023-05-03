@@ -107,7 +107,7 @@ on the command line like e.g.:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">blackmagic.elf</span></code> - ELF binary of the Black Magic debug probe.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">blackmagic.bin</span></code> - Flat binary of the Black Magic debug probe, load at <code class="docutils literal notranslate"><span class="pre">0x8002000</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">blackmagic_dfu</span></code> - ELF binary of the Black Magic DFU bootloader.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">blackmagic_dfu.elf</span></code> - ELF binary of the Black Magic DFU bootloader.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">blackmagic_dfu.bin</span></code> - Flat binary of the DFU bootloader, load at <code class="docutils literal notranslate"><span class="pre">0x8000000</span></code>.</p></li>
 </ul>
 </section>
@@ -118,18 +118,13 @@ Some of these designs are in the <a class="reference external" href="https://git
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nv">PROBE_HOST</span><span class="o">=</span>stlink<span class="w"> </span><span class="nv">ST_BOOTLOADER</span><span class="o">=</span><span class="m">1</span>
 </pre></div>
 </div>
-<p>then replug the STLink to get into the bootloader and load with [stlink-tools] (<a class="reference external" href="https://github.com/jeanthom/stlink-tool">https://github.com/jeanthom/stlink-tool</a>)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>stlink-tools<span class="w"> </span>blackmagic.bin
-</pre></div>
-</div>
 </section>
 <section id="building-on-windows">
 <h2>Building on Windows<a class="headerlink" href="#building-on-windows" title="Permalink to this heading">¶</a></h2>
 <p>Sid Price wrote a detailed step by step guide describing <a class="reference external" href="http://www.sidprice.com/2018/05/23/cortex-m-debugging-probe/">how to set up CygWin and compile the Black Magic Probe firmware</a>.</p>
-<section id="compiling-as-a-pc-application">
-<h3>Compiling as a PC application<a class="headerlink" href="#compiling-as-a-pc-application" title="Permalink to this heading">¶</a></h3>
-<p>The Black Magic application can also be compiled as a native PC application.
-Supported probes are BMP (with recent firmware), ST-Link v2/v3, FTDI-MPSSE probes, JLink and CMSIS-DAP.</p>
+<section id="compiling-as-a-desktop-program">
+<h3>Compiling as a desktop program<a class="headerlink" href="#compiling-as-a-desktop-program" title="Permalink to this heading">¶</a></h3>
+<p>The Black Magic Debug project can also be compiled as a desktop program named Black Magic Debug App.</p>
 <p>Compile the application with the command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span><span class="nv">PROBE_HOST</span><span class="o">=</span>hosted
 </pre></div>
@@ -155,10 +150,6 @@ Supported probes are BMP (with recent firmware), ST-Link v2/v3, FTDI-MPSSE probe
 <section id="updating-firmware">
 <h2>Updating firmware<a class="headerlink" href="#updating-firmware" title="Permalink to this heading">¶</a></h2>
 <p>Follow instructions in <a class="reference internal" href="../upgrade.html"><span class="std std-doc">Firmware Upgrade Section</span></a>.</p>
-</section>
-<section id="checks-before-providing-pull-requests">
-<h2>Checks before providing pull requests<a class="headerlink" href="#checks-before-providing-pull-requests" title="Permalink to this heading">¶</a></h2>
-<p>Before providing a pull request, please check and remove trailing whitespace: git rebase –whitespace=fix … Test that all platforms compile: cd src; make all_platforms. As long as your patch request is not applied and you detect an error or omission in an earlier step not yet applied, consider rewriting the history (git rebase -i …) to correct in the first place and not adding the correction as a patch on top.</p>
 </section>
 </section>
 
