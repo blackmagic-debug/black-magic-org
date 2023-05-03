@@ -26,6 +26,14 @@ locally on your own computer and preview it locally.
 
 If you have python3 available on your system the process is fairly simple.
 
+NOTE: On MacOS you will also need to install the following brew packages:
+```
+brew install python3
+brew install cairo
+brew install pango
+brew install python-tk
+```
+
 ### fork the repository to your personal account
 If you want to contribute to the documentation it is probably a good idea to
 [fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the
@@ -66,6 +74,8 @@ We have a small script that starts a page preview server locally on your
 machine.
 ```
 $ python ./run_livereload.py
+[SNIP...] here is a bunch of output from make html output to make sure the static
+[SNIP...] page is built before starting the livereload server
 [I 200910 13:47:15 server:335] Serving on http://127.0.0.1:5500
 [I 200910 13:47:15 handlers:62] Start watching changes
 [I 200910 13:47:15 handlers:64] Start detecting changes
