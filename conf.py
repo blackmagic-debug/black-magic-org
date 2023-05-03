@@ -88,8 +88,8 @@ html_sidebars = {
     '**': [
         'about.html',
         'navigation.html',
-        'recentposts.html',
-        'archives.html',
+        'ablog/recentposts.html',
+        'ablog/archives.html',
         'relations.html',
         'searchbox.html',
         'donate.html',
