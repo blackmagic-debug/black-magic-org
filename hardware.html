@@ -178,6 +178,10 @@
 <h2>F4 Discovery<a class="headerlink" href="#f4-discovery" title="Permalink to this heading">¶</a></h2>
 <p>You can run the Black Magic Probe firmware on the “target” processor of an ST F4 discovery board. This is useful if you want to bootstrap your F4 Discovery board ST-Link programmer without having any other means of programming it.</p>
 </section>
+<section id="black-pill-f4-f401cc-f401ce-f411ce">
+<h2>Black Pill F4: F401CC / F401CE / F411CE<a class="headerlink" href="#black-pill-f4-f401cc-f401ce-f411ce" title="Permalink to this heading">¶</a></h2>
+<p>The black magic firmware can be built and flashed to Black Pill boards with STM32F401CC, STM32F401CE and STM32F411CE microcontrollers. Since these microcontrollers have slightly different hardware specifications in terms of flash, sram and clock frequency, each microcontroller has its own platform. The platforms share <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/common/blackpill-f4">common code</a>. This page also contains build and firmware upgrade instructions.</p>
+</section>
 <section id="sw-link">
 <h2>SW Link<a class="headerlink" href="#sw-link" title="Permalink to this heading">¶</a></h2>
 <p>This target is the programmer integrated on the STM8S Discovery board.</p>
