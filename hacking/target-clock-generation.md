@@ -100,3 +100,28 @@ they achieve. So instead, for comparative accuracy, we must average between thes
 Simply adding the 3 values up and dividng by 3 provides a reasonable approximation of the achieved clock frequency
 for BMP. With this done, using the workbook referenced in the introduction, note the final value in column
 A of the workbook against the delay factor line you have measured.
+
+### Additional measurements
+
+After following this guide to get a measurement of the _no_delay routines, which will act as a baseline for
+the highest achievable frequency output, we must then repeat with `target_clk_divider` set to the values
+0 through 4 (for 5 sets of additional measurements to the `_no_delay` one).
+
+These additional measurements provide the data required to perform a linear regression, and set the representation
+baseline when to apply the divider calculation.
+
+## Linear Regression
+
+Having completed the measurement protocol a total of 6 times, the workbook will compute the period (in seconds) of
+the clock frequencies measured, offset those against the baseline divider measurement (`target_clk_divider` = 0),
+and perform a linear regression on the results to generate a division factor. It will also calculate an offset
+factor, in cell B12 of the Data sheet, which serves to determine how much the division factor must be offset to make
+the calcuations all work.
+
+The firmware runs the linear equation `divider = (clk_divider + div_factor) * offset` and its rearrangement for
+`clk_divider` to map between target_clk_divider and frequency values as accurately as it reasonably can.
+`divider` in these equations is the value the CPU clock frequency is divider by to map back to a clock frequency.
+
+It is important that the CPU frequency value in cell A9 of the Data sheet is accurate and is expressed in Hz.
+
+The final division factor is provided as an output in cell B9 of the Data sheet.
