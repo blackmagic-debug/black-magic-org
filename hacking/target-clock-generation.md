@@ -125,3 +125,20 @@ The firmware runs the linear equation `divider = (clk_divider + div_factor) * of
 It is important that the CPU frequency value in cell A9 of the Data sheet is accurate and is expressed in Hz.
 
 The final division factor is provided as an output in cell B9 of the Data sheet.
+
+## Writing the calibration for the platform
+
+Having done all of the above, there are a series of simple `#define` statements that must be added to the platform's header. We will reference to the native (BMP) platform as an example for this section.
+
+The first thing that must be defined in the platform header, is [BITBANG_CALIBRATED_FREQS](https://github.com/blackmagic-debug/blackmagic/blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/platforms/native/platform.h#L296)
+which serves to inform the platform_max_frequency_{get,set} implementations that a calibration has been done and
+not to use the old method this replaces.
+
+With this defined, we must then define the frequency achieved by the `_no_delay` routines, and the maximum frequency
+achieved by  the `_clk_delay` routines. This involves defining [BITBANG_NO_DELAY_FREQ and BITBANG_0_DELAY_FREQ](https://github.com/blackmagic-debug/blackmagic/blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/platforms/native/platform.h#L305-L313C9)
+which are the measured frequency values expressed in Hz
+
+Finally, the conversion constants for the delay routines must be defined. These are
+[BITBANG_DIVIDER_OFFSET and BITBANG_DIVIDER_FACTOR](https://github.com/blackmagic-debug/blackmagic/blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/platforms/native/platform.h#L327-L328).
+These are the values from the inear regression called out in the above section -
+workbook sheet "Data" cells B9 and B12.
