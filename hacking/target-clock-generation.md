@@ -115,16 +115,16 @@ baseline when to apply the divider calculation.
 Having completed the measurement protocol a total of 6 times, the workbook will compute the period (in seconds) of
 the clock frequencies measured, offset those against the baseline divider measurement (`target_clk_divider` = 0),
 and perform a linear regression on the results to generate a division factor. It will also calculate an offset
-factor, in cell B12 of the Data sheet, which serves to determine how much the division factor must be offset to make
+factor, in cell B12 of the shee "Data", which serves to determine how much the division factor must be offset to make
 the calcuations all work.
 
 The firmware runs the linear equation `divider = (clk_divider + div_factor) * offset` and its rearrangement for
 `clk_divider` to map between target_clk_divider and frequency values as accurately as it reasonably can.
 `divider` in these equations is the value the CPU clock frequency is divider by to map back to a clock frequency.
 
-It is important that the CPU frequency value in cell A9 of the Data sheet is accurate and is expressed in Hz.
+It is important that the CPU frequency value in cell A9 of the sheed "Data" is accurate and is expressed in Hz.
 
-The final division factor is provided as an output in cell B9 of the Data sheet.
+The final division factor is provided as an output in cell B9 of the sheet "Data".
 
 ## Writing the calibration for the platform
 
