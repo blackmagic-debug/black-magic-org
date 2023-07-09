@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="../_static/favicon/icon.svg">
     <link rel="icon" sizes="16x16" type="image/png" href="../_static/favicon/favicon-16x16.png">
     <link rel="icon" sizes="32x32" type="image/png" href="../_static/favicon/favicon-32x32.png">
@@ -107,15 +106,21 @@ On Linux:</p>
 	<span class="n">version</span> <span class="o">--</span> <span class="n">Display</span> <span class="n">firmware</span> <span class="n">version</span> <span class="n">info</span>
 	<span class="n">help</span> <span class="o">--</span> <span class="n">Display</span> <span class="n">help</span> <span class="k">for</span> <span class="n">monitor</span> <span class="n">commands</span>
 	<span class="n">jtag_scan</span> <span class="o">--</span> <span class="n">Scan</span> <span class="n">JTAG</span> <span class="n">chain</span> <span class="k">for</span> <span class="n">devices</span>
-	<span class="n">swdp_scan</span> <span class="o">--</span> <span class="n">Scan</span> <span class="n">SW</span><span class="o">-</span><span class="n">DP</span> <span class="k">for</span> <span class="n">devices</span>
+	<span class="n">swdp_scan</span> <span class="o">--</span> <span class="n">Scan</span> <span class="n">SW</span><span class="o">-</span><span class="n">DP</span> <span class="k">for</span> <span class="n">devices</span><span class="p">:</span> <span class="p">[</span><span class="n">TARGET_ID</span><span class="p">]</span>
+	<span class="n">auto_scan</span> <span class="o">--</span> <span class="n">Automatically</span> <span class="n">scan</span> <span class="nb">all</span> <span class="n">chain</span> <span class="n">types</span> <span class="k">for</span> <span class="n">devices</span>
+	<span class="n">frequency</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">minimum</span> <span class="n">high</span> <span class="ow">and</span> <span class="n">low</span> <span class="n">times</span><span class="p">:</span> <span class="p">[</span><span class="n">FREQ</span><span class="p">]</span>
 	<span class="n">targets</span> <span class="o">--</span> <span class="n">Display</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">available</span> <span class="n">targets</span>
 	<span class="n">morse</span> <span class="o">--</span> <span class="n">Display</span> <span class="n">morse</span> <span class="n">error</span> <span class="n">message</span>
-	<span class="n">connect_srst</span> <span class="o">--</span> <span class="n">Configure</span> <span class="n">connect</span> <span class="n">under</span> <span class="n">SRST</span><span class="p">:</span> <span class="p">(</span><span class="n">enable</span><span class="o">|</span><span class="n">disable</span><span class="p">)</span>
-	<span class="n">hard_srst</span> <span class="o">--</span> <span class="n">Force</span> <span class="n">a</span> <span class="n">pulse</span> <span class="n">on</span> <span class="n">the</span> <span class="n">hard</span> <span class="n">SRST</span> <span class="n">line</span> <span class="o">-</span> <span class="n">disconnects</span> <span class="n">target</span>
-	<span class="n">debug_bmp</span> <span class="o">--</span> <span class="n">Output</span> <span class="n">BMP</span> <span class="s2">&quot;debug&quot;</span> <span class="n">strings</span> <span class="n">to</span> <span class="n">the</span> <span class="n">second</span> <span class="n">vcom</span><span class="p">:</span> <span class="p">(</span><span class="n">enable</span><span class="o">|</span><span class="n">disable</span><span class="p">)</span>
+	<span class="n">halt_timeout</span> <span class="o">--</span> <span class="n">Timeout</span> <span class="n">to</span> <span class="n">wait</span> <span class="n">until</span> <span class="n">Cortex</span><span class="o">-</span><span class="n">M</span> <span class="ow">is</span> <span class="n">halted</span><span class="p">:</span> <span class="p">[</span><span class="n">TIMEOUT</span><span class="p">,</span> <span class="n">default</span> <span class="mi">2000</span><span class="n">ms</span><span class="p">]</span>
+	<span class="n">connect_rst</span> <span class="o">--</span> <span class="n">Configure</span> <span class="n">connect</span> <span class="n">under</span> <span class="n">reset</span><span class="p">:</span> <span class="p">[</span><span class="n">enable</span><span class="o">|</span><span class="n">disable</span><span class="p">]</span>
+	<span class="n">reset</span> <span class="o">--</span> <span class="n">Pulse</span> <span class="n">the</span> <span class="n">nRST</span> <span class="n">line</span> <span class="o">-</span> <span class="n">disconnects</span> <span class="n">target</span><span class="p">:</span> <span class="p">[</span><span class="n">PULSE_LEN</span><span class="p">,</span> <span class="n">default</span> <span class="mi">0</span><span class="n">ms</span><span class="p">]</span>
+	<span class="n">tdi_low_reset</span> <span class="o">--</span> <span class="n">Pulse</span> <span class="n">nRST</span> <span class="k">with</span> <span class="n">TDI</span> <span class="nb">set</span> <span class="n">low</span> <span class="n">to</span> <span class="n">attempt</span> <span class="n">to</span> <span class="n">wake</span> <span class="n">certain</span> <span class="n">targets</span> <span class="n">up</span> <span class="p">(</span><span class="n">eg</span> <span class="n">LPC82x</span><span class="p">)</span>
+	<span class="n">traceswo</span> <span class="o">--</span> <span class="n">Start</span> <span class="n">trace</span> <span class="n">capture</span><span class="p">,</span> <span class="n">NRZ</span> <span class="n">mode</span><span class="p">:</span> <span class="p">[</span><span class="n">BAUDRATE</span><span class="p">]</span> <span class="p">[</span><span class="n">decode</span> <span class="p">[</span><span class="n">CHANNEL_NR</span> <span class="o">...</span><span class="p">]]</span>
+	<span class="n">heapinfo</span> <span class="o">--</span> <span class="n">Set</span> <span class="n">semihosting</span> <span class="n">heapinfo</span><span class="p">:</span> <span class="n">HEAPINFO</span> <span class="n">HEAP_BASE</span> <span class="n">HEAP_LIMIT</span> <span class="n">STACK_BASE</span> <span class="n">STACK_LIMIT</span>
 </pre></div>
 </div>
 <p>The list of available commands is context sensitive. After connecting to certain targets the list of available commands changes. For example STM32 targets provide <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">erase_mass</span></code> that is not available until you scan for available targets and find the STM32 target.</p>
+<p>Please note that the commands do not support units, only plain integers (e.g. use <code class="docutils literal notranslate"><span class="pre">halt_timeout</span> <span class="pre">5000</span></code>, not <code class="docutils literal notranslate"><span class="pre">halt_timeout</span> <span class="pre">5s</span></code>).</p>
 </section>
 <section id="finding-connected-targets">
 <h3>Finding connected targets<a class="headerlink" href="#finding-connected-targets" title="Permalink to this heading">¶</a></h3>
@@ -362,7 +367,7 @@ watch &lt;var&gt;
       &copy;2022, Piotr Esden-Tempski <piotr@esden.net>; 2022, Rachel Mant <git@dragonmux.network>.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.2.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
