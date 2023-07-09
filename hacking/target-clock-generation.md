@@ -14,9 +14,9 @@ The aim of this page is to lay out the method used to derive these clock frequen
 analytical tools used to then generate a calibration for a platform's platform.h header to make the
 reporting and interaction as usefully accurate as possible.
 
-This method comes with a LibreOffice workbook that acts as a tool for computing the offset and division
-factors for computing `target_clk_divider` in the firmware, which should be used to gather the
-measurements made and verify results.
+This method comes with a [LibreOffice workbook](../_assets/target-clk-gen/BMP_Frequency_Division.ods)
+that acts as a tool for computing the offset and division factors for computing `target_clk_divider`
+in the firmware, which should be used to gather the measurements made and verify results.
 
 ## Measurement
 
