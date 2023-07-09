@@ -48,7 +48,6 @@ target-usage/stm32
 target-usage/sam3x-4x-x7x
 ```
 
-
 ```{toctree}
 :hidden:
 :maxdepth: 1
@@ -59,6 +58,7 @@ hacking/hacking
 hacking/target-drivers
 hacking/target-cortex-m
 hacking/target-cortex-a
+hacking/target-clock-generation
 ```
 
 [![](https://img.shields.io/github/v/release/blackmagic-debug/blackmagic.svg?logo=github)](https://github.com/blackmagic-debug/blackmagic/releases)
@@ -145,7 +145,7 @@ The official Black Magic Probe hardware is available from these distributors in 
 ## Other Hardware supported by Black Magic Debug:
 
  * ST-Link v2, v2.1 and Blue Pill. See [stlink](https://github.com/blackmagic-debug/blackmagic/tree/master/src/platforms/stlink)
- * ST-Link v3. See [stlinkv3](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlinkv3) 
+ * ST-Link v3. See [stlinkv3](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlinkv3)
  * STM8S Discovery (ST-Link V1). See [swlink](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/swlink)
  * F4 Discovery (STM32F407). See [f4discovery](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/f4discovery)
  * Black Pill F4 (STM32F401CC/STM32F401CE/STM32F411CE). See [blackpill-f401cc](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f401cc), [blackpill-f401ce](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f401ce), [blackpill-f411ce](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f411ce)
