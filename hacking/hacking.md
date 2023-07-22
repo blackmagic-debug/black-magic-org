@@ -94,4 +94,4 @@ Exit the screen session by type crt-a + ctl-\\.
 
 ## Updating firmware
 
-Follow instructions in [Firmware Upgrade Section](/upgrade.md).
+Follow instructions in [Firmware Upgrade Section](/firmware-upgrade.md).

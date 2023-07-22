@@ -91,7 +91,7 @@ other than pin 2.
 
 If you set one BMP to debug another, then you can load firmware using GDB into the BMP. If you are simply building
 the firmware and evaluating its function by reading the output from `DEBUG_*` statements then you will need to use
-`bmputil` or `dfu-util` to update the firmware. (see [Updating the Firmware](../upgrade.md)).
+`bmputil` or `dfu-util` to update the firmware. (see [Updating the Firmware](../firmware-upgrade.md)).
 
 ### Debugging newer generations
 

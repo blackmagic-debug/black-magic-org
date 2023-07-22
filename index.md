@@ -10,8 +10,9 @@
 :caption: Intro
 
 hardware
+firmware-installation
+firmware-upgrade
 getting-started
-upgrade
 ```
 
 ```{toctree}
