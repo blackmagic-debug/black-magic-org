@@ -76,7 +76,14 @@
 <section id="black-magic-debug-unified-connector-bmdu">
 <h2>Black Magic Debug Unified Connector (BMDU)<a class="headerlink" href="#black-magic-debug-unified-connector-bmdu" title="Permalink to this heading">¶</a></h2>
 <p><img alt="" src="../_images/unified-legend.svg" /></p>
-<p>This connector is backwards compatible with the ubiquitous <a class="reference internal" href="#arm-cortex-10pin-debug-connector">ARM Cortex 10pin Debug connector</a>. We have introduced this connector on the Black Magic Probe V2.3 hardware. To add the UART connections you will have to adjust the jumpers on the back of the board. You have to disconnect the default connection on the RX pin with an exacto blade and then solder together the alternate connection on RX and TX jumpers. (TODO: Add Black Magic Probe V2.3 documentation)</p>
+<p>This connector is backwards compatible with the ubiquitous <a class="reference internal" href="#arm-cortex-10pin-debug-connector">ARM Cortex 10pin Debug connector</a>. We have introduced this connector on the Black Magic Probe V2.3 hardware. To add the UART connections you will have to adjust the jumpers on the back of the board:</p>
+<ul class="simple">
+<li><p>Cut the default RX jumpers with a sharp hobby knife. (These are the middle pad and the pad closest to the board edge.) You might want to test them using the continuity function on a multimeter to make sure they’re disconnected.</p></li>
+<li><p>Solder together the middle RX pad and the RX pad farthest from the board edge.</p></li>
+<li><p>Solder together the TX jumpers. (They default to unconnected.)</p></li>
+</ul>
+<p>(TODO: Add Black Magic Probe V2.3 documentation)</p>
+<p>A drawback of configuring the BMDU jumpers this way is that connecting to a standard SWD connector might render the UART pins on the PicoBlade connector unusable while the SWD connector is attached. This is because a standard SWD connector will probably short the UART RX pin to GND, and might short the UART TX pin to GND. You can revert the solder jumpers to their default configuration if this is a problem.</p>
 </section>
 <section id="arm-cortex-debug-connectors">
 <h2>ARM Cortex Debug Connectors<a class="headerlink" href="#arm-cortex-debug-connectors" title="Permalink to this heading">¶</a></h2>
