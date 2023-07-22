@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://black-magic.org</id>
   <title>Blog</title>
-  <updated>2023-07-22T18:16:24.482247+00:00</updated>
+  <updated>2023-07-22T18:17:33.556425+00:00</updated>
   <link href="https://black-magic.org"/>
   <link href="https://black-magic.org/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.io/" version="0.11.4.post1">ABlog</generator>
@@ -55,7 +55,7 @@
     <author>
       <name>Piotr Esden-Tempski</name>
     </author>
-    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Hey everyone! As announced in the “New Maintainer” post we have now renamed the github organization from &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;blacksphere&lt;/span&gt;&lt;/code&gt; to &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;blackmagic-debug&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Hey everyone! As announced in the “New Maintainer” post we have now renamed the github organization from &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;blacksphere&lt;/span&gt;&lt;/code&gt; to &lt;a class="reference external" href="https://github.com/blackmagic-debug/"&gt;&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;blackmagic-debug&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;/p&gt;
 </content>
     <link href="https://black-magic.org/blog/2022-01-20-organization-rename.html" rel="alternate"/>
