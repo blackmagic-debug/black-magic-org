@@ -43,10 +43,7 @@ If `dfu-util` fails to switch your BMP into bootloader mode, or you feel like yo
 
 ### stlink-tool
 
-The firmware on an ST-Link can be upgraded using [dragonmux/stlink-tool](https://github.com/dragonmux/stlink-tool/tree/feature/compilation-fixes).
-
-The linked repository is forked from [UweBonnes/stlink-tool](https://github.com/UweBonnes/stlink-tool), which in turn is a fork from [jeanthom/stlink-tool](https://github.com/jeanthom/stlink-tool). The link points to a specific branch named `feature/compilation-fixes`. Please ensure to checkout to to this branch after cloning the repository, as both UweBonnes and dragonmux have made fixes that are not included in the repository by jeanthom.
-
+The firmware on an ST-Link can be upgraded using [blackmagic-debug/stlink-tool](https://github.com/blackmagic-debug/stlink-tool).
 
 To upgrade, run the following command:
 
