@@ -36,15 +36,15 @@ typedef struct jtag_proc {
     /* Reset the bus */
     void (*jtagtap_reset)(void);
     /* Step into the next TMS state */
-    bool (*jtagtap_next)(const bool tms, const bool tdi);
+    bool (*jtagtap_next)(bool tms, bool tdi);
     /* Step through a sequence of TMS states (up to 32) */
     void (*jtagtap_tms_seq)(uint32_t tms_states, size_t clock_cycles);
     /* Write a number of bits from data_in to TDI, reading the responses back into data_out from TDO */
-    void (*jtagtap_tdi_tdo_seq)(uint8_t *data_out, const bool final_tms, const uint8_t *data_in, size_t clock_cycles);
+    void (*jtagtap_tdi_tdo_seq)(uint8_t *data_out, bool final_tms, const uint8_t *data_in, size_t clock_cycles);
     /* Same as the previous function but without the read-back part */
-    void (*jtagtap_tdi_seq)(const bool final_tms, const uint8_t *data_in, size_t clock_cycles);
+    void (*jtagtap_tdi_seq)(bool final_tms, const uint8_t *data_in, size_t clock_cycles);
     /* Runs a series of clock cycles on the bus after establishing an initial TMS + TDI state */
-    void (*jtagtap_cycle)(const bool tms, const bool tdi, const size_t clock_cycles);
+    void (*jtagtap_cycle)(bool tms, bool tdi, size_t clock_cycles);
 } jtag_proc_s;
 ```
 
