@@ -152,7 +152,7 @@ typedef struct rp_flash {
     uint8_t sector_erase_opcode;
 } rp_flash_s;
 
-static void rp_add_flash(target *t)
+static void rp_add_flash(target_s *target)
 {
     /* Allocate the device-specific structure on the heap (this allocates the target Flash structure too */
     rp_flash_s *flash = calloc(1, sizeof(*flash));
@@ -164,41 +164,41 @@ static void rp_add_flash(target *t)
     [...]
 
     /* Grab a member pointer to the target Flash structure */
-    target_flash_s *const f = &flash->f;
+    target_flash_s *const target_flash = &flash->f;
     [...]
     /* Register with the target structure */
-    target_add_flash(t, f);
+    target_add_flash(target, target_flash);
     [...]
 }
 
-bool rp_probe(target *t)
+bool rp_probe(target_s *target)
 {
     [...]
     /*
      * We can't know the Flash region layout head of time, so we override the target `attach` behaviour
      * and perform RAM and Flash region registration on attach
      */
-    t->attach = rp_attach;
+    target->attach = rp_attach;
     [...]
     return true;
 }
 
-static bool rp_attach(target *t)
+static bool rp_attach(target_s *target)
 {
     /*
      * RP2040 is a Cortex-M device, so we *must* call the normal Cortex-M attach routine and
      * propagate errors. It is an error to not do this step somewhere in the target-specific attach routine.
      */
-    if (!cortexm_attach(t) || !rp_read_rom_func_table(t))
+    if (!cortexm_attach(target) || !rp_read_rom_func_table(target))
         return false;
 
     /*
      * Because we are in attach, which can be called multiple times for a device, we *must*
      * free any existing map before rebuilding it. Failure to do so will result in unpredictable behaviour.
      */
-    target_mem_map_free(t);
-    rp_add_flash(t);
-    target_add_ram(t, RP_SRAM_BASE, RP_SRAM_SIZE);
+    target_mem_map_free(target);
+    rp_add_flash(target);
+    target_add_ram(target, RP_SRAM_BASE, RP_SRAM_SIZE);
 
     return true;
 }
