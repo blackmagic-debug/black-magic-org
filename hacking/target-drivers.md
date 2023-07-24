@@ -247,48 +247,47 @@ the navigability of the resulting target support.
 #include "general.h"
 #include "target.h"
 #include "target_internal.h"
-#include "cortexm.h"
 
-static bool skeleton_flash_erase(target_flash_s *f, target_addr_t addr, size_t len);
-static bool skeleton_flash_write(target_flash_s *f, target_addr_t dest, const void *src, size_t len);
+static bool skeleton_flash_erase(target_flash_s *flash, target_addr_t addr, size_t length);
+static bool skeleton_flash_write(target_flash_s *flash, target_addr_t dest, const void *src, size_t length);
 
-static void skeleton_add_flash(target *t)
+static void skeleton_add_flash(target_s *target)
 {
-    target_flash_s *f = calloc(1, sizeof(*f));
-    if (!f) { /* calloc failed: heap exhaustion */
+    target_flash_s *flash = calloc(1, sizeof(*flash));
+    if (!flash) { /* calloc failed: heap exhaustion */
         DEBUG_WARN("calloc: failed in %s\n", __func__);
         return;
     }
 
-    f->start = SKELETON_FLASH_BASE;
-    f->length = SKELETON_FLASH_SIZE;
-    f->blocksize = SKELETON_BLOCKSIZE;
-    f->erase = skeleton_flash_erase;
-    f->write = skeleton_flash_write;
-    f->erased = 0xffU;
-    target_add_flash(t, f);
+    flash->start = SKELETON_FLASH_BASE;
+    flash->length = SKELETON_FLASH_SIZE;
+    flash->blocksize = SKELETON_BLOCKSIZE;
+    flash->erase = skeleton_flash_erase;
+    flash->write = skeleton_flash_write;
+    flash->erased = 0xffU;
+    target_add_flash(target, flash);
 }
 
-bool skeleton_probe(target *t)
+bool skeleton_probe(target_s *target)
 {
     /* Positively identify the target device somehow */
-    if (target_mem_read32(t, SKELETON_DEVID_ADDR) != SKELETON_DEVID)
+    if (target_mem_read32(target, SKELETON_DEVID_ADDR) != SKELETON_DEVID)
         return false;
 
-    t->driver = "skeleton partno";
+    target->driver = "skeleton partno";
     /* Add RAM mappings */
-    target_add_ram(t, SKELETON_RAM_BASE, SKELETON_RAM_SIZE);
+    target_add_ram(target, SKELETON_RAM_BASE, SKELETON_RAM_SIZE);
     /* Add Flash mappings */
-    skeleton_add_flash(t);
+    skeleton_add_flash(target);
     return true;
 }
 
-static bool skeleton_flash_erase(target_flash_s *f, target_addr_t addr, size_t len)
+static bool skeleton_flash_erase(target_flash_s *flash, target_addr_t addr, size_t length)
 {
     [...]
 }
 
-static bool skeleton_flash_write(target_flash_s *f, target_addr_t dest, const void *src, size_t len)
+static bool skeleton_flash_write(target_flash_s *flash, target_addr_t dest, const void *src, size_t length)
 {
     [...]
 }
@@ -313,4 +312,4 @@ const struct command_s stm32f1_cmd_list[] = {
 };
 ```
 
-An example registration call has this form: `target_add_commands(t, stm32f1_cmd_list, t->driver);`
+An example registration call has this form: `target_add_commands(target, stm32f1_cmd_list, target->driver);`
