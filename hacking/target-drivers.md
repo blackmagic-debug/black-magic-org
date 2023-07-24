@@ -209,10 +209,10 @@ The generic target Flash structure is defined as follows:
 ```c
 typedef struct target_flash target_flash_s;
 
-typedef bool (*flash_prepare_func)(target_flash_s *f);
-typedef bool (*flash_erase_func)(target_flash_s *f, target_addr_t addr, size_t len);
-typedef bool (*flash_write_func)(target_flash_s *f, target_addr_t dest, const void *src, size_t len);
-typedef bool (*flash_done_func)(target_flash_s *f);
+typedef bool (*flash_prepare_func)(target_flash_s *flash);
+typedef bool (*flash_erase_func)(target_flash_s *flash, target_addr_t addr, size_t len);
+typedef bool (*flash_write_func)(target_flash_s *flash, target_addr_t dest, const void *src, size_t len);
+typedef bool (*flash_done_func)(target_flash_s *flash);
 
 typedef struct target_flash {
     target *t;                   /* Target this Flash is attached to */
@@ -220,9 +220,9 @@ typedef struct target_flash {
     size_t length;               /* Flash length */
     size_t blocksize;            /* Erase block size */
     size_t writesize;            /* Write operation size, must be <= blocksize/writebufsize */
-    size_t writebufsize;         /* Size of write buffer */
+    size_t writebufsize;         /* Size of write buffer, this is calculated and not set in target code */
     uint8_t erased;              /* Byte erased state */
-    bool ready;                  /* True if flash is in flash mode/prepared */
+    uint8_t operation;           /* Current Flash operation (none means it's idle/unprepared) */
     flash_prepare_func prepare;  /* Prepare for flash operations */
     flash_erase_func erase;      /* Erase a range of flash */
     flash_write_func write;      /* Write to flash */
