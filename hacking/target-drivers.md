@@ -52,13 +52,13 @@ There are also some helper macros defined for running certain known sequences on
 
 ```c
 /* Perform a soft reset of the bus */
-#define jtagtap_soft_reset() jtag_proc.jtagtap_tms_seq(0x1F, 6)
+#define jtagtap_soft_reset() jtag_proc.jtagtap_tms_seq(0x1fU, 6U)
 /* From bus idle, clock into the Shift-IR state */
-#define jtagtap_shift_ir() jtag_proc.jtagtap_tms_seq(0x03, 4)
+#define jtagtap_shift_ir() jtag_proc.jtagtap_tms_seq(0x03U, 4U)
 /* From bus idle, clock into the Shift-DR state */
-#define jtagtap_shift_dr() jtag_proc.jtagtap_tms_seq(0x01, 3)
+#define jtagtap_shift_dr() jtag_proc.jtagtap_tms_seq(0x01U, 3U)
 /* Return the bus to idle from one of the capture states */
-#define jtagtap_return_idle(cycles) jtag_proc.jtagtap_tms_seq(0x01, (cycles) + 1U)
+#define jtagtap_return_idle(cycles) jtag_proc.jtagtap_tms_seq(0x01U, (cycles) + 1U)
 ```
 
 ### TAP-layer access
