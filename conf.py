@@ -5,6 +5,17 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 import os
+from urllib.parse import urlunparse, ParseResult
+
+# -- Helper functions --------------------------------------------------------
+
+
+# Build valid URL from parts
+def build_url(netloc='', path='', params='', query='', fragment='', scheme='https'):
+    if '__contains__' in dir(path) and not isinstance(path, str):
+        path = '/'.join(path)  # merge path parts into a single string
+    return urlunparse(ParseResult(scheme, netloc, path, params, query, fragment))
+
 
 # -- Path setup --------------------------------------------------------------
 
@@ -87,7 +98,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'env', 'README.md']
 
 # -- Options for HTML output -------------------------------------------------
 
-html_baseurl = 'https://black-magic.org'
+html_baseurl = build_url(netloc_black_magic_org)
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
@@ -122,7 +133,7 @@ html_sidebars = {
 blog_baseurl = html_baseurl
 
 blog_authors = {
-    'esden': ('Piotr Esden-Tempski', 'https://github.com/esden'),
+    'esden': ('Piotr Esden-Tempski', build_url(netloc_github, 'esden')),
 }
 
 # Favicon settings
