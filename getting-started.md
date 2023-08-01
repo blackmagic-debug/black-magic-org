@@ -27,7 +27,7 @@ On Windows, when you first connect, the Black Magic Probe should be detected as 
 
 __Note:__ For older Windows versions (Windows 7 and older), you will be prompted to install a driver.  You can download the driver [here](https://github.com/blackmagic-debug/blackmagic/tree/master/driver).
 
-__Note:__ If you are on Windows 10 and want to upgrade the firmware to the probe itself, you can install the [libusbK](http://zadig.akeo.ie/) driver. This will give you access to the DFU interface of the Black Magic Probe and allow you to use dfu-util to upgrade the Black Magic Probe firmware. (You do not need to install this driver if you only plan to use the Black Magic Probe and do not need/want to upgrade the firmware.) Also, Windows 10 displays the BMP probe ports using the generic title, "USB Serial Device", as seen below:
+__Note:__ If you are on Windows 10 and want to upgrade the firmware to the probe itself, you can install the [libusbK](https://zadig.akeo.ie/) driver. This will give you access to the DFU interface of the Black Magic Probe and allow you to use dfu-util to upgrade the Black Magic Probe firmware. (You do not need to install this driver if you only plan to use the Black Magic Probe and do not need/want to upgrade the firmware.) Also, Windows 10 displays the BMP probe ports using the generic title, "USB Serial Device", as seen below:
 
 ![Device Manager Windows 10](_assets/device_manager_w10.png)
 
