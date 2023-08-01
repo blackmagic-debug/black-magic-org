@@ -138,8 +138,8 @@ The best way to support the project is purchasing the official {ref}`Black Magic
 The official Black Magic Probe hardware was specifically designed with Black Magic Debug in mind and the proceeds from the sales directly support and further the development of the software. See the {ref}`index:support the project` section for other means of sponsoring the development of Black Magic Debug.
 
 The official Black Magic Probe hardware is available from these distributors in alphabetical order:
- * DE: [1BitSquared Germany](http://1bitsquared.de/products/black-magic-probe) Black Magic Probe V2.3 (Newest)
- * USA: [1BitSquared US](http://1bitsquared.com/collections/frontpage/products/black-magic-probe) Black Magic Probe V2.3 (Newest)
+ * DE: {1b2-product-eu}`1BitSquared Germany <black-magic-probe>` Black Magic Probe V2.3 (Newest)
+ * USA: {1b2-product}`1BitSquared US <black-magic-probe>` Black Magic Probe V2.3 (Newest)
  * USA: [Adafruit Industries](https://www.adafruit.com/product/3839) Black Magic Probe with JTAG Cable and Serial Cable - V2.3 (Newest)
 
 ## Other Hardware supported by Black Magic Debug:

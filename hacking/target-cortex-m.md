@@ -75,7 +75,7 @@ and a PicoBlade serial port cable, you can push the connectors on the serial por
 10-pin debug target connector.
 
 The connection sequence from the PicoBlade
-(with the [1BitSquared cable](https://1bitsquared.com/products/black-magic-01in-pin-header-serial-cable))
+(with the {1b2-product}`1BitSquared cable<black-magic-01in-pin-header-serial-cable>`)
 to the 10-pin debug target connector is:
 
 * PicoBlade Pin 1 (red) => 10-pin connector pin 1
@@ -97,7 +97,7 @@ the firmware and evaluating its function by reading the output from `DEBUG_*` st
 
 With newer generation (v2.1 hardware and newer) BMPs, there is a dedicated set of 0.05" (1.27mm) pin headers
 provided to allow connecting one BMP to another using a
-[1BitSquared JTAG SWD adaptor](https://1bitsquared.com/collections/accessories/products/jtag-swd-adapter)
+{1b2-product}`1BitSquared JTAG SWD adaptor<jtag-swd-adapter>`
 or the 5-pin variant of this which includes the ~RST signal too.
 
 To use this, simply plug the adaptor in as labeled on the BMP you want to debug, connect a 10-pin IDC cable between it

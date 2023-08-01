@@ -43,7 +43,7 @@ Same form factor as the predecessor BMPM2. Following is a list of main differenc
 
 * Replaces the TXS0108 bidirectional level shifter with dual supply 74LVC2T45 bus transceivers. This improves the line drive strength and expands the target voltage range to 1.8V-5V (previous design was limited to 1.8V-3.3V)
 * Dedicated reset line drive MOSFET circuitry with 10k pull-up ensuring good open-drain RST line drive with monitoring.
-* Exposed the BMP side SWD lines on dedicated pads, allowing for easier programming and debugging of the probe firmware. It is much easier now to program and debug the BMP firmware using a second BMP. The pinout is compatible with the [SWD adapter by 1Bitsquared](https://1bitsquared.com/products/jtag-swd-adapter).
+* Exposed the BMP side SWD lines on dedicated pads, allowing for easier programming and debugging of the probe firmware. It is much easier now to program and debug the BMP firmware using a second BMP. The pinout is compatible with the {1b2-product}`SWD adapter by 1Bitsquared<jtag-swd-adapter>`.
 * Increased LED distance from each other for better visual separation.
 * (V2.1e revision) Added a normally open jumper to allow the connection of the `TRACESWO` signal to `UART1_RX` on pin `PB7`. This pin is also the highest order bit of the hardware version. Because of that, all BMPM V2.1e have the hardware version stored as a user `Data0` option byte at address `0x1FFFF804`. The hardware version corresponding to V2.1e is `0x04`. Firmware that implements UART SWO decoding should check the hardware version in the option bytes first. (this feature is not yet supported in current blackmagic probe firmware)
 
