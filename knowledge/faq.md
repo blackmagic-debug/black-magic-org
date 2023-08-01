@@ -147,7 +147,7 @@ There are a few advantages of the Black Magic Probe. BMP is open-source, meaning
 
 ## Why is XXX not supported?
 
-Because nobody implemented the required functions yet. Look on {bmd-gh}`GitHub <pulls>` if there is a pending pull request for your target. Consider testing PRs that try to implement the desired target to help us triage merge of new hardware support.
+Because nobody implemented the required functions yet. Look on {bmd-gh}`GitHub <pulls?q=is%3Apr+label%3A%22New+Target%22+is%3Aopen>` if there is a pending pull request for your target. Consider testing PRs that try to implement the desired target to help us triage merge of new hardware support.
 
 ## Why is Raspberry Pi 1 not supported?
 
