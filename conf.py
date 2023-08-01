@@ -32,6 +32,7 @@ html_baseurl = 'https://black-magic.org'
 # ones.
 extensions = [
     'myst_parser',
+    'sphinx.ext.autosectionlabel',
     'sphinx.ext.todo',
     'sphinx.ext.githubpages',
     'sphinx.ext.graphviz',
@@ -48,6 +49,9 @@ source_suffix = {
 	'.rst': 'restructuredtext',
 	'.md': 'markdown',
 }
+
+# Make sure autosectionlabel targets are unique
+autosectionlabel_prefix_document = True
 
 todo_include_todos = True
 
