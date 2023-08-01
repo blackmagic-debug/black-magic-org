@@ -51,7 +51,7 @@ arm-none-eabi-gdb -nx --batch \
 
 ## Makefile
 
-If you are using GNU Makefiles for your project you can add a `make flash` target. Reusing the script from the [Commandline](#commandline) section above the target like that can look something like this:
+If you are using GNU Makefiles for your project you can add a `make flash` target. Reusing the script from the {ref}`Commandline <gdb-automation:commandline>` section above the target like that can look something like this:
 
 ```makefile
 

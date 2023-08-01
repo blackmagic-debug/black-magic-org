@@ -38,8 +38,7 @@ There is experimental support for Cortex-A (ARMv7-A architecture).  This is bein
 
 
 ## Where can I get the hardware?
-
-The official Black Magic Probe hardware is available from multiple vendors. An up to date list is kept on the [project main page](index.md#getting-hardware).
+The official Black Magic Probe hardware is available from multiple vendors. An up to date list is kept on the {ref}`index:getting hardware`.
 
 ## Where can I find the BMP schematics?
  * [Black Magic Probe Mini v2.1](https://github.com/blackmagic-debug/blackmagic/wiki/files/bmpm_v2_1c_schematic.pdf)
@@ -164,4 +163,4 @@ Because Texas Instruments... but we are working on it. :) If you want to help wi
 
 ## How do I upgrade to a more recent version?
 
-Follow the [upgrade](/upgrade.md) instructions.
+Follow the {ref}`upgrade` instructions.

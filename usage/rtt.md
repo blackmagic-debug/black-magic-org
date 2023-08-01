@@ -8,13 +8,13 @@ the host:
  * Real-Time Transfer (RTT).
 
 To enable RTT in [Black Magic Debug](https://black-magic.org) (BMD) Firmware, the `ENABLE_RTT=1` flag has to be
-set during compilation. For more details refer to the [Build Instructions](#build-instructions) section.
+set during compilation. For more details refer to the {ref}`usage/rtt:build instructions` section.
 
 The RTT solution implemented in BMD uses a novel way to detect RTT automatically, making it fast and convenient.
 
 ## Usage
 
-This example uses Linux as operating system. For Windows and macOS see the [Operating Systems](#operating-systems) section.
+This example uses Linux as operating system. For Windows and macOS see the {ref}`usage/rtt:operating systems` section.
 
 In one window open a terminal emulator (minicom, putty, etc) and connect to the USB UART:
 ```
@@ -180,7 +180,7 @@ without specifying an identifier string.
 
 ## Operating Systems
 
-[Configuration](../getting-started.md) instructions for Windows, Linux and MacOS.
+{ref}`Configuration <getting-started>` instructions for Windows, Linux and MacOS.
 
 ### Windows
 

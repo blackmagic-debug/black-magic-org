@@ -95,11 +95,11 @@ The Black Magic GDB server features:
 * Implements USB DFU class for easy firmware upgrade as updates become available.
 * Works with Windows, Linux and Mac environments.
 
-All you need is to install the [GNU cross compilation toolchain](https://en.wikipedia.org/wiki/Cross_compiler), containing [GCC](https://gcc.gnu.org/) and [GDB](https://www.sourceware.org/gdb/) for your microcontroller. Plug the Black Magic Probe hardware, running the Black Magic Debug firmware, into your computer. Instruct your GDB to use the BMP as your remote target using the `target extended-remote *serial_port*` command and you are off to the races. Further details are found in [Getting Started](getting-started.md).
+All you need is to install the [GNU cross compilation toolchain](https://en.wikipedia.org/wiki/Cross_compiler), containing [GCC](https://gcc.gnu.org/) and [GDB](https://www.sourceware.org/gdb/) for your microcontroller. Plug the Black Magic Probe hardware, running the Black Magic Debug firmware, into your computer. Instruct your GDB to use the BMP as your remote target using the `target extended-remote *serial_port*` command and you are off to the races. Further details are found in {ref}`getting started`.
 
 If you are an embedded development beginner Black Magic Probe is also a great choice for you. But expect more of a Unix command line experience than a Windows [*klickybunti*](https://www.urbandictionary.com/define.php?term=klickibunti) GUI.
 
-If anything is unclear or hard to understand [let us know](index.md#contact). Our goal is to make the documentation on this website comprehensive enough that it is all you need to get started with microcontroller development and debugging using the Black Magic Probe.
+If anything is unclear or hard to understand {ref}`let us know <index:contact>`. Our goal is to make the documentation on this website comprehensive enough that it is all you need to get started with microcontroller development and debugging using the Black Magic Probe.
 
 ## Supported Targets
 
@@ -128,14 +128,14 @@ The session goes through the following steps:
 
 ## Support the Project
 
-The best way to support the project is purchasing the official [Black Magic Probe hardware](#getting-hardware). If you would like to support the project beyond that please consider supporting these individuals and organizations:
+The best way to support the project is purchasing the official {ref}`Black Magic Probe hardware <index:getting hardware>`. If you would like to support the project beyond that please consider supporting these individuals and organizations:
 * [Piotr Esden-Tempski (GitHub Sponsors)](https://github.com/sponsors/esden)
 * [Rachel Mant (GitHub Sponsors)](https://github.com/sponsors/dragonmux)
 * [1BitSquared (Patreon)](https://www.patreon.com/1bitsquared)
 
 ## Getting Hardware
 
-The official Black Magic Probe hardware was specifically designed with Black Magic Debug in mind and the proceeds from the sales directly support and further the development of the software. See the [Support the Project](#support-the-project) section for other means of sponsoring the development of Black Magic Debug.
+The official Black Magic Probe hardware was specifically designed with Black Magic Debug in mind and the proceeds from the sales directly support and further the development of the software. See the {ref}`index:support the project` section for other means of sponsoring the development of Black Magic Debug.
 
 The official Black Magic Probe hardware is available from these distributors in alphabetical order:
  * DE: [1BitSquared Germany](http://1bitsquared.de/products/black-magic-probe) Black Magic Probe V2.3 (Newest)
@@ -155,7 +155,7 @@ The official Black Magic Probe hardware is available from these distributors in 
 
 ## Black Magic Debug App (BMDA)
 
-You can also compile the Black Magic Debug as a stand alone application instead of a firmware that you can flash onto a microcontroller. This mode resembles the way OpenOCD is used as an "application in the middle". Please find more details on the [hardware page](hardware.md#black-magic-debug-app).
+You can also compile the Black Magic Debug as a stand alone application instead of a firmware that you can flash onto a microcontroller. This mode resembles the way OpenOCD is used as an "application in the middle". Please find more details on the {ref}`hardware page <hardware:black magic debug app>`.
 
 ## Contact:
 * If you have questions or suggestions feel free to join us in our chat [![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy)

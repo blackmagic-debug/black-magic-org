@@ -13,7 +13,7 @@ The following is a list of official hardware supported by the native target that
 
 **Status** Active
 
-**Source** [Vendors](index.md#getting-hardware)
+**Source** {ref}`Vendors<index:getting hardware>`
 
 **Schematic** TODO
 
@@ -34,7 +34,7 @@ New, slightly larger form factor than previous versions to accommodate the large
 
 **Status** Legacy (not in production)
 
-**Source** [Vendors](index.md#getting-hardware)
+**Source** {ref}`Vendors<index:getting hardware>`
 
 **Schematic** [bmpm_v2_1c_schematic.pdf](_assets/bmpm_v2_1c_schematic.pdf)
 **Schematic** [bmpm_v2_1e_schematic.pdf](_assets/bmpm_v2_1e_schematic.pdf)
@@ -58,7 +58,7 @@ Same form factor as the predecessor BMPM2. Following is a list of main differenc
 
 **Status** Legacy (not in production)
 
-**Source** [Vendors](index.md#getting-hardware)
+**Source** {ref}`Vendors<index:getting hardware>`
 
 **Schematic** [bmpm_v2_0f_schematic.pdf](_assets/bmpm_v2_0f_schematic.pdf)
 
@@ -75,7 +75,7 @@ Same form factor as the predecessor BMPM1. Following is a list of main differenc
 
 **Status** Legacy (not in production)
 
-**Source** [Getting Hardware](index.md#getting-hardware)
+**Source** {ref}`index:getting hardware`
 
 **Schematic** [blackmagic_mini.pdf](_assets/blackmagic_mini.pdf)
 

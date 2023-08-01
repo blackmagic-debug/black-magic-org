@@ -83,7 +83,7 @@ to the 10-pin debug target connector is:
 * PicoBlade Pin 3 (purple) => 10-pin connector pin 2
 * PicoBlade Pin 4 (black) => 10-pin connector pin 3 or 5
 
-For more information on what connections are being made here, see the [pinout glossary](../knowledge/pinouts.md).
+For more information on what connections are being made here, see the {ref}`knowledge/pinouts:pinout glossary`.
 
 If you are using an older generation BMP that uses the 20-pin ARM debug connector, you will instead want to connect
 the green wire to pin 9 of the JTAG connector, purple to pin 7, and black to any even pin on the JTAG connector
@@ -91,7 +91,7 @@ other than pin 2.
 
 If you set one BMP to debug another, then you can load firmware using GDB into the BMP. If you are simply building
 the firmware and evaluating its function by reading the output from `DEBUG_*` statements then you will need to use
-`bmputil` or `dfu-util` to update the firmware. (see [Updating the Firmware](../upgrade.md)).
+`bmputil` or `dfu-util` to update the firmware. (see {ref}`upgrade:firmware upgrade`).
 
 ### Debugging newer generations
 
