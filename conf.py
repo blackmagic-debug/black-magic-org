@@ -31,23 +31,23 @@ html_baseurl = 'https://black-magic.org'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'ablog',
     'myst_parser',
+    'sphinx_favicon',
     'sphinx.ext.autosectionlabel',
-    'sphinx.ext.todo',
     'sphinx.ext.githubpages',
     'sphinx.ext.graphviz',
     'sphinx.ext.napoleon',
-    'sphinxcontrib.platformpicker',
+    'sphinx.ext.todo',
     'sphinxcontrib.asciinema',
+    'sphinxcontrib.platformpicker',
     'sphinxcontrib.youtube',
-    'sphinx_favicon',
     'sphinxext.opengraph',
-    'ablog',
 ]
 
 source_suffix = {
-	'.rst': 'restructuredtext',
-	'.md': 'markdown',
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
 }
 
 # Make sure autosectionlabel targets are unique
