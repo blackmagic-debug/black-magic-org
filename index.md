@@ -144,14 +144,14 @@ The official Black Magic Probe hardware is available from these distributors in 
 
 ## Other Hardware supported by Black Magic Debug:
 
- * ST-Link v2, v2.1 and Blue Pill. See [stlink](https://github.com/blackmagic-debug/blackmagic/tree/master/src/platforms/stlink)
- * ST-Link v3. See [stlinkv3](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlinkv3)
- * STM8S Discovery (ST-Link V1). See [swlink](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/swlink)
- * F4 Discovery (STM32F407). See [f4discovery](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/f4discovery)
- * Black Pill F4 (STM32F401CC/STM32F401CE/STM32F411CE). See [blackpill-f401cc](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f401cc), [blackpill-f401ce](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f401ce), [blackpill-f411ce](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f411ce)
- * TI LaunchPad Tiva C onboard programmer. See [launchpad-icdi](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/launchpad-icdi)
- * [HydraBus](https://hydrabus.com/). See [hydrabus](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/hydrabus)
- * [96Boards Carbon](https://www.96boards.org/product/carbon/). See [96_carbon](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/96b_carbon)
+ * ST-Link v2, v2.1 and Blue Pill. See {bmd-gh}`stlink<tree/master/src/platforms/stlink>`
+ * ST-Link v3. See {bmd-gh}`stlinkv3<tree/main/src/platforms/stlinkv3>`
+ * STM8S Discovery (ST-Link V1). See {bmd-gh}`swlink<tree/main/src/platforms/swlink>`
+ * F4 Discovery (STM32F407). See {bmd-gh}`f4discovery<tree/main/src/platforms/f4discovery>`
+ * Black Pill F4 (STM32F401CC/STM32F401CE/STM32F411CE). See {bmd-gh}`blackpill-f401cc<tree/main/src/platforms/blackpill-f401cc), {bmd-gh}`blackpill-f401ce<tree/main/src/platforms/blackpill-f401ce>`, [blackpill-f411ce](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f411ce>`
+ * TI LaunchPad Tiva C onboard programmer. See {bmd-gh}`launchpad-icdi<tree/main/src/platforms/launchpad-icdi>`
+ * [HydraBus](https://hydrabus.com/). See {bmd-gh}`hydrabus<tree/main/src/platforms/hydrabus>`
+ * [96Boards Carbon](https://www.96boards.org/product/carbon/). See {bmd-gh}`96_carbon<tree/main/src/platforms/96b_carbon>`
 
 ## Black Magic Debug App (BMDA)
 

@@ -40,8 +40,10 @@ language = 'en'
 project_decription = 'The Plug&Play MCU Debugger'
 
 # URLs
+netloc_black_magic_org = 'black-magic.org'
 netloc_1b2 = '1bitsquared.com'
 netloc_1b2_eu = netloc_1b2.replace('.com', '.de')
+netloc_github = 'github.com'
 
 github_org_slug = 'blackmagic-debug'
 github_bmd_slug = 'blackmagic'
@@ -73,6 +75,9 @@ source_suffix = {
 }
 
 extlinks = {
+    'black-magic-org-gh': (build_url(netloc_github, [github_org_slug, '%s']), None),
+    'bmd-gh': (build_url(netloc_github, [github_org_slug, github_bmd_slug, '%s']), None),
+    'bmd-issue': (build_url(netloc_github, [github_org_slug, github_bmd_slug, 'issues/%s']), 'BMD Issue #%s'),
     '1b2': (build_url(netloc_1b2, '%s'), None),
     '1b2-eu': (build_url(netloc_1b2_eu, '%s'), None),
     '1b2-product': (build_url(netloc_1b2, 'products/%s'), '1BitSquared US store product %s'),

@@ -41,10 +41,10 @@ There is experimental support for Cortex-A (ARMv7-A architecture).  This is bein
 The official Black Magic Probe hardware is available from multiple vendors. An up to date list is kept on the {ref}`index:getting hardware`.
 
 ## Where can I find the BMP schematics?
- * [Black Magic Probe Mini v2.1](https://github.com/blackmagic-debug/blackmagic/wiki/files/bmpm_v2_1c_schematic.pdf)
- * [Black Magic Probe Mini v2.0](https://github.com/blackmagic-debug/blackmagic/wiki/files/bmpm_v2_0f_schematic.pdf)
- * [Black Magic Probe Mini](https://github.com/blackmagic-debug/blackmagic/wiki/files/blackmagic_mini.pdf)
- * [Original Black Magic Probe](https://github.com/blackmagic-debug/blackmagic/wiki/files/blackmagic-1.0.pdf)
+ * {bmd-gh}`Black Magic Probe Mini v2.1<wiki/files/bmpm_v2_1c_schematic.pdf>`
+ * {bmd-gh}`Black Magic Probe Mini v2.0<wiki/files/bmpm_v2_0f_schematic.pdf>`
+ * {bmd-gh}`Black Magic Probe Mini<wiki/files/blackmagic_mini.pdf>`
+ * {bmd-gh}`Original Black Magic Probe<wiki/files/blackmagic-1.0.pdf>`
 
 ## What are those JTAG/SWD connectors and cables?
 The JTAG/SWD connector is [FTSH-105-01-F-DV-K from Samtec](https://www.samtec.com/products/ftsh-105-01-f-dv-k) (Buy: [Digi-key](http://www.digikey.com/product-detail/en/FTSH-105-01-F-DV-K/FTSH-105-01-F-DV-K-ND/2649974), {1b2-product}`1BitSquared <jtag-swd-smd-connector>`).
@@ -88,7 +88,7 @@ Many vendors provide adapters allowing easy connection between different JTAG/SW
 
 ## Are binary firmware images available for download?
 
-Automatically built firmware images for the official hardware are [here](https://github.com/blackmagic-debug/blackmagic/releases).
+Automatically built firmware images for the official hardware are {bmd-gh}`here <releases>`.
 
 ## How can I access memory mapped I/O from GDB?
 
@@ -109,7 +109,7 @@ set mem inaccessible-by-default off
 set {int}0x40048000 = 2
 ```
 
-This solution is known to work on the LPC8xx/LPC11xx families of chips. If you are using something different refer to the reference manual and look for `SYSMEMREMAP` register. If the address differs please add it to this FAQ item or let us know in the [Discord #blackmagic channel](https://discord.gg/P7FYThy) or mailing list. For the discussion of this problem refer to issue [#99](https://github.com/blackmagic-debug/blackmagic/issues/99).
+This solution is known to work on the LPC8xx/LPC11xx families of chips. If you are using something different refer to the reference manual and look for `SYSMEMREMAP` register. If the address differs please add it to this FAQ item or let us know in the [Discord #blackmagic channel](https://discord.gg/P7FYThy) or mailing list. For the discussion of this problem refer to {bmd-issue}`99`.
 
 ## It's annoying to look up an always-changing device name on Linux.
 
@@ -147,7 +147,7 @@ There are a few advantages of the Black Magic Probe. BMP is open-source, meaning
 
 ## Why is XXX not supported?
 
-Because nobody implemented the required functions yet. Look on [GitHub](https://github.com/blackmagic-debug/blackmagic/pulls) if there is a pending pull request for your target. Consider testing PRs that try to implement the desired target to help us triage merge of new hardware support.
+Because nobody implemented the required functions yet. Look on {bmd-gh}`GitHub <pulls>` if there is a pending pull request for your target. Consider testing PRs that try to implement the desired target to help us triage merge of new hardware support.
 
 ## Why is Raspberry Pi 1 not supported?
 
@@ -159,7 +159,7 @@ Because it is a 64Bit architecture. We are working on adding 64bit support but i
 
 ## Why is Beagle Bone Black not supported?
 
-Because Texas Instruments... but we are working on it. :) If you want to help with that contact us on [![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy). See [issue #166](https://github.com/blackmagic-debug/blackmagic/issues/166) for details.
+Because Texas Instruments... but we are working on it. :) If you want to help with that contact us on [![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy). See {bmd-issue}`166` for details.
 
 ## How do I upgrade to a more recent version?
 

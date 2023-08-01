@@ -54,7 +54,7 @@ sets speed to 4500000 baud, and decodes only channels 0 and 2.
 The decoded SWO stream is written to the usb uart. Viewing SWO is simply connecting to the usb uart.
 
 ### linux
-On linux, set up [udev-rules](https://github.com/blackmagic-debug/blackmagic/blob/master/driver/99-blackmagic.rules) and type
+On linux, set up {bmd-gh}`udev-rules<blob/master/driver/99-blackmagic.rules>` and type
 ```
 cat /dev/ttyBmpTarg
 ```
@@ -62,7 +62,7 @@ If you have not set up udev-rules, connect to the second of the two serial ports
 If the SWO stream is not shown, check baud rate.
 
 ### Windows
-Black Magic Probe shows up in the device manager as two COM ports. For Windows 8 and 10, no drivers need to be installed for serial ports. For earlier versions, one can use an [.inf file](https://github.com/blackmagic-debug/blackmagic/tree/master/driver) that references the pre-installed serial driver. On Windows, connect [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) to the second of the two COM ports, labeled "Black Magic UART Port".
+Black Magic Probe shows up in the device manager as two COM ports. For Windows 8 and 10, no drivers need to be installed for serial ports. For earlier versions, one can use an {bmd-gh}`.inf file<tree/master/driver) that references the pre-installed serial driver. On Windows, connect [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html>` to the second of the two COM ports, labeled "Black Magic UART Port".
 
 SWO decoding in the probe does not need any special utilities and works on every os. For setups that use only a single channel this may be all you need.
 
@@ -80,5 +80,5 @@ Viewers:
 * [bmtrace](https://github.com/compuphase/Black-Magic-Probe-Book) (graphical, windows, ubuntu). Configures bmp and target for you. Windows binaries.
 ![](https://github.com/compuphase/Black-Magic-Probe-Book/raw/master/doc/bmtrace.png)
 * [orbuculum](https://github.com/orbcode/orbuculum) (linux, command line) Advanced. Has gdb init scripts and target c source in the Support/ directory.
-* [swo_listen](https://github.com/blackmagic-debug/blackmagic/blob/master/scripts/swolisten.c) (linux, command line)
+* {bmd-gh}`swo_listen<blob/master/scripts/swolisten.c) (linux, command line>`
 * [bmp_traceswo](https://github.com/nickd4/bmp_traceswo) and [fork](https://github.com/tristanseifert/bmp_traceswo) (linux, command line) {ref}`detailed write-up <usage/traceswo>`

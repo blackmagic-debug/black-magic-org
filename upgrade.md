@@ -4,9 +4,9 @@
 
 Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection:
 
-* You can find the newest pre-built binaries on the [GitHub Release Page](https://github.com/blackmagic-debug/blackmagic/releases).
-* You can find the bleeding cutting edge binaries uploaded as assets on the ["build and upload" GitHub actions page](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml), Click on the newest successful build and download the `blackmagic-firmware.zip` file. It contains binaries for all the supported platforms.
-* When using the daily builds expect breaking changes. Please report issues on [our issue page](https://github.com/blackmagic-debug/blackmagic/issues) or ask on our Discord server.
+* You can find the newest pre-built binaries on the {bmd-gh}`GitHub Release Page<releases>`.
+* You can find the bleeding cutting edge binaries uploaded as assets on the {bmd-gh}`"build and upload" GitHub actions page<actions/workflows/build-and-upload.yml>`, Click on the newest successful build and download the `blackmagic-firmware.zip` file. It contains binaries for all the supported platforms.
+* When using the daily builds expect breaking changes. Please report issues on {bmd-issue}`our issue page<>` or ask on our Discord server.
 
 Upgrade the firmware of the Black Magic Debug Probe using either:
 - bmputil
@@ -15,7 +15,7 @@ Upgrade the firmware of the Black Magic Debug Probe using either:
 
 ### bmputil
 
-Clone and build the [bmputil](https://github.com/blackmagic-debug/bmputil) tool.
+Clone and build the {black-magic-org-gh}`bmputil<bmputil>` tool.
 
 Plug your Black Magic Probe into your computer and run the following command:
 
@@ -35,7 +35,7 @@ Plug the Black Magic Probe into your computer and run the following command:
 sudo dfu-util -d 1d50:6018,:6017 -s 0x08002000:leave -D blackmagic-native.bin
 ```
 
-To upgrade non-native hardware see the readme of the different [platforms on GitHub](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms).
+To upgrade non-native hardware see the readme of the different {bmd-gh}`platforms on GitHub<tree/main/src/platforms>`.
 
 ```{note}
 If `dfu-util` fails to switch your BMP into bootloader mode, or you feel like you might have **bricked** your BMP, you can also plug in your BMP while holding down the button. This will force the BMP to stay in the bootloader on power up.
@@ -43,7 +43,7 @@ If `dfu-util` fails to switch your BMP into bootloader mode, or you feel like yo
 
 ### stlink-tool
 
-The firmware on an ST-Link can be upgraded using [blackmagic-debug/stlink-tool](https://github.com/blackmagic-debug/stlink-tool).
+The firmware on an ST-Link can be upgraded using {black-magic-org-gh}`blackmagic-debug/stlink-tool<stlink-tool>`.
 
 To upgrade, run the following command:
 
@@ -59,9 +59,9 @@ This software upgrades the firmware of the ST-Link probe, **not** the firmware o
 
 Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection:
 
-* You can find the newest pre-built binaries on the [GitHub Release Page](https://github.com/blackmagic-debug/blackmagic/releases).
-* You can find the bleeding cutting edge binaries uploaded as assets on the ["build and upload" GitHub actions page](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml), Click on the newest successful build and download the `blackmagic-firmware.zip` file. It contains binaries for all the supported platforms.
-* When using the daily builds expect breaking changes. Please report issues on [our issue page](https://github.com/blackmagic-debug/blackmagic/issues) or ask on our Discord server.
+* You can find the newest pre-built binaries on the {bmd-gh}`GitHub Release Page<releases>`.
+* You can find the bleeding cutting edge binaries uploaded as assets on the {bmd-gh}`"build and upload" GitHub actions page<actions/workflows/build-and-upload.yml>`, Click on the newest successful build and download the `blackmagic-firmware.zip` file. It contains binaries for all the supported platforms.
+* When using the daily builds expect breaking changes. Please report issues on {bmd-issue}`our issue page<>` or ask on our Discord server.
 
 Upgrade the firmware of the Black Magic Debug Probe using either:
 - bmputil
@@ -70,7 +70,7 @@ Upgrade the firmware of the Black Magic Debug Probe using either:
 
 ### bmputil
 
-Clone and build the [bmputil](https://github.com/blackmagic-debug/bmputil) tool.
+Clone and build the {black-magic-org-gh}`bmputil<bmputil>` tool.
 
 Plug your Black Magic Probe into your computer and run the following command:
 
@@ -91,7 +91,7 @@ Plug the Black Magic Probe into your computer and run the following command:
 dfu-util.exe -d 1d50:6018,:6017 -s 0x08002000:leave -D blackmagic.bin
 ```
 
-To upgrade non-native hardware see the readme of the different [platforms on GitHub](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms).
+To upgrade non-native hardware see the readme of the different {bmd-gh}`platforms on GitHub<tree/main/src/platforms>`.
 
 You may need use [Zadig](https://tracker.iplocation.net/icsj/) to install the WinUSB driver. Both PID 0x6017 and 0x6018 need to be known to [Zadig](https://tracker.iplocation.net/icsj/).
 

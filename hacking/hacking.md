@@ -2,11 +2,11 @@
 
 The Black Magic Debug firmware is under the GPLv3 open-source license, all contributions to the project should be either GPLv3 or compatible.
 
-Any contributed hardware designs found in the [hardware repository](https://github.com/blackmagic-debug/blackmagic-hardware/) is under the CC-BY-SA license.
+Any contributed hardware designs found in the {black-magic-org-gh}`hardware repository<blackmagic-hardware/>` is under the CC-BY-SA license.
 
 ## Getting the project source
 
-The project resides in a [GitHub git repository](https://github.com/blackmagic-debug/blackmagic)
+The project resides in a {black-magic-org-gh}`GitHub git repository<blackmagic>`
 
 Clone this repository (or fork and clone) using your desired method. Typically:
 
@@ -50,7 +50,7 @@ This will result in the following binary files:
 ## Alternative Hardware
 
 A number of users have contributed alternative hardware designs that are compatible with the native firmware.
-Some of these designs are in the [hardware repo](https://github.com/blackmagic-debug/blackmagic-hardware/tree/master/contrib). Check the `README.md` files for details. For instance, to compile a BMP for an ST-Link v2 to run as alternative to the ST firmware, compile:
+Some of these designs are in the {black-magic-org-gh}`hardware repo<blackmagic-hardware/tree/master/contrib>`. Check the `README.md` files for details. For instance, to compile a BMP for an ST-Link v2 to run as alternative to the ST firmware, compile:
 
 ```bash
 make PROBE_HOST=stlink ST_BOOTLOADER=1

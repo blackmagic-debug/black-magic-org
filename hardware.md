@@ -120,7 +120,7 @@ You can compile the firmware for an ST-Link debugger. These are often included o
 
 ## ST-Link v2
 
-Instructions to restore an ST-Link v2 with recent original ST firmware can be found on [GitHub in the stlink platform README](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlink#reverting-to-original-st-firmware-with-running-bmp-firmware).
+Instructions to restore an ST-Link v2 with recent original ST firmware can be found on {bmd-gh}`GitHub in the stlink platform README<tree/main/src/platforms/stlink#reverting-to-original-st-firmware-with-running-bmp-firmware>`.
 
 ## F4 Discovery
 
@@ -128,7 +128,7 @@ You can run the Black Magic Probe firmware on the "target" processor of an ST F4
 
 ## Black Pill F4: F401CC / F401CE / F411CE
 
-The black magic firmware can be built and flashed to Black Pill boards with STM32F401CC, STM32F401CE and STM32F411CE microcontrollers. Since these microcontrollers have slightly different hardware specifications in terms of flash, sram and clock frequency, each microcontroller has its own platform. The platforms share [common code](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/common/blackpill-f4). This page also contains build and firmware upgrade instructions.
+The black magic firmware can be built and flashed to Black Pill boards with STM32F401CC, STM32F401CE and STM32F411CE microcontrollers. Since these microcontrollers have slightly different hardware specifications in terms of flash, sram and clock frequency, each microcontroller has its own platform. The platforms share {bmd-gh}`common code<tree/main/src/platforms/common/blackpill-f4>`. This page also contains build and firmware upgrade instructions.
 
 ## SW Link
 
@@ -146,7 +146,7 @@ The `stlink` platform does not reuse the SWD debug pins.
 | SWDIO    | PB14 |
 | SWCLK    | PA5  |
 
-For the detailed pinout see [stlink platform.h](https://github.com/blackmagic-debug/blackmagic/blob/main/src/platforms/stlink/platform.h).
+For the detailed pinout see {bmd-gh}`stlink platform.h<blob/main/src/platforms/stlink/platform.h>`.
 
 The code can be build using
 ```
@@ -162,7 +162,7 @@ The `swlink` platform remaps the SWD debug pins as bit-bang SWD output. Full JTA
 | SWDIO    | PA13 |
 | SWCLK    | PA14 |
 
-For the detailed pinout see [swlink platform.h](https://github.com/blackmagic-debug/blackmagic/blob/main/src/platforms/swlink/platform.h).
+For the detailed pinout see {bmd-gh}`swlink platform.h<blob/main/src/platforms/swlink/platform.h>`.
 
 ## LaunchPad ICDI
 
