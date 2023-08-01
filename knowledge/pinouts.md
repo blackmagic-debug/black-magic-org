@@ -12,7 +12,9 @@ This connector is backwards compatible with the ubiquitous [ARM Cortex 10pin Deb
 - Solder together the middle RX pad and the RX pad farthest from the board edge.
 - Solder together the TX jumpers. (They default to unconnected.)
 
-(TODO: Add Black Magic Probe V2.3 documentation)
+```{todo}
+Add Black Magic Probe V2.3 documentation
+```
 
 A drawback of configuring the BMDU jumpers this way is that connecting to a standard SWD connector might render the UART pins on the PicoBlade connector unusable while the SWD connector is attached. This is because a standard SWD connector will probably short the UART RX pin to GND, and might short the UART TX pin to GND. You can revert the solder jumpers to their default configuration if this is a problem.
 
@@ -56,4 +58,6 @@ Targets using this connector can be directly interfaced with {ref}`hardware:nati
 
 SEGGER J-Link probes using this connector can interface directly with targets using the {ref}`knowledge/pinouts:black magic debug unified connector (bmdu)` using the same 20Pin JTAG adapter board.
 
-Note that in both cases the adapter board does not allow for UART or J-Link Kickstart power (pin 19) to be used.
+```{note}
+In both cases the adapter board does not allow for UART or J-Link Kickstart power (pin 19) to be used.
+```
