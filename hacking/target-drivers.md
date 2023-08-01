@@ -2,24 +2,24 @@
 
 ## External target API
 
-You can find the public API in [`target.h`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/include/target.h), used by the GDB server. Nothing defined in `src/target` outside of this header should be accessed from outside of `src/target/*`
+You can find the public API in {bmd-gh}``target.h`<blob/main/src/include/target.h>`, used by the GDB server. Nothing defined in `src/target` outside of this header should be accessed from outside of `src/target/*`
 
 ## Internal target API
 
 There are several internal API headers:
 
-* [`target/target_internal.h`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/target_internal.h)
+* {bmd-gh}``target/target_internal.h`<blob/main/src/target/target_internal.h>`
   This header contains structure definitions and convenience functions for use in target support implementations.
   Specific target implementations fill in the function pointers in these structures for their device specific
   implementations.
-* [`target/target_probe.h`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/target_probe.h)
+* {bmd-gh}``target/target_probe.h`<blob/main/src/target/target_probe.h>`
   This header contains declarations for all the *_probe functions so they're all declared in one central place.
   This header works in tandem with `target/target_probe.c` to allow any target support implementation to be
   switched off as-needed without this breaking the build.
 
 ## Raw JTAG Devices
 
-Supported JTAG devices are defined in [target/jtag_devs.c](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/jtag_devs.c)
+Supported JTAG devices are defined in {bmd-gh}`target/jtag_devs.c<blob/main/src/target/jtag_devs.c>`
 
 The `.handler` function is called when a device's ID Code matches the `.idcode` field with `.idmask` applied.
 It is the responsibility of the handler function to instantiate a new target with `target_new` and fill in
@@ -28,7 +28,7 @@ the access function pointers.
 ### Raw JTAG access
 
 There is a global structure of function pointers, `jtag_proc` defined in
-[`jtagtap.h`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/include/jtagtap.h), which is
+{bmd-gh}`jtagtap.h<blob/main/src/include/jtagtap.h>`, which is
 automatically initialised to provide access to raw JTAG bus access routines:
 
 ```c
@@ -64,7 +64,7 @@ There are also some helper macros defined for running certain known sequences on
 ### TAP-layer access
 
 There are higher level access functions defined in
-[`target/jtag_scan.h`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/jtag_scan.h).
+{bmd-gh}`target/jtag_scan.h<blob/main/src/target/jtag_scan.h>`.
 
 These functions provide higher level access to the JTAG IR and DR registers:
 
@@ -83,12 +83,12 @@ void jtag_dev_shift_dr(uint8_t dev_index, uint8_t *data_out, const uint8_t *data
 There are a few moving parts to the ADIv5 (ARM Debug Interface v5) implementation. The most important ones are:
 
 * The debug interface logic itself found in
-  [`target/adiv5.c`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/adiv5.c).
+  {bmd-gh}``target/adiv5.c`<blob/main/src/target/adiv5.c>`.
 * The generic logic for Cortex-M parts which is found in
-  [`target/cortexm.c`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/cortexm.c).
+  {bmd-gh}``target/cortexm.c`<blob/main/src/target/cortexm.c>`.
   Please note, this presently supports the ARMv6-M and ARMv7-M profiles only.
 * The generic logic for Cortex-A parts which is found in
-  [`target/cortexa.c`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/cortexa.c).
+  {bmd-gh}``target/cortexa.c`<blob/main/src/target/cortexa.c>`.
   Please note, this presently supports the ARMv7-M profile only.
 
 ### ADIv5 Coresight identification
@@ -100,7 +100,7 @@ specification.
 When a device is identified during scan that talks ADIv5, the various Coresight CIDR and PIDR values get read out
 automatically and decoded. A list of known component class values can be found at the top of `adiv5.c` and
 a list of known JEP-106 manufacturer codes (encoded in the PIDR register for each ROM table chunk that must be read)
-can be found in the [`target/adiv5.h`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/adiv5.h)
+can be found in the {bmd-gh}``target/adiv5.h`<blob/main/src/target/adiv5.h>`
 header.
 
 Once an AP has been identified as belonging to either a Cortex-M or a Cortex-A core, the ADIv5 code dispatches to
@@ -294,9 +294,9 @@ static bool skeleton_flash_write(target_flash_s *flash, target_addr_t dest, cons
 ```
 
 In addition to this, you *must* declare your new probe routine in
-[`target/target_probe.h`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/target_probe.h),
+{bmd-gh}``target/target_probe.h`<blob/main/src/target/target_probe.h>`,
 and also define a weak linked stub for it in
-[`target/target_probe.c`](https://github.com/blackmagic-debug/blackmagic/blob/main/src/target/target_probe.c)
+{bmd-gh}``target/target_probe.c`<blob/main/src/target/target_probe.c>`
 
 The existing stubs should serve as a decent example for how to do this.
 

@@ -1,6 +1,12 @@
+# This information was referenced from the following sources:
+# https://www.segger.com/products/debug-probes/j-link/technology/interface-description
+# https://wiki.segger.com/Using_J-Link_VCOM_functionality
+# UM08001_JLinkARM User Manual
+
 legend = [
     ("SWD", "swd"),
     ("JTAG", "jtag"),
+    ("UART", "uart"),
     ("Reset", "rst"),
     ("Pin Number", "pin"),
     ("Power", "pwr"),
@@ -20,7 +26,7 @@ left_header = [
     ],
     [
         ("5", "pin"),
-        ("NC", "nc"),
+        ("UART TX", "uart"),
         ("TDI", "jtag"),
     ],
     [
@@ -50,6 +56,7 @@ left_header = [
     ],
     [
         ("17", "pin"),
+        ("UART RX", "uart"),
         ("NC", "nc"),
     ],
     [
@@ -85,19 +92,19 @@ right_header = [
     ],
     [
         ("14", "pin"),
-        ("GND", "gnd"),
+        ("GND*", "gnd"),
     ],
     [
         ("16", "pin"),
-        ("GND", "gnd"),
+        ("GND*", "gnd"),
     ],
     [
         ("18", "pin"),
-        ("GND", "gnd"),
+        ("GND*", "gnd"),
     ],
     [
         ("20", "pin"),
-        ("GND", "gnd"),
+        ("GND*", "gnd"),
     ],
 ]
 
@@ -105,7 +112,12 @@ right_header = [
 
 title = """<tspan class='h1'>SEGGER 20pin JTAG/SWD Connector Pinout</tspan>"""
 
-description = """J-Link and J-Trace have a JTAG connector compatible with ARM's Multi-ICE connector.
+description = """J-Link and J-Trace have a JTAG connector compatible with ARM's Multi-ICE/JTAG connector.
 
 <tspan class='strong'>NOTE:</tspan> The header is FULL PITCH! This means it is 0.1 inch (2.54 mm) pitch pin header.
+<tspan class='strong'>NOTE:</tspan> The TX/RX directionality is from the perspective of the Debugger. On the
+Target (DUT) side these pins are swapped and pin 5 is RX and 17 is TX.
+<tspan class='strong'>NOTE:</tspan> The UART functionality is not available on all J-Link models nor all modes of operation.
+<tspan class='strong'>NOTE:</tspan> On later J-Link products pins 14, 16, 18, and 20 are reserved for firmware extensions,
+they can be left open or connected to GND in normal debug environments and are not essential for normal operation.
 """

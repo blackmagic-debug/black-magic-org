@@ -95,11 +95,11 @@ The Black Magic GDB server features:
 * Implements USB DFU class for easy firmware upgrade as updates become available.
 * Works with Windows, Linux and Mac environments.
 
-All you need is to install the [GNU cross compilation toolchain](https://en.wikipedia.org/wiki/Cross_compiler), containing [GCC](https://gcc.gnu.org/) and [GDB](https://www.sourceware.org/gdb/) for your microcontroller. Plug the Black Magic Probe hardware, running the Black Magic Debug firmware, into your computer. Instruct your GDB to use the BMP as your remote target using the `target extended-remote *serial_port*` command and you are off to the races. Further details are found in [Getting Started](getting-started.md).
+All you need is to install the [GNU cross compilation toolchain](https://en.wikipedia.org/wiki/Cross_compiler), containing [GCC](https://gcc.gnu.org/) and [GDB](https://www.sourceware.org/gdb/) for your microcontroller. Plug the Black Magic Probe hardware, running the Black Magic Debug firmware, into your computer. Instruct your GDB to use the BMP as your remote target using the `target extended-remote *serial_port*` command and you are off to the races. Further details are found in {ref}`getting started`.
 
 If you are an embedded development beginner Black Magic Probe is also a great choice for you. But expect more of a Unix command line experience than a Windows [*klickybunti*](https://www.urbandictionary.com/define.php?term=klickibunti) GUI.
 
-If anything is unclear or hard to understand [let us know](index.md#contact). Our goal is to make the documentation on this website comprehensive enough that it is all you need to get started with microcontroller development and debugging using the Black Magic Probe.
+If anything is unclear or hard to understand {ref}`let us know <index:contact>`. Our goal is to make the documentation on this website comprehensive enough that it is all you need to get started with microcontroller development and debugging using the Black Magic Probe.
 
 ## Supported Targets
 
@@ -128,34 +128,34 @@ The session goes through the following steps:
 
 ## Support the Project
 
-The best way to support the project is purchasing the official [Black Magic Probe hardware](#getting-hardware). If you would like to support the project beyond that please consider supporting these individuals and organizations:
-* [Piotr Esden-Tempski (GitHub Sponsors)](https://github.com/sponsors/esden)
-* [Rachel Mant (GitHub Sponsors)](https://github.com/sponsors/dragonmux)
+The best way to support the project is purchasing the official {ref}`Black Magic Probe hardware <index:getting hardware>`. If you would like to support the project beyond that please consider supporting these individuals and organizations:
+* {github}`Piotr Esden-Tempski (GitHub Sponsors) <sponsors/esden>`
+* {github}`Rachel Mant (GitHub Sponsors) <sponsors/dragonmux>`
 * [1BitSquared (Patreon)](https://www.patreon.com/1bitsquared)
 
 ## Getting Hardware
 
-The official Black Magic Probe hardware was specifically designed with Black Magic Debug in mind and the proceeds from the sales directly support and further the development of the software. See the [Support the Project](#support-the-project) section for other means of sponsoring the development of Black Magic Debug.
+The official Black Magic Probe hardware was specifically designed with Black Magic Debug in mind and the proceeds from the sales directly support and further the development of the software. See the {ref}`index:support the project` section for other means of sponsoring the development of Black Magic Debug.
 
 The official Black Magic Probe hardware is available from these distributors in alphabetical order:
- * DE: [1BitSquared Germany](http://1bitsquared.de/products/black-magic-probe) Black Magic Probe V2.3 (Newest)
- * USA: [1BitSquared US](http://1bitsquared.com/collections/frontpage/products/black-magic-probe) Black Magic Probe V2.3 (Newest)
+ * DE: {1b2-product-eu}`1BitSquared Germany <black-magic-probe>` Black Magic Probe V2.3 (Newest)
+ * USA: {1b2-product}`1BitSquared US <black-magic-probe>` Black Magic Probe V2.3 (Newest)
  * USA: [Adafruit Industries](https://www.adafruit.com/product/3839) Black Magic Probe with JTAG Cable and Serial Cable - V2.3 (Newest)
 
 ## Other Hardware supported by Black Magic Debug:
 
- * ST-Link v2, v2.1 and Blue Pill. See [stlink](https://github.com/blackmagic-debug/blackmagic/tree/master/src/platforms/stlink)
- * ST-Link v3. See [stlinkv3](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlinkv3)
- * STM8S Discovery (ST-Link V1). See [swlink](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/swlink)
- * F4 Discovery (STM32F407). See [f4discovery](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/f4discovery)
- * Black Pill F4 (STM32F401CC/STM32F401CE/STM32F411CE). See [blackpill-f401cc](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f401cc), [blackpill-f401ce](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f401ce), [blackpill-f411ce](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f411ce)
- * TI LaunchPad Tiva C onboard programmer. See [launchpad-icdi](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/launchpad-icdi)
- * [HydraBus](https://hydrabus.com/). See [hydrabus](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/hydrabus)
- * [96Boards Carbon](https://www.96boards.org/product/carbon/). See [96_carbon](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/96b_carbon)
+ * ST-Link v2, v2.1 and Blue Pill. See {bmd-gh}`stlink<tree/master/src/platforms/stlink>`
+ * ST-Link v3. See {bmd-gh}`stlinkv3<tree/main/src/platforms/stlinkv3>`
+ * STM8S Discovery (ST-Link V1). See {bmd-gh}`swlink<tree/main/src/platforms/swlink>`
+ * F4 Discovery (STM32F407). See {bmd-gh}`f4discovery<tree/main/src/platforms/f4discovery>`
+ * Black Pill F4 (STM32F401CC/STM32F401CE/STM32F411CE). See {bmd-gh}`blackpill-f401cc<tree/main/src/platforms/blackpill-f401cc), {bmd-gh}`blackpill-f401ce<tree/main/src/platforms/blackpill-f401ce>`, [blackpill-f411ce](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f411ce>`
+ * TI LaunchPad Tiva C onboard programmer. See {bmd-gh}`launchpad-icdi<tree/main/src/platforms/launchpad-icdi>`
+ * [HydraBus](https://hydrabus.com/). See {bmd-gh}`hydrabus<tree/main/src/platforms/hydrabus>`
+ * [96Boards Carbon](https://www.96boards.org/product/carbon/). See {bmd-gh}`96_carbon<tree/main/src/platforms/96b_carbon>`
 
 ## Black Magic Debug App (BMDA)
 
-You can also compile the Black Magic Debug as a stand alone application instead of a firmware that you can flash onto a microcontroller. This mode resembles the way OpenOCD is used as an "application in the middle". Please find more details on the [hardware page](hardware.md#black-magic-debug-app).
+You can also compile the Black Magic Debug as a stand alone application instead of a firmware that you can flash onto a microcontroller. This mode resembles the way OpenOCD is used as an "application in the middle". Please find more details on the {ref}`hardware page <hardware:black magic debug app>`.
 
 ## Contact:
 * If you have questions or suggestions feel free to join us in our chat [![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy)

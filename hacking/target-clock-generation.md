@@ -39,7 +39,7 @@ TMS is used to help navigate the capture and find the correct routines to measur
 signal we want to measure. We use a 1% pre-trigger capture ratio, 24MHz sampling frequency and 100 million
 samples per capture to ensure we get sufficient data.
 
-To prepare the first (`_no_delay`) run, we co-opt the remote protocol by [editing remote.c](https://github.com/blackmagic-debug/blackmagic/blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/remote.c#L272).
+To prepare the first (`_no_delay`) run, we co-opt the remote protocol by {bmd-gh}`editing remote.c<blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/remote.c#L272>`.
 We do this by commenting out the referenced line and replacing it with `target_clk_divider = UINT32_MAX;`
 which, by virtue of how the bitbanging routines are written, forces the _no_delay variants.
 
@@ -54,14 +54,14 @@ Once complete, we can then turn our attention to PulseView where you should see 
 The resulting capture has, as noted, two regions of interest. The reason for this is that they contain
 clock pulses from all 3 major routines used and are easily identified. This is why we capture TMS as well.
 
-At the start of a JTAG scan run, BMD [reinitialises its JTAG subsystem](https://github.com/blackmagic-debug/blackmagic/blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/target/jtag_scan.c#L89-L96).
+At the start of a JTAG scan run, BMD {bmd-gh}`reinitialises its JTAG subsystem<blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/target/jtag_scan.c#L89-L96>`.
 When it does this, it sets TMS high, sets the jtag_proc structure back up, and then [runs a >50 pulse JTAG
 reset and the ARM SWD-to-JTAG sequence](https://github.com/blackmagic-debug/blackmagic/blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/platforms/common/jtagtap.c#L53-L55).
 
 This then ensures the bus is in a good state while leaving TMS high after. We then perform an additional
 JTAG reset when starting the ID code readout, along with having to switch into the Shift-DR JTAG TAP state. These
 are the additional sets of pulses between the marked ones of interest. We finally do
-[several 32-bit transactions](https://github.com/blackmagic-debug/blackmagic/blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/target/jtag_scan.c#L171)
+{bmd-gh}`several 32-bit transactions<blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/target/jtag_scan.c#L171>`
 on the bus, with the goal of reading out ID codes. These are done with TMS low giving this distinctive signature
 between TMS and TCK that we see in the capture.
 
@@ -131,15 +131,15 @@ The final division factor is provided as an output in cell B9 of the sheet "Data
 
 Having done all of the above, there are a series of simple `#define` statements that must be added to the platform's header. We will make reference to the native (BMP) platform as an example for this section.
 
-The first thing that must be defined in the platform header, is [`BITBANG_CALIBRATED_FREQS`](https://github.com/blackmagic-debug/blackmagic/blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/platforms/native/platform.h#L296)
+The first thing that must be defined in the platform header, is {bmd-gh}``BITBANG_CALIBRATED_FREQS`<blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/platforms/native/platform.h#L296>`
 which serves to inform the `platform_max_frequency_{get,set}` implementations that a calibration has been done and
 not to use the old method this replaces.
 
 With this defined, we must then define the frequency achieved by the `_no_delay` routines, and the maximum frequency
-achieved by  the `_clk_delay` routines. This involves defining [`BITBANG_NO_DELAY_FREQ` and `BITBANG_0_DELAY_FREQ`](https://github.com/blackmagic-debug/blackmagic/blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/platforms/native/platform.h#L305-L313C9)
+achieved by  the `_clk_delay` routines. This involves defining {bmd-gh}`BITBANG_NO_DELAY_FREQ and BITBANG_0_DELAY_FREQ<blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/platforms/native/platform.h#L305-L313C9>`
 which are the measured frequency values expressed in Hz.
 
 Finally, the conversion constants for the delay routines must be defined. These are
-[`BITBANG_DIVIDER_OFFSET` and `BITBANG_DIVIDER_FACTOR`](https://github.com/blackmagic-debug/blackmagic/blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/platforms/native/platform.h#L327-L328).
+{bmd-gh}`BITBANG_DIVIDER_OFFSET and BITBANG_DIVIDER_FACTOR<blob/799a4088e6c98fcbd977d9c3f2036bef4ba1e9b6/src/platforms/native/platform.h#L327-L328>`.
 These are the values from the linear regression called out in the above section -
 workbook sheet "Data", cells B9 and B12.

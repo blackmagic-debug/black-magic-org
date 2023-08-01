@@ -50,6 +50,17 @@ text {
     fill: #2B59C3;
     stroke: rgb(0, 0, 0);
 }
+.uart .pinlabel__body{
+    fill: #4E148C;
+    stroke: rgb(0, 0, 0);
+}
+.uart .pinlabel__leader{
+    stroke: #4E148C;
+}
+.uart .swatch__body {
+    fill: #4E148C;
+    stroke: rgb(0, 0, 0);
+}
 .trace .pinlabel__body{
     fill: #9FCC2E;
     stroke: rgb(0, 0, 0);

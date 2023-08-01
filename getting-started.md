@@ -1,6 +1,6 @@
 # Getting Started
 ## Get a Black Magic Probe
-If you don't have one already, you'll need to [get a Black Magic Probe](index.md#getting-hardware).
+If you don't have one already, you'll need to {ref}`get a Black Magic Probe <index:getting hardware>`.
 
 ## Connecting to your computer
 Connect the Black Magic Probe to your computer's USB port.  When connected via USB, the Black Magic Probe will enumerate as a CDC-ACM device which the OS should present as a tty device or serial port.
@@ -25,9 +25,9 @@ On Windows, when you first connect, the Black Magic Probe should be detected as 
 
 ![Device Manager](_assets/device_manager.png)
 
-__Note:__ For older Windows versions (Windows 7 and older), you will be prompted to install a driver.  You can download the driver [here](https://github.com/blackmagic-debug/blackmagic/tree/master/driver).
+__Note:__ For older Windows versions (Windows 7 and older), you will be prompted to install a driver.  You can download the driver {bmd-gh}`here <tree/master/driver>`.
 
-__Note:__ If you are on Windows 10 and want to upgrade the firmware to the probe itself, you can install the [libusbK](http://zadig.akeo.ie/) driver. This will give you access to the DFU interface of the Black Magic Probe and allow you to use dfu-util to upgrade the Black Magic Probe firmware. (You do not need to install this driver if you only plan to use the Black Magic Probe and do not need/want to upgrade the firmware.) Also, Windows 10 displays the BMP probe ports using the generic title, "USB Serial Device", as seen below:
+__Note:__ If you are on Windows 10 and want to upgrade the firmware to the probe itself, you can install the [libusbK](https://zadig.akeo.ie/) driver. This will give you access to the DFU interface of the Black Magic Probe and allow you to use dfu-util to upgrade the Black Magic Probe firmware. (You do not need to install this driver if you only plan to use the Black Magic Probe and do not need/want to upgrade the firmware.) Also, Windows 10 displays the BMP probe ports using the generic title, "USB Serial Device", as seen below:
 
 ![Device Manager Windows 10](_assets/device_manager_w10.png)
 
@@ -68,7 +68,7 @@ Attaching to Remote target
 The command `monitor swdp_scan` may be used to use the Serial-Wire Debug Protocol instead of JTAG to connect to the target.
 
 Once attached, all the standard GDB commands may be used to start and control
-the execution of the embedded application. [GDB Commands](usage/gdb-commands.md) provides a quick introduction.
+the execution of the embedded application. {ref}`usage/gdb-commands:gdb commands` provides a quick introduction.
 
 ```{note}
 On macOS use the `/dev/cu.usbmodem<somenumber>`. Don't use the tty version of this device as this one will freeze gdb when it tries to open it.
@@ -98,5 +98,5 @@ Esden created a video walk-through of using Black Magic Probe with the 1Bitsy mi
 If you have additional tutorial resources for the use of Black Magic Probe let us know so we can include them here.
 
 ## Getting started with open-source Cortex-M development
-- See [this presentation](https://github.com/gsmcmullin/embedded-demo/raw/master/slides.pdf), porting a basic Unix program to an embedded Cortex-M3 using [libopencm3](http://libopencm3.org/).
+- See {github}`this presentation<gsmcmullin/embedded-demo/raw/master/slides.pdf>`, porting a basic Unix program to an embedded Cortex-M3 using [libopencm3](http://libopencm3.org/).
 - The [gcc-arm-embedded readme](https://launchpadlibrarian.net/268329726/readme.txt) is also worth a read.

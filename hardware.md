@@ -13,7 +13,7 @@ The following is a list of official hardware supported by the native target that
 
 **Status** Active
 
-**Source** [Vendors](index.md#getting-hardware)
+**Source** {ref}`Vendors<index:getting hardware>`
 
 **Schematic** TODO
 
@@ -34,7 +34,7 @@ New, slightly larger form factor than previous versions to accommodate the large
 
 **Status** Legacy (not in production)
 
-**Source** [Vendors](index.md#getting-hardware)
+**Source** {ref}`Vendors<index:getting hardware>`
 
 **Schematic** [bmpm_v2_1c_schematic.pdf](_assets/bmpm_v2_1c_schematic.pdf)
 **Schematic** [bmpm_v2_1e_schematic.pdf](_assets/bmpm_v2_1e_schematic.pdf)
@@ -43,7 +43,7 @@ Same form factor as the predecessor BMPM2. Following is a list of main differenc
 
 * Replaces the TXS0108 bidirectional level shifter with dual supply 74LVC2T45 bus transceivers. This improves the line drive strength and expands the target voltage range to 1.8V-5V (previous design was limited to 1.8V-3.3V)
 * Dedicated reset line drive MOSFET circuitry with 10k pull-up ensuring good open-drain RST line drive with monitoring.
-* Exposed the BMP side SWD lines on dedicated pads, allowing for easier programming and debugging of the probe firmware. It is much easier now to program and debug the BMP firmware using a second BMP. The pinout is compatible with the [SWD adapter by 1Bitsquared](https://1bitsquared.com/products/jtag-swd-adapter).
+* Exposed the BMP side SWD lines on dedicated pads, allowing for easier programming and debugging of the probe firmware. It is much easier now to program and debug the BMP firmware using a second BMP. The pinout is compatible with the {1b2-product}`SWD adapter by 1Bitsquared<jtag-swd-adapter>`.
 * Increased LED distance from each other for better visual separation.
 * (V2.1e revision) Added a normally open jumper to allow the connection of the `TRACESWO` signal to `UART1_RX` on pin `PB7`. This pin is also the highest order bit of the hardware version. Because of that, all BMPM V2.1e have the hardware version stored as a user `Data0` option byte at address `0x1FFFF804`. The hardware version corresponding to V2.1e is `0x04`. Firmware that implements UART SWO decoding should check the hardware version in the option bytes first. (this feature is not yet supported in current blackmagic probe firmware)
 
@@ -58,7 +58,7 @@ Same form factor as the predecessor BMPM2. Following is a list of main differenc
 
 **Status** Legacy (not in production)
 
-**Source** [Vendors](index.md#getting-hardware)
+**Source** {ref}`Vendors<index:getting hardware>`
 
 **Schematic** [bmpm_v2_0f_schematic.pdf](_assets/bmpm_v2_0f_schematic.pdf)
 
@@ -75,7 +75,7 @@ Same form factor as the predecessor BMPM1. Following is a list of main differenc
 
 **Status** Legacy (not in production)
 
-**Source** [Getting Hardware](index.md#getting-hardware)
+**Source** {ref}`index:getting hardware`
 
 **Schematic** [blackmagic_mini.pdf](_assets/blackmagic_mini.pdf)
 
@@ -120,7 +120,7 @@ You can compile the firmware for an ST-Link debugger. These are often included o
 
 ## ST-Link v2
 
-Instructions to restore an ST-Link v2 with recent original ST firmware can be found on [GitHub in the stlink platform README](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlink#reverting-to-original-st-firmware-with-running-bmp-firmware).
+Instructions to restore an ST-Link v2 with recent original ST firmware can be found on {bmd-gh}`GitHub in the stlink platform README<tree/main/src/platforms/stlink#reverting-to-original-st-firmware-with-running-bmp-firmware>`.
 
 ## F4 Discovery
 
@@ -128,7 +128,7 @@ You can run the Black Magic Probe firmware on the "target" processor of an ST F4
 
 ## Black Pill F4: F401CC / F401CE / F411CE
 
-The black magic firmware can be built and flashed to Black Pill boards with STM32F401CC, STM32F401CE and STM32F411CE microcontrollers. Since these microcontrollers have slightly different hardware specifications in terms of flash, sram and clock frequency, each microcontroller has its own platform. The platforms share [common code](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/common/blackpill-f4). This page also contains build and firmware upgrade instructions.
+The black magic firmware can be built and flashed to Black Pill boards with STM32F401CC, STM32F401CE and STM32F411CE microcontrollers. Since these microcontrollers have slightly different hardware specifications in terms of flash, sram and clock frequency, each microcontroller has its own platform. The platforms share {bmd-gh}`common code<tree/main/src/platforms/common/blackpill-f4>`. This page also contains build and firmware upgrade instructions.
 
 ## SW Link
 
@@ -146,7 +146,7 @@ The `stlink` platform does not reuse the SWD debug pins.
 | SWDIO    | PB14 |
 | SWCLK    | PA5  |
 
-For the detailed pinout see [stlink platform.h](https://github.com/blackmagic-debug/blackmagic/blob/main/src/platforms/stlink/platform.h).
+For the detailed pinout see {bmd-gh}`stlink platform.h<blob/main/src/platforms/stlink/platform.h>`.
 
 The code can be build using
 ```
@@ -162,7 +162,7 @@ The `swlink` platform remaps the SWD debug pins as bit-bang SWD output. Full JTA
 | SWDIO    | PA13 |
 | SWCLK    | PA14 |
 
-For the detailed pinout see [swlink platform.h](https://github.com/blackmagic-debug/blackmagic/blob/main/src/platforms/swlink/platform.h).
+For the detailed pinout see {bmd-gh}`swlink platform.h<blob/main/src/platforms/swlink/platform.h>`.
 
 ## LaunchPad ICDI
 

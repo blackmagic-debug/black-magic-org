@@ -51,7 +51,7 @@ arm-none-eabi-gdb -nx --batch \
 
 ## Makefile
 
-If you are using GNU Makefiles for your project you can add a `make flash` target. Reusing the script from the [Commandline](#commandline) section above the target like that can look something like this:
+If you are using GNU Makefiles for your project you can add a `make flash` target. Reusing the script from the {ref}`Commandline <gdb-automation:commandline>` section above the target like that can look something like this:
 
 ```makefile
 
@@ -98,7 +98,7 @@ endif
 	           $(*).elf
 ```
 
-For a full example using this kind of a makefile target you can look at the [1Bitsy template project](https://github.com/1Bitsy/1bitsy-locm3-template).
+For a full example using this kind of a makefile target you can look at the {github}`1Bitsy template project <1Bitsy/1bitsy-locm3-template>`.
 
 ## Windows Batch
 

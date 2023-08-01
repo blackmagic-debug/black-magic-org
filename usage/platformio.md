@@ -7,11 +7,11 @@
 **Frameworks:** Arduino, ARTIK SDK, CMSIS, Energia, ESP-IDF, libOpenCM3, mbed, Pumbaa, Simba, SPL, STM32Cube, WiringPi
 
 ## Contents
-- [PIO Unified Debugger](#pio-unified-debugger)
-- [Quick Start](#quick-start)
-- [Debugging from CLI](#debugging-from-cli)
-- [Advanced configuration](#advanced-configuration)
-- [Issues and support](#issues-and-support)
+- {ref}`usage/platformio:pio unified debugger`
+- {ref}`usage/platformio:quick start`
+- {ref}`usage/platformio:debugging from cli`
+- {ref}`usage/platformio:advanced configuration`
+- {ref}`usage/platformio:issues and support`
 
 ## PIO Unified Debugger
 
@@ -30,7 +30,7 @@ See a full list of [compatible boards for Black Magic Probe](http://docs.platfor
 
 1. Install [PlatformIO IDE](https://platformio.org/platformio-ide?utm_source=github&utm_medium=blackmagic).
 2. Create a new project using "PlatformIO Home > New Project" wizard (🏠 icon on the toolbar)
-3. Edit **Project Configuration File** [platformio.ini](http://docs.platformio.org/en/latest/projectconf.html?utm_source=github&utm_medium=blackmagic) and set Black Magic Probe as default tool for debugging and programming/uploading, update `upload/debug` port following [this guide](gdb-commands.md):
+3. Edit **Project Configuration File** [platformio.ini](http://docs.platformio.org/en/latest/projectconf.html?utm_source=github&utm_medium=blackmagic) and set Black Magic Probe as default tool for debugging and programming/uploading, update `upload/debug` port following {ref}`this guide <gdb-commands>`:
 
 ```ini
 [env:someboard]
