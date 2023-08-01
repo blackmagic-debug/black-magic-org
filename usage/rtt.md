@@ -319,6 +319,6 @@ has to be also set appropriately, selecting the correct host target.
 
 ## Links
  - [OpenOCD](https://openocd.org/doc/html/General-Commands.html#Real-Time-Transfer-_0028RTT_0029)
- - [probe-rs](https://probe.rs/) and [rtt-target](https://github.com/mvirkkunen/rtt-target) for the
+ - [probe-rs](https://probe.rs/) and {github}`rtt-target <mvirkkunen/rtt-target>` for the
    _rust_ programming language.
- - [RTT Stream](https://github.com/koendv/Arduino-RTTStream) for Arduino on arm processors
+ - {github}`RTT Stream <koendv/Arduino-RTTStream>` for Arduino on arm processors

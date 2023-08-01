@@ -84,7 +84,7 @@ There are also pre made UART cables:
 
 ## Where can I find different JTAG/SWD connectors? (Adapters & Cables)
 
-Many vendors provide adapters allowing easy connection between different JTAG/SWD and UART interfaces. For example {1b2}`1BitSquared <collections/embedded-hardware>` offers a wide range of different adapters and cables. There is also a collection of adapter designs that you can find on the [1BitSquared GitHub Page](https://github.com/1bitsquared/1b2-adapter-collection) that you can use as basis for your custom adapter. If there is an adapter missing for your specific application it is usually quite easy to put one together using [KiCad](http://kicad.org/) and order the needed board from [OSHPark](https://oshpark.com/).
+Many vendors provide adapters allowing easy connection between different JTAG/SWD and UART interfaces. For example {1b2}`1BitSquared <collections/embedded-hardware>` offers a wide range of different adapters and cables. There is also a collection of adapter designs that you can find on the {github}`1BitSquared GitHub Page <1bitsquared/1b2-adapter-collection>` that you can use as basis for your custom adapter. If there is an adapter missing for your specific application it is usually quite easy to put one together using [KiCad](http://kicad.org/) and order the needed board from [OSHPark](https://oshpark.com/).
 
 ## Are binary firmware images available for download?
 

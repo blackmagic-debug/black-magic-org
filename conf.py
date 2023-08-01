@@ -82,6 +82,8 @@ extlinks = {
     '1b2-eu': (build_url(netloc_1b2_eu, '%s'), None),
     '1b2-product': (build_url(netloc_1b2, 'products/%s'), '1BitSquared US store product %s'),
     '1b2-product-eu': (build_url(netloc_1b2_eu, 'products/%s'), '1BitSquared EU store product %s'),
+    'github': (build_url(netloc_github, '%s'), None),
+    'github-user': (build_url(netloc_github, '%s'), '@%s'),
 }
 
 # Produce warnings for hard-coded external links that can be replaced with extlinks

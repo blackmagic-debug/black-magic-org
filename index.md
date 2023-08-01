@@ -129,8 +129,8 @@ The session goes through the following steps:
 ## Support the Project
 
 The best way to support the project is purchasing the official {ref}`Black Magic Probe hardware <index:getting hardware>`. If you would like to support the project beyond that please consider supporting these individuals and organizations:
-* [Piotr Esden-Tempski (GitHub Sponsors)](https://github.com/sponsors/esden)
-* [Rachel Mant (GitHub Sponsors)](https://github.com/sponsors/dragonmux)
+* {github}`Piotr Esden-Tempski (GitHub Sponsors) <sponsors/esden>`
+* {github}`Rachel Mant (GitHub Sponsors) <sponsors/dragonmux>`
 * [1BitSquared (Patreon)](https://www.patreon.com/1bitsquared)
 
 ## Getting Hardware

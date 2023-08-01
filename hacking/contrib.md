@@ -8,9 +8,9 @@
 * Submit changes with [GitHub pull-requests](https://guides.github.com/introduction/flow/)
 
 ## Patch Policy (draft)
- - [@esden](https://github.com/esden) is the maintainer of the project.
- - [@dragonmux](https://github.com/dragonmux) is deputy maintainer answering to [@esden](https://github.com/esden)
- - If you have any questions regarding the contribution process either contact [@esden](https://github.com/esden) or [@dragonmux](https://github.com/dragonmux)
+ - {github-user}`esden` is the maintainer of the project.
+ - {github-user}`dragonmux` is deputy maintainer answering to {github-user}`esden`
+ - If you have any questions regarding the contribution process either contact {github-user}`esden` or {github-user}`dragonmux`
  - Every Pull Request has to build and pass all tests on top of the `main` branch before it can be merged.
  - Every Pull Request requires review from one of the maintainers.
  - Because we can't test all possible hardware platforms, we will need target specific maintainers to test and approve non-trivial changes to target support code.

@@ -98,7 +98,7 @@ endif
 	           $(*).elf
 ```
 
-For a full example using this kind of a makefile target you can look at the [1Bitsy template project](https://github.com/1Bitsy/1bitsy-locm3-template).
+For a full example using this kind of a makefile target you can look at the {github}`1Bitsy template project <1Bitsy/1bitsy-locm3-template>`.
 
 ## Windows Batch
 
