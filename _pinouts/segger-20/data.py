@@ -1,3 +1,8 @@
+# This information was referenced from the following sources:
+# https://www.segger.com/products/debug-probes/j-link/technology/interface-description
+# https://wiki.segger.com/Using_J-Link_VCOM_functionality
+# UM08001_JLinkARM User Manual
+
 legend = [
     ("SWD", "swd"),
     ("JTAG", "jtag"),
