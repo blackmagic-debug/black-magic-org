@@ -87,19 +87,19 @@ right_header = [
     ],
     [
         ("14", "pin"),
-        ("GND", "gnd"),
+        ("GND*", "gnd"),
     ],
     [
         ("16", "pin"),
-        ("GND", "gnd"),
+        ("GND*", "gnd"),
     ],
     [
         ("18", "pin"),
-        ("GND", "gnd"),
+        ("GND*", "gnd"),
     ],
     [
         ("20", "pin"),
-        ("GND", "gnd"),
+        ("GND*", "gnd"),
     ],
 ]
 
@@ -113,4 +113,6 @@ description = """J-Link and J-Trace have a JTAG connector compatible with ARM's 
 <tspan class='strong'>NOTE:</tspan> The TX/RX directionality is from the perspective of the Debugger. On the
 Target (DUT) side these pins are swapped and pin 5 is RX and 17 is TX.
 <tspan class='strong'>NOTE:</tspan> The UART functionality is not available on all J-Link models nor all modes of operation.
+<tspan class='strong'>NOTE:</tspan> On later J-Link products pins 14, 16, 18, and 20 are reserved for firmware extensions,
+they can be left open or connected to GND in normal debug environments and are not essential for normal operation.
 """
