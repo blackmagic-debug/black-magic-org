@@ -22,8 +22,15 @@ import os
 project = 'Black Magic Debug'
 copyright = '2022-2023, Piotr Esden-Tempski <piotr@esden.net>; 2022-2023, Rachel Mant <git@dragonmux.network>'
 author = 'Piotr Esden-Tempski <piotr@esden.net>, Rachel Mant <git@dragonmux.network>'
-language  = 'en'
-html_baseurl = 'https://black-magic.org'
+language = 'en'
+
+# -- Project information not required by sphinx ------------------------------
+
+project_decription = 'The Plug&Play MCU Debugger'
+
+# URLs
+github_org_slug = 'blackmagic-debug'
+github_bmd_slug = 'blackmagic'
 
 # -- General configuration ---------------------------------------------------
 
@@ -70,6 +77,8 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'env', 'README.md']
 
 # -- Options for HTML output -------------------------------------------------
 
+html_baseurl = 'https://black-magic.org'
+
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
@@ -78,9 +87,9 @@ html_copy_source = False
 
 html_theme_options = {
     'logo': 'blackmagic-logo.svg',
-    'github_user': 'blackmagic-debug',
-    'github_repo': 'blackmagic',
-    'description': 'The Plug&Play MCU Debugger',
+    'github_user': github_org_slug,
+    'github_repo': github_bmd_slug,
+    'description': project_decription,
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -100,7 +109,7 @@ html_sidebars = {
     ]
 }
 
-blog_baseurl = "https://black-magic.org"
+blog_baseurl = html_baseurl
 
 blog_authors = {
     'esden': ('Piotr Esden-Tempski', 'https://github.com/esden'),
@@ -193,8 +202,8 @@ favicons = [
     },
 ]
 
-ogp_site_url = "https://black-magic.org"
-ogp_site_name = "Black Magic Debug"
+ogp_site_url = html_baseurl
+ogp_site_name = project
 ogp_image = "_static/blackmagic-logo.png"
 
 # Generate pinout diagrams
