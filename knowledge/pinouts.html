@@ -82,7 +82,10 @@
 <li><p>Solder together the middle RX pad and the RX pad farthest from the board edge.</p></li>
 <li><p>Solder together the TX jumpers. (They default to unconnected.)</p></li>
 </ul>
-<p>(TODO: Add Black Magic Probe V2.3 documentation)</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Add Black Magic Probe V2.3 documentation</p>
+</div>
 <p>A drawback of configuring the BMDU jumpers this way is that connecting to a standard SWD connector might render the UART pins on the PicoBlade connector unusable while the SWD connector is attached. This is because a standard SWD connector will probably short the UART RX pin to GND, and might short the UART TX pin to GND. You can revert the solder jumpers to their default configuration if this is a problem.</p>
 </section>
 <section id="arm-cortex-debug-connectors">
@@ -113,7 +116,13 @@
 <section id="segger-20pin-debug-connector">
 <h2>SEGGER 20pin Debug Connector<a class="headerlink" href="#segger-20pin-debug-connector" title="Permalink to this heading">¶</a></h2>
 <p><img alt="" src="../_images/segger-20-legend.svg" /></p>
-<p>This is a custom connector used on SEGGER J-Link and J-Trace debug probes, designed to be loosely compatible with the <a class="reference internal" href="#arm-jtag-connector">ARM JTAG Connector</a>.</p>
+<p>This is a custom connector used on SEGGER J-Link and J-Trace debug probes, designed to be loosely compatible with the <a class="reference internal" href="#arm-jtag-connector"><span class="std std-ref">ARM JTAG Connector</span></a>.</p>
+<p>Targets using this connector can be directly interfaced with <a class="reference internal" href="../hardware.html#native-hardware"><span class="std std-ref">Native Hardware</span></a> probes using a 20Pin JTAG adapter board found on the <a class="reference external" href="https://1bitsquared.com/collections/accessories/products/20pin-jtag-adapter">1BitSquared</a> store.</p>
+<p>SEGGER J-Link probes using this connector can interface directly with targets using the <a class="reference internal" href="#black-magic-debug-unified-connector-bmdu"><span class="std std-ref">Black Magic Debug Unified Connector (BMDU)</span></a> using the same 20Pin JTAG adapter board.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In both cases the adapter board does not allow for UART or J-Link Kickstart power (pin 19) to be used.</p>
+</div>
 </section>
 </section>
 
