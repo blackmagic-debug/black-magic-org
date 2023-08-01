@@ -46,9 +46,14 @@ This connector is the old and trusty ARM JTAG connector. It is a bigger pitch (0
 
 This is a custom connector that STMicroelectronics invented. It is backwards compatible with the [ARM Cortex 10Pin Debug Connector](#arm-cortex-10pin-debug-connector), so one can plug a 14pin ribbon cable into a 10pin debug connector if the connector is not fully shrouded. The ribbon cable will then overhang the connector by two pins on each side. If your target has this 14pin connector you can connect the Black Magic Probe by connecting a 14pin ribbon cable to the Black Magic Probe ([1BitSquared](https://1bitsquared.com/products/stdc14-idc-cable) is offering these cables in their store).
 
-
 ## SEGGER 20pin Debug Connector
 
 ![](../_pinouts/segger-20-legend.svg)
 
-This is a custom connector used on SEGGER J-Link and J-Trace debug probes, designed to be loosely compatible with the [ARM JTAG Connector](#arm-jtag-connector).
+This is a custom connector used on SEGGER J-Link and J-Trace debug probes, designed to be loosely compatible with the {ref}`knowledge/pinouts:arm jtag connector`.
+
+Targets using this connector can be directly interfaced with {ref}`hardware:native hardware` probes using a 20Pin JTAG adapter board found on the [1BitSquared](https://1bitsquared.com/collections/accessories/products/20pin-jtag-adapter) store.
+
+SEGGER J-Link probes using this connector can interface directly with targets using the {ref}`knowledge/pinouts:black magic debug unified connector (bmdu)` using the same 20Pin JTAG adapter board.
+
+Note that in both cases the adapter board does not allow for UART or J-Link Kickstart power (pin 19) to be used.
