@@ -29,6 +29,8 @@ language = 'en'
 project_decription = 'The Plug&Play MCU Debugger'
 
 # URLs
+netloc_1b2 = '1bitsquared.com'
+
 github_org_slug = 'blackmagic-debug'
 github_bmd_slug = 'blackmagic'
 
@@ -42,6 +44,7 @@ extensions = [
     'myst_parser',
     'sphinx_favicon',
     'sphinx.ext.autosectionlabel',
+    'sphinx.ext.extlinks',
     'sphinx.ext.githubpages',
     'sphinx.ext.graphviz',
     'sphinx.ext.napoleon',
@@ -56,6 +59,13 @@ source_suffix = {
     '.rst': 'restructuredtext',
     '.md': 'markdown',
 }
+
+extlinks = {
+    '1b2-product': (build_url(netloc_1b2, 'products/%s'), '1BitSquared US store product %s'),
+}
+
+# Produce warnings for hard-coded external links that can be replaced with extlinks
+extlinks_detect_hardcoded_links = True
 
 # Make sure autosectionlabel targets are unique
 autosectionlabel_prefix_document = True
