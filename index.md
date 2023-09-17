@@ -12,6 +12,7 @@
 hardware
 getting-started
 upgrade
+supported-targets
 ```
 
 ```{toctree}
