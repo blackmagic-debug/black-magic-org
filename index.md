@@ -138,9 +138,11 @@ The best way to support the project is purchasing the official [Black Magic Prob
 The official Black Magic Probe hardware was specifically designed with Black Magic Debug in mind and the proceeds from the sales directly support and further the development of the software. See the [Support the Project](#support-the-project) section for other means of sponsoring the development of Black Magic Debug.
 
 The official Black Magic Probe hardware is available from these distributors in alphabetical order:
- * DE: [1BitSquared Germany](http://1bitsquared.de/products/black-magic-probe) Black Magic Probe V2.3 (Newest)
- * USA: [1BitSquared US](http://1bitsquared.com/collections/frontpage/products/black-magic-probe) Black Magic Probe V2.3 (Newest)
- * USA: [Adafruit Industries](https://www.adafruit.com/product/3839) Black Magic Probe with JTAG Cable and Serial Cable - V2.3 (Newest)
+ * DE: [1BitSquared Germany](http://1bitsquared.de/products/black-magic-probe) Black Magic Probe V2.3 (Multiple accessory options) (Newest)
+ * USA: [1BitSquared US](http://1bitsquared.com/collections/frontpage/products/black-magic-probe) Black Magic Probe V2.3 (Multiple accessory options) (Newest)
+ * USA: [Adafruit Industries](https://www.adafruit.com/product/3839) Black Magic Probe V2.3 (With JTAG/SWD and UART cables) (Newest)
+ * NL: [Elektor](https://www.elektor.com/black-magic-probe-v2-3-jtag-swd-arm-microcontroller-debugger) Black Magic Probe V2.3 (With JTAG/SWD and UART cables and 7Pin Adapter) (Newest)
+ * USA: [Mouser](https://www.mouser.com/ProductDetail/1BitSquared/BLACKMAGIC-PROBE-V2_3?qs=By6Nw2ByBD3Wgea%252Buf9FNw%3D%3D) Black Magic Probe V2.3 (With JTAG/SWD and UART cables) (Newest)
 
 ## Other Hardware supported by Black Magic Debug:
 
