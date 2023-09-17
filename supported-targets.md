@@ -61,6 +61,9 @@
 
 [^1]: LPC43x0 Flash support was added in v1.10.0.
 
-✗
-
 ## Cortex-A
+
+|Manufacturer      | Family      | Support Level | Version Introduced | Implemented In | Notes
+|------------------|-------------|---------------|--------------------|----------------|------
+| Xilinx           | Zynq        | ✗ Debug only  | v1.6               | cortexa.c      |
+| Broadcom         | BCM2836     | ✗ Debug only  | v1.6               | cortexa.c      |
