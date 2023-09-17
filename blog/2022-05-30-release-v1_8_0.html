@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,15 +27,15 @@
 <meta name="description" content="We are happy to announce the V1.8.0 release of Black Magic Debug. It is a big one since we did not make a stable release since October 2020!!! So this release is very much overdue. But that also me..." />
 
     <title>Stable Release V1.8.0 &#8212; Black Magic Debug  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b3523f8e" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="../_static/asciinema-player_2.6.1.css" />
     <link rel="stylesheet" type="text/css" href="../_static/asciinema-custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/platformpicker.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=16ad857a"></script>
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/asciinema-player_2.6.1.js"></script>
     <script src="../_static/platformpicker.js"></script>
     <link rel="canonical" href="https://black-magic.org/blog/2022-05-30-release-v1_8_0.html" />
@@ -69,7 +69,7 @@
           <div class="body" role="main">
             
 <section id="stable-release-v1-8-0">
-<h1>Stable Release V1.8.0<a class="headerlink" href="#stable-release-v1-8-0" title="Permalink to this heading">¶</a></h1>
+<h1>Stable Release V1.8.0<a class="headerlink" href="#stable-release-v1-8-0" title="Link to this heading">¶</a></h1>
 <p>We are happy to announce the <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.8.0">V1.8.0 release</a> of Black Magic Debug. It is a big one since we did not make a stable release since October 2020!!! So this release is very much overdue. But that also means we have a lot of new and interesting things in this release.</p>
 <p>Here are some highlights:</p>
 <ul class="simple">
@@ -101,7 +101,7 @@
 <p>For more details please refer to the ChangeLog down below.</p>
 </section>
 <section id="legend-in-historical-context">
-<h1>Legend in Historical Context<a class="headerlink" href="#legend-in-historical-context" title="Permalink to this heading">¶</a></h1>
+<h1>Legend in Historical Context<a class="headerlink" href="#legend-in-historical-context" title="Link to this heading">¶</a></h1>
 <p>Black Magic Debug consists of multiple elements that have fairly similar naming that can be confusing. To make this Change Log bit easier to decipher here is a little bit of history and term explanation.</p>
 <p>Black Magic Debug (BMD) was originally designed as just a firmware for a purpose made hardware called Black Magic Probe (BMP) that can speak the GNU Debugger (GDB) “remote” serial protocol. The original BMP hardware is also called “native” as over time additional “Host” platforms were added that the firmware could be loaded onto. (such host hardware can be an STM32F4 discovery board, or ST-Link hardware and many more)</p>
 <p>Additionally BMD can also be compiled as a stand alone PC application, (we call it Black Magic App, or <strong>BMA</strong> and formally known as <strong>hosted</strong>) that can act as a software in the middle, similar to the way OpenOCD works. In this case BMP is only acting as a USB to JTAG/SWD translator and the Black Magic App (BMA) does all the heavy lifting. Additionally this also allows the use of BMA with other probe hardware running non Black Magic Firmware (BMF), like for example: JLink, ST-Link, sw-link, FTDI and more.</p>
@@ -117,9 +117,9 @@
 </ul>
 </section>
 <section id="changelog-v1-8-0">
-<h1>Changelog V1.8.0<a class="headerlink" href="#changelog-v1-8-0" title="Permalink to this heading">¶</a></h1>
+<h1>Changelog V1.8.0<a class="headerlink" href="#changelog-v1-8-0" title="Link to this heading">¶</a></h1>
 <section id="core-changes">
-<h2>Core Changes<a class="headerlink" href="#core-changes" title="Permalink to this heading">¶</a></h2>
+<h2>Core Changes<a class="headerlink" href="#core-changes" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>SWD debug: Immediately turn around SWDIO after reading with parity to avoid driving SWDIO until the next command. [JojoS] [UweBonnes]</p></li>
 <li><p>Try harder to read the <code class="docutils literal notranslate"><span class="pre">ROMTABLE</span></code> when the target is sleeping [UweBonnes]</p></li>
@@ -161,7 +161,7 @@
 </ul>
 </section>
 <section id="build-system-changes">
-<h2>Build system Changes<a class="headerlink" href="#build-system-changes" title="Permalink to this heading">¶</a></h2>
+<h2>Build system Changes<a class="headerlink" href="#build-system-changes" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Remove no longer needed <code class="docutils literal notranslate"><span class="pre">libftdi</span></code> and <code class="docutils literal notranslate"><span class="pre">pc-stlinkv2</span></code> platforms [UweBonnes]</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">HOSTED_BMP_ONLY=1</span></code> option to allow for easier building of the PC-hosted Black Magic Debug Application when only BMP support is needed [UweBonnes] [stoyan-shopov]</p></li>
@@ -174,14 +174,14 @@
 </ul>
 </section>
 <section id="vcs-changes">
-<h2>VCS Changes<a class="headerlink" href="#vcs-changes" title="Permalink to this heading">¶</a></h2>
+<h2>VCS Changes<a class="headerlink" href="#vcs-changes" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">src/artifacts</span></code> directory created when running <code class="docutils literal notranslate"><span class="pre">all_platforms</span></code> build to <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> [noahp]</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">.gitattributes</span></code> for better control of line endings [xobs]</p></li>
 </ul>
 </section>
 <section id="ci-system-changes">
-<h2>CI System Changes<a class="headerlink" href="#ci-system-changes" title="Permalink to this heading">¶</a></h2>
+<h2>CI System Changes<a class="headerlink" href="#ci-system-changes" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Updated travis to use bionic instead of trusty, which means we don’t need to build libftdi1 any more [UweBonnes]</p></li>
 <li><p>Added GitHub Actions for builds on push and run test build some PRs [Qyriad]</p></li>
@@ -190,7 +190,7 @@
 </ul>
 </section>
 <section id="script-utility-changes">
-<h2>Script/Utility Changes<a class="headerlink" href="#script-utility-changes" title="Permalink to this heading">¶</a></h2>
+<h2>Script/Utility Changes<a class="headerlink" href="#script-utility-changes" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>all python script utilities (<code class="docutils literal notranslate"><span class="pre">dfu-convert.py</span></code>, , , ) ported to Python 3 [agners]</p></li>
 <li><p>stm32_mem.py: Allow UTF-8 characters in manufacturer ID, product ID and serial number [UweBonnes]</p></li>
@@ -209,7 +209,7 @@
 </ul>
 </section>
 <section id="arm-adiv5-changes">
-<h2>ARM (ADIv5) Changes:<a class="headerlink" href="#arm-adiv5-changes" title="Permalink to this heading">¶</a></h2>
+<h2>ARM (ADIv5) Changes:<a class="headerlink" href="#arm-adiv5-changes" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>ARM debug: Check Debug Base address Early [UweBonnes]</p></li>
 <li><p>ARM debug: Reduce number of errors when CIDR read fails [UweBonnes]</p></li>
@@ -247,7 +247,7 @@
 </ul>
 </section>
 <section id="target-changes">
-<h2>Target Changes<a class="headerlink" href="#target-changes" title="Permalink to this heading">¶</a></h2>
+<h2>Target Changes<a class="headerlink" href="#target-changes" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>stm32h7: Don’t <code class="docutils literal notranslate"><span class="pre">tc_printf</span></code> from flash functions [gsmcmullin]</p></li>
 <li><p>stm32: Use designer ID when probing [UweBonnes]</p></li>
@@ -306,7 +306,7 @@
 </ul>
 </section>
 <section id="targets-added">
-<h2>Targets Added<a class="headerlink" href="#targets-added" title="Permalink to this heading">¶</a></h2>
+<h2>Targets Added<a class="headerlink" href="#targets-added" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>lpc546xx [eivindbergem] [noahp]</p></li>
 <li><p>STM32H7B3/B0/A3 (RM0455) &amp; STM32H723/33/25/35/30 (RM0468) [richardeoin]</p></li>
@@ -330,20 +330,20 @@
 </ul>
 </section>
 <section id="arch-ids-added">
-<h2>Arch IDs Added<a class="headerlink" href="#arch-ids-added" title="Permalink to this heading">¶</a></h2>
+<h2>Arch IDs Added<a class="headerlink" href="#arch-ids-added" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Cortex-M7 TPIU [UweBonnes]</p></li>
 </ul>
 </section>
 <section id="designer-ids-added">
-<h2>Designer IDs Added<a class="headerlink" href="#designer-ids-added" title="Permalink to this heading">¶</a></h2>
+<h2>Designer IDs Added<a class="headerlink" href="#designer-ids-added" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>CKS – 中科芯微 <code class="docutils literal notranslate"><span class="pre">0x555</span></code> [djix123]</p></li>
 <li><p>GigaDevice <code class="docutils literal notranslate"><span class="pre">0x751</span></code> [mean]</p></li>
 </ul>
 </section>
 <section id="device-descriptor-ids-added">
-<h2>Device Descriptor IDs Added:<a class="headerlink" href="#device-descriptor-ids-added" title="Permalink to this heading">¶</a></h2>
+<h2>Device Descriptor IDs Added:<a class="headerlink" href="#device-descriptor-ids-added" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Unknown ARM [dragonmux]</p></li>
 <li><p>Xilinx [dragonmux]</p></li>
@@ -352,15 +352,15 @@
 </ul>
 </section>
 <section id="host-platform-changes">
-<h2>Host Platform Changes<a class="headerlink" href="#host-platform-changes" title="Permalink to this heading">¶</a></h2>
+<h2>Host Platform Changes<a class="headerlink" href="#host-platform-changes" title="Link to this heading">¶</a></h2>
 <section id="added">
-<h3>Added<a class="headerlink" href="#added" title="Permalink to this heading">¶</a></h3>
+<h3>Added<a class="headerlink" href="#added" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Added stm32f4x1 blackpillv2 as a variant of f4discovery [aam335]</p></li>
 </ul>
 </section>
 <section id="common">
-<h3>Common<a class="headerlink" href="#common" title="Permalink to this heading">¶</a></h3>
+<h3>Common<a class="headerlink" href="#common" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>DFU/CDC-ACM: Consolidated usage of ST and BMP serial numbers [UweBonnes]</p></li>
 <li><p>Updated libopencm3 to <code class="docutils literal notranslate"><span class="pre">9c42fb</span></code> [UweBonnes]</p></li>
@@ -372,7 +372,7 @@
 </ul>
 </section>
 <section id="stm32-host-common-to-all-stm32-hosts">
-<h3>stm32 host (Common to all stm32 hosts)<a class="headerlink" href="#stm32-host-common-to-all-stm32-hosts" title="Permalink to this heading">¶</a></h3>
+<h3>stm32 host (Common to all stm32 hosts)<a class="headerlink" href="#stm32-host-common-to-all-stm32-hosts" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Use libopencm3 defines for <code class="docutils literal notranslate"><span class="pre">UNIQUE_SERIAL</span></code> and <code class="docutils literal notranslate"><span class="pre">FLASH_SIZE</span></code> register locations [UweBonnes]</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">DFU_IFACE_STRING</span></code> for STM32F7 hosts [UweBonnes]</p></li>
@@ -386,7 +386,7 @@
 </ul>
 </section>
 <section id="blackmagicprobe-aka-native-host">
-<h3>BlackMagicProbe aka. Native host<a class="headerlink" href="#blackmagicprobe-aka-native-host" title="Permalink to this heading">¶</a></h3>
+<h3>BlackMagicProbe aka. Native host<a class="headerlink" href="#blackmagicprobe-aka-native-host" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed high current draw issue that was causing the BMP hardware run hot [UweBonnes]</p></li>
 <li><p>Use DMA for USB USART TX/RX [Vestrel]</p></li>
@@ -400,7 +400,7 @@
 </ul>
 </section>
 <section id="f4discovery-host">
-<h3>f4discovery host<a class="headerlink" href="#f4discovery-host" title="Permalink to this heading">¶</a></h3>
+<h3>f4discovery host<a class="headerlink" href="#f4discovery-host" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Decreased JTAG slew rate to avoid ringing [UweBonnes]</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">BMP_BOOTLOADER</span></code> compile flag that allows building of the firmware for the ST bootloader instead of the Black Magic Debug bootloader [UweBonnes]</p></li>
@@ -410,7 +410,7 @@
 </ul>
 </section>
 <section id="st-link-host">
-<h3>ST-Link host<a class="headerlink" href="#st-link-host" title="Permalink to this heading">¶</a></h3>
+<h3>ST-Link host<a class="headerlink" href="#st-link-host" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Reworked and improved documentation [UweBonnes]</p></li>
 <li><p>Decreased IO slew rate to avoid ringing [UweBonnes]</p></li>
@@ -419,7 +419,7 @@
 </ul>
 </section>
 <section id="sw-link-host">
-<h3>sw-link host<a class="headerlink" href="#sw-link-host" title="Permalink to this heading">¶</a></h3>
+<h3>sw-link host<a class="headerlink" href="#sw-link-host" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Decreased IO slew rate to avoid ringing [UweBonnes]</p></li>
 <li><p>Removed <code class="docutils literal notranslate"><span class="pre">dfu_upgrade</span></code> firmware (use commit <code class="docutils literal notranslate"><span class="pre">03a7b06e</span></code> if you still have the old bootloader and need to upgrade) [UweBonnes]</p></li>
@@ -428,19 +428,19 @@
 </ul>
 </section>
 <section id="hydrabus-host">
-<h3>Hydrabus host<a class="headerlink" href="#hydrabus-host" title="Permalink to this heading">¶</a></h3>
+<h3>Hydrabus host<a class="headerlink" href="#hydrabus-host" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Use DMA for USB USART TX/RX [Vestrel]</p></li>
 </ul>
 </section>
 <section id="lm4f-ti-icdi-host">
-<h3>lm4f (TI ICDI) host<a class="headerlink" href="#lm4f-ti-icdi-host" title="Permalink to this heading">¶</a></h3>
+<h3>lm4f (TI ICDI) host<a class="headerlink" href="#lm4f-ti-icdi-host" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Fix ICDI USB error Issue #748 [daguirrem]</p></li>
 </ul>
 </section>
 <section id="pc-host">
-<h3>PC host<a class="headerlink" href="#pc-host" title="Permalink to this heading">¶</a></h3>
+<h3>PC host<a class="headerlink" href="#pc-host" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>BMP: Added option to disable high level Black Magic Probe commands [UweBonnes]</p></li>
 <li><p>BMP: Report if the Black Magic Probe hardware is in bootloader mode. [UweBonnes]</p></li>
@@ -553,7 +553,7 @@
 </section>
 </section>
 <section id="sponsors">
-<h2>Sponsors<a class="headerlink" href="#sponsors" title="Permalink to this heading">¶</a></h2>
+<h2>Sponsors<a class="headerlink" href="#sponsors" title="Link to this heading">¶</a></h2>
 <p>This project is sponsored in parts by:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://1bitsquared.com">1BitSquared</a> - Design, Manufacture and distribution of open source embedded hardware development tools and platforms, as well as educational electronics. Thank you everyone who buys Black Magic Probes from 1BitSquared directly through our <a class="reference external" href="https://1bitsquared.com/products/black-magic-probe">stores</a> or indirectly through <a class="reference external" href="https://www.adafruit.com/product/3839">Adafruit</a>. The hardware sales allow us to continue supporting the Black Magic Debug project.</p></li>
@@ -675,26 +675,32 @@
   
   
   <li>
-    <a href="2022-07-21-release-v1_8_2.html">
-      21 July - Stable Release V1.8.2
+    <a href="2023-09-16-release-v1_9_2.html">
+      16 September - Stable Release V1.9.2
     </a>
   </li>
   
   <li>
-    <a href="2022-07-13-release-v1_8_1.html">
-      13 July - Stable Release V1.8.1
+    <a href="2023-09-16-release-v1_8_3.html">
+      16 September - Stable Release V1.8.3
     </a>
   </li>
   
   <li>
-    <a href="2022-01-20-organization-rename.html">
-      20 January - GitHub Organization Name Change
+    <a href="2023-04-28-release-v1_9_1.html">
+      28 April - Stable Release V1.9.1
     </a>
   </li>
   
   <li>
-    <a href="2022-01-07-new-maintainer.html">
-      07 January - New Project Maintainer
+    <a href="2023-01-27-release-v1_9_0.html">
+      27 January - Stable Release V1.9.0
+    </a>
+  </li>
+  
+  <li>
+    <a href="2022-12-31-release-candidate-v1_9_0-rc1.html">
+      31 December - Release Candidate V1.9.0-rc1
     </a>
   </li>
   
@@ -709,7 +715,13 @@
   
   
   <li>
-    <a href="2022.html">2022 (5)</a>
+    <a href="2023.html">2023 (4)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="2022.html">2022 (7)</a>
   </li>
   
   
@@ -748,7 +760,7 @@
       &copy;2022-2023, Piotr Esden-Tempski <piotr@esden.net>; 2022-2023, Rachel Mant <git@dragonmux.network>.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>

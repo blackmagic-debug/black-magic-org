@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,15 +27,15 @@
 <meta name="description" content="Linux / macOS: Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection: You can find the newest pre-built binaries on the GitHub Release Page., You can find the bleed..." />
 
     <title>Firmware Upgrade &#8212; Black Magic Debug  documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b3523f8e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="_static/asciinema-player_2.6.1.css" />
     <link rel="stylesheet" type="text/css" href="_static/asciinema-custom.css" />
     <link rel="stylesheet" type="text/css" href="_static/platformpicker.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=16ad857a"></script>
+    <script src="_static/documentation_options.js?v=7f41d439"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/asciinema-player_2.6.1.js"></script>
     <script src="_static/platformpicker.js"></script>
     <link rel="canonical" href="https://black-magic.org/upgrade.html" />
@@ -71,9 +71,9 @@
           <div class="body" role="main">
             
 <section id="firmware-upgrade">
-<h1>Firmware Upgrade<a class="headerlink" href="#firmware-upgrade" title="Permalink to this heading">¶</a></h1>
+<h1>Firmware Upgrade<a class="headerlink" href="#firmware-upgrade" title="Link to this heading">¶</a></h1>
 <section id="linux-macos">
-<h2>Linux / macOS<a class="headerlink" href="#linux-macos" title="Permalink to this heading">¶</a></h2>
+<h2>Linux / macOS<a class="headerlink" href="#linux-macos" title="Link to this heading">¶</a></h2>
 <p>Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection:</p>
 <ul class="simple">
 <li><p>You can find the newest pre-built binaries on the <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases">GitHub Release Page</a>.</p></li>
@@ -87,7 +87,7 @@
 <li><p>stlink-tool</p></li>
 </ul>
 <section id="bmputil">
-<h3>bmputil<a class="headerlink" href="#bmputil" title="Permalink to this heading">¶</a></h3>
+<h3>bmputil<a class="headerlink" href="#bmputil" title="Link to this heading">¶</a></h3>
 <p>Clone and build the <a class="reference external" href="https://github.com/blackmagic-debug/bmputil">bmputil</a> tool.</p>
 <p>Plug your Black Magic Probe into your computer and run the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bmputil<span class="w"> </span>flash<span class="w"> </span>blackmagic-native.elf
@@ -96,7 +96,7 @@
 <p>Provided you have suitable udev rules in play, this will already do everything you need and automatically reboot your unit back into the new firmware.</p>
 </section>
 <section id="dfu-util">
-<h3>dfu-util<a class="headerlink" href="#dfu-util" title="Permalink to this heading">¶</a></h3>
+<h3>dfu-util<a class="headerlink" href="#dfu-util" title="Link to this heading">¶</a></h3>
 <p>Install <a class="reference external" href="http://dfu-util.sourceforge.net/"><code class="docutils literal notranslate"><span class="pre">dfu-util</span></code></a>. On macOS you can use homebrew, macports or fink depending on your preferred package manager. You will need version 0.8.0 or greater to support the dfuse commands.</p>
 <p>Plug the Black Magic Probe into your computer and run the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>dfu-util<span class="w"> </span>-d<span class="w"> </span>1d50:6018,:6017<span class="w"> </span>-s<span class="w"> </span>0x08002000:leave<span class="w"> </span>-D<span class="w"> </span>blackmagic-native.bin
@@ -109,7 +109,7 @@
 </div>
 </section>
 <section id="stlink-tool">
-<h3>stlink-tool<a class="headerlink" href="#stlink-tool" title="Permalink to this heading">¶</a></h3>
+<h3>stlink-tool<a class="headerlink" href="#stlink-tool" title="Link to this heading">¶</a></h3>
 <p>The firmware on an ST-Link can be upgraded using <a class="reference external" href="https://github.com/blackmagic-debug/stlink-tool">blackmagic-debug/stlink-tool</a>.</p>
 <p>To upgrade, run the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>stlink-tool<span class="w"> </span>blackmagic.bin
@@ -122,7 +122,7 @@
 </section>
 </section>
 <section id="windows">
-<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">¶</a></h2>
+<h2>Windows<a class="headerlink" href="#windows" title="Link to this heading">¶</a></h2>
 <p>Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection:</p>
 <ul class="simple">
 <li><p>You can find the newest pre-built binaries on the <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases">GitHub Release Page</a>.</p></li>
@@ -136,7 +136,7 @@
 <li><p>stlink-tool</p></li>
 </ul>
 <section id="id1">
-<h3>bmputil<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<h3>bmputil<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
 <p>Clone and build the <a class="reference external" href="https://github.com/blackmagic-debug/bmputil">bmputil</a> tool.</p>
 <p>Plug your Black Magic Probe into your computer and run the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bmputil<span class="w"> </span>flash<span class="w"> </span>blackmagic-native.elf
@@ -146,7 +146,7 @@
 Do <strong>not</strong> run Zadig on the DFU endpoint if using bmputil.</p>
 </section>
 <section id="id2">
-<h3>dfu-util<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<h3>dfu-util<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
 <p>Download the Windows release of <a class="reference external" href="http://dfu-util.sourceforge.net/"><code class="docutils literal notranslate"><span class="pre">dfu-util</span></code></a>.</p>
 <p>Plug the Black Magic Probe into your computer and run the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dfu-util.exe<span class="w"> </span>-d<span class="w"> </span>1d50:6018,:6017<span class="w"> </span>-s<span class="w"> </span>0x08002000:leave<span class="w"> </span>-D<span class="w"> </span>blackmagic.bin
@@ -164,7 +164,7 @@ Do <strong>not</strong> run Zadig on the DFU endpoint if using bmputil.</p>
 </div>
 </section>
 <section id="id3">
-<h3>stlink-tool<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<h3>stlink-tool<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
 <p>The firmware on an ST-Link can be upgraded using <a class="reference external" href="https://github.com/dragonmux/stlink-tool/tree/feature/compilation-fixes">dragonmux/stlink-tool</a>.</p>
 <p>The linked repository is forked from <a class="reference external" href="https://github.com/UweBonnes/stlink-tool">UweBonnes/stlink-tool</a>, which in turn is a fork from <a class="reference external" href="https://github.com/jeanthom/stlink-tool">jeanthom/stlink-tool</a>. The link points to a specific branch named <code class="docutils literal notranslate"><span class="pre">feature/compilation-fixes</span></code>. Please ensure to checkout to to this branch after cloning the repository, as both UweBonnes and dragonmux have made fixes that are not included in the repository by jeanthom.</p>
 <p>To upgrade, run the following command:</p>
@@ -261,32 +261,32 @@ Do <strong>not</strong> run Zadig on the DFU endpoint if using bmputil.</p>
   
   
   <li>
-    <a href="blog/2022-07-21-release-v1_8_2.html">
-      21 July - Stable Release V1.8.2
+    <a href="blog/2023-09-16-release-v1_9_2.html">
+      16 September - Stable Release V1.9.2
     </a>
   </li>
   
   <li>
-    <a href="blog/2022-07-13-release-v1_8_1.html">
-      13 July - Stable Release V1.8.1
+    <a href="blog/2023-09-16-release-v1_8_3.html">
+      16 September - Stable Release V1.8.3
     </a>
   </li>
   
   <li>
-    <a href="blog/2022-05-30-release-v1_8_0.html">
-      30 May - Stable Release V1.8.0
+    <a href="blog/2023-04-28-release-v1_9_1.html">
+      28 April - Stable Release V1.9.1
     </a>
   </li>
   
   <li>
-    <a href="blog/2022-01-20-organization-rename.html">
-      20 January - GitHub Organization Name Change
+    <a href="blog/2023-01-27-release-v1_9_0.html">
+      27 January - Stable Release V1.9.0
     </a>
   </li>
   
   <li>
-    <a href="blog/2022-01-07-new-maintainer.html">
-      07 January - New Project Maintainer
+    <a href="blog/2022-12-31-release-candidate-v1_9_0-rc1.html">
+      31 December - Release Candidate V1.9.0-rc1
     </a>
   </li>
   
@@ -301,7 +301,13 @@ Do <strong>not</strong> run Zadig on the DFU endpoint if using bmputil.</p>
   
   
   <li>
-    <a href="blog/2022.html">2022 (5)</a>
+    <a href="blog/2023.html">2023 (4)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="blog/2022.html">2022 (7)</a>
   </li>
   
   
@@ -342,7 +348,7 @@ Do <strong>not</strong> run Zadig on the DFU endpoint if using bmputil.</p>
       &copy;2022-2023, Piotr Esden-Tempski <piotr@esden.net>; 2022-2023, Rachel Mant <git@dragonmux.network>.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>

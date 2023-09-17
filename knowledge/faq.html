@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,15 +27,15 @@
 <meta name="description" content="What targets are currently supported?: The Black Magic probe currently supports ARMv6-M and ARMv7-M architecture targets, specifically Cortex-M0, Cortex-M3 and Cortex-M4. Any device with these core..." />
 
     <title>FAQ &#8212; Black Magic Debug  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b3523f8e" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
     <link rel="stylesheet" type="text/css" href="../_static/asciinema-player_2.6.1.css" />
     <link rel="stylesheet" type="text/css" href="../_static/asciinema-custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/platformpicker.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=16ad857a"></script>
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/asciinema-player_2.6.1.js"></script>
     <script src="../_static/platformpicker.js"></script>
     <link rel="canonical" href="https://black-magic.org/knowledge/faq.html" />
@@ -71,9 +71,9 @@
           <div class="body" role="main">
             
 <section id="faq">
-<h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this heading">¶</a></h1>
+<h1>FAQ<a class="headerlink" href="#faq" title="Link to this heading">¶</a></h1>
 <section id="what-targets-are-currently-supported">
-<h2>What targets are currently supported?<a class="headerlink" href="#what-targets-are-currently-supported" title="Permalink to this heading">¶</a></h2>
+<h2>What targets are currently supported?<a class="headerlink" href="#what-targets-are-currently-supported" title="Link to this heading">¶</a></h2>
 <p>The Black Magic probe currently supports ARMv6-M and ARMv7-M architecture targets, specifically Cortex-M0, Cortex-M3 and Cortex-M4.
 Any device with these cores should work with possibly the exception flash memory programming.</p>
 <p>Memory map and flash programming are supported for these specific implementations:</p>
@@ -108,11 +108,11 @@ Any device with these cores should work with possibly the exception flash memory
 There is experimental support for Cortex-A (ARMv7-A architecture).  This is being used with success on Xilinx Zynq-7000 SoC (Dual-core Cortex-A9) and Raspberry Pi 2 (Quad-core Cortex-A7).</p>
 </section>
 <section id="where-can-i-get-the-hardware">
-<h2>Where can I get the hardware?<a class="headerlink" href="#where-can-i-get-the-hardware" title="Permalink to this heading">¶</a></h2>
+<h2>Where can I get the hardware?<a class="headerlink" href="#where-can-i-get-the-hardware" title="Link to this heading">¶</a></h2>
 <p>The official Black Magic Probe hardware is available from multiple vendors. An up to date list is kept on the <a class="reference internal" href="#index.md#getting-hardware"><span class="xref myst">project main page</span></a>.</p>
 </section>
 <section id="where-can-i-find-the-bmp-schematics">
-<h2>Where can I find the BMP schematics?<a class="headerlink" href="#where-can-i-find-the-bmp-schematics" title="Permalink to this heading">¶</a></h2>
+<h2>Where can I find the BMP schematics?<a class="headerlink" href="#where-can-i-find-the-bmp-schematics" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/wiki/files/bmpm_v2_1c_schematic.pdf">Black Magic Probe Mini v2.1</a></p></li>
 <li><p><a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/wiki/files/bmpm_v2_0f_schematic.pdf">Black Magic Probe Mini v2.0</a></p></li>
@@ -121,7 +121,7 @@ There is experimental support for Cortex-A (ARMv7-A architecture).  This is bein
 </ul>
 </section>
 <section id="what-are-those-jtag-swd-connectors-and-cables">
-<h2>What are those JTAG/SWD connectors and cables?<a class="headerlink" href="#what-are-those-jtag-swd-connectors-and-cables" title="Permalink to this heading">¶</a></h2>
+<h2>What are those JTAG/SWD connectors and cables?<a class="headerlink" href="#what-are-those-jtag-swd-connectors-and-cables" title="Link to this heading">¶</a></h2>
 <p>The JTAG/SWD connector is <a class="reference external" href="https://www.samtec.com/products/ftsh-105-01-f-dv-k">FTSH-105-01-F-DV-K from Samtec</a> (Buy: <a class="reference external" href="http://www.digikey.com/product-detail/en/FTSH-105-01-F-DV-K/FTSH-105-01-F-DV-K-ND/2649974">Digi-key</a>, <a class="reference external" href="https://1bitsquared.com/products/jtag-swd-smd-connector">1BitSquared</a>).</p>
 <p>The JTAG/SWD connector is a 0.05” (50mil/1.27mm) pitch, 2 row 10pin connector. The Samtec version is the only one that includes a keying shroud and does not occupy a large space on the PCB. There are other manufacturers that make connectors that can be used too. Here are a few options:</p>
 <ul class="simple">
@@ -141,7 +141,7 @@ There is experimental support for Cortex-A (ARMv7-A architecture).  This is bein
 </ul>
 </section>
 <section id="what-are-those-uart-connectors-and-cables">
-<h2>What are those UART connectors and cables?<a class="headerlink" href="#what-are-those-uart-connectors-and-cables" title="Permalink to this heading">¶</a></h2>
+<h2>What are those UART connectors and cables?<a class="headerlink" href="#what-are-those-uart-connectors-and-cables" title="Link to this heading">¶</a></h2>
 <p>The UART connector is Molex PicoBlade 0532610471. (Buy: <a class="reference external" href="http://www.digikey.com/product-detail/en/0532610471/WM7622CT-ND/699109">Digi-key</a>).</p>
 <p>The UART cable can be built by hand using the following materials:</p>
 <ul class="simple">
@@ -162,15 +162,15 @@ There is experimental support for Cortex-A (ARMv7-A architecture).  This is bein
 </ul>
 </section>
 <section id="where-can-i-find-different-jtag-swd-connectors-adapters-cables">
-<h2>Where can I find different JTAG/SWD connectors? (Adapters &amp; Cables)<a class="headerlink" href="#where-can-i-find-different-jtag-swd-connectors-adapters-cables" title="Permalink to this heading">¶</a></h2>
+<h2>Where can I find different JTAG/SWD connectors? (Adapters &amp; Cables)<a class="headerlink" href="#where-can-i-find-different-jtag-swd-connectors-adapters-cables" title="Link to this heading">¶</a></h2>
 <p>Many vendors provide adapters allowing easy connection between different JTAG/SWD and UART interfaces. For example <a class="reference external" href="https://1bitsquared.com/collections/embedded-hardware">1BitSquared</a> offers a wide range of different adapters and cables. There is also a collection of adapter designs that you can find on the <a class="reference external" href="https://github.com/1bitsquared/1b2-adapter-collection">1BitSquared GitHub Page</a> that you can use as basis for your custom adapter. If there is an adapter missing for your specific application it is usually quite easy to put one together using <a class="reference external" href="http://kicad.org/">KiCad</a> and order the needed board from <a class="reference external" href="https://oshpark.com/">OSHPark</a>.</p>
 </section>
 <section id="are-binary-firmware-images-available-for-download">
-<h2>Are binary firmware images available for download?<a class="headerlink" href="#are-binary-firmware-images-available-for-download" title="Permalink to this heading">¶</a></h2>
+<h2>Are binary firmware images available for download?<a class="headerlink" href="#are-binary-firmware-images-available-for-download" title="Link to this heading">¶</a></h2>
 <p>Automatically built firmware images for the official hardware are <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases">here</a>.</p>
 </section>
 <section id="how-can-i-access-memory-mapped-i-o-from-gdb">
-<h2>How can I access memory mapped I/O from GDB?<a class="headerlink" href="#how-can-i-access-memory-mapped-i-o-from-gdb" title="Permalink to this heading">¶</a></h2>
+<h2>How can I access memory mapped I/O from GDB?<a class="headerlink" href="#how-can-i-access-memory-mapped-i-o-from-gdb" title="Link to this heading">¶</a></h2>
 <p>The peripheral registers are not included in the memory map provided to GDB.
 It is suggested that you add the command <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">mem</span> <span class="pre">inaccessible-by-default</span> <span class="pre">off</span></code> to
 your <code class="docutils literal notranslate"><span class="pre">.gdbinit</span></code> file.  That will allow you to access addresses outside of
@@ -178,7 +178,7 @@ the memory map. It will treat anything outside of the memory map as
 RAM.</p>
 </section>
 <section id="how-do-i-prevent-memory-corruption-when-writing-to-flash-on-an-lpc-mcu">
-<h2>How do I prevent memory corruption when writing to flash on an LPC MCU?<a class="headerlink" href="#how-do-i-prevent-memory-corruption-when-writing-to-flash-on-an-lpc-mcu" title="Permalink to this heading">¶</a></h2>
+<h2>How do I prevent memory corruption when writing to flash on an LPC MCU?<a class="headerlink" href="#how-do-i-prevent-memory-corruption-when-writing-to-flash-on-an-lpc-mcu" title="Link to this heading">¶</a></h2>
 <p>The first 512 bytes of the address space are mapped to boot ROM by default. Once you write the <code class="docutils literal notranslate"><span class="pre">SYSMEMREMAP</span></code> register (address <code class="docutils literal notranslate"><span class="pre">0x40048000</span></code>) to have a value of 2, those 512 bytes are mapped to flash and all sections will match. The LPC bootloader automatically does this upon detecting valid user code, but the bootloader cannot run while you are holding the chip in reset with a debugger. See section 3.5.1 of the manual. In gdb, you can <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">{int}0x40048000</span> <span class="pre">=</span> <span class="pre">2</span></code> to achieve the same result.</p>
 <p>You can add the following to your <code class="docutils literal notranslate"><span class="pre">.gdbinit</span></code> to set the bit on startup.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">mem</span> <span class="n">inaccessible</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">default</span> <span class="n">off</span>
@@ -188,7 +188,7 @@ RAM.</p>
 <p>This solution is known to work on the LPC8xx/LPC11xx families of chips. If you are using something different refer to the reference manual and look for <code class="docutils literal notranslate"><span class="pre">SYSMEMREMAP</span></code> register. If the address differs please add it to this FAQ item or let us know in the <a class="reference external" href="https://discord.gg/P7FYThy">Discord #blackmagic channel</a> or mailing list. For the discussion of this problem refer to issue <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/issues/99">#99</a>.</p>
 </section>
 <section id="it-s-annoying-to-look-up-an-always-changing-device-name-on-linux">
-<h2>It’s annoying to look up an always-changing device name on Linux.<a class="headerlink" href="#it-s-annoying-to-look-up-an-always-changing-device-name-on-linux" title="Permalink to this heading">¶</a></h2>
+<h2>It’s annoying to look up an always-changing device name on Linux.<a class="headerlink" href="#it-s-annoying-to-look-up-an-always-changing-device-name-on-linux" title="Link to this heading">¶</a></h2>
 <p>Use the bmp devices created under /dev/serial/by-id/usb-Black_Sp…-if00 or create a file named <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/99-blackmagic.rules</span></code> with the following contents:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Black Magic Probe
 # there are two connections, one for GDB and one for uart debugging
@@ -200,7 +200,7 @@ RAM.</p>
 <p>Now you can access the probe at the stable names <code class="docutils literal notranslate"><span class="pre">/dev/ttyBmpGdb</span></code> and <code class="docutils literal notranslate"><span class="pre">/dev/ttyBmpTarg</span></code>.</p>
 </section>
 <section id="i-want-to-connect-to-a-black-magic-probe-on-another-machine">
-<h2>I want to connect to a Black Magic Probe on another machine.<a class="headerlink" href="#i-want-to-connect-to-a-black-magic-probe-on-another-machine" title="Permalink to this heading">¶</a></h2>
+<h2>I want to connect to a Black Magic Probe on another machine.<a class="headerlink" href="#i-want-to-connect-to-a-black-magic-probe-on-another-machine" title="Link to this heading">¶</a></h2>
 <p>You can use stty and netcat.  On the machine with the probe connected, make a little TCP server on port 2000 with these commands:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>stty -F /dev/ttyBmpGdb raw -onlcr -iexten -echo -echoe -echok -echoctl -echoke
 nc -vkl -p 2000 &gt; /dev/ttyBmpGdb &lt; /dev/ttyBmbGdb
@@ -209,33 +209,33 @@ nc -vkl -p 2000 &gt; /dev/ttyBmpGdb &lt; /dev/ttyBmbGdb
 <p>In gdb on the remote machine, connect with <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">extended-remote</span> <span class="pre">hostname:2000</span></code> where <code class="docutils literal notranslate"><span class="pre">hostname</span></code> is the name or IP address of the machine running the probe.</p>
 </section>
 <section id="is-it-normal-that-my-black-magic-probe-is-warming-up-noticeably">
-<h2>Is it normal that my Black Magic Probe is warming up noticeably?<a class="headerlink" href="#is-it-normal-that-my-black-magic-probe-is-warming-up-noticeably" title="Permalink to this heading">¶</a></h2>
+<h2>Is it normal that my Black Magic Probe is warming up noticeably?<a class="headerlink" href="#is-it-normal-that-my-black-magic-probe-is-warming-up-noticeably" title="Link to this heading">¶</a></h2>
 <p>Yes, under normal operations the Black Magic Probe V2.1 is drawing 30-60mA. When using the <code class="docutils literal notranslate"><span class="pre">tpwr</span></code> functionality to supply power to a target like the 1Bitsy it can draw up to 120mA resulting in 0.6W of dissipated heat. The voltage regulator can heat up to 75°C under normal operations, it is rated for up to 125°C.</p>
 <p>The problem is fixed on firmware v1.8.0 and newer</p>
 <p><img alt="Black Magic Probe Heatmap" src="../_images/BMP_V2_1_heat_image.jpg" /></p>
 </section>
 <section id="how-does-the-black-magic-probe-compare-to-the-st-link-programmer">
-<h2>How does the Black Magic Probe compare to the ST-Link programmer?<a class="headerlink" href="#how-does-the-black-magic-probe-compare-to-the-st-link-programmer" title="Permalink to this heading">¶</a></h2>
+<h2>How does the Black Magic Probe compare to the ST-Link programmer?<a class="headerlink" href="#how-does-the-black-magic-probe-compare-to-the-st-link-programmer" title="Link to this heading">¶</a></h2>
 <p>There are a few advantages of the Black Magic Probe. BMP is open-source, meaning that you can look inside it if you need or want to. We are getting support for new ARM Cortex-M based chips on a regular basis, so you are not limited to just the STM32. We have preliminary support for Cortex-A this will result in the ability to use the probe with Raspberry PI and Beagle Bone Black and many others. The Black Magic Probe also supports JTAG not only SWD, because not all microcontrollers use SWD. Also JTAG makes it possible to chain together more than one microcontroller. The GDB server is implemented on the probe itself, this means we do not use some proprietary protocol to talk to your debugger software, making the setup more repeatable and removing the need for custom config files. All you need to do is fire up GDB and connect to the virtual serial port of the Black Magic Probe, no special setup necessary. It is physically small, you can plug it into your hardware even if it is buried deeply inside your killer robot. We have equipped the Black Magic Probe V2.1 (this is the version the Kickstarter backers will receive) with dual supply level shifters that make it possible to connect to targets that run on voltages as low as 1.7V and as high as 5V. The transceivers are more robust than the STM32 GPIO meaning that if the BMP is connected wrongly to the target it is less likely you will hurt either the Black Magic Probe or your target. Also the Black Magic Probe comes with a TTL level UART providing a bonus USB to Serial capability that can be used simultaneously with the GDB JTAG/SWD debugger.</p>
 </section>
 <section id="why-is-xxx-not-supported">
-<h2>Why is XXX not supported?<a class="headerlink" href="#why-is-xxx-not-supported" title="Permalink to this heading">¶</a></h2>
+<h2>Why is XXX not supported?<a class="headerlink" href="#why-is-xxx-not-supported" title="Link to this heading">¶</a></h2>
 <p>Because nobody implemented the required functions yet. Look on <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/pulls">GitHub</a> if there is a pending pull request for your target. Consider testing PRs that try to implement the desired target to help us triage merge of new hardware support.</p>
 </section>
 <section id="why-is-raspberry-pi-1-not-supported">
-<h2>Why is Raspberry Pi 1 not supported?<a class="headerlink" href="#why-is-raspberry-pi-1-not-supported" title="Permalink to this heading">¶</a></h2>
+<h2>Why is Raspberry Pi 1 not supported?<a class="headerlink" href="#why-is-raspberry-pi-1-not-supported" title="Link to this heading">¶</a></h2>
 <p>Because it is an old ARM TDMI architecture, that is not compatible with ADIv5. (if you want to work on adding support for this contact us on <a class="reference external" href="https://discord.gg/P7FYThy"><img alt="Discord" src="https://img.shields.io/discord/613131135903596547?logo=discord" /></a> we have some sample code that needs work, if you want to dig deep into protocol spec sheets this is a project for you. :) )</p>
 </section>
 <section id="why-is-raspberry-pi-3-not-supported">
-<h2>Why is Raspberry PI 3 not supported?<a class="headerlink" href="#why-is-raspberry-pi-3-not-supported" title="Permalink to this heading">¶</a></h2>
+<h2>Why is Raspberry PI 3 not supported?<a class="headerlink" href="#why-is-raspberry-pi-3-not-supported" title="Link to this heading">¶</a></h2>
 <p>Because it is a 64Bit architecture. We are working on adding 64bit support but it is not trivial. If you want to help with that contact us on <a class="reference external" href="https://discord.gg/P7FYThy"><img alt="Discord" src="https://img.shields.io/discord/613131135903596547?logo=discord" /></a>.</p>
 </section>
 <section id="why-is-beagle-bone-black-not-supported">
-<h2>Why is Beagle Bone Black not supported?<a class="headerlink" href="#why-is-beagle-bone-black-not-supported" title="Permalink to this heading">¶</a></h2>
+<h2>Why is Beagle Bone Black not supported?<a class="headerlink" href="#why-is-beagle-bone-black-not-supported" title="Link to this heading">¶</a></h2>
 <p>Because Texas Instruments… but we are working on it. :) If you want to help with that contact us on <a class="reference external" href="https://discord.gg/P7FYThy"><img alt="Discord" src="https://img.shields.io/discord/613131135903596547?logo=discord" /></a>. See <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/issues/166">issue #166</a> for details.</p>
 </section>
 <section id="how-do-i-upgrade-to-a-more-recent-version">
-<h2>How do I upgrade to a more recent version?<a class="headerlink" href="#how-do-i-upgrade-to-a-more-recent-version" title="Permalink to this heading">¶</a></h2>
+<h2>How do I upgrade to a more recent version?<a class="headerlink" href="#how-do-i-upgrade-to-a-more-recent-version" title="Link to this heading">¶</a></h2>
 <p>Follow the <a class="reference internal" href="../upgrade.html"><span class="std std-doc">upgrade</span></a> instructions.</p>
 </section>
 </section>
@@ -322,32 +322,32 @@ nc -vkl -p 2000 &gt; /dev/ttyBmpGdb &lt; /dev/ttyBmbGdb
   
   
   <li>
-    <a href="../blog/2022-07-21-release-v1_8_2.html">
-      21 July - Stable Release V1.8.2
+    <a href="../blog/2023-09-16-release-v1_9_2.html">
+      16 September - Stable Release V1.9.2
     </a>
   </li>
   
   <li>
-    <a href="../blog/2022-07-13-release-v1_8_1.html">
-      13 July - Stable Release V1.8.1
+    <a href="../blog/2023-09-16-release-v1_8_3.html">
+      16 September - Stable Release V1.8.3
     </a>
   </li>
   
   <li>
-    <a href="../blog/2022-05-30-release-v1_8_0.html">
-      30 May - Stable Release V1.8.0
+    <a href="../blog/2023-04-28-release-v1_9_1.html">
+      28 April - Stable Release V1.9.1
     </a>
   </li>
   
   <li>
-    <a href="../blog/2022-01-20-organization-rename.html">
-      20 January - GitHub Organization Name Change
+    <a href="../blog/2023-01-27-release-v1_9_0.html">
+      27 January - Stable Release V1.9.0
     </a>
   </li>
   
   <li>
-    <a href="../blog/2022-01-07-new-maintainer.html">
-      07 January - New Project Maintainer
+    <a href="../blog/2022-12-31-release-candidate-v1_9_0-rc1.html">
+      31 December - Release Candidate V1.9.0-rc1
     </a>
   </li>
   
@@ -362,7 +362,13 @@ nc -vkl -p 2000 &gt; /dev/ttyBmpGdb &lt; /dev/ttyBmbGdb
   
   
   <li>
-    <a href="../blog/2022.html">2022 (5)</a>
+    <a href="../blog/2023.html">2023 (4)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../blog/2022.html">2022 (7)</a>
   </li>
   
   
@@ -403,7 +409,7 @@ nc -vkl -p 2000 &gt; /dev/ttyBmpGdb &lt; /dev/ttyBmbGdb
       &copy;2022-2023, Piotr Esden-Tempski <piotr@esden.net>; 2022-2023, Rachel Mant <git@dragonmux.network>.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
