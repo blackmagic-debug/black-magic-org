@@ -1,0 +1,298 @@
+# Release Candidate V1.9.0-rc0
+
+```{post} November 27, 2022
+:author: esden
+```
+
+We are happy to announce the first [V1.9.0 release candidate](https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.9.0-rc0) of [Black Magic Debug](https://black-magic.org). This ended up being much larger than intended, but exciting.
+
+Here are some of the highlights:
+
+- Improved SWD timings, addressing reliability issue with the previous release
+- Extended support for RTT to all host platforms
+- New `auto_scan` monitor command, allowing automatic scan chain detection
+- New `erase_range` monitor command, allowing erasing Flash ranges on any target
+- Added clang-tidy and clang-format configurations and project code formatting is enforced
+- Introduced a [Contributor Covenant](https://www.contributor-covenant.org/) based Code of Conduct for contribution
+- Introduced PR templates and contribution guidelines to streamline and simplify contribution and review processes
+- Support for TCK/SWCLK High-Z when idle. This is needed for projects that reuse the TCK pin as GPIO during runtime. Especially useful for ultra low pin count devices.
+- And a bunch of newly supported targets:
+    - Atmel/Microchip SAMx7x
+    - GigaDevice GD32F303
+    - TI LM3S5732 and LM3S8962
+    - ArteryTek ATF32F403A/407/415
+    - CKS32F103
+    - Renesas RA
+
+For more details please refer to the ChangeLog down below.
+
+# ChangeLog v1.9-rc0
+
+## Core Changes
+
+- RTT support via the target USB serial connection [koendv/dragonmux]
+- Added a clang-format configuration [xobs/dragonmux]
+- Implemented a new `auto_scan` monitor command which first tries JTAG and if that fails, tries SWD scan [dragonmux]
+- Introduced a [Contributor Covenant](https://www.contributor-covenant.org/) based Code of Conduct for contribution [dragonmux]
+- Improved reset terminology usage and documentation via `HACKING.md` [dragonmux]
+- Renamed the main branch to `main` [esden]
+- Improved the project README and fixed various links in it [dragonmux]
+- Implemented support for redirecting semihosting output to the target USB serial connection [dragonmux/sullin]
+- Consistent mass erase progress indication and support for mass erase generically [dragonmux]
+- Switched the project language standard from GNU99 to C11 [dragonmux]
+- Ensure the `_DEFAULT_SOURCE` and `_GNU_SOURCE` macros are defined to enable certain glibc features we depend on [xobs]
+- Prepared the JTAG-TAP code for adding RISC-V support [dragonmux]
+- Do not turn idle indication LED off when the GDB USB serial connection is closed and target already detached [fabalthazar]
+- Implemented a pull request template and contribution guidelines [dragonmux]
+- Implemented support for talking SFDP to SPI Flash attached to Flashless targets [dragonmux]
+- Changed old wiki links to point to the website instead [Xiretza]
+- Implemented support for tri-stating (setting to High-Z) the TCK/SWCLK pin when BMP is idle on supported host platforms [dragonmux]
+- Removed printing of a debug message for `vMustReplyEmpty` packets to prevent confusion when debugging GDB comms [perigoso]
+- Superfluous semicolon cleanup/removal [perigoso]
+- Cleaned up, updated and improved the RTT usage documentation [esden]
+- Converted the SWO documentation to Markdown and cleaned it up [esden]
+- Cleaned up the include guards, making them consistent and fixing some undefined behaviour [esden/perigoso]
+- Cleaned up and fixed the Flash erase and write function return types for all targets [perigoso]
+- Added improved project guidelines for contribution licensing, header guard macros and type and typedef naming via `HACKING.md` [dragonmux]
+- Enabled simultaneous use of RTT and the auxillary (target) UART [koendv]
+- Enabled support for RTT on the F072 platform [koendv]
+- Improved the bitbang’d protocol timings for SWD which were causing setup-and-hold violations [dragonmux]
+- Improved Flash operation completions handling for a speed and Flash usage improvement [dragonmux]
+- Cleaned up the RTT implementation and provided test programs for RTT [koendv]
+- Run `clang-format` across the entire code base [dragonmux]
+- Improved the `const`-correctness of a chunk of the code [dragonmux]
+- Addressed various code quality and consistency issues with the targets [dragonmux]
+- Removed the `jtag_proc_t *jp` parameters from the JTAG abstraction layer as they’re redundant [dragonmux]
+- Fixed the naming conformity across the code base, rigorously applying the naming requirements from the contribution guidelines [dragonmux]
+
+## Build System Changes
+
+- Only remake include/version.h when the Git hash changes [TheJJ/dragonmux]
+- `clang-tidy` and `clang-format` support [dragonmux]
+
+## Script/Utility Changes
+
+- Support for Nix’ nix-shell [cyber-murmel]
+- Improved udev rules [dragonmux]
+- VSCode extension recomendations [dragonmux]
+- Deprecated stm32_mem.py and the in-repo upgrade program [dragonmux]
+- Added ST-Link udev rules [sidprice]
+
+## Project CI Changes
+
+- Fixed the CI up for PRs after the rename to main [dragonmux]
+- Added a proper dependency on libusb’s dev package to the main build workflow [dragonmux]
+- Removed the stale Travis CI configuration [dragonmux]
+- Added a PR code size difference check to the workflows [perigoso]
+- Added a merge-blocking PR lint for clang-format issues [perigoso]
+- Added a check to the PR lint flow for the case of hexadecimal constants (`0xFEEDACA7` will result in an error, `0xfeedaca7` is allowed) [perigoso]
+- Added a check for accidental assignments in control flow conditions and other similar constructs [perigoso]
+
+## ARM (ADIv5) Changes
+
+- ARM Debug: Formatting and code style readability clean-ups [perigoso]
+- ARM Debug: Fix some formatting constant misuse [gatin00b]
+- ARM Debug: Access Port scan early bailout was too eager, failing after just 1 rather than 8 invalid APs [dragonmux]
+- ARM Debug: Improved the correctness of the JEP106 reading and handling code for RP2040 [perigoso]
+- ARM Debug: Fixed a grammatical error [gatin00b]
+- ARM Debug: Unified DPIDR and target ID register handling between the SWD and JTAG DP handling [perigoso]
+- ARM Debug: Use `PRIxNN` specifiers in all debug print statements [xobs]
+- ARM Debug: Early DP accesses trigger aborts corrupting AP writes [dragonmux/mubes]
+- ARM Debug (JTAG): Fixed support for and improved identification of DPv0 devices [dragonmux]
+- ARM Debug: Made consistent u# Release v1.9se of the DP bank macros, and removed the duplicate base check ready to support LPC55 [dragonmux]
+- ARM Debug: Improved handling of target halt and resume, and removed the RP2040 rescue special-casing [jamesturton]
+- ARM Debug: Fixed the triggering of nuisance CID warnings for Cortex-M23 and Cortex-M33 System Control Spaces [dragonmux]
+- ARM Debug: Improved the handling of sticky errors generated during AP scanning [dragonmux]
+- ARM Debug (SWD): Fixed a bug in the fault handling during AP/DP access that broke remote protocol use [dragonmux]
+
+## Target Changes
+
+- ch32f1: `printf` format string fixes [dragonmux]
+- ARM Cortex-A: Implement watch-points support [gsmcmulin]
+- rp: Corrected the SRAM sizing [DagAgren]
+- rp: Fixed how reset is done using `CORTEXM_TOPT_INHIBIT_NRST` [jamesturton]
+- sam3x: Corrected `gpnvm` command usage text [perigoso]
+- rp: Better heuristic detection of attached SPI Flash size [jamesturton/djix123]
+- stm32wl: Improved support for the second CPU and part detection [UweBonnes]
+- sam3x: Fixed uninitialised variables being present [sidprice/perigoso]
+- stm32f1: General code clean-up and formatting fixes [perigoso]
+- kinetis: Code organisation clean-up and function naming fixes [perigoso]
+- efm32: Code cleanup and implementation fixes [perigoso]
+- nrf52: Fixed mass erase silently failing under certain conditions [dragonmux]
+- target: clang-tidy lint fixes and readability improvements [dragonmux]
+- target: Implemented a new monitor command (`erase_range`) to allow erasing Flash ranges on any target [dragonmux]
+- target: Implement weak aliased no-op stubs for all probe routines to allow disabling any target [perigoso]
+- target: Fix probing of LPC1343 parts which weren’t being properly detected [perigoso]
+- ch32f1: Improve compatibility with various CH32F1 variants and other STM32F1 clones  [grumat]
+- command: Implemented support for LPC82x low power reset via a new monitor command (`tdi_low_reset`) [dragonmux]
+- command: Fixed the formatting and type consistency of the target commands implementation [dragonmux]
+- JTAG scan: Loosen strictness to allow detection of non-conforming JTAG targets [dragonmux]
+- lmi: Fix Stelaris/Tiva-C probing being unreliable [dragonmux]
+- ch32f1: Fixed some types issues and missing `static` annotation [dragonmux]
+- rp: Code organisation conformity against the other targets, and clang-tidy lint fixes [dragonmux]
+- ARM Cortex-M: Corrected the “Please report unknown device” diagnostic to report a more appropriate set of IDs [perigoso]
+- stm32h7: Fixed the probe part detection IDs due to them being incorrect from the incorrect ADIv5 code before [perigoso]
+- samd: Fixed the device ID family mask to match the value in the datasheet [dragonmux]
+- target: Made `target_flash_for_addr()` public in the target-facing part of the target API ready for the AVR JTAG-PDI support [dragonmux]
+- rp: Implemented generalised SPI Flash programming and access support using SFDP [dragonmux]
+- samd: Fixed some attach errata for the AT SAMD11 which can be triggered by the normal Cortex-M attach routine [dragonmux]
+- ch32f1: Improved differentiation between CH32F103, CKS32F103 and APM32F103 using the revision ID [djix123]
+- ch32f1: Fixed several debug format strings which had `ENABLE_DEBUG=1` builds broken [esden]
+- target_flash: Moved the Flash handling into its own file and implemented guaranteed address alignment in the API [perigoso]
+- ARM Cortex-A/M: Generate the GDB target description strings dynamically to save on Flash code size [Qyriad]
+- sam4l: Fixed the debug format string specifiers [xobs]
+- target_probe: Fixed AppleClang compatability [amyspark]
+- ARM Cortex-M: Fixed the format string for unexpected Cortex-M part numbers [xobs]
+- lpc546xx: Corrected the post-reset behaviour and comment describing this [mf-zainahmed]
+- rp: Inverted the success logic in the Flash write routine as it was backwards [xobs]
+- stm32l0: Fixed a regression in Flash erase and programming caused by an overzealous error check [UweBonnes]
+- renesas: Added a known ID for RA2A1 [perigoso]
+- stm32f4: Fixed the probe routine relying on the old broken ADIv5 target identification to get the part ID [andrew1x000]
+- stm32f1: Improved Flash operation handling and fixed a regression in end of operation (EOP) checking [fk0815]
+- rp: Improved RP2040 ROM call progress reporting [dragonmux]
+- stm32f1: Corrected GD32F330 identification so they show as GD32F3 not GD32F1 [djix123]
+- rp: Fixed an incorrect debug print format string in the ROM call handler [xobs]
+- nrf52: Stop inverting the result from nrf_cmd_read_* [perigoso]
+- rtt_if: Fixed building when libopencm3 is not in use, adding `NO_LIBOPENCM3` to control this [xobs]
+- stm32f1: Further improved EOP handling to prevent early exits and incomplete operations during Flashing [dragonmux]
+- ch32f1: Improved chip detection reliability and fixes for the fast locking functions [mean00]
+- stm32w: Corrected the part IDs used to identify STM32Wx parts which were historically incorrect [dragonmux]
+- stm32f1: Fixed a regression in the handling of option bytes programming due to the new `stm32f1_flash_busy_wait()` being more strict about errors [dragonmux]
+
+## Targets Added
+
+- SAMx7x (SAME70, SAMS70, SAMV71, SAMV70) [Perigoso]
+- GD32F303 [djix123]
+- LM3S5732 and LM3S8962 [dragonmux]
+- ATF32F403A/407/415 [grumat]
+- CKS32F103 [djix123]
+- Renesas RA [perigoso]
+
+## Host Platform Changes
+
+### Added
+
+- Support for the 96b Carbon [daniel-thompson]
+- Support for using STM32F3 parts as a platform [UweBonnes/dragonmux]
+- Support for using the STM32F072 as a platform [UweBonnes/dragonmux]
+
+### Common
+
+- CDC-ACM: Implement support for RTS and DTR [cyber-murmel]
+- jtag-tap/swd: Refactored the bitbanging routines, fixing types issues and improving their readability [dragonmux]
+- jtag-tap: Fix a timing issue when doing TMS sequences with no delays [gatin00b]
+- Cleaned up the naming of the USB components of the firmware and reorganised the code so it’s easier to navigate [dragonmux]
+- Improved the handling of newlib’s virtual file IO hooks, saving Flash usage and removing undefined behaviour usage [dragonmux]
+- Reorganised the serial code to make a clear and logical distinction between the phyiscal auxiliary (target) UART vs the debug USB serial port [dragonmux]
+- Addressed various code quality and consistency issues across the platforms [dragonmux]
+
+### STM32 host (Common to all STM32 hosts)
+
+- Cleaned up the bootloader and platform serial number handling [dragonmux]
+- Make use of `wfi` to improve power usage when the debugger is idle and has nothing to do [dragonmux]
+
+### Black Magic Probe (aka “Native”) host
+
+- Ensure the auxiliary (target) UART is enabled on hardware v3+ when debugging the probe [esden]
+
+### ST-Link host
+
+- Fixed the LED pinout on the Nucleo boards [dragonmux/mbrunnun]
+- SWIM-UART switchability with `SWIM_AS_UART=1` [dragonmux/silkeh/dossalab]
+
+### F3 host
+
+- Fixed the README to provide usage instructions [dragonmux/Uwe]
+
+### F027 host
+
+- Fixed the README to provide usage instructions [dragonmux/Uwe]
+
+### sw-link host
+
+- Enabled the LED to be used as an active indication [koendv]
+- Ensure that `-DBLUEPILL`=1 is passed to the compiler when `BLUEPILL=1` is set for make [koendv]
+
+### Blackpillv2 host
+
+- Enabled the LED to be used as an active indication [koendv]
+- Implemented support for using the nRST pin [koendv]
+
+### Black Magic Debug App (aka “PC Host”)
+
+- Improved fatal error handling on Linux [UweBonnes]
+- Support for additional FTDI adaptors [UweBonnes]
+    - Tigard
+    - ESP-Prog
+    - HiFive1
+    - Olimex OpenOCD JTAG ARM-USB-TINY-H
+- Improved help text and ZSH completions support [dragonmux]
+- Improved CMSIS-DAP implementation robustness [dragonmux]
+- Windows `PRINT_INFO` macro fix [sidprice]
+- Enable use of the power control commands provided the used probe has support [sidprice]
+- Implemented long option names for the command line interface [sidprice]
+- CMSIS-DAP support type naming improvements [dragonmux]
+- Improved the diagnostic output for CMSIS-DAP v1 probes when opening access to them fails [dragonmux]
+- Better support for building BMDA under homebrew [djix123]
+- Improvements to external library detection [esden]
+- Removed the deprecation warning for the `-d`/`--device` options as it was wrong [dragonmux]
+- Fixed a VID:PID code transposition error in the J-Link support and added support for PID 0x1015 [perigoso]
+- Improved handling for including suitable a prototype for `alloca()` on Windows [sidprice]
+- Improved the command line handling robustness by properly initialising the operation mode before parsing [dragonmux]
+- Correct the libusb being linked against so it’s always libusb1 [dragonmux]
+- Fixed some missing license headers [esden]
+- Implemented selectable fast polling (`platform_pace_poll`) with command line override option `-F`/`--fast-poll` [mubes]
+- Fixed the FTDI FT4343H configuration block which was incorrect [sys64738]
+- Fixed some security issues in the command line interface handling caused by poor string handling [dragonmux]
+- Cleaned up in and fixed some undefined behaviour in the FTDI support [dragonmux]
+- Cleaned up in and fixed some undefined behaviour in the J-Link support [dragonmux]
+- Fixed an issue with the naming of the CLI options structure caused by the naming conformity fixes [dragonmux/mubes]
+
+## Contributors to v1.9.0-rc0
+
+We have had 35 individuals contribute 1138 commits to the v1.9.0-rc0 release. It would not have been possible without your help! Thank you!
+
+Contributor (Contributions)  
+dragonmux (786)  
+Rafael Silva (181)  
+James Turton (30)  
+Sid Price (27)  
+Piotr Esden-Tempski (23)  
+Uwe Bonnes (11)  
+Sean Cross (11)  
+Mikaela Szekely (10)  
+Koen De Vleeschauwer (9)  
+mean (8)  
+Jonathan Giles (6)  
+Marcin Niestroj (4)  
+cyber-murmel (3)  
+Amy (3)  
+ylm (2)  
+grumat (2)  
+fabalthazar (2)  
+Giovanni Santana (2)  
+Gareth McMullin (2)  
+sys64738 (2)  
+gatin00b (1)  
+andrew1x000 (1)  
+Xiretza (1)  
+Thomas Bénéteau (1)  
+Silke Hofstra (1)  
+Roman Luitko (1)  
+Manoel Brunnen (1)  
+Maciej Musiał (1)  
+Jonas Jelten (1)  
+Frank Kunz (1)  
+Dave Marples (1)  
+Daniel Thompson (1)  
+Dag Ågren (1)  
+Ben Tober (1)  
+Anti Sullin (1)
+
+## Sponsors
+
+This project is sponsored in parts by:
+
+- [1BitSquared](https://1bitsquared.com/) - Design, Manufacture and distribution of open source embedded hardware development tools and platforms, as well as educational electronics. Thank you everyone who buys Black Magic Probes from 1BitSquared directly through our [stores](https://1bitsquared.com/products/black-magic-probe) or indirectly through [Adafruit](https://www.adafruit.com/product/3839). The hardware sales allow us to continue supporting the [Black Magic Debug](https://black-magic.org) project.
+- All the generous [Patrons](https://www.patreon.com/1bitsquared) and [GitHub Sponsors](https://github.com/sponsors/esden) supporting esden’s work
+- All the generous [GitHub Sponsors](https://github.com/sponsors/dragonmux) supporting dragonmux’s work
