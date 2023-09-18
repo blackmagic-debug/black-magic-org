@@ -44,7 +44,7 @@
 | Atmel             | ATSAM 3x    | ✔ Full        | v1.6               | sam3x.c        |
 | RPi Foundation    | RP2040      | ✔ Full        | v1.8.0             | rp.c           |
 | Renesas           | R7FA        | ○ Partial     | v1.9.0             | renesas.c      |
-| Freescale         | KE04        | ✔ Full        |                    | nxpke04.c      |
+| Freescale         | KE04        | ✔ Full        | v1.6.2             | nxpke04.c      |
 | Nordic Semi       | nRF51       | ✔ Full        | v1.6               | nrf51.c        |
 | Nordic Semi       | nRF52       | ✔ Full        | v1.6               | nrf51.c        |
 | Nordic Semi       | nRF91       | ○ Partial     | v1.10.0            | nrf91.c        |
@@ -58,7 +58,17 @@
 | NXP               | LPC15       | ✔ Full        | v1.6               | lpc15xx.c      |
 | NXP               | LPC8        | ✔ Full        | v1.6               | lpc11xx.c      |
 | NXP               | LPC11       | ✔ Full        | v1.6               | lpc11xx.c      |
+| Freescale         | KL02        | ✔ Full        | pre-v1.6           | kinetis.c      |
+| Freescale         | KL03        | ✔ Full        | v1.6               | kinetis.c      |
+| Freescale         | KL16Z       | ✔ Full        | v1.6.2             | kinetis.c      |
+| Freescale         | KL25        | ✔ Full        | v1.6               | kinetis.c      |
+| Freescale         | KL27        | ✔ Full        | v1.6               | kinetis.c      |
+| Freescale         | K12         | ✔ Full        | v1.8.0             | kinetis.c      |
+| Freescale         | K22F        | ✔ Full        | pre-v1.6           | kinetis.c      |
+| Freescale         | K64F        | ✔ Full        | v1.6.2             | kinetis.c      |
+| NXP               | S32K14      | ✔ Full        | v1.8.0             | kinetis.c      |
 | NXP               | i.MX RT10   | ✔ Full        | v1.10.0            | imxrt.c        |
+| HDSC              | HD32L110    | ✔ Full        | v1.10.0            | hd32l110.c     |
 
 [^1]: LPC43x0 Flash support was added in v1.10.0.
 
