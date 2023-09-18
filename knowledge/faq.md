@@ -5,15 +5,18 @@
 The official Black Magic Probe hardware is available from multiple vendors. An up to date list is kept on the [project main page](index.md#getting-hardware).
 
 ## Where can I find the BMP schematics?
+
  * [Black Magic Probe Mini v2.1](https://github.com/blackmagic-debug/blackmagic/wiki/files/bmpm_v2_1c_schematic.pdf)
  * [Black Magic Probe Mini v2.0](https://github.com/blackmagic-debug/blackmagic/wiki/files/bmpm_v2_0f_schematic.pdf)
  * [Black Magic Probe Mini](https://github.com/blackmagic-debug/blackmagic/wiki/files/blackmagic_mini.pdf)
  * [Original Black Magic Probe](https://github.com/blackmagic-debug/blackmagic/wiki/files/blackmagic-1.0.pdf)
 
 ## What are those JTAG/SWD connectors and cables?
+
 The JTAG/SWD connector is [FTSH-105-01-F-DV-K from Samtec](https://www.samtec.com/products/ftsh-105-01-f-dv-k) (Buy: [Digi-key](http://www.digikey.com/product-detail/en/FTSH-105-01-F-DV-K/FTSH-105-01-F-DV-K-ND/2649974), [1BitSquared](https://1bitsquared.com/products/jtag-swd-smd-connector)).
 
 The JTAG/SWD connector is a 0.05" (50mil/1.27mm) pitch, 2 row 10pin connector. The Samtec version is the only one that includes a keying shroud and does not occupy a large space on the PCB. There are other manufacturers that make connectors that can be used too. Here are a few options:
+
 * Amphenol FCI 20021121-00010C4LF unshrouded SMD (Buy: [Digi-key](https://www.digikey.com/product-detail/en/amphenol-fci/20021121-00010C4LF/609-3695-1-ND/2209147))
 * Amphenol FCI 20021111-00010T4LF unshrouded TH (Buy: [Digi-key](https://www.digikey.com/product-detail/en/amphenol-fci/20021111-00010T4LF/609-3712-ND/2209072))
 * Amphenol FCI 20021521-00010T1LF shrouded SMD (Buy: [Digi-key](https://www.digikey.com/product-detail/en/amphenol-fci/20021521-00010T1LF/609-4054-ND/2414951))
@@ -25,6 +28,7 @@ The JTAG/SWD connector is a 0.05" (50mil/1.27mm) pitch, 2 row 10pin connector. T
 The JTAG/SWD cable is [FFSD-05-D-xx.xx-01-N](https://www.samtec.com/products/ffsd-05-d-06.00-01-n) where the `x` stand for the length of the cable. Common length is 6 inches. (Buy: [Digi-key](https://www.digikey.com/product-detail/en/samtec-inc/FFSD-05-D-06.00-01-N/SAM8218-ND/1106577), [1BitSquared](https://1bitsquared.com/products/jtag-idc-cable))
 
 You can build your own JTAG/SWD ribbon cable using the following materials. (consider just an example there are many manufacturers making 1.27mm pitch IDC crimps and ribbons)
+
 * CNC Tech 3230-10-0103-00 IDC crimp with polarizing key. (Buy: [Digi-key](https://www.digikey.com/product-detail/en/cnc-tech/3230-10-0103-00/1175-1646-ND/3883463))
 * 3M 3756/10 0.025" (0.64mm) pitch 10 conductor flat ribbon cable. (Buy: [Digi-key](https://www.digikey.com/product-detail/en/3m/3756-10-100/ME10G-10-ND/5308218))
 
@@ -33,12 +37,14 @@ You can build your own JTAG/SWD ribbon cable using the following materials. (con
 The UART connector is Molex PicoBlade 0532610471. (Buy: [Digi-key](http://www.digikey.com/product-detail/en/0532610471/WM7622CT-ND/699109)).
 
 The UART cable can be built by hand using the following materials:
+
 * Molex PicoBlade 050079-8000 26-28AWG or 50058-8000 28-32AWG crimp sockets. (Buy: [Digi-key](https://www.digikey.com/product-detail/en/molex-llc/0500798000/WM1142CT-ND/467835) [Digi-key](https://www.digikey.com/product-detail/en/molex-llc/50058-8000/WM1775CT-ND/242897))
 * Molex PicoBlade 0510210400 housing (Buy: [Digi-key](https://www.digikey.com/product-detail/en/molex-llc/0510210400/WM1722-ND/242844))
 * Molex PicoBlade 0638271400 crimp tool (Buy: [Digi-key](https://www.digikey.com/product-detail/en/molex/0638271400/WM15815-ND/6577355)) (Warning: if you don't want to be very frustrated and destroy a lot of crimps skip trying to use cheaper options that claim to be compatible with the PicoBlade crimps, they are not.)
 * 26-32AWG wire of your choosing and whatever termination you need on the other side of the cable.
 
 The UART cable can also be built with pre crimped wires:
+
 * [Digi-key](https://www.digikey.com/short/08n0q938) Molex Picoblade pre-crimped cables, you can choose from all kinds of colors as well as doublesided or single sided crimps.
 * [1BitSquared](https://1bitsquared.com/products/picoblade-wire-kit) pre-crimped cable assortment
 
@@ -77,23 +83,32 @@ This solution is known to work on the LPC8xx/LPC11xx families of chips. If you a
 
 ## It's annoying to look up an always-changing device name on Linux.
 
-Use the bmp devices created under /dev/serial/by-id/usb-Black_Sp...-if00 or create a file named `/etc/udev/rules.d/99-blackmagic.rules` with the following contents:
+There are rules files provided in [the driver subdirectory of the main repository](https://github.com/blackmagic-debug/blackmagic/tree/main/driver).
+The readme walks through selection of an appropriate file and how to install them on your system.
 
-    # Black Magic Probe
-    # there are two connections, one for GDB and one for uart debugging
-      SUBSYSTEM=="tty", ATTRS{interface}=="Black Magic GDB Server", SYMLINK+="ttyBmpGdb"
-      SUBSYSTEM=="tty", ATTRS{interface}=="Black Magic UART Port", SYMLINK+="ttyBmpTarg"
+These provide entries for the following:
 
-Then unplug / replug the probe, or restart the computer.
+* `/dev/ttyBmpGdb` - The GDB serial interface for the most recently plugged in probe
+* `/dev/ttyBmpTarg` - The auxillary serial interface for the most recently plugged in probe
+* `/dev/ttyBmpGdb[serial]` - The GDB serial interface for the the probe identified by the serial number `[serial]`
+* `/dev/ttyBmpTarg[serial]` - The auxillary serial interface for the probe identified by the serial number `[serial]`
 
-Now you can access the probe at the stable names `/dev/ttyBmpGdb` and `/dev/ttyBmpTarg`.
+To illustrate an example of this, given a BMP with serial 8BB20695, one can expect by running the project's rule files
+to see this from a listing of `/dev/ttyBmp*`:
+
+```
+❯ ls /dev/ttyBmp*
+/dev/ttyBmpGdb  /dev/ttyBmpGdb8BB20695  /dev/ttyBmpTarg  /dev/ttyBmpTarg8BB20695
+```
 
 ## I want to connect to a Black Magic Probe on another machine.
 
 You can use stty and netcat.  On the machine with the probe connected, make a little TCP server on port 2000 with these commands:
 
-    stty -F /dev/ttyBmpGdb raw -onlcr -iexten -echo -echoe -echok -echoctl -echoke
-    nc -vkl -p 2000 > /dev/ttyBmpGdb < /dev/ttyBmbGdb
+```
+stty -F /dev/ttyBmpGdb raw -onlcr -iexten -echo -echoe -echok -echoctl -echoke
+nc -vkl -p 2000 > /dev/ttyBmpGdb < /dev/ttyBmbGdb
+```
 
 In gdb on the remote machine, connect with `target extended-remote hostname:2000` where `hostname` is the name or IP address of the machine running the probe.
 
