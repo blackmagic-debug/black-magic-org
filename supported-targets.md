@@ -43,7 +43,11 @@
 | Atmel             | ATSAM 4L    | ✔ Full        | v1.6               | sam4l.c        |
 | Atmel             | ATSAM 3x    | ✔ Full        | v1.6               | sam3x.c        |
 | RPi Foundation    | RP2040      | ✔ Full        | v1.8.0             | rp.c           |
-| Renesas           | R7FA        | ○ Partial     | v1.9.0             | renesas.c      |
+| Renesas           | R7FA        | ○ Partial     | v1.9.0             | renesas.c      | Unless specified below
+| Renesas           | R7FARA2A1   | ✗ Debug only  | v1.9.0             | renesas.c      |
+| Renesas           | R7FARA4M2   | ✔ Full        | v1.9.0             | renesas.c      |
+| Renesas           | R7FARA4M3   | ✔ Full        | v1.9.0             | renesas.c      |
+| Renesas           | R7FARA6M2   | ✔ Full        | v1.9.0             | renesas.c      |
 | Freescale         | KE04        | ✔ Full        | v1.6.2             | nxpke04.c      |
 | Nordic Semi       | nRF51       | ✔ Full        | v1.6               | nrf51.c        |
 | Nordic Semi       | nRF52       | ✔ Full        | v1.6               | nrf51.c        |
@@ -66,9 +70,14 @@
 | Freescale         | K12         | ✔ Full        | v1.8.0             | kinetis.c      |
 | Freescale         | K22F        | ✔ Full        | pre-v1.6           | kinetis.c      |
 | Freescale         | K64F        | ✔ Full        | v1.6.2             | kinetis.c      |
+| NXP               | S32K11      | ✔ Full        | v1.8.0             | kinetis.c      |
 | NXP               | S32K14      | ✔ Full        | v1.8.0             | kinetis.c      |
 | NXP               | i.MX RT10   | ✔ Full        | v1.10.0            | imxrt.c        |
+| NXP               | i.MX RT11   | ✗ Debug only  | v1.10.0            | imxrt.c        |
 | HDSC              | HD32L110    | ✔ Full        | v1.10.0            | hd32l110.c     |
+| Energy Micro      | EFM32       | ✔ Full        | v1.6               | efm32.c        |
+| Energy Micro      | EZR32       | ✔ Full        | v1.6               | efm32.c        |
+| Energy Micro      | EFR32       | ✔ Full        | v1.6.2             | efm32.c        |
 
 [^1]: LPC43x0 Flash support was added in v1.10.0.
 
