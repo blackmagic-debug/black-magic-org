@@ -272,7 +272,7 @@ We have had 42 individuals contribute 1208 commits since the v1.9.2 release.
 
 Contributor (Contributions)  
 dragonmux (872)  
-Rafael Silva (110)  
+perigoso (111)  
 Sid Price (37)  
 lenvm (37)  
 ALTracer (28)  
@@ -301,7 +301,6 @@ Taylor Yu (1)
 Sludge (1)  
 Siddharth Bharat Purohit (1)  
 SG (1)  
-Rafael Graça Silva (1)  
 Qyriad (1)  
 Matthew Via (1)  
 Kamil Rogozinski (1)  
@@ -313,6 +312,7 @@ franzflasch (1)
 Fabrice Prost-Boucle (1)  
 Angus Gratton (1)  
 AnantaSrikar (1)
+
 
 ## Sponsors
 
