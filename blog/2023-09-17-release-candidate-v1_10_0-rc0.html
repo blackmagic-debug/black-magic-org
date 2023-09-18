@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="../_static/favicon/icon.svg">
+    <link rel="icon" sizes="16x16" type="image/png" href="../_static/favicon/favicon-16x16.png">
+    <link rel="icon" sizes="32x32" type="image/png" href="../_static/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="57x57" type="image/png" href="../_static/favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" type="image/png" href="../_static/favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" type="image/png" href="../_static/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" type="image/png" href="../_static/favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="96x96" type="image/png" href="../_static/favicon/apple-touch-icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="114x114" type="image/png" href="../_static/favicon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" type="image/png" href="../_static/favicon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" type="image/png" href="../_static/favicon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="../_static/favicon/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" type="image/png" href="../_static/favicon/apple-touch-icon-180x180.png">
+    <link rel="android-icon" sizes="192x192" type="image/png" href="../_static/favicon/android-icon-192x192.png"><meta property="og:title" content="Release Candidate V1.10.0-rc0" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://black-magic.org/blog/2023-09-17-release-candidate-v1_10_0-rc0.html" />
+<meta property="og:site_name" content="Black Magic Debug" />
+<meta property="og:description" content="We are happy to announce the first V1.10.0 release candidate of Black Magic Debug. This will be the final minor release of the v1 series. Here are some of the highlights: Implemented support for ta..." />
+<meta property="og:image" content="https://black-magic.org/_static/blackmagic-logo.png" />
+<meta property="og:image:alt" content="Black Magic Debug" />
+<meta name="description" content="We are happy to announce the first V1.10.0 release candidate of Black Magic Debug. This will be the final minor release of the v1 series. Here are some of the highlights: Implemented support for ta..." />
+
+    <title>Release Candidate V1.10.0-rc0 &#8212; Black Magic Debug  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/platformpicker.css" />
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/asciinema-player_2.6.1.js"></script>
+    <script src="../_static/platformpicker.js"></script>
+    <link rel="canonical" href="https://black-magic.org/blog/2023-09-17-release-candidate-v1_10_0-rc0.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../blog/atom.xml"
+  title="Blog"
+/>
+
+
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+<section id="release-candidate-v1-10-0-rc0">
+<h1>Release Candidate V1.10.0-rc0<a class="headerlink" href="#release-candidate-v1-10-0-rc0" title="Link to this heading">¶</a></h1>
+<p>We are happy to announce the first <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.10.0-rc0">V1.10.0 release candidate</a> of <a class="reference external" href="https://black-magic.org">Black Magic Debug</a>.</p>
+<p>This will be the final minor release of the v1 series.</p>
+<p>Here are some of the highlights:</p>
+<ul class="simple">
+<li><p>Implemented support for talking with SPI Flash directly</p></li>
+<li><p>The firmware now automatically binds drivers for the Trace and DFU interfaces on Windows</p></li>
+<li><p>And a bunch of newly supported targets:</p>
+<ul>
+<li><p>MindMotion MM32</p></li>
+<li><p>ST Micro STM32WB1X</p></li>
+<li><p>GigaDevice GD32F4</p></li>
+<li><p>NXP LPC43x0</p></li>
+<li><p>NXP LPC55</p></li>
+<li><p>ST Micro STM32C0xx</p></li>
+<li><p>NXP LPC40</p></li>
+<li><p>NXP/Freescale i.MXRT</p></li>
+<li><p>GigaDevice GD32F2</p></li>
+<li><p>GigaDevice GD32E5</p></li>
+<li><p>ST Micro STM32H5</p></li>
+<li><p>TI MSP432E4</p></li>
+<li><p>HDSC HD32L110</p></li>
+<li><p>Arterytek AT32F435</p></li>
+<li><p>ST Micro STM32U5</p></li>
+<li><p>Nordic Semi nRF91</p></li>
+</ul>
+</li>
+<li><p>Target power now has soft-start on native hardware v2.3+ to address potential brown out. This feature was also backported to all other native BMP hardware that has a digital target power control to remove power rail overshoot. For more detail about this change refer to <a class="reference internal" href="2023-09-16-release-v1_9_2.html#2023-09-16-release-v1_9_2"><span class="std std-ref">V1.9.2 release notes</span></a></p></li>
+</ul>
+<p>For more details please refer to the ChangeLog down below.</p>
+</section>
+<section id="changelog-v1-10-0">
+<h1>ChangeLog v1.10.0<a class="headerlink" href="#changelog-v1-10-0" title="Link to this heading">¶</a></h1>
+<section id="core-changes">
+<h2>Core Changes<a class="headerlink" href="#core-changes" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Handle continue-with-signal messages from GDB [zyp]</p></li>
+<li><p>Restructured the GDB main loop from blocking to polling [xobs]</p></li>
+<li><p>Cleaned up and fixed some style issues in the RTT code [dragonmux]</p></li>
+<li><p>Refactored out the JEP-106 manufacturer codes into their own header [dragonmux]</p></li>
+<li><p>Improved the GDB register API nomenclature and organisation [dragonmux]</p></li>
+<li><p>Fixed some formatting issues with ternaries [dragonmux]</p></li>
+<li><p>Improved the correctness of JTAG bitbanging due to the generation of setup-and-hold violations upsetting RISC-V targets [dragonmux]</p></li>
+<li><p>Implemented automatic sizing of the Flash write buffers for targets [perigoso]</p></li>
+<li><p>Fixes for the setjmp header used under Windows in the exception code [sidprice]</p></li>
+<li><p>Restore the old GDB detach behaviour from pre-v1.8 as the auto-reattach-on-connect behaviour was breaking certain debug integrations [tlyu]</p></li>
+<li><p>Fixed some issues that caused several nasty linker warnings under GCC 12 [dragonmux]</p></li>
+<li><p>Implemented JTAG IR quirk handling to deal with parts whose IR lengths cannot be simply detected [dragonmux]</p></li>
+<li><p>Fixed a regression in the semihosting implementation caught by koendv [dragonmux]</p></li>
+<li><p>Round up reads in the generic CRC32 implementation to the nearest multiple of 4 [zyp]</p></li>
+<li><p>Fixed a regression in the JTAG→SWD sequence code caused by generating one too few cycles [dragonmux]</p></li>
+<li><p>Fixed part of how JTAG scan implements IR lengths handling [dragonmux]</p></li>
+<li><p>Improved the debug logging subsystem and introduced error and protocol debug levels [dragonmux]</p></li>
+<li><p>Fixed an issue where running <code class="docutils literal notranslate"><span class="pre">load</span></code> followed immediately by <code class="docutils literal notranslate"><span class="pre">kill</span></code> from GDB would result in a crash [dragonmux]</p></li>
+<li><p>Added a parameter to <code class="docutils literal notranslate"><span class="pre">mon</span> <span class="pre">reset</span></code> that allows specification of the pulse length [silbe]</p></li>
+<li><p>Removed the JTAG scan IR lengths mechanism [dragonmux]</p></li>
+<li><p>Unified the help syntax used in <code class="docutils literal notranslate"><span class="pre">mon</span> <span class="pre">help</span></code> [silbe]</p></li>
+<li><p>Replaced all usage of <code class="docutils literal notranslate"><span class="pre">strtol</span></code> with <code class="docutils literal notranslate"><span class="pre">strtoul</span></code> to help reduce Flash usage [ALTracer]</p></li>
+<li><p>Switched to the reentrant <code class="docutils literal notranslate"><span class="pre">strtok_r</span></code> from <code class="docutils literal notranslate"><span class="pre">strtok</span></code> to fix a correctness issue and reduce Flash usage [ALTracer]</p></li>
+<li><p>Implemented the firmware side of a new SPI remote protocol [dragonmux]</p></li>
+<li><p>Implemented Microsoft OS Descriptors support and provided driver binding descriptors for the Trace and DFU interfaces [dragonmux]</p></li>
+<li><p>Improved connect-under-reset handling reliability [jelson/dragonmux]</p></li>
+<li><p>Reworked the JTAG bitbanging with-delay routines to solve a bug in how they work [dragonmux]</p></li>
+<li><p>Decoupled the general.h and platform.h headers to reduce build churn for low performance build hosts [ALTracer]</p></li>
+<li><p>Increased the SysTick frequency from 100Hz to 1kHz in the firmware [ALTracer]</p></li>
+<li><p>Refactored the integer-only stdio definitions for the firmware [ALTracer]</p></li>
+<li><p>Implemented Flash state tracking for targets that need more complicated handling [dragonmux]</p></li>
+<li><p>Various fixes for type mistakes, missing integer suffixes and debug level usage [perigoso]</p></li>
+<li><p>Fixed a regression which caused SWD to hang if configured for max speed [dragonmux]</p></li>
+<li><p>Fixed some type mismatches in the CRC32 implementation [dragonmux]</p></li>
+<li><p>Fixed an issue with the fake threads implementation that can hang certain IDEs [dragonmux]</p></li>
+<li><p>Improved the organisation of the remote protocol packet handling logic [dragonmux]</p></li>
+<li><p>Fixed a pile of <code class="docutils literal notranslate"><span class="pre">-fanalzyer</span></code> lints highlighting bugs in target code [dragonmux]</p></li>
+<li><p>Fixed some return types issues in the scan logic and switched <code class="docutils literal notranslate"><span class="pre">swdp_scan</span></code> → <code class="docutils literal notranslate"><span class="pre">swd_scan</span></code> (with a fallback) as part of phasing out the “SWDP” nomenclature [perigoso]</p></li>
+<li><p>Fixed a missing include for <code class="docutils literal notranslate"><span class="pre">stdbool.h</span></code> in the GDB packet code [xobs]</p></li>
+<li><p>Improved the safety around target power by implementing detection of backfeeding and cutting power when this is detected [dragonmux]</p></li>
+<li><p>Improved the wording of the documentation around <code class="docutils literal notranslate"><span class="pre">vMustReplyEmpty</span></code> packets [perigoso]</p></li>
+<li><p>Reduced the Flash usage of the JTAG devices table [dragonmux]</p></li>
+<li><p>Fixed a race condition and resulting <code class="docutils literal notranslate"><span class="pre">NULL</span></code> dereference in the morse code subsystem [jcamdr]</p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">-Wpedantic</span></code> warnings about forward referencing of enums [perigoso]</p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">-Wpedantic</span></code> warnings about empty initialiser lists [perigoso]</p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">-Wpedantic</span></code> warnings about returns in functions that return <code class="docutils literal notranslate"><span class="pre">void</span></code> [perigoso]</p></li>
+<li><p>Fixed several warnings about using characters for array subscripts (<code class="docutils literal notranslate"><span class="pre">-Wchar-subscripts</span></code>) [perigoso]</p></li>
+<li><p>Fixed several warnings about local variable shaddowing (<code class="docutils literal notranslate"><span class="pre">-Wshadow=local</span></code>) [perigoso]</p></li>
+<li><p>Fixed several warnings about bad function casts (<code class="docutils literal notranslate"><span class="pre">-Wbad-function-cast</span></code>) [perigoso]</p></li>
+<li><p>Fixed several string formatting warnings [perigoso]</p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">-Wpedantic</span></code> warnings about using range expressions in switch-case and array definitions [perigoso]</p></li>
+<li><p>Removed a dangling extern variable declaration that is unused in the code base [perigoso]</p></li>
+<li><p>Fixed some missing braces on array of structure initializers [zyp]</p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">-Wpedantic</span></code> warnings about binary constants [perigoso]</p></li>
+<li><p>Consolidated the alignment macros originally defined for ADIv5 and moved them into their own header [perigoso]</p></li>
+</ul>
+</section>
+<section id="build-system-changes">
+<h2>Build System Changes<a class="headerlink" href="#build-system-changes" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Don’t delete version.h when building from an extracted archive [esden]</p></li>
+<li><p>Fixed Git detection when using BMD as a Git submodule [esden]</p></li>
+</ul>
+</section>
+<section id="script-utility-changes">
+<h2>Script/Utility Changes<a class="headerlink" href="#script-utility-changes" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Fixed a section heading issue in the contribution guidelines [SludgeGirl]</p></li>
+<li><p>Updated the clang-format pre-commit hook to v16.0.2 [lenvm]</p></li>
+<li><p>Added clang-tidy configuration for identifier case checking [sidprice]</p></li>
+</ul>
+</section>
+<section id="project-ci-changes">
+<h2>Project CI Changes<a class="headerlink" href="#project-ci-changes" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Implemented CI for Windows [dragonmux]</p></li>
+<li><p>Updated the main build CI to use the GitHub Actions <code class="docutils literal notranslate"><span class="pre">actions/checkout&#64;v3</span></code> action [gemesa]</p></li>
+<li><p>Spelling, punctuation and grammar fixes in the GHA configs [gemesa]</p></li>
+<li><p>Updated the lint CI to use the GHA <code class="docutils literal notranslate"><span class="pre">actions/checkout&#64;v3</span></code> and <code class="docutils literal notranslate"><span class="pre">pre-commit/action&#64;v3.0.0</span></code> actions [perigoso]</p></li>
+<li><p>Updated the ARM compilers used in the PR workflows [esden]</p></li>
+<li><p>Restricted the CI flows with <code class="docutils literal notranslate"><span class="pre">ENABLE_RTT=1</span></code> set due to the Flash usage limitations problems [dragonmux]</p></li>
+</ul>
+</section>
+<section id="arm-adiv5-changes">
+<h2>ARM (ADIv5) Changes<a class="headerlink" href="#arm-adiv5-changes" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Cortex-A: Fixes and improvements for Cortex-R5 support</p></li>
+<li><p>ARM Debug: De-duplicated parts of the ADIv5 implementation and re-introduced the SWD interface header/structure [dragonmux]</p></li>
+<li><p>ARM Debug: Added support for the Chinese STAR-MC1 core type [koendv]</p></li>
+<li><p>ARM Debug: Added the Nordic Trace Buffer (NTB) to the component identification table [dragonmux]</p></li>
+<li><p>ARM Debug: Fixed a whole pile of JTAG protocol regressions (see #1389 for details) [dragonmux]</p></li>
+<li><p>ARM Debug: Improved Cortex-M halt/resume correctness [dragonmux]</p></li>
+<li><p>ARM Debug: Fixed an issue with the Cortex-M DWT mask calculation [silbe]</p></li>
+<li><p>ARM Debug: Correctness fixes for AP handling, implementing AP type dispatch, TrustZone handling and some multi-drop noise [dragonmux]</p></li>
+<li><p>ARM Debug: Reworked early DP bringup to improve correctness and reduce code bloat [perigoso]</p></li>
+<li><p>ARM Debug: Begun seperating out SWD multi-drop handling and untangling it [perigoso]</p></li>
+<li><p>ARM Debug: Improved the reliability of debug bringup to handle parts like the Ambiq Apollo 3 which get upset when debug resetting them too much [dragonmux]</p></li>
+<li><p>ARM Debug: Improved how JTAG DPv0 ID codes are handled to correctly identify more parts using them [dragonmux]</p></li>
+<li><p>ARM Debug: Refactored the Cortex handling to pull out commonality into a new implementation file ready for proper Cortex-R support [dragonmux]</p></li>
+</ul>
+</section>
+<section id="target-changes">
+<h2>Target Changes<a class="headerlink" href="#target-changes" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>stm32l4/stm32wb: Fixed the Flash erase error handling and detection [DrZlo13]</p></li>
+<li><p>lpc43x0: Implemented external Flash support [dragonmux]</p></li>
+<li><p>nrf51: Fixed handling for the recovery access port core register faking to allow attaching again [TheyCallMeNobody]</p></li>
+<li><p>ch32f1: Fixed <code class="docutils literal notranslate"><span class="pre">load</span></code> handling with CH32F103C8T6 parts [lasutek]</p></li>
+<li><p>ARM Cortex-M: Fixed a missing call to <code class="docutils literal notranslate"><span class="pre">sam3x_probe()</span></code> [AnantaSrikar]</p></li>
+<li><p>ch32f1: Improved support for CH32F103C8T6 parts [lasutek]</p></li>
+<li><p>stm32g0: Implemented support for STM32C0 option bytes erase [fabalthazar]</p></li>
+<li><p>stm32f1: Improved the STM32F1 option bytes handling correctness [dragonmux]</p></li>
+<li><p>lmi: Fixed TM4C129 identifications [dragonmux]</p></li>
+<li><p>lpc: Updated Flash registration to conform to the new APIs [dragonmux]</p></li>
+<li><p>sam3x: Fixed an issue that had Flash programming broken due to nRST interactions [dragonmux]</p></li>
+<li><p>stm32l0: Provided an implementation for mass erase for STM32L0 and STM32L1 [dragonmux]</p></li>
+<li><p>lpc55xx: Fixed a memory leak in <code class="docutils literal notranslate"><span class="pre">lpc55x_add_flash()</span></code> [francois-berder]</p></li>
+<li><p>target: Fixed an out of bounds array access in <code class="docutils literal notranslate"><span class="pre">jtag_scan()</span></code> [francois-berder]</p></li>
+<li><p>renesas: General documentation and cleanup [perigoso]</p></li>
+<li><p>rp: Fixed the Flash erase and write reliability issues caused by the ROM table calls hanging under certain circumstances [dragonmux]</p></li>
+<li><p>lpc55xx: Implemented support for LPC551x and LPC55S1x devices [dragonmux]</p></li>
+<li><p>lpc: Improved the correctness of the LPC IAP call mechanism and fixed some undefined behaviour [dragonmux]</p></li>
+<li><p>imxrt: Corrected some mistakes in debug formatting specifiers [xobs]</p></li>
+<li><p>ARM Cortex-M: Avoid doing long (64-bit) division in the HostIO implementation [ALTracer]</p></li>
+<li><p>imxrt: Fixed an error caused by an unused variable with <code class="docutils literal notranslate"><span class="pre">ENABLE_DEBUG=1</span></code> [ALTracer]</p></li>
+<li><p>stm32h7: Fixed a mass erase status check issue on the second Flash bank [bugobliterator]</p></li>
+<li><p>stm32h7: Improved support for the series [dragonmux]</p></li>
+<li><p>lpc546xx: Reduced Flash usage by refactoring the device identification code [ALTracer]</p></li>
+<li><p>target: De-duplicate various message strings to improve the Flash usage footprint [ALTracer]</p></li>
+<li><p>imxrt: Allow the definition and use of the <code class="docutils literal notranslate"><span class="pre">boot_mode</span></code> variable for Farpatch [xobs]</p></li>
+<li><p>lpc43xx: Refactored the target SRAM handling code to reduce Flash usage [ALTracer]</p></li>
+<li><p>lpc43x0: Fixed an ASAN crash in the LPC43x0 Flash detection logic due to it mishandling failure [dragonmux]</p></li>
+<li><p>stm32l4: Fixed the RAM sizing being in kibibytes but not being multiplied up properly to bytes [jcamdr]</p></li>
+<li><p>lpc55xx: Implemented support for the LPC55S69 [UweBonnes]</p></li>
+<li><p>ARM Cortex-M: Implemented a timeout for release from reset for parts that have non-functional nRST [UweBonnes]</p></li>
+<li><p>samx5x: Fixed an assumption that block size == Flash region lock size  which broke Flash write on these parts [Qyriad/ktemkin]</p></li>
+</ul>
+</section>
+<section id="targets-added">
+<h2>Targets Added<a class="headerlink" href="#targets-added" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>MindMotion MM32 [koendv]</p></li>
+<li><p>ST Micro STM32WB1X [grevaillot]</p></li>
+<li><p>GigaDevice GD32F4 [via]</p></li>
+<li><p>NXP LPC43x0 [dragonmux]</p></li>
+<li><p>ST Micro STM32C011 and STM32C031 [djix123]</p></li>
+<li><p>NXP LPC55 [dragonmux/UweBonnes/TomCrypto]</p></li>
+<li><p>NXP LPC40 [zyp]</p></li>
+<li><p>NXP i.MXRT [dragonmux]</p></li>
+<li><p>GigaDevice GD32F2 [iysheng]</p></li>
+<li><p>GigaDevice GD32E5 [ALTracer]</p></li>
+<li><p>ST Micro STM32H5 [dragonmux]</p></li>
+<li><p>TI MSP432E4 [neutered]</p></li>
+<li><p>HDSC HD32L110 [vesim987]</p></li>
+<li><p>Arterytek AT32F435 [ALTracer]</p></li>
+<li><p>ST Micro STM32U5 [jcamdr]</p></li>
+<li><p>Nordic Semi nRF91 [zyp]</p></li>
+</ul>
+</section>
+<section id="host-platform-changes">
+<h2>Host Platform Changes<a class="headerlink" href="#host-platform-changes" title="Link to this heading">¶</a></h2>
+<section id="added">
+<h3>Added<a class="headerlink" href="#added" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Support for the ST-Link v3 [jamesturton/stoyan-shopov/UweBonnes]</p></li>
+<li><p>Implemented support for the USB CDC command <code class="docutils literal notranslate"><span class="pre">GET_LINE_CODING</span></code> [dragonmux]</p></li>
+<li><p>Add error LED feedback for USB enumeration state [krogozinski]</p></li>
+</ul>
+</section>
+<section id="common">
+<h3>Common<a class="headerlink" href="#common" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Enable semihosting output redirection on all firmware platforms [koendv]</p></li>
+<li><p>Restructured the platforms folder so the <code class="docutils literal notranslate"><span class="pre">stm32</span></code> and <code class="docutils literal notranslate"><span class="pre">tm4c</span></code> common components are in the <code class="docutils literal notranslate"><span class="pre">common</span></code> area [lenvm]</p></li>
+</ul>
+<section id="stm32">
+<h4>STM32<a class="headerlink" href="#stm32" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Fixed an off-by-one issue in the STM32F4 DFU bootloader implementation which broke erase [Electronshik]</p></li>
+</ul>
+</section>
+<section id="tm4c">
+<h4>TM4C<a class="headerlink" href="#tm4c" title="Link to this heading">¶</a></h4>
+</section>
+</section>
+<section id="black-magic-probe-aka-native-host">
+<h3>Black Magic Probe (aka “Native”) host<a class="headerlink" href="#black-magic-probe-aka-native-host" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed some pinout and clarity issues with nRST and TPWR [dragonmux]</p></li>
+<li><p>Implemented target power soft-start for hw1+ (hardware v2.0a+) [dragonmux]</p></li>
+</ul>
+</section>
+<section id="st-link-host">
+<h3>ST-Link host<a class="headerlink" href="#st-link-host" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed the pinout for the nRST pin to handle clones using PB6/7 instead of PB0/1 [silbe]</p></li>
+</ul>
+</section>
+<section id="f4-discovery-host">
+<h3>F4 Discovery host<a class="headerlink" href="#f4-discovery-host" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Added pin definition documentation for the UART to the README [franzflasch]</p></li>
+</ul>
+</section>
+<section id="blackpillv2-host-now-blackpill-f401cc-blackpill-f401ce-and-blackpill-f411ce-aka-the-blackpill-hosts">
+<h3>Blackpillv2 host (now blackpill-f401cc, blackpill-f401ce and blackpill-f411ce, aka “The Blackpill hosts”)<a class="headerlink" href="#blackpillv2-host-now-blackpill-f401cc-blackpill-f401ce-and-blackpill-f411ce-aka-the-blackpill-hosts" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Implemented support for target power voltage sensing [lenvm]</p></li>
+<li><p>Redid the pinout for the platform to rationalise it - see #1465 for details on the new pinout [lenvm]</p></li>
+<li><p>Created an alternative pinout for the platform - see #1467 for details on this alternative pinout [lenvm]</p></li>
+<li><p>Restructured and renamed the platform, adding support for all current Blackpill variants [lenvm]</p></li>
+<li><p>Fixed a typo in the platform README [lenvm]</p></li>
+<li><p>Fixed and improved support and handling for using the in-tree DFU bootloader and the boot ROM DFU bootloader on the platform [ALTracer]</p></li>
+<li><p>Fixed the tpwr control implementation for the platform being inverted (”enable” meant off, “disable” meant on) [lenvm]</p></li>
+<li><p>Implemented the platform backend for support for the SPI remote protocol [ALTracer]</p></li>
+</ul>
+</section>
+<section id="black-magic-debug-app-aka-pc-host">
+<h3>Black Magic Debug App (aka “PC Host”)<a class="headerlink" href="#black-magic-debug-app-aka-pc-host" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed how target selection and memory access works on the CMSIS-DAP backend [dmsc]</p></li>
+<li><p>Implemented a structure for holding information about discovered probes [dragonmux]</p></li>
+<li><p>Use the correct header for memory allocation functions in the probe information implementation [tlyu]</p></li>
+<li><p>Fixed a include path problem with libusb [sidprice]</p></li>
+<li><p>Fixed the implementation of target power control [sidprice]</p></li>
+<li><p>Dead code removal in <code class="docutils literal notranslate"><span class="pre">cl_execute()</span></code> [sidprice]</p></li>
+<li><p>Updated and modernised the CMSIS-DAP implementation and reorganised [dragonmux]</p></li>
+<li><p>Fixed the FTDI implementation and a discovery issue with Tigard [dragonmux]</p></li>
+<li><p>Addressed several naming inconsistencies in the BMP remote protocol SWD implementation [dragonmux]</p></li>
+<li><p>Implemented support for compiling on cygwin [hydra]</p></li>
+<li><p>Reimplemented the BMP remote protocol and implemented proper protocol feedbacks for older versions of the protocol [dragonmux]</p></li>
+<li><p>Fixed an issue in the ST-Link backend which results in a crash when trying to read a single byte from a target [dragonmux]</p></li>
+<li><p>Fixed building on macOS [lenvm]</p></li>
+<li><p>Fixed handling for selecting between multiple identical CMSIS-DAP devices [zyp]</p></li>
+<li><p>Simplified the ST-Link and J-Link USB access code [zyp]</p></li>
+<li><p>Fixed an regression in the remote protocol write length alignment calculations [dragonmux]</p></li>
+<li><p>Rewrote the J-Link backend, fixing several ASAN crashes and lack of error handling [dragonmux]</p></li>
+<li><p>Improved the consistency of the backends and partially harmonised the nomoenclature used [dragonmux]</p></li>
+<li><p>Implemented a CMSIS-DAP quirks system and version check for ORBTrace due to older gateware having broken JTAG multi-TAP [dragonmux]</p></li>
+<li><p>Fixed CMSIS-DAP version identification when the version string has a ‘v’ suffix [dragonmux]</p></li>
+<li><p>Fixed an issue with how debug output is implemented on Windows that results in garbage being displayed for strings [dragonmux]</p></li>
+<li><p>Rebuild the probe detection and scan engine [sidprice]</p></li>
+<li><p>Implemented a libftdi-like shim layer for FTD2xx on Windows to allow native access to FTDI devices [sidprice]</p></li>
+<li><p>Fixed a long-standing issue with original ST-Link v2 serial number readout being broken [dragonmux]</p></li>
+<li><p>Fixed a regression where devices implementing CMSIS-DAP v2 would have their v2 interfaces be ignored [dragonmux]</p></li>
+<li><p>Implemented a workaround for Darwin (macOS, iOS) not implementing the Unicode character types (uchar.h) header [amyspark]</p></li>
+<li><p>Fixed an issue with CMSIS-DAP transfer failure handling that lead to some targets getting upset [dragonmux]</p></li>
+<li><p>Implemented target power handling for the J-Link backend and cleaned up in the backend [perigoso]</p></li>
+<li><p>Reworked the J-Link backend’s handling of the adaptor hardware version code [perigoso]</p></li>
+<li><p>Cleaned up after the implementation of the new probe discovery engine [dragonmux]</p></li>
+<li><p>Fixed a regression in the J-Link backend’s handling of frequency setting [dragonmux]</p></li>
+<li><p>Fixed a bug in the CMSIS-DAP implementation’s handling of WAIT which resulted in FAULT being generated on some targets and scan failing [dragonmux]</p></li>
+<li><p>Refactored and improved handling of VID:PID wildcards for J-Links [perigoso]</p></li>
+<li><p>Rewrote the ST-Link backend to fix how multi-drop is handled and solve several crashes [dragonmux]</p></li>
+<li><p>Fixed a regression in the CMSIS-DAP backend for v1 (HID) interfaces that broke writes with long buffers [projectgus]</p></li>
+<li><p>Added support for J-Link v5 adaptors by honouring the capability bits of J-Link devices [ALTracer]</p></li>
+<li><p>Fixed a memory leak and handling issue with FTDI adaptors in the probe detection and scan engine [lethalbit]</p></li>
+</ul>
+</section>
+</section>
+<section id="contributors-to-v1-10-0">
+<h2>Contributors to v1.10.0<a class="headerlink" href="#contributors-to-v1-10-0" title="Link to this heading">¶</a></h2>
+<p>We have had 42 individuals contribute 1208 commits since the v1.9.2 release.</p>
+<p>Contributor (Contributions)<br />
+dragonmux (872)<br />
+Rafael Silva (110)<br />
+Sid Price (37)<br />
+lenvm (37)<br />
+ALTracer (28)<br />
+Uwe Bonnes (20)<br />
+James Turton (20)<br />
+Sean Cross (13)<br />
+Vegard Storheil Eriksen (10)<br />
+Jean-Christian de Rivaz (6)<br />
+Sascha Silbe (5)<br />
+Maciej ‘vesim’ Kuliński (5)<br />
+Koen De Vleeschauwer (4)<br />
+Lars Sundström (3)<br />
+TheyCallMeNobody (2)<br />
+Stoyan Shopov (2)<br />
+Piotr Esden-Tempski (2)<br />
+Gareth McMullin (2)<br />
+Francois Berder (2)<br />
+dpf (2)<br />
+Daniel Serpell (2)<br />
+Andras Gemes (2)<br />
+Amy (2)<br />
+Aki Van Ness (2)<br />
+Vitaliy (1)<br />
+Thomas Bénéteau (1)<br />
+Taylor Yu (1)<br />
+Sludge (1)<br />
+Siddharth Bharat Purohit (1)<br />
+SG (1)<br />
+Rafael Graça Silva (1)<br />
+Qyriad (1)<br />
+Matthew Via (1)<br />
+Kamil Rogozinski (1)<br />
+Jonathan Giles (1)<br />
+Jeremy Elson (1)<br />
+iysheng (1)<br />
+Guillaume Revaillot (1)<br />
+franzflasch (1)<br />
+Fabrice Prost-Boucle (1)<br />
+Angus Gratton (1)<br />
+AnantaSrikar (1)</p>
+</section>
+<section id="sponsors">
+<h2>Sponsors<a class="headerlink" href="#sponsors" title="Link to this heading">¶</a></h2>
+<p>This project is sponsored in parts by:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://1bitsquared.com/">1BitSquared</a> - Design, Manufacture and distribution of open source embedded hardware development tools and platforms, as well as educational electronics. Thank you everyone who buys Black Magic Probes from 1BitSquared directly through our <a class="reference external" href="https://1bitsquared.com/products/black-magic-probe">stores</a> or indirectly through <a class="reference external" href="https://www.adafruit.com/product/3839">Adafruit</a>. The hardware sales allow us to continue supporting the <a class="reference external" href="https://black-magic.org">Black Magic Debug</a> project.</p></li>
+<li><p>All the generous <a class="reference external" href="https://www.patreon.com/1bitsquared">Patrons</a> and <a class="reference external" href="https://github.com/sponsors/esden">GitHub Sponsors</a> supporting esden’s work</p></li>
+<li><p>All the generous <a class="reference external" href="https://github.com/sponsors/dragonmux">GitHub Sponsors</a> supporting dragonmux’s work</p></li>
+</ul>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+  
+  
+
+
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+    
+    
+    Previous:
+    
+    <a href="2023-09-16-release-v1_9_2.html">
+      
+      <span>Stable Release V1.9.2</span>
+    </a>
+    
+  </span>
+  <span class="ablog__spacer">&nbsp;</span>
+  <span class="ablog__next">
+    
+  </span>
+</div>
+
+  
+  
+</div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/blackmagic-logo.svg" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">The Plug&Play MCU Debugger</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=blackmagic-debug&repo=blackmagic&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware.html">Supported Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrade.html">Firmware Upgrade</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/pinouts.html">Pinout Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/links.html">Links</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-commands.html">GDB Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-automation.html">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/traceswo.html">SWD - TRACESWO support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/swo.html">Serial Wire Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/rtt.html">Using RTT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/platformio.html">PlatformIO</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/stm32.html">STM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hacking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/contrib.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/hacking.html">Firmware Hacking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-drivers.html">Adding Target Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-m.html">Cortex-M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-a.html">Cortex A Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-clock-generation.html">Target Clock Generation</a></li>
+</ul>
+
+
+<div class="ablog-sidebar-item ablog__recentposts">
+<h3>
+  <a href="../blog.html">Recent Posts</a>
+</h3>
+<ul>
+  
+  
+  <li>
+    <a href="2023-09-16-release-v1_9_2.html">
+      16 September - Stable Release V1.9.2
+    </a>
+  </li>
+  
+  <li>
+    <a href="2023-09-16-release-v1_8_3.html">
+      16 September - Stable Release V1.8.3
+    </a>
+  </li>
+  
+  <li>
+    <a href="2023-04-28-release-v1_9_1.html">
+      28 April - Stable Release V1.9.1
+    </a>
+  </li>
+  
+  <li>
+    <a href="2023-01-27-release-v1_9_0.html">
+      27 January - Stable Release V1.9.0
+    </a>
+  </li>
+  
+  <li>
+    <a href="2022-12-31-release-candidate-v1_9_0-rc1.html">
+      31 December - Release Candidate V1.9.0-rc1
+    </a>
+  </li>
+  
+</ul>
+</div>
+
+<div class="ablog-sidebar-item ablog__archive">
+<h3>
+  <a href="archive.html">Archives</a>
+</h3>
+<ul>
+  
+  
+  <li>
+    <a href="2023.html">2023 (5)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="2022.html">2022 (7)</a>
+  </li>
+  
+  
+</ul>
+</div>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022-2023, Piotr Esden-Tempski <piotr@esden.net>; 2022-2023, Rachel Mant <git@dragonmux.network>.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
