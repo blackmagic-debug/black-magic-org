@@ -21,10 +21,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://black-magic.org/knowledge/faq.html" />
 <meta property="og:site_name" content="Black Magic Debug" />
-<meta property="og:description" content="What targets are currently supported?: The Black Magic probe currently supports ARMv6-M and ARMv7-M architecture targets, specifically Cortex-M0, Cortex-M3 and Cortex-M4. Any device with these core..." />
+<meta property="og:description" content="Where can I get the hardware?: The official Black Magic Probe hardware is available from multiple vendors. An up to date list is kept on the project main page. Where can I find the BMP schematics?:..." />
 <meta property="og:image" content="https://black-magic.org/_static/blackmagic-logo.png" />
 <meta property="og:image:alt" content="Black Magic Debug" />
-<meta name="description" content="What targets are currently supported?: The Black Magic probe currently supports ARMv6-M and ARMv7-M architecture targets, specifically Cortex-M0, Cortex-M3 and Cortex-M4. Any device with these core..." />
+<meta name="description" content="Where can I get the hardware?: The official Black Magic Probe hardware is available from multiple vendors. An up to date list is kept on the project main page. Where can I find the BMP schematics?:..." />
 
     <title>FAQ &#8212; Black Magic Debug  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
@@ -42,7 +42,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Terminology" href="terminology.html" />
-    <link rel="prev" title="Firmware Upgrade" href="../upgrade.html" />
+    <link rel="prev" title="Supported Targets" href="../supported-targets.html" />
 
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -72,41 +72,6 @@
             
 <section id="faq">
 <h1>FAQ<a class="headerlink" href="#faq" title="Link to this heading">¶</a></h1>
-<section id="what-targets-are-currently-supported">
-<h2>What targets are currently supported?<a class="headerlink" href="#what-targets-are-currently-supported" title="Link to this heading">¶</a></h2>
-<p>The Black Magic probe currently supports ARMv6-M and ARMv7-M architecture targets, specifically Cortex-M0, Cortex-M3 and Cortex-M4.
-Any device with these cores should work with possibly the exception flash memory programming.</p>
-<p>Memory map and flash programming are supported for these specific implementations:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">efm32.c</span></code>: Silicon Labs EFM32, EZR32</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">kinetis.c</span></code>: Freescale Kinetis KL25, KL27, KL02</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lmi.c</span></code>: Texas Instruments: LM3S, TM4C</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lpc11xx.c</span></code>: NXP LPC8xx, LPC11xx</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lpc15xx.c</span></code>: NXP LPC15xx</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lpc17xx.c</span></code>:  NXP LPC17xx</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lpc43xx.c</span></code>: NXP LPC43xx</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lpc546xx.c</span></code>: NXP LPC546</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">msp432.c</span></code>: MSP432P401</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nrf51.c</span></code>: Nordic nRF51, nRF52</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nxpke04.c</span></code>: Kinetis KE04</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">renesas.c</span></code>: Renesas RA, R7FAxxx</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rp.c</span></code>: Raspberry RP20240</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sam3x.c</span></code>: Atmel SAM3N, SAM3X, SAM3S, SAM3U, SAM4S, SAMx7x</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sam4l.c</span></code>: Atmel SAM4L</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">samd.c</span></code>: Atmel SAM D20, D21</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">samdx5x.c</span></code>:Atmel SAMD5x/E5x</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">samx5x.c</span></code>: Atmel SAMx5xqq</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">stm32f1.c</span></code>: ST Microelectronics STM32F0, STM32F1, STM32F3</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">stm32f4.c</span></code>: ST Microelectronics STM32F2, STM32F4, STM32F7</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">stm32g0.c</span></code>: ST Microelectronics G0</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">stm32h7.c</span></code>: ST Microelectronics H7</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">stm32l0.c</span></code>: ST Microelectronics STM32L0, STM32L1</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">stm32l4.c</span></code>: ST Microelectronics STM32L4, STM32G0, STM32G4</p></li>
-</ul>
-<p>Last Updated: Sep 6, 2022 (Partial update)</p>
-<p>As additions happen, you can update the firmware to profit from these additions.
-There is experimental support for Cortex-A (ARMv7-A architecture).  This is being used with success on Xilinx Zynq-7000 SoC (Dual-core Cortex-A9) and Raspberry Pi 2 (Quad-core Cortex-A7).</p>
-</section>
 <section id="where-can-i-get-the-hardware">
 <h2>Where can I get the hardware?<a class="headerlink" href="#where-can-i-get-the-hardware" title="Link to this heading">¶</a></h2>
 <p>The official Black Magic Probe hardware is available from multiple vendors. An up to date list is kept on the <a class="reference internal" href="../index.html#getting-hardware"><span class="std std-ref">project main page</span></a>.</p>
@@ -189,21 +154,27 @@ RAM.</p>
 </section>
 <section id="it-s-annoying-to-look-up-an-always-changing-device-name-on-linux">
 <h2>It’s annoying to look up an always-changing device name on Linux.<a class="headerlink" href="#it-s-annoying-to-look-up-an-always-changing-device-name-on-linux" title="Link to this heading">¶</a></h2>
-<p>Use the bmp devices created under /dev/serial/by-id/usb-Black_Sp…-if00 or create a file named <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/99-blackmagic.rules</span></code> with the following contents:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Black Magic Probe
-# there are two connections, one for GDB and one for uart debugging
-  SUBSYSTEM==&quot;tty&quot;, ATTRS{interface}==&quot;Black Magic GDB Server&quot;, SYMLINK+=&quot;ttyBmpGdb&quot;
-  SUBSYSTEM==&quot;tty&quot;, ATTRS{interface}==&quot;Black Magic UART Port&quot;, SYMLINK+=&quot;ttyBmpTarg&quot;
+<p>There are rules files provided in <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/driver">the driver subdirectory of the main repository</a>.
+The readme walks through selection of an appropriate file and how to install them on your system.</p>
+<p>These provide entries for the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/dev/ttyBmpGdb</span></code> - The GDB serial interface for the most recently plugged in probe</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/dev/ttyBmpTarg</span></code> - The auxillary serial interface for the most recently plugged in probe</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/dev/ttyBmpGdb[serial]</span></code> - The GDB serial interface for the the probe identified by the serial number <code class="docutils literal notranslate"><span class="pre">[serial]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/dev/ttyBmpTarg[serial]</span></code> - The auxillary serial interface for the probe identified by the serial number <code class="docutils literal notranslate"><span class="pre">[serial]</span></code></p></li>
+</ul>
+<p>To illustrate an example of this, given a BMP with serial 8BB20695, one can expect by running the project’s rule files
+to see this from a listing of <code class="docutils literal notranslate"><span class="pre">/dev/ttyBmp*</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>❯ ls /dev/ttyBmp*
+/dev/ttyBmpGdb  /dev/ttyBmpGdb8BB20695  /dev/ttyBmpTarg  /dev/ttyBmpTarg8BB20695
 </pre></div>
 </div>
-<p>Then unplug / replug the probe, or restart the computer.</p>
-<p>Now you can access the probe at the stable names <code class="docutils literal notranslate"><span class="pre">/dev/ttyBmpGdb</span></code> and <code class="docutils literal notranslate"><span class="pre">/dev/ttyBmpTarg</span></code>.</p>
 </section>
 <section id="i-want-to-connect-to-a-black-magic-probe-on-another-machine">
 <h2>I want to connect to a Black Magic Probe on another machine.<a class="headerlink" href="#i-want-to-connect-to-a-black-magic-probe-on-another-machine" title="Link to this heading">¶</a></h2>
 <p>You can use stty and netcat.  On the machine with the probe connected, make a little TCP server on port 2000 with these commands:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>stty -F /dev/ttyBmpGdb raw -onlcr -iexten -echo -echoe -echok -echoctl -echoke
-nc -vkl -p 2000 &gt; /dev/ttyBmpGdb &lt; /dev/ttyBmbGdb
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stty</span> <span class="o">-</span><span class="n">F</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyBmpGdb</span> <span class="n">raw</span> <span class="o">-</span><span class="n">onlcr</span> <span class="o">-</span><span class="n">iexten</span> <span class="o">-</span><span class="n">echo</span> <span class="o">-</span><span class="n">echoe</span> <span class="o">-</span><span class="n">echok</span> <span class="o">-</span><span class="n">echoctl</span> <span class="o">-</span><span class="n">echoke</span>
+<span class="n">nc</span> <span class="o">-</span><span class="n">vkl</span> <span class="o">-</span><span class="n">p</span> <span class="mi">2000</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyBmpGdb</span> <span class="o">&lt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyBmbGdb</span>
 </pre></div>
 </div>
 <p>In gdb on the remote machine, connect with <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">extended-remote</span> <span class="pre">hostname:2000</span></code> where <code class="docutils literal notranslate"><span class="pre">hostname</span></code> is the name or IP address of the machine running the probe.</p>
@@ -280,6 +251,7 @@ nc -vkl -p 2000 &gt; /dev/ttyBmpGdb &lt; /dev/ttyBmbGdb
 <li class="toctree-l1"><a class="reference internal" href="../hardware.html">Supported Hardware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../upgrade.html">Firmware Upgrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supported-targets.html">Supported Targets</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
 <ul class="current">
@@ -378,7 +350,7 @@ nc -vkl -p 2000 &gt; /dev/ttyBmpGdb &lt; /dev/ttyBmbGdb
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../upgrade.html" title="previous chapter">Firmware Upgrade</a></li>
+      <li>Previous: <a href="../supported-targets.html" title="previous chapter">Supported Targets</a></li>
       <li>Next: <a href="terminology.html" title="next chapter">Terminology</a></li>
   </ul></li>
 </ul>
