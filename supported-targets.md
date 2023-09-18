@@ -5,10 +5,10 @@
 | Manufacturer      | Family      | Support Level | Version Introduced | Implemented In | Notes
 |-------------------|-------------|---------------|--------------------|----------------|------
 | ST Micro          | STM32F0     | ✔ Full        | v1.6               | stm32f1.c      |
-| ST Micro          | STM32F1     | ✔ Full        |                    | stm32f1.c      |
+| ST Micro          | STM32F1     | ✔ Full        | pre-v1.6           | stm32f1.c      |
 | ST Micro          | STM32F2     | ✔ Full        | v1.6               | stm32f4.c      |
 | ST Micro          | STM32F3     | ✔ Full        | v1.6               | stm32f1.c      |
-| ST Micro          | STM32F4     | ✔ Full        |                    | stm32f4.c      |
+| ST Micro          | STM32F4     | ✔ Full        | pre-v1.6           | stm32f4.c      |
 | ST Micro          | STM32F7     | ✔ Full        | v1.6               | stm32f4.c      |
 | ST Micro          | STM32G0     | ✔ Full        | v1.8.0             | stm32g0.c      |
 | ST Micro          | STM32G4     | ✔ Full        | v1.6.2             | stm32l4.c      |
@@ -26,7 +26,7 @@
 | GigaDevice        | GD32F2      | ✔ Full        | v1.10.0            | stm32f1.c      |
 | GigaDevice        | GD32F3      | ✔ Full        | v1.8.0             | stm32f1.c      |
 | GigaDevice        | GD32F4      | ✔ Full        | v1.10.0            | stm32f4.c      |
-| GigaDevice        | GD32E230    | ✔ Full        |                    | stm32f1.c      |
+| GigaDevice        | GD32E230    | ✔ Full        | v1.8.0             | stm32f1.c      |
 | GigaDevice        | GD32E5      | ✔ Full        | v1.10.0            | stm32f1.c      |
 | ArteryTek         | AT32F40     | ✔ Full        | v1.9.0             | stm32f1.c      |
 | ArteryTek         | AT32F41     | ✔ Full        | v1.9.0             | stm32f1.c      |
@@ -36,7 +36,7 @@
 | MindMotion        | MM32F3      | ✔ Full        | v1.10.0            | stm32f1.c      |
 | MindMotion        | MM32F5      | ✔ Full        | v1.10.0            | stm32f1.c      |
 | WinChipHead       | CH32F1      | ✔ Full        | v1.8.0             | ch32f1.c       |
-| Texas Instruments | LM3S        | ✔ Full        |                    | lmi.c          |
+| Texas Instruments | LM3S        | ✔ Full        | pre-v1.6           | lmi.c          |
 | Texas Instruments | LM4C/TM4C   | ✔ Full        | v1.6               | lmi.c          |
 | Microchip         | ATSAM D5/E5 | ✔ Full        | v1.6.2             | samx5x.c       |
 | Atmel             | ATSAM D     | ✔ Full        | v1.6               | samd.c         |
