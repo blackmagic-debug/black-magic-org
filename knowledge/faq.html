@@ -154,8 +154,8 @@ RAM.</p>
 </section>
 <section id="it-s-annoying-to-look-up-an-always-changing-device-name-on-linux">
 <h2>It’s annoying to look up an always-changing device name on Linux.<a class="headerlink" href="#it-s-annoying-to-look-up-an-always-changing-device-name-on-linux" title="Link to this heading">¶</a></h2>
-<p>There are rules files provided in <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/driver">the driver subdirectory of the main repository</a>.
-The readme walks through selection of an appropriate file and how to install them on your system.</p>
+<p>There are rule files provided in <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/driver">the driver subdirectory of the main repository</a>.
+The README walks through selection of an appropriate file and how to install them on your system.</p>
 <p>These provide entries for the following:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">/dev/ttyBmpGdb</span></code> - The GDB serial interface for the most recently plugged in probe</p></li>
@@ -163,8 +163,8 @@ The readme walks through selection of an appropriate file and how to install the
 <li><p><code class="docutils literal notranslate"><span class="pre">/dev/ttyBmpGdb[serial]</span></code> - The GDB serial interface for the the probe identified by the serial number <code class="docutils literal notranslate"><span class="pre">[serial]</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">/dev/ttyBmpTarg[serial]</span></code> - The auxillary serial interface for the probe identified by the serial number <code class="docutils literal notranslate"><span class="pre">[serial]</span></code></p></li>
 </ul>
-<p>To illustrate an example of this, given a BMP with serial 8BB20695, one can expect by running the project’s rule files
-to see this from a listing of <code class="docutils literal notranslate"><span class="pre">/dev/ttyBmp*</span></code>:</p>
+<p>To illustrate an example of this, given a BMP with serial <code class="docutils literal notranslate"><span class="pre">8BB20695</span></code> one can expect, by running the project’s rule
+files, to see this from a listing of <code class="docutils literal notranslate"><span class="pre">/dev/ttyBmp*</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>❯ ls /dev/ttyBmp*
 /dev/ttyBmpGdb  /dev/ttyBmpGdb8BB20695  /dev/ttyBmpTarg  /dev/ttyBmpTarg8BB20695
 </pre></div>
@@ -172,7 +172,7 @@ to see this from a listing of <code class="docutils literal notranslate"><span c
 </section>
 <section id="i-want-to-connect-to-a-black-magic-probe-on-another-machine">
 <h2>I want to connect to a Black Magic Probe on another machine.<a class="headerlink" href="#i-want-to-connect-to-a-black-magic-probe-on-another-machine" title="Link to this heading">¶</a></h2>
-<p>You can use stty and netcat.  On the machine with the probe connected, make a little TCP server on port 2000 with these commands:</p>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">stty</span></code> and <code class="docutils literal notranslate"><span class="pre">netcat</span></code>.  On the machine with the probe connected, make a little TCP server on port 2000 with these commands:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stty</span> <span class="o">-</span><span class="n">F</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyBmpGdb</span> <span class="n">raw</span> <span class="o">-</span><span class="n">onlcr</span> <span class="o">-</span><span class="n">iexten</span> <span class="o">-</span><span class="n">echo</span> <span class="o">-</span><span class="n">echoe</span> <span class="o">-</span><span class="n">echok</span> <span class="o">-</span><span class="n">echoctl</span> <span class="o">-</span><span class="n">echoke</span>
 <span class="n">nc</span> <span class="o">-</span><span class="n">vkl</span> <span class="o">-</span><span class="n">p</span> <span class="mi">2000</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyBmpGdb</span> <span class="o">&lt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyBmbGdb</span>
 </pre></div>
