@@ -83,8 +83,8 @@ This solution is known to work on the LPC8xx/LPC11xx families of chips. If you a
 
 ## It's annoying to look up an always-changing device name on Linux.
 
-There are rules files provided in [the driver subdirectory of the main repository](https://github.com/blackmagic-debug/blackmagic/tree/main/driver).
-The readme walks through selection of an appropriate file and how to install them on your system.
+There are rule files provided in [the driver subdirectory of the main repository](https://github.com/blackmagic-debug/blackmagic/tree/main/driver).
+The README walks through selection of an appropriate file and how to install them on your system.
 
 These provide entries for the following:
 
@@ -93,8 +93,8 @@ These provide entries for the following:
 * `/dev/ttyBmpGdb[serial]` - The GDB serial interface for the the probe identified by the serial number `[serial]`
 * `/dev/ttyBmpTarg[serial]` - The auxillary serial interface for the probe identified by the serial number `[serial]`
 
-To illustrate an example of this, given a BMP with serial 8BB20695, one can expect by running the project's rule files
-to see this from a listing of `/dev/ttyBmp*`:
+To illustrate an example of this, given a BMP with serial `8BB20695` one can expect, by running the project's rule
+files, to see this from a listing of `/dev/ttyBmp*`:
 
 ```
 ❯ ls /dev/ttyBmp*
@@ -103,7 +103,7 @@ to see this from a listing of `/dev/ttyBmp*`:
 
 ## I want to connect to a Black Magic Probe on another machine.
 
-You can use stty and netcat.  On the machine with the probe connected, make a little TCP server on port 2000 with these commands:
+You can use `stty` and `netcat`.  On the machine with the probe connected, make a little TCP server on port 2000 with these commands:
 
 ```
 stty -F /dev/ttyBmpGdb raw -onlcr -iexten -echo -echoe -echok -echoctl -echoke
