@@ -61,3 +61,10 @@ SEGGER J-Link probes using this connector can interface directly with targets us
 ```{note}
 In both cases the adapter board does not allow for UART or J-Link Kickstart power (pin 19) to be used.
 ```
+
+## Xilinx 14pin Debug Connector
+
+![](../_pinouts/xilinx-14-legend.svg)
+
+This is a custom connector used on Xilinx boards, most notably ones with their SoC, MPSoC, and RFSoC
+devices for allowing access to the embedded ARM cores on the JTAG scan chain.
