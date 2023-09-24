@@ -7,8 +7,6 @@ legend = [
     ("Not Connected", "nc"),
 ]
 
-
-
 left_header = [
     [
         ("14", "pin"),
