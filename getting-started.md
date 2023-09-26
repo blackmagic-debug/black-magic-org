@@ -1,24 +1,31 @@
 # Getting Started
+
 ## Get a Black Magic Probe
+
 If you don't have one already, you'll need to [get a Black Magic Probe](index.md#getting-hardware).
 
 ## Connecting to your computer
-Connect the Black Magic Probe to your computer's USB port.  When connected via USB, the Black Magic Probe will enumerate as a CDC-ACM device which the OS should present as a tty device or serial port.
+
+Connect the Black Magic Probe to your computer's USB port. When connected via USB, the Black Magic Probe will
+enumerate as, among other bits, a pair of CDC-ACM (USB serial) devices.
+
+On Linux, the the OS should present these as `ttyACM` devices. On macOS they should be presented as pairs of `tty.`
+and `cu.` devices, and on Windows they should be presented as a pair of COM ports.
 
 On Linux you can check the kernel log to find the device that was allocated:
-```
+
+```sh
 user@host ~ $ dmesg
-usb 1-1.1: new full-speed USB device number 58 using ehci-pci
-usb 1-1.1: New USB device found, idVendor=1d50, idProduct=6018
-usb 1-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
-usb 1-1.1: Product: Black Magic Probe
-usb 1-1.1: Manufacturer: Black Sphere Technologies
-usb 1-1.1: SerialNumber: DDE6C7C4
-cdc_acm 1-1.1:1.0: This device cannot do calls on its own. It is not a modem.
-cdc_acm 1-1.1:1.0: ttyACM0: USB ACM device
-cdc_acm 1-1.1:1.2: This device cannot do calls on its own. It is not a modem.
-cdc_acm 1-1.1:1.2: ttyACM1: USB ACM device
+[460705.378940] usb 7-5: new full-speed USB device number 24 using ohci-pci
+[460705.594118] usb 7-5: New USB device found, idVendor=1d50, idProduct=6018, bcdDevice= 1.09
+[460705.594131] usb 7-5: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[460705.594137] usb 7-5: Product: Black Magic Probe v1.10.0-rc0
+[460705.594142] usb 7-5: Manufacturer: Black Magic Debug
+[460705.594146] usb 7-5: SerialNumber: 8BB20695
+[460705.600355] cdc_acm 7-5:1.0: ttyACM0: USB ACM device
+[460705.604234] cdc_acm 7-5:1.2: ttyACM1: USB ACM device
 ```
+
 The first interface provides the GDB server, and the second provides a USB to UART adapter.
 
 On Windows, when you first connect, the Black Magic Probe should be detected as two COM ports. The first COM port is the GDB extended remote server and the second one is USB to Serial adapter on the back of the board. To find the allocated ports, check the Device Manager:
@@ -32,7 +39,9 @@ __Note:__ If you are on Windows 10 and want to upgrade the firmware to the probe
 ![Device Manager Windows 10](_assets/device_manager_w10.png)
 
 ## Connecting to the software
+
 To use the Black Magic Probe, you will need an ARM cross toolchain for developing and debugging embedded ARM Cortex applications on your computer.  The [gcc-arm-embedded](https://developer.arm.com/downloads/-/gnu-rm) toolchain is recommended.  The toolchain will include the GNU Debugger, GDB, for debugging ARM applications.
+
 ```sh
 user@host ~ $ arm-none-eabi-gdb
 GNU gdb (GNU Tools for ARM Embedded Processors) 7.6.0.20140228-cvs
@@ -48,6 +57,7 @@ For bug reporting instructions, please see:
 ```
 
 The GDB remote debugging protocol is implemented over the Black Magic Probe's CDC-ACM interface.  To connect your ARM GDB to the target device use the following commands:
+
 ```gdb
 (gdb) target extended-remote /dev/ttyACM0
 Remote debugging using /dev/ttyACM0
@@ -64,6 +74,7 @@ No. Att Driver
 (gdb) attach 1
 Attaching to Remote target
 0x080071b2 in ?? ()
+
 ```
 The command `monitor swdp_scan` may be used to use the Serial-Wire Debug Protocol instead of JTAG to connect to the target.
 
@@ -79,6 +90,7 @@ By default, VCC is not enabled on either UART or JTAG/SWD, to prevent conflicts 
 ```
 
 On Windows, use the the COM port instead of `/dev/ttyACM0`.  For ports >= COM10, add the prefix `\\.\`, for example:
+
 ```
 target extended-remote COM3
 target extended-remote \\.\COM10
@@ -98,5 +110,6 @@ Esden created a video walk-through of using Black Magic Probe with the 1Bitsy mi
 If you have additional tutorial resources for the use of Black Magic Probe let us know so we can include them here.
 
 ## Getting started with open-source Cortex-M development
+
 - See [this presentation](https://github.com/gsmcmullin/embedded-demo/raw/master/slides.pdf), porting a basic Unix program to an embedded Cortex-M3 using [libopencm3](http://libopencm3.org/).
 - The [gcc-arm-embedded readme](https://launchpadlibrarian.net/268329726/readme.txt) is also worth a read.
