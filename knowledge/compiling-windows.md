@@ -3,6 +3,7 @@
 This guide covers the following:
 
 * [Building the firmware on a Windows machine](#building-the-firmware-on-a-windows-machine)
+* [Building BMDA on a Windows machine](#building-bmda-on-a-windows-machine)
 
 Note: The BMDA guide defines the supported (but not only) way to build BMDA for Windows.
 
@@ -19,7 +20,7 @@ The easiest way to get  to a working setup is to use:
 * [MSYS2](https://www.msys2.org/) and follow the installation guide
 * [ARM GNU Toolchain release 12.2.Rel1](https://developer.arm.com/-/media/Files/downloads/gnu/12.2.rel1/binrel/arm-gnu-toolchain-12.2.rel1-mingw-w64-i686-arm-none-eabi.zip?rev=709f3f15b2ee4763b186c10153ee6ca9&hash=8C0761A17A1E4861B96DDB604C177F5B)
 
-### Setting up the build environment
+### Setting up the firmware build environment
 
 Having installed MSYS2 and with the toolchain Zip file downloaded to the Downloads directory in your user profile area,
 you will need to open the MSYS2 UCRT64 prompt from the start menu.
@@ -97,3 +98,41 @@ The resulting output of this step are 4 files:
 * `src/blackmagic_dfu.bin` - The project bootloader's .text and .data sections in a bare file
 
 When the upgrade step completes, your probe will be automatically rebooted into the new firmware and be ready to go.
+
+If you wish to build the project for a different platform or do a BMDA build, you must run `mingw32-make clean`
+between builds to remove the incompatible build outputs.
+
+## Building BMDA on a Windows machine
+
+To build BMDA on Windows you will need a MSYS2 environment - please go to the [MSYS2](https://www.msys2.org/) project
+and follow the installation guide.
+
+### Setting up the build environment
+
+Having installed MSYS2, you will need to open the MSYS2 UCRT64 prompt from the start menu.
+That is the prompt item with this icon: ![UCRT64 icon](../_assets/ucrt64.png)
+
+Inside the MSYS2 environment run the following to update the environment and follow all prompts provided:
+
+```bash
+pacman -Syu
+pacman -S pacboy git unzip
+pacboy -S python:p make:p toolchain:p libusb:p hidapi:p
+```
+
+At this point you will have everything needed to build BMDA in the UCRT64 environment.
+
+### Building BMDA
+
+With the environment set up, you will need to acquire the source same as in the firmware build steps above.
+Once you have the source, building BMDA is as easy as running:
+
+```bash
+mingw32-make PROBE_HOST=hosted HOSTED_BMP_ONLY=0
+```
+
+If you wish to build BMDA for only talking to BMP, the `HOSTED_BMP_ONLY=0` may be dropped.
+
+After the `make` step, you will have a file - `src/blackmagic.exe`, you can execute this by running `src/blackmagic`.
+This is the BMDA binary. When you run `mingw32-make clean` in the sources, this file will be kept behind. This is done
+to allow you to build BMDA, then the firmware, and then have both to use simultaneously.
