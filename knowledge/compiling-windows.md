@@ -1,7 +1,10 @@
 # Compiling on Windows
 
-This guide seeks to set out how to compile the firmware on Windows and the supported
-(but not only) way to build BMDA for Windows.
+This guide covers the following:
+
+* [Building the firmware on a Windows machine](#building-the-firmware-on-a-windows-machine)
+
+Note: The BMDA guide defines the supported (but not only) way to build BMDA for Windows.
 
 ## Building the firmware on a Windows machine
 
@@ -37,3 +40,60 @@ It is important that all further steps be performed in this same shell, or if yo
 run the final line of this setup on each new shell you use.
 
 ### Acquiring the source
+
+You have a choice at this point - of either grabbing down a release from the project's GitHub repositories, or
+cloning the main repository.
+
+#### From release Zip file
+
+If you want to use a release, visit [the project release index](https://github.com/blackmagic-debug/blackmagic/releases)
+and download the "Source code (zip)" entry's file from the release's assets, placing the file in your downloads as
+`blackmagic.zip`.
+
+You can then extract this file in a usable form by running:
+
+```bash
+unzip $USERPROFILE/Downloads/blackmagic.zip
+```
+
+This will make a directory of the source tree named per the release - for example, for v1.10.0-rc0, it makes
+the directory `blackmagic-1.10.0-rc0`. You will then need to change directory into this, eg:
+
+```bash
+cd blackmagic-1.10.0-rc0
+```
+
+#### From repository clone
+
+If you wish to use a source clone, run the following to get set:
+
+```bash
+git clone https://github.com/blackmagic-debug/blackmagic
+cd blackmagic
+```
+
+### Building for a probe
+
+Now you are in a copy of the source tree for BMD, you can build the source for your probe of choice. Use the
+platform README.md for the probe as a guide for any differences to the below steps.
+
+NB: If you are building the firmware for a Blue Pill and your device does not fit one the descriptions of any in the
+`swlink` platform, you must use the `stlink` platform and defined `BLUEPILL=1` in the `make` step.
+
+To build the firmware and update your probe, assuming you've already acquired `bmputil` per the
+[upgrading instrucitons](../upgrade.md):
+
+```bash
+mingw32-make PROBE_HOST=native
+bmputil flash src/blackmagic.elf
+```
+
+The `make` step will automatically clone and build libopencm3, which is one of the firmware's dependencies.
+The resulting output of this step are 4 files:
+
+* `src/blackmagic.elf` - The firmware main binary w/ debug and address space information
+* `src/blackmagic.bin` - The firmware's .text and .data sections objcopy'd into a bare file
+* `src/blackmagic_dfu.elf` - The project's bootloader w/ debug and address space information
+* `src/blackmagic_dfu.bin` - The project bootloader's .text and .data sections in a bare file
+
+When the upgrade step completes, your probe will be automatically rebooted into the new firmware and be ready to go.
