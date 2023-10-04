@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="../_static/favicon/icon.svg">
+    <link rel="icon" sizes="16x16" type="image/png" href="../_static/favicon/favicon-16x16.png">
+    <link rel="icon" sizes="32x32" type="image/png" href="../_static/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="57x57" type="image/png" href="../_static/favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" type="image/png" href="../_static/favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" type="image/png" href="../_static/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" type="image/png" href="../_static/favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="96x96" type="image/png" href="../_static/favicon/apple-touch-icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="114x114" type="image/png" href="../_static/favicon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" type="image/png" href="../_static/favicon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" type="image/png" href="../_static/favicon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="../_static/favicon/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" type="image/png" href="../_static/favicon/apple-touch-icon-180x180.png">
+    <link rel="android-icon" sizes="192x192" type="image/png" href="../_static/favicon/android-icon-192x192.png"><meta property="og:title" content="MindMotion MM32 Targets" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://black-magic.org/hacking/target-mm32.html" />
+<meta property="og:site_name" content="Black Magic Debug" />
+<meta property="og:description" content="This document Introduces MM32 processors, Lists the MindMotion MM32 processors currently supported in Black Magic Probe and, Explains how to add new MindMotion MM32 processors to Black Magic Probe...." />
+<meta property="og:image" content="https://black-magic.org/_static/blackmagic-logo.png" />
+<meta property="og:image:alt" content="Black Magic Debug" />
+<meta name="description" content="This document Introduces MM32 processors, Lists the MindMotion MM32 processors currently supported in Black Magic Probe and, Explains how to add new MindMotion MM32 processors to Black Magic Probe...." />
+
+    <title>MindMotion MM32 Targets &#8212; Black Magic Debug  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/platformpicker.css" />
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/asciinema-player_2.6.1.js"></script>
+    <script src="../_static/platformpicker.js"></script>
+    <link rel="canonical" href="https://black-magic.org/hacking/target-mm32.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../blog/atom.xml"
+  title="Blog"
+/>
+
+
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+<section id="mindmotion-mm32-targets">
+<h1>MindMotion MM32 Targets<a class="headerlink" href="#mindmotion-mm32-targets" title="Link to this heading">¶</a></h1>
+<p>This document</p>
+<ul class="simple">
+<li><p>Introduces MM32 processors</p></li>
+<li><p>Lists the MindMotion MM32 processors currently supported in Black Magic Probe and</p></li>
+<li><p>Explains how to add new MindMotion MM32 processors to Black Magic Probe.</p></li>
+</ul>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p><a class="reference external" href="https://www.mindmotion.com.cn/en/products/">MindMotion</a> is a manufacturer of Arm processors located in Shanghai, China.</p>
+<p>MindMotion MM32 processors have similarities with STM32, but are not binary compatible with STM32. The clock generation tree is different. This means STM32 start-up code cannot be used.</p>
+<p>MM32 peripherals are similar to STM32 peripherals.</p>
+<ul class="simple">
+<li><p>Flash. On STM32, 16-bit Flash writes use bits 0:15 for even halfwords; bits 16:31 for odd halfwords. On MM32 Cortex-M0, 16-bit Flash writes always use bits 0:15.</p></li>
+<li><p>SPI frame size is configurable from 1 to 32 bits, inclusive.</p></li>
+</ul>
+<p>MM32 Arm architectures include Cortex-M0, Cortex-M0+, Cortex-M3, and Star-MC1.</p>
+<p>STAR-MC1 is a “Made in China” Arm architecture, similar to Cortex-M3, and is used in newer MM32 processors. Comparing the memory map of the MM32F3270 Cortex-M3 and the MM32F5270 Star-MC1:</p>
+<ul class="simple">
+<li><p>Cortex-M3 has main memory at 0x2000000.</p></li>
+<li><p>Star-MC1 has 32 kibibyte tightly coupled ram at 0x2000000 for the stack. Main memory is at 0x3000000.</p></li>
+</ul>
+<p>At the time of writing, Black Magic Probe supports the following MindMotion MM32 processors:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>MCU</p></th>
+<th class="head"><p>architecture</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MM32F3273</p></td>
+<td><p>Cortex-M3</p></td>
+</tr>
+<tr class="row-odd"><td><p>MM32F5277</p></td>
+<td><p>STAR-MC1</p></td>
+</tr>
+<tr class="row-even"><td><p>MM32L07x</p></td>
+<td><p>Cortex-M0</p></td>
+</tr>
+<tr class="row-odd"><td><p>MM32SPIN05</p></td>
+<td><p>Cortex-M0</p></td>
+</tr>
+<tr class="row-even"><td><p>MM32SPIN27</p></td>
+<td><p>Cortex-M0</p></td>
+</tr>
+</tbody>
+</table>
+<p>To add a new MM32 processor to Black Magic Probe four values are required: product ID, name, Flash size, and RAM size.</p>
+</section>
+<section id="howto-add-new-mm32-cortex-m0-or-cortex-m0">
+<h2>HOWTO Add new MM32 Cortex-M0 or Cortex-M0+<a class="headerlink" href="#howto-add-new-mm32-cortex-m0-or-cortex-m0" title="Link to this heading">¶</a></h2>
+<p>To add support for a new MM32 Cortex-M0 or Cortex-M0+ processor, first check the product ID at address 0x40013400.
+E.g. for MM32SPIN05:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(gdb) mon swd
+Target voltage:
+Available Targets:
+No. Att Driver
+*** 1   Unknown ARM Cortex-M Designer 0x43b Part ID 0x471 M0
+(gdb) at 1
+Attaching to Remote target
+warning: No executable has been specified and target does not support
+determining executable automatically.  Try using the &quot;file&quot; command.
+warning: while parsing target memory map (at line 1): Required element &lt;memory&gt; is missing
+0xfffffffe in ?? ()
+(gdb) set mem inaccessible-by-default off
+(gdb) x 0x40013400
+0x40013400:	0xcc4460b1
+</pre></div>
+</div>
+<p>The product id can also be found by searching the - English or Chinese - user manual for “DEV_ID”. DEV_ID is the 32-bit Cortex JEDEC-106 ID code.</p>
+<p>With the product ID known, add a new case to the switch statement in file src/target/stm32f1.c, function mm32l0xx_probe() :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="mh">0xcc4460b1</span><span class="n">U</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;MM32SPIN05&quot;</span><span class="p">;</span>
+        <span class="n">flash_kbyte</span> <span class="o">=</span> <span class="mi">32</span><span class="p">;</span>
+        <span class="n">ram_kbyte</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>where flash_kbyte is the amount of Flash at 0x08000000, and ram_kbyte is the amount of RAM at 0x20000000.</p>
+</section>
+<section id="howto-add-new-mm32-cortex-m3-or-star-mc1">
+<h2>HOWTO Add new MM32 Cortex-M3 or STAR-MC1<a class="headerlink" href="#howto-add-new-mm32-cortex-m3-or-star-mc1" title="Link to this heading">¶</a></h2>
+<p>To add support for a new MM32 Cortex-M3 or STAR-MC1 processor, first check the product ID at address 0x40007080.
+E.g. for MM32F3273:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">mon</span> <span class="n">swd</span>
+<span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">at</span> <span class="mi">1</span>
+<span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="nb">set</span> <span class="n">mem</span> <span class="n">inaccessible</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">default</span> <span class="n">off</span>
+<span class="p">(</span><span class="n">gdb</span><span class="p">)</span> <span class="n">x</span> <span class="mh">0x40007080</span>
+<span class="mh">0x40007080</span><span class="p">:</span>	<span class="mh">0xcc9aa0e7</span>
+</pre></div>
+</div>
+<p>With the product ID known, add a new case to the switch statement in file src/target/stm32f1.c, function mm32f3xx_probe() :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">case</span> <span class="mh">0xcc9aa0e7</span><span class="n">U</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;MM32F3270&quot;</span><span class="p">;</span>
+        <span class="n">flash_kbyte</span> <span class="o">=</span> <span class="mi">512</span><span class="p">;</span>
+        <span class="n">ram1_kbyte</span> <span class="o">=</span> <span class="mi">128</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>where flash_kbyte is the amount of Flash at 0x08000000, ram1_kbyte is the amount of RAM at 0x20000000. For STAR-MC1 processors with RAM at 0x30000000, set ram2_kbyte to the amount of RAM at 0x30000000.</p>
+<p>If different models exist that have the same product ID but different amounts of Flash or RAM, choose the model with the largest amount of Flash or RAM.</p>
+<p>Lastly, open a GitHub “Pull Request” to add the processor to the main <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic">Black Magic Debug repository</a>.</p>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.mindmotion.com.cn/en/development_tools/">HAL library and sample code</a> contains start-up code for Keil and IAR</p></li>
+<li><p><a class="reference external" href="https://github.com/iclite/mm32_startup/">mm32_startup</a> start-up code for mm32 with gcc</p></li>
+<li><p><a class="reference external" href="https://github.com/koendv/MM32SPIN27-Arduino/tree/main/mm32/mm32-libgcc">libgcc.a patch</a> to use hardware division with gcc on MM32 Cortex-M0.</p></li>
+<li><p>Arduino for <a class="reference external" href="https://github.com/koendv/MM32SPIN27-Arduino">MM32SPIN27</a></p></li>
+<li><p>Arduino for <a class="reference external" href="http://47.106.166.129/fenyi/4_channel_SPDT_relay_wirmware/">MM32F031</a></p></li>
+<li><p>SeekFree <a class="reference external" href="https://gitee.com/seekfree/projects">libraries</a>  for MM32F527X, MM32F327X, MM32SPIN27, MM32SPIN360 and others</p></li>
+</ul>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+  
+  
+</div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/blackmagic-logo.svg" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">The Plug&Play MCU Debugger</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=blackmagic-debug&repo=blackmagic&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware.html">Supported Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrade.html">Firmware Upgrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supported-targets.html">Supported Targets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/pinouts.html">Pinout Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../knowledge/links.html">Links</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-commands.html">GDB Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-automation.html">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/traceswo.html">SWD - TRACESWO support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/swo.html">Serial Wire Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/rtt.html">Using RTT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/platformio.html">PlatformIO</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/stm32.html">STM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hacking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contrib.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking.html">Firmware Hacking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="target-drivers.html">Adding Target Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="target-cortex-m.html">Cortex-M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="target-cortex-a.html">Cortex A Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="target-clock-generation.html">Target Clock Generation</a></li>
+</ul>
+
+
+<div class="ablog-sidebar-item ablog__recentposts">
+<h3>
+  <a href="../blog.html">Recent Posts</a>
+</h3>
+<ul>
+  
+  
+  <li>
+    <a href="../blog/2023-09-17-release-candidate-v1_10_0-rc0.html">
+      17 September - Release Candidate V1.10.0-rc0
+    </a>
+  </li>
+  
+  <li>
+    <a href="../blog/2023-09-16-release-v1_9_2.html">
+      16 September - Stable Release V1.9.2
+    </a>
+  </li>
+  
+  <li>
+    <a href="../blog/2023-09-16-release-v1_8_3.html">
+      16 September - Stable Release V1.8.3
+    </a>
+  </li>
+  
+  <li>
+    <a href="../blog/2023-04-28-release-v1_9_1.html">
+      28 April - Stable Release V1.9.1
+    </a>
+  </li>
+  
+  <li>
+    <a href="../blog/2023-01-27-release-v1_9_0.html">
+      27 January - Stable Release V1.9.0
+    </a>
+  </li>
+  
+</ul>
+</div>
+
+<div class="ablog-sidebar-item ablog__archive">
+<h3>
+  <a href="../blog/archive.html">Archives</a>
+</h3>
+<ul>
+  
+  
+  <li>
+    <a href="../blog/2023.html">2023 (5)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../blog/2022.html">2022 (7)</a>
+  </li>
+  
+  
+</ul>
+</div>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022-2023, Piotr Esden-Tempski <piotr@esden.net>; 2022-2023, Rachel Mant <git@dragonmux.network>.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
