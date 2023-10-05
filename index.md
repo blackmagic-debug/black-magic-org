@@ -59,6 +59,7 @@ hacking/hacking
 hacking/target-drivers
 hacking/target-cortex-m
 hacking/target-cortex-a
+hacking/target-mm32
 hacking/target-clock-generation
 ```
 
