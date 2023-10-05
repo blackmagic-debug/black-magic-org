@@ -103,21 +103,21 @@ cdc_acm 1-1.1:1.2: ttyACM1: USB ACM device
 <section id="connecting-to-the-software">
 <h2>Connecting to the software<a class="headerlink" href="#connecting-to-the-software" title="Link to this heading">¶</a></h2>
 <p>To use the Black Magic Probe, you will need an ARM cross toolchain for developing and debugging embedded ARM Cortex applications on your computer.  The <a class="reference external" href="https://developer.arm.com/downloads/-/gnu-rm">gcc-arm-embedded</a> toolchain is recommended.  The toolchain will include the GNU Debugger, GDB, for debugging ARM applications.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>user@host ~ $ arm-none-eabi-gdb
-GNU gdb (GNU Tools for ARM Embedded Processors) 7.6.0.20140228-cvs
-Copyright (C) 2013 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.  Type &quot;show copying&quot;
-and &quot;show warranty&quot; for details.
-This GDB was configured as &quot;--host=i686-linux-gnu --target=arm-none-eabi&quot;.
-For bug reporting instructions, please see:
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>user@host<span class="w"> </span>~<span class="w"> </span>$<span class="w"> </span>arm-none-eabi-gdb
+GNU<span class="w"> </span>gdb<span class="w"> </span><span class="o">(</span>GNU<span class="w"> </span>Tools<span class="w"> </span><span class="k">for</span><span class="w"> </span>ARM<span class="w"> </span>Embedded<span class="w"> </span>Processors<span class="o">)</span><span class="w"> </span><span class="m">7</span>.6.0.20140228-cvs
+Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2013</span><span class="w"> </span>Free<span class="w"> </span>Software<span class="w"> </span>Foundation,<span class="w"> </span>Inc.
+License<span class="w"> </span>GPLv3+:<span class="w"> </span>GNU<span class="w"> </span>GPL<span class="w"> </span>version<span class="w"> </span><span class="m">3</span><span class="w"> </span>or<span class="w"> </span>later<span class="w"> </span>&lt;http://gnu.org/licenses/gpl.html&gt;
+This<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software:<span class="w"> </span>you<span class="w"> </span>are<span class="w"> </span>free<span class="w"> </span>to<span class="w"> </span>change<span class="w"> </span>and<span class="w"> </span>redistribute<span class="w"> </span>it.
+There<span class="w"> </span>is<span class="w"> </span>NO<span class="w"> </span>WARRANTY,<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>extent<span class="w"> </span>permitted<span class="w"> </span>by<span class="w"> </span>law.<span class="w">  </span>Type<span class="w"> </span><span class="s2">&quot;show copying&quot;</span>
+and<span class="w"> </span><span class="s2">&quot;show warranty&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>details.
+This<span class="w"> </span>GDB<span class="w"> </span>was<span class="w"> </span>configured<span class="w"> </span>as<span class="w"> </span><span class="s2">&quot;--host=i686-linux-gnu --target=arm-none-eabi&quot;</span>.
+For<span class="w"> </span>bug<span class="w"> </span>reporting<span class="w"> </span>instructions,<span class="w"> </span>please<span class="w"> </span>see:
 &lt;http://www.gnu.org/software/gdb/bugs/&gt;.
-(gdb)
+<span class="o">(</span>gdb<span class="o">)</span>
 </pre></div>
 </div>
 <p>The GDB remote debugging protocol is implemented over the Black Magic Probe’s CDC-ACM interface.  To connect your ARM GDB to the target device use the following commands:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(gdb) target extended-remote /dev/ttyACM0
+<div class="highlight-gdb notranslate"><div class="highlight"><pre><span></span>(gdb) target extended-remote /dev/ttyACM0
 Remote debugging using /dev/ttyACM0
 (gdb) monitor jtag_scan
 Target voltage: 3.4V
@@ -242,6 +242,7 @@ the execution of the embedded application. <a class="reference internal" href="u
 <li class="toctree-l1"><a class="reference internal" href="hacking/target-drivers.html">Adding Target Drivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hacking/target-cortex-m.html">Cortex-M Targets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hacking/target-cortex-a.html">Cortex A Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacking/target-mm32.html">MindMotion MM32 Targets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hacking/target-clock-generation.html">Target Clock Generation</a></li>
 </ul>
 
