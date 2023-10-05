@@ -33,7 +33,7 @@ __Note:__ If you are on Windows 10 and want to upgrade the firmware to the probe
 
 ## Connecting to the software
 To use the Black Magic Probe, you will need an ARM cross toolchain for developing and debugging embedded ARM Cortex applications on your computer.  The [gcc-arm-embedded](https://developer.arm.com/downloads/-/gnu-rm) toolchain is recommended.  The toolchain will include the GNU Debugger, GDB, for debugging ARM applications.
-```
+```sh
 user@host ~ $ arm-none-eabi-gdb
 GNU gdb (GNU Tools for ARM Embedded Processors) 7.6.0.20140228-cvs
 Copyright (C) 2013 Free Software Foundation, Inc.
@@ -48,7 +48,7 @@ For bug reporting instructions, please see:
 ```
 
 The GDB remote debugging protocol is implemented over the Black Magic Probe's CDC-ACM interface.  To connect your ARM GDB to the target device use the following commands:
-```
+```gdb
 (gdb) target extended-remote /dev/ttyACM0
 Remote debugging using /dev/ttyACM0
 (gdb) monitor jtag_scan
