@@ -59,8 +59,8 @@ You can then extract this file in a usable form by running:
 unzip $USERPROFILE/Downloads/blackmagic.zip
 ```
 
-This will make a directory of the source tree named per the release - for example, for v1.10.0-rc0, it makes
-the directory `blackmagic-1.10.0-rc0`. You will then need to change directory into this, eg:
+This will make a directory of the source tree named following the release's version string - for example,
+for v1.10.0-rc0 the directory is named `blackmagic-1.10.0-rc0`. You will then need to change directory into this, eg:
 
 ```bash
 cd blackmagic-1.10.0-rc0
