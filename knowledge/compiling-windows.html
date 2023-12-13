@@ -84,9 +84,9 @@
 <ul class="simple">
 <li><p>The <a class="reference external" href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">ARM GNU Toolchain</a> compiler suite for bare metal</p></li>
 <li><p>A POSIX-compliant shell such as Bash</p></li>
-<li><p>Git for Windows if building from the repository instead of a release</p></li>
+<li><p>Git for Windows, if building from the repository instead of a release</p></li>
 </ul>
-<p>The easiest way to get  to a working setup is to use:</p>
+<p>The easiest way to get to a working setup is to use:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.msys2.org/">MSYS2</a> and follow the installation guide</p></li>
 <li><p><a class="reference external" href="https://developer.arm.com/-/media/Files/downloads/gnu/12.2.rel1/binrel/arm-gnu-toolchain-12.2.rel1-mingw-w64-i686-arm-none-eabi.zip?rev=709f3f15b2ee4763b186c10153ee6ca9&amp;amp;hash=8C0761A17A1E4861B96DDB604C177F5B">ARM GNU Toolchain release 12.2.Rel1</a></p></li>
@@ -110,19 +110,22 @@ run the final line of this setup on each new shell you use.</p>
 </section>
 <section id="acquiring-the-source">
 <h3>Acquiring the source<a class="headerlink" href="#acquiring-the-source" title="Link to this heading">¶</a></h3>
-<p>You have a choice at this point - of either grabbing down a release from the project’s GitHub repositories, or
-cloning the main repository.</p>
+<p>You have a choice at this point:</p>
+<ul class="simple">
+<li><p>of either grabbing down a release from the project’s GitHub repositories, or</p></li>
+<li><p>cloning the main repository.</p></li>
+</ul>
 <section id="from-release-zip-file">
 <h4>From release Zip file<a class="headerlink" href="#from-release-zip-file" title="Link to this heading">¶</a></h4>
 <p>If you want to use a release, visit <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases">the project release index</a>
-and download the “Source code (zip)” entry’s file from the release’s assets, placing the file in your downloads as
+and download the “Source code (zip)” entry’s file from the release’s assets, saving the file in your downloads as
 <code class="docutils literal notranslate"><span class="pre">blackmagic.zip</span></code>.</p>
 <p>You can then extract this file in a usable form by running:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>unzip<span class="w"> </span><span class="nv">$USERPROFILE</span>/Downloads/blackmagic.zip
 </pre></div>
 </div>
-<p>This will make a directory of the source tree named per the release - for example, for v1.10.0-rc0, it makes
-the directory <code class="docutils literal notranslate"><span class="pre">blackmagic-1.10.0-rc0</span></code>. You will then need to change directory into this, eg:</p>
+<p>This will make a directory of the source tree named following the release’s version string - for example,
+for v1.10.0-rc0 the directory is named <code class="docutils literal notranslate"><span class="pre">blackmagic-1.10.0-rc0</span></code>. You will then need to change directory into this, eg:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>blackmagic-1.10.0-rc0
 </pre></div>
 </div>
