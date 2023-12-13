@@ -56,6 +56,9 @@ autosectionlabel_prefix_document = True
 todo_include_todos = True
 
 myst_heading_anchors = 3
+myst_enable_extensions = (
+	"attrs_inline",
+)
 
 napoleon_use_ivar = True
 
