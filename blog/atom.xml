@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://black-magic.org</id>
   <title>Blog</title>
-  <updated>2023-10-05T20:30:06.163113+00:00</updated>
+  <updated>2023-12-13T21:06:18.875940+00:00</updated>
   <link href="https://black-magic.org"/>
   <link href="https://black-magic.org/blog/atom.xml" rel="self"/>
-  <generator uri="https://ablog.readthedocs.io/" version="0.11.5">ABlog</generator>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.6">ABlog</generator>
   <entry>
     <id>https://black-magic.org/blog/2023-09-17-release-candidate-v1_10_0-rc0.html</id>
     <title>Release Candidate V1.10.0-rc0</title>

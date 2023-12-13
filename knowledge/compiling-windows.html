@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="../_static/favicon/icon.svg">
+    <link rel="icon" sizes="16x16" type="image/png" href="../_static/favicon/favicon-16x16.png">
+    <link rel="icon" sizes="32x32" type="image/png" href="../_static/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="57x57" type="image/png" href="../_static/favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" type="image/png" href="../_static/favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" type="image/png" href="../_static/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" type="image/png" href="../_static/favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="96x96" type="image/png" href="../_static/favicon/apple-touch-icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="114x114" type="image/png" href="../_static/favicon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" type="image/png" href="../_static/favicon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" type="image/png" href="../_static/favicon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="../_static/favicon/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" type="image/png" href="../_static/favicon/apple-touch-icon-180x180.png">
+    <link rel="android-icon" sizes="192x192" type="image/png" href="../_static/favicon/android-icon-192x192.png"><meta property="og:title" content="Compiling on Windows" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://black-magic.org/knowledge/compiling-windows.html" />
+<meta property="og:site_name" content="Black Magic Debug" />
+<meta property="og:description" content="This guide covers the following: Building the firmware on a Windows machine, Building BMDA on a Windows machine. Note: The BMDA guide defines the supported (but not only) way to build BMDA for Wind..." />
+<meta property="og:image" content="https://black-magic.org/_static/blackmagic-logo.png" />
+<meta property="og:image:alt" content="Black Magic Debug" />
+<meta name="description" content="This guide covers the following: Building the firmware on a Windows machine, Building BMDA on a Windows machine. Note: The BMDA guide defines the supported (but not only) way to build BMDA for Wind..." />
+
+    <title>Compiling on Windows &#8212; Black Magic Debug  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player_2.6.1.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/platformpicker.css" />
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/asciinema-player_2.6.1.js"></script>
+    <script src="../_static/platformpicker.js"></script>
+    <link rel="canonical" href="https://black-magic.org/knowledge/compiling-windows.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Links" href="links.html" />
+    <link rel="prev" title="Pinout Glossary" href="pinouts.html" />
+
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../blog/atom.xml"
+  title="Blog"
+/>
+
+
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+<section id="compiling-on-windows">
+<h1>Compiling on Windows<a class="headerlink" href="#compiling-on-windows" title="Link to this heading">¶</a></h1>
+<p>This guide covers the following:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#building-the-firmware-on-a-windows-machine">Building the firmware on a Windows machine</a></p></li>
+<li><p><a class="reference internal" href="#building-bmda-on-a-windows-machine">Building BMDA on a Windows machine</a></p></li>
+</ul>
+<p>Note: The BMDA guide defines the supported (but not only) way to build BMDA for Windows.</p>
+<section id="building-the-firmware-on-a-windows-machine">
+<h2>Building the firmware on a Windows machine<a class="headerlink" href="#building-the-firmware-on-a-windows-machine" title="Link to this heading">¶</a></h2>
+<p>To build the firmware on Windows you will need the following minimum requirements:</p>
+<ul class="simple">
+<li><p>The <a class="reference external" href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">ARM GNU Toolchain</a> compiler suite for bare metal</p></li>
+<li><p>A POSIX-compliant shell such as Bash</p></li>
+<li><p>Git for Windows if building from the repository instead of a release</p></li>
+</ul>
+<p>The easiest way to get  to a working setup is to use:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.msys2.org/">MSYS2</a> and follow the installation guide</p></li>
+<li><p><a class="reference external" href="https://developer.arm.com/-/media/Files/downloads/gnu/12.2.rel1/binrel/arm-gnu-toolchain-12.2.rel1-mingw-w64-i686-arm-none-eabi.zip?rev=709f3f15b2ee4763b186c10153ee6ca9&amp;amp;hash=8C0761A17A1E4861B96DDB604C177F5B">ARM GNU Toolchain release 12.2.Rel1</a></p></li>
+</ul>
+<section id="setting-up-the-firmware-build-environment">
+<h3>Setting up the firmware build environment<a class="headerlink" href="#setting-up-the-firmware-build-environment" title="Link to this heading">¶</a></h3>
+<p>Having installed MSYS2 and with the toolchain Zip file downloaded to the Downloads directory in your user profile area,
+you will need to open the MSYS2 UCRT64 prompt from the start menu.
+That is the prompt item with this icon: <a class="reference internal" href="../_images/ucrt64.png"><img alt="UCRT64 icon" src="../_images/ucrt64.png" style="width: 32px; height: 32px;" /></a></p>
+<p>Inside the MSYS2 environment run the following to update the environment and follow all prompts provided:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pacman<span class="w"> </span>-Syu
+pacman<span class="w"> </span>-S<span class="w"> </span>pacboy<span class="w"> </span>git<span class="w"> </span>unzip
+pacboy<span class="w"> </span>-S<span class="w"> </span>python:p<span class="w"> </span>make:p
+unzip<span class="w"> </span><span class="nv">$USERPROFILE</span>/Downloads/arm-gnu-toolchain-12.2.rel1-mingw-w64-i686-arm-none-eabi.zip<span class="w"> </span>-d<span class="w"> </span>.
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/arm-gnu-toolchain-12.2.rel1-mingw-w64-i686-arm-none-eabi/bin:<span class="nv">$PATH</span>
+</pre></div>
+</div>
+<p>At this point you will have the tools required to build the firwmare and they will all be available from the shell.
+It is important that all further steps be performed in this same shell, or if you do open a new one, that you
+run the final line of this setup on each new shell you use.</p>
+</section>
+<section id="acquiring-the-source">
+<h3>Acquiring the source<a class="headerlink" href="#acquiring-the-source" title="Link to this heading">¶</a></h3>
+<p>You have a choice at this point - of either grabbing down a release from the project’s GitHub repositories, or
+cloning the main repository.</p>
+<section id="from-release-zip-file">
+<h4>From release Zip file<a class="headerlink" href="#from-release-zip-file" title="Link to this heading">¶</a></h4>
+<p>If you want to use a release, visit <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases">the project release index</a>
+and download the “Source code (zip)” entry’s file from the release’s assets, placing the file in your downloads as
+<code class="docutils literal notranslate"><span class="pre">blackmagic.zip</span></code>.</p>
+<p>You can then extract this file in a usable form by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>unzip<span class="w"> </span><span class="nv">$USERPROFILE</span>/Downloads/blackmagic.zip
+</pre></div>
+</div>
+<p>This will make a directory of the source tree named per the release - for example, for v1.10.0-rc0, it makes
+the directory <code class="docutils literal notranslate"><span class="pre">blackmagic-1.10.0-rc0</span></code>. You will then need to change directory into this, eg:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>blackmagic-1.10.0-rc0
+</pre></div>
+</div>
+</section>
+<section id="from-repository-clone">
+<h4>From repository clone<a class="headerlink" href="#from-repository-clone" title="Link to this heading">¶</a></h4>
+<p>If you wish to use a source clone, run the following to get set:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/blackmagic-debug/blackmagic
+<span class="nb">cd</span><span class="w"> </span>blackmagic
+</pre></div>
+</div>
+</section>
+</section>
+<section id="building-for-a-probe">
+<h3>Building for a probe<a class="headerlink" href="#building-for-a-probe" title="Link to this heading">¶</a></h3>
+<p>Now you are in a copy of the source tree for BMD, you can build the source for your probe of choice. Use the
+platform README.md for the probe as a guide for any differences to the below steps.</p>
+<p>NB: If you are building the firmware for a Blue Pill and your device does not fit one the descriptions of any in the
+<code class="docutils literal notranslate"><span class="pre">swlink</span></code> platform, you must use the <code class="docutils literal notranslate"><span class="pre">stlink</span></code> platform and defined <code class="docutils literal notranslate"><span class="pre">BLUEPILL=1</span></code> in the <code class="docutils literal notranslate"><span class="pre">make</span></code> step.</p>
+<p>To build the firmware and update your probe, assuming you’ve already acquired <code class="docutils literal notranslate"><span class="pre">bmputil</span></code> per the
+<a class="reference internal" href="../upgrade.html"><span class="std std-doc">upgrading instrucitons</span></a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mingw32-make<span class="w"> </span><span class="nv">PROBE_HOST</span><span class="o">=</span>native
+bmputil<span class="w"> </span>flash<span class="w"> </span>src/blackmagic.elf
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">make</span></code> step will automatically clone and build libopencm3, which is one of the firmware’s dependencies.
+The resulting output of this step are 4 files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">src/blackmagic.elf</span></code> - The firmware main binary w/ debug and address space information</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/blackmagic.bin</span></code> - The firmware’s .text and .data sections objcopy’d into a bare file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/blackmagic_dfu.elf</span></code> - The project’s bootloader w/ debug and address space information</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src/blackmagic_dfu.bin</span></code> - The project bootloader’s .text and .data sections in a bare file</p></li>
+</ul>
+<p>When the upgrade step completes, your probe will be automatically rebooted into the new firmware and be ready to go.</p>
+<p>If you wish to build the project for a different platform or do a BMDA build, you must run <code class="docutils literal notranslate"><span class="pre">mingw32-make</span> <span class="pre">clean</span></code>
+between builds to remove the incompatible build outputs.</p>
+</section>
+</section>
+<section id="building-bmda-on-a-windows-machine">
+<h2>Building BMDA on a Windows machine<a class="headerlink" href="#building-bmda-on-a-windows-machine" title="Link to this heading">¶</a></h2>
+<p>To build BMDA on Windows you will need a MSYS2 environment - please go to the <a class="reference external" href="https://www.msys2.org/">MSYS2</a> project
+and follow the installation guide.</p>
+<section id="setting-up-the-build-environment">
+<h3>Setting up the build environment<a class="headerlink" href="#setting-up-the-build-environment" title="Link to this heading">¶</a></h3>
+<p>Having installed MSYS2, you will need to open the MSYS2 UCRT64 prompt from the start menu.
+That is the prompt item with this icon: <a class="reference internal" href="../_images/ucrt64.png"><img alt="UCRT64 icon" src="../_images/ucrt64.png" style="width: 32px; height: 32px;" /></a></p>
+<p>Inside the MSYS2 environment run the following to update the environment and follow all prompts provided:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pacman<span class="w"> </span>-Syu
+pacman<span class="w"> </span>-S<span class="w"> </span>pacboy<span class="w"> </span>git<span class="w"> </span>unzip
+pacboy<span class="w"> </span>-S<span class="w"> </span>python:p<span class="w"> </span>make:p<span class="w"> </span>toolchain:p<span class="w"> </span>libusb:p<span class="w"> </span>hidapi:p
+</pre></div>
+</div>
+<p>At this point you will have everything needed to build BMDA in the UCRT64 environment.</p>
+</section>
+<section id="building-bmda">
+<h3>Building BMDA<a class="headerlink" href="#building-bmda" title="Link to this heading">¶</a></h3>
+<p>With the environment set up, you will need to acquire the source same as in the firmware build steps above.
+Once you have the source, building BMDA is as easy as running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mingw32-make<span class="w"> </span><span class="nv">PROBE_HOST</span><span class="o">=</span>hosted<span class="w"> </span><span class="nv">HOSTED_BMP_ONLY</span><span class="o">=</span><span class="m">0</span>
+</pre></div>
+</div>
+<p>If you wish to build BMDA for only talking to BMP, the <code class="docutils literal notranslate"><span class="pre">HOSTED_BMP_ONLY=0</span></code> may be dropped.</p>
+<p>After the <code class="docutils literal notranslate"><span class="pre">make</span></code> step, you will have a file - <code class="docutils literal notranslate"><span class="pre">src/blackmagic.exe</span></code>, you can execute this by running <code class="docutils literal notranslate"><span class="pre">src/blackmagic</span></code>.
+This is the BMDA binary. When you run <code class="docutils literal notranslate"><span class="pre">mingw32-make</span> <span class="pre">clean</span></code> in the sources, this file will be kept behind. This is done
+to allow you to build BMDA, then the firmware, and then have both to use simultaneously.</p>
+</section>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+  
+  
+</div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/blackmagic-logo.svg" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">The Plug&Play MCU Debugger</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=blackmagic-debug&repo=blackmagic&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware.html">Supported Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrade.html">Firmware Upgrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supported-targets.html">Supported Targets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pinouts.html">Pinout Glossary</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Compiling on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-commands.html">GDB Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-automation.html">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/traceswo.html">SWD - TRACESWO support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/swo.html">Serial Wire Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/rtt.html">Using RTT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/platformio.html">PlatformIO</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/stm32.html">STM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hacking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/contrib.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/hacking.html">Firmware Hacking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-drivers.html">Adding Target Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-m.html">Cortex-M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-a.html">Cortex A Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-mm32.html">MindMotion MM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-clock-generation.html">Target Clock Generation</a></li>
+</ul>
+
+
+<div class="ablog-sidebar-item ablog__recentposts">
+<h3>
+  <a href="../blog.html">Recent Posts</a>
+</h3>
+<ul>
+  
+  
+  <li>
+    <a href="../blog/2023-09-17-release-candidate-v1_10_0-rc0.html">
+      17 September - Release Candidate V1.10.0-rc0
+    </a>
+  </li>
+  
+  <li>
+    <a href="../blog/2023-09-16-release-v1_9_2.html">
+      16 September - Stable Release V1.9.2
+    </a>
+  </li>
+  
+  <li>
+    <a href="../blog/2023-09-16-release-v1_8_3.html">
+      16 September - Stable Release V1.8.3
+    </a>
+  </li>
+  
+  <li>
+    <a href="../blog/2023-04-28-release-v1_9_1.html">
+      28 April - Stable Release V1.9.1
+    </a>
+  </li>
+  
+  <li>
+    <a href="../blog/2023-01-27-release-v1_9_0.html">
+      27 January - Stable Release V1.9.0
+    </a>
+  </li>
+  
+</ul>
+</div>
+
+<div class="ablog-sidebar-item ablog__archive">
+<h3>
+  <a href="../blog/archive.html">Archives</a>
+</h3>
+<ul>
+  
+  
+  <li>
+    <a href="../blog/2023.html">2023 (5)</a>
+  </li>
+  
+  
+  
+  <li>
+    <a href="../blog/2022.html">2022 (7)</a>
+  </li>
+  
+  
+</ul>
+</div>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="pinouts.html" title="previous chapter">Pinout Glossary</a></li>
+      <li>Next: <a href="links.html" title="next chapter">Links</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022-2023, Piotr Esden-Tempski <piotr@esden.net>; 2022-2023, Rachel Mant <git@dragonmux.network>.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

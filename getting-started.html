@@ -78,19 +78,20 @@
 </section>
 <section id="connecting-to-your-computer">
 <h2>Connecting to your computer<a class="headerlink" href="#connecting-to-your-computer" title="Link to this heading">¶</a></h2>
-<p>Connect the Black Magic Probe to your computer’s USB port.  When connected via USB, the Black Magic Probe will enumerate as a CDC-ACM device which the OS should present as a tty device or serial port.</p>
+<p>Connect the Black Magic Probe to your computer’s USB port. When connected via USB, the Black Magic Probe will
+enumerate as, among other bits, a pair of CDC-ACM (USB serial) devices.</p>
+<p>On Linux, the the OS should present these as <code class="docutils literal notranslate"><span class="pre">ttyACM</span></code> devices. On macOS they should be presented as pairs of <code class="docutils literal notranslate"><span class="pre">tty.</span></code>
+and <code class="docutils literal notranslate"><span class="pre">cu.</span></code> devices, and on Windows they should be presented as a pair of COM ports.</p>
 <p>On Linux you can check the kernel log to find the device that was allocated:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>user@host ~ $ dmesg
-usb 1-1.1: new full-speed USB device number 58 using ehci-pci
-usb 1-1.1: New USB device found, idVendor=1d50, idProduct=6018
-usb 1-1.1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
-usb 1-1.1: Product: Black Magic Probe
-usb 1-1.1: Manufacturer: Black Sphere Technologies
-usb 1-1.1: SerialNumber: DDE6C7C4
-cdc_acm 1-1.1:1.0: This device cannot do calls on its own. It is not a modem.
-cdc_acm 1-1.1:1.0: ttyACM0: USB ACM device
-cdc_acm 1-1.1:1.2: This device cannot do calls on its own. It is not a modem.
-cdc_acm 1-1.1:1.2: ttyACM1: USB ACM device
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>user@host<span class="w"> </span>~<span class="w"> </span>$<span class="w"> </span>dmesg
+<span class="o">[</span><span class="m">460705</span>.378940<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">7</span>-5:<span class="w"> </span>new<span class="w"> </span>full-speed<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>number<span class="w"> </span><span class="m">24</span><span class="w"> </span>using<span class="w"> </span>ohci-pci
+<span class="o">[</span><span class="m">460705</span>.594118<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">7</span>-5:<span class="w"> </span>New<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>found,<span class="w"> </span><span class="nv">idVendor</span><span class="o">=</span>1d50,<span class="w"> </span><span class="nv">idProduct</span><span class="o">=</span><span class="m">6018</span>,<span class="w"> </span><span class="nv">bcdDevice</span><span class="o">=</span><span class="w"> </span><span class="m">1</span>.09
+<span class="o">[</span><span class="m">460705</span>.594131<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">7</span>-5:<span class="w"> </span>New<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>strings:<span class="w"> </span><span class="nv">Mfr</span><span class="o">=</span><span class="m">1</span>,<span class="w"> </span><span class="nv">Product</span><span class="o">=</span><span class="m">2</span>,<span class="w"> </span><span class="nv">SerialNumber</span><span class="o">=</span><span class="m">3</span>
+<span class="o">[</span><span class="m">460705</span>.594137<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">7</span>-5:<span class="w"> </span>Product:<span class="w"> </span>Black<span class="w"> </span>Magic<span class="w"> </span>Probe<span class="w"> </span>v1.10.0-rc0
+<span class="o">[</span><span class="m">460705</span>.594142<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">7</span>-5:<span class="w"> </span>Manufacturer:<span class="w"> </span>Black<span class="w"> </span>Magic<span class="w"> </span>Debug
+<span class="o">[</span><span class="m">460705</span>.594146<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">7</span>-5:<span class="w"> </span>SerialNumber:<span class="w"> </span>8BB20695
+<span class="o">[</span><span class="m">460705</span>.600355<span class="o">]</span><span class="w"> </span>cdc_acm<span class="w"> </span><span class="m">7</span>-5:1.0:<span class="w"> </span>ttyACM0:<span class="w"> </span>USB<span class="w"> </span>ACM<span class="w"> </span>device
+<span class="o">[</span><span class="m">460705</span>.604234<span class="o">]</span><span class="w"> </span>cdc_acm<span class="w"> </span><span class="m">7</span>-5:1.2:<span class="w"> </span>ttyACM1:<span class="w"> </span>USB<span class="w"> </span>ACM<span class="w"> </span>device
 </pre></div>
 </div>
 <p>The first interface provides the GDB server, and the second provides a USB to UART adapter.</p>
@@ -132,6 +133,7 @@ No. Att Driver
 (gdb) attach 1
 Attaching to Remote target
 0x080071b2 in ?? ()
+
 </pre></div>
 </div>
 <p>The command <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">swdp_scan</span></code> may be used to use the Serial-Wire Debug Protocol instead of JTAG to connect to the target.</p>
@@ -218,6 +220,7 @@ the execution of the embedded application. <a class="reference internal" href="u
 <li class="toctree-l1"><a class="reference internal" href="knowledge/faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knowledge/terminology.html">Terminology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knowledge/pinouts.html">Pinout Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="knowledge/compiling-windows.html">Compiling on Windows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="knowledge/links.html">Links</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
