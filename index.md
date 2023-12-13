@@ -23,6 +23,7 @@ supported-targets
 knowledge/faq
 knowledge/terminology
 knowledge/pinouts
+knowledge/compiling-windows
 knowledge/links
 ```
 
