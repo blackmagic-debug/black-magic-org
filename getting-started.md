@@ -9,7 +9,7 @@ If you don't have one already, you'll need to [get a Black Magic Probe](index.md
 Connect the Black Magic Probe to your computer's USB port. When connected via USB, the Black Magic Probe will
 enumerate as, among other bits, a pair of CDC-ACM (USB serial) devices.
 
-On Linux, the the OS should present these as `ttyACM` devices. On macOS they should be presented as pairs of `tty.`
+On Linux, the OS should present these as `ttyACM` devices. On macOS they should be presented as pairs of `tty.`
 and `cu.` devices, and on Windows they should be presented as a pair of COM ports.
 
 On Linux you can check the kernel log to find the device that was allocated:
