@@ -50,7 +50,7 @@ You have a choice at this point:
 #### From release Zip file
 
 If you want to use a release, visit [the project release index](https://github.com/blackmagic-debug/blackmagic/releases)
-and download the "Source code (zip)" entry's file from the release's assets, placing the file in your downloads as
+and download the "Source code (zip)" entry's file from the release's assets, saving the file in your downloads as
 `blackmagic.zip`.
 
 You can then extract this file in a usable form by running:
