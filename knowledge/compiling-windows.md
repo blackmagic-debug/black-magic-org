@@ -42,8 +42,10 @@ run the final line of this setup on each new shell you use.
 
 ### Acquiring the source
 
-You have a choice at this point - of either grabbing down a release from the project's GitHub repositories, or
-cloning the main repository.
+You have a choice at this point:
+
+* of either grabbing down a release from the project's GitHub repositories, or
+* cloning the main repository.
 
 #### From release Zip file
 
