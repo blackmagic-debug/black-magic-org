@@ -13,7 +13,7 @@ To build the firmware on Windows you will need the following minimum requirement
 
 * The [ARM GNU Toolchain](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads) compiler suite for bare metal
 * A POSIX-compliant shell such as Bash
-* Git for Windows if building from the repository instead of a release
+* Git for Windows, if building from the repository instead of a release
 
 The easiest way to get  to a working setup is to use:
 
