@@ -24,7 +24,7 @@ The easiest way to get  to a working setup is to use:
 
 Having installed MSYS2 and with the toolchain Zip file downloaded to the Downloads directory in your user profile area,
 you will need to open the MSYS2 UCRT64 prompt from the start menu.
-That is the prompt item with this icon: ![UCRT64 icon](../_assets/ucrt64.png)
+That is the prompt item with this icon: ![UCRT64 icon](../_assets/ucrt64.png){width=32 height=32}
 
 Inside the MSYS2 environment run the following to update the environment and follow all prompts provided:
 
@@ -110,7 +110,7 @@ and follow the installation guide.
 ### Setting up the build environment
 
 Having installed MSYS2, you will need to open the MSYS2 UCRT64 prompt from the start menu.
-That is the prompt item with this icon: ![UCRT64 icon](../_assets/ucrt64.png)
+That is the prompt item with this icon: ![UCRT64 icon](../_assets/ucrt64.png){width=32 height=32}
 
 Inside the MSYS2 environment run the following to update the environment and follow all prompts provided:
 
