@@ -40,7 +40,7 @@ __Note:__ If you are on Windows 10 and want to upgrade the firmware to the probe
 
 ## Connecting to the software
 
-To use the Black Magic Probe, you will need an ARM cross toolchain for developing and debugging embedded ARM Cortex applications on your computer.  The [gcc-arm-embedded](https://developer.arm.com/downloads/-/gnu-rm) toolchain is recommended.  The toolchain will include the GNU Debugger, GDB, for debugging ARM applications.
+To use the Black Magic Probe, you will need an ARM cross toolchain for developing and debugging embedded ARM Cortex applications on your computer.  The [gcc-arm-embedded](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads toolchain is recommended.  The toolchain will include the GNU Debugger, GDB, for debugging ARM applications.
 
 ```sh
 user@host ~ $ arm-none-eabi-gdb
