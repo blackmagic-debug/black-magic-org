@@ -17,16 +17,16 @@
     <link rel="apple-touch-icon" sizes="144x144" type="image/png" href="../_static/favicon/apple-touch-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="../_static/favicon/apple-touch-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" type="image/png" href="../_static/favicon/apple-touch-icon-180x180.png">
-    <link rel="android-icon" sizes="192x192" type="image/png" href="../_static/favicon/android-icon-192x192.png"><meta property="og:title" content="Release Candidate V1.10.0-rc0" />
+    <link rel="android-icon" sizes="192x192" type="image/png" href="../_static/favicon/android-icon-192x192.png"><meta property="og:title" content="Stable Release V1.10.0" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://black-magic.org/blog/2023-09-17-release-candidate-v1_10_0-rc0.html" />
+<meta property="og:url" content="https://black-magic.org/blog/2023-10-28-release-v1_10_0.html" />
 <meta property="og:site_name" content="Black Magic Debug" />
-<meta property="og:description" content="We are happy to announce the first V1.10.0 release candidate of Black Magic Debug. This will be the final minor release of the v1 series. Here are some of the highlights: Implemented support for ta..." />
+<meta property="og:description" content="We are happy to announce the V1.10.0 release of Black Magic Debug. This will be the final minor release of the v1 series. Here are some of the highlights: Implemented support for talking with SPI F..." />
 <meta property="og:image" content="https://black-magic.org/_static/blackmagic-logo.png" />
 <meta property="og:image:alt" content="Black Magic Debug" />
-<meta name="description" content="We are happy to announce the first V1.10.0 release candidate of Black Magic Debug. This will be the final minor release of the v1 series. Here are some of the highlights: Implemented support for ta..." />
+<meta name="description" content="We are happy to announce the V1.10.0 release of Black Magic Debug. This will be the final minor release of the v1 series. Here are some of the highlights: Implemented support for talking with SPI F..." />
 
-    <title>Release Candidate V1.10.0-rc0 &#8212; Black Magic Debug  documentation</title>
+    <title>Stable Release V1.10.0 &#8212; Black Magic Debug  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=12dfc556" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
@@ -36,7 +36,7 @@
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/platformpicker.js"></script>
-    <link rel="canonical" href="https://black-magic.org/blog/2023-09-17-release-candidate-v1_10_0-rc0.html" />
+    <link rel="canonical" href="https://black-magic.org/blog/2023-10-28-release-v1_10_0.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
 
@@ -67,14 +67,15 @@
 
           <div class="body" role="main">
             
-<section id="release-candidate-v1-10-0-rc0">
-<h1>Release Candidate V1.10.0-rc0<a class="headerlink" href="#release-candidate-v1-10-0-rc0" title="Link to this heading">¶</a></h1>
-<p>We are happy to announce the first <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.10.0-rc0">V1.10.0 release candidate</a> of <a class="reference external" href="https://black-magic.org">Black Magic Debug</a>.</p>
+<section id="stable-release-v1-10-0">
+<h1>Stable Release V1.10.0<a class="headerlink" href="#stable-release-v1-10-0" title="Link to this heading">¶</a></h1>
+<p>We are happy to announce the <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.10.0">V1.10.0 release</a> of <a class="reference external" href="https://black-magic.org">Black Magic Debug</a>.</p>
 <p>This will be the final minor release of the v1 series.</p>
 <p>Here are some of the highlights:</p>
 <ul class="simple">
 <li><p>Implemented support for talking with SPI Flash directly</p></li>
 <li><p>The firmware now automatically binds drivers for the Trace and DFU interfaces on Windows</p></li>
+<li><p>Target power now has soft-start on native hardware v2.3+ to address potential brown out. This feature was also backported to all other native BMP hardware that has a digital target power control to remove power rail overshoot.</p></li>
 <li><p>And a bunch of newly supported targets:</p>
 <ul>
 <li><p>MindMotion MM32</p></li>
@@ -95,7 +96,7 @@
 <li><p>Nordic Semi nRF91</p></li>
 </ul>
 </li>
-<li><p>Target power now has soft-start on native hardware v2.3+ to address potential brown out. This feature was also backported to all other native BMP hardware that has a digital target power control to remove power rail overshoot. For more detail about this change refer to <a class="reference internal" href="2023-09-16-release-v1_9_2.html#2023-09-16-release-v1_9_2"><span class="std std-ref">V1.9.2 release notes</span></a></p></li>
+<li><p>New remote protocol support for accessing SPI devices via the companion tool <a class="reference external" href="https://github.com/blackmagic-debug/bmpflash">bmpflash</a></p></li>
 </ul>
 <p>For more details please refer to the ChangeLog down below.</p>
 </section>
@@ -159,6 +160,10 @@
 <li><p>Fixed some missing braces on array of structure initializers [zyp]</p></li>
 <li><p>Fixed <code class="docutils literal notranslate"><span class="pre">-Wpedantic</span></code> warnings about binary constants [perigoso]</p></li>
 <li><p>Consolidated the alignment macros originally defined for ADIv5 and moved them into their own header [perigoso]</p></li>
+<li><p>Fixed RTT hanging the firmware when the aux serial port is not being monitored on the host [koendv]</p></li>
+<li><p>Fixed a bug in the firmware-side remote protocol initialisation logic that can in certain circumstances lead to the firmware crashing during remote protocol operations [dragonmux]</p></li>
+<li><p>Updated documentation and comments to reflect the cleaned up and improved SWD support nomenclature [perigoso]</p></li>
+<li><p>Cleaned up in <code class="docutils literal notranslate"><span class="pre">gdb_main_loop()</span></code> and added some documentation to the <code class="docutils literal notranslate"><span class="pre">target_halt_reason</span></code> enumeration [dragonmux]</p></li>
 </ul>
 </section>
 <section id="build-system-changes">
@@ -199,10 +204,12 @@
 <li><p>ARM Debug: Fixed an issue with the Cortex-M DWT mask calculation [silbe]</p></li>
 <li><p>ARM Debug: Correctness fixes for AP handling, implementing AP type dispatch, TrustZone handling and some multi-drop noise [dragonmux]</p></li>
 <li><p>ARM Debug: Reworked early DP bringup to improve correctness and reduce code bloat [perigoso]</p></li>
-<li><p>ARM Debug: Begun seperating out SWD multi-drop handling and untangling it [perigoso]</p></li>
+<li><p>ARM Debug: Begun separating out SWD multi-drop handling and untangling it [perigoso]</p></li>
 <li><p>ARM Debug: Improved the reliability of debug bringup to handle parts like the Ambiq Apollo 3 which get upset when debug resetting them too much [dragonmux]</p></li>
 <li><p>ARM Debug: Improved how JTAG DPv0 ID codes are handled to correctly identify more parts using them [dragonmux]</p></li>
 <li><p>ARM Debug: Refactored the Cortex handling to pull out commonality into a new implementation file ready for proper Cortex-R support [dragonmux]</p></li>
+<li><p>ARM Debug: Improved the Cortex-A support and its ability to function on the same AP as a Cortex-M core [dragonmux]</p></li>
+<li><p>ARM Debug: Improved handling of the OS Lock registers on Cortex-A targets to handle if the lock gets set between resumption and the next halt [dragonmux]</p></li>
 </ul>
 </section>
 <section id="target-changes">
@@ -240,6 +247,11 @@
 <li><p>lpc55xx: Implemented support for the LPC55S69 [UweBonnes]</p></li>
 <li><p>ARM Cortex-M: Implemented a timeout for release from reset for parts that have non-functional nRST [UweBonnes]</p></li>
 <li><p>samx5x: Fixed an assumption that block size == Flash region lock size  which broke Flash write on these parts [Qyriad/ktemkin]</p></li>
+<li><p>imxrt: Added suport for variants other than the i.MXRT1060 [tannewt]</p></li>
+<li><p>sfdp: Fixed handling of old basic parameter tables which lack the field for the page program size [tannewt]</p></li>
+<li><p>stm32mp15x: Fixed the Cortex-A cores inducing a hang on scan and probe [ALTracer]</p></li>
+<li><p>lpc40xx: Fixed a crash during probe of unrelated Cortex-M4 targets that have FPUs [desertsagebrush]</p></li>
+<li><p>lmi: Introduced a workaround for buggy Tiva-C devices that result in the device answering for all AP numbers, leading to 256 target entries for a device that should have just one [desertsagebrush]</p></li>
 </ul>
 </section>
 <section id="targets-added">
@@ -261,6 +273,7 @@
 <li><p>Arterytek AT32F435 [ALTracer]</p></li>
 <li><p>ST Micro STM32U5 [jcamdr]</p></li>
 <li><p>Nordic Semi nRF91 [zyp]</p></li>
+<li><p>ST Micro STM32MP15x (Cortex-M4 coprocessor core only) [ALTracer]</p></li>
 </ul>
 </section>
 <section id="host-platform-changes">
@@ -283,10 +296,8 @@
 <h4>STM32<a class="headerlink" href="#stm32" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Fixed an off-by-one issue in the STM32F4 DFU bootloader implementation which broke erase [Electronshik]</p></li>
+<li><p>Fixed a build issue for platforms that allow tpwr control but don’t define <code class="docutils literal notranslate"><span class="pre">adc_start_conversion_direct()</span></code> in libopencm3 [lenvm]</p></li>
 </ul>
-</section>
-<section id="tm4c">
-<h4>TM4C<a class="headerlink" href="#tm4c" title="Link to this heading">¶</a></h4>
 </section>
 </section>
 <section id="black-magic-probe-aka-native-host">
@@ -294,12 +305,15 @@
 <ul class="simple">
 <li><p>Fixed some pinout and clarity issues with nRST and TPWR [dragonmux]</p></li>
 <li><p>Implemented target power soft-start for hw1+ (hardware v2.0a+) [dragonmux]</p></li>
+<li><p>Reduced the Flash usage caused by the new soft-start feature [dragonmux]</p></li>
 </ul>
 </section>
 <section id="st-link-host">
 <h3>ST-Link host<a class="headerlink" href="#st-link-host" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed the pinout for the nRST pin to handle clones using PB6/7 instead of PB0/1 [silbe]</p></li>
+<li><p>Added pinout documentation to the platform <a class="reference external" href="http://readme.md/">README.md</a> [dragonmux]</p></li>
+<li><p>Implemented support for forcibly detecting a dongle as a clone device to get the right hardware version behaviour [slibe]</p></li>
 </ul>
 </section>
 <section id="f4-discovery-host">
@@ -308,8 +322,8 @@
 <li><p>Added pin definition documentation for the UART to the README [franzflasch]</p></li>
 </ul>
 </section>
-<section id="blackpillv2-host-now-blackpill-f401cc-blackpill-f401ce-and-blackpill-f411ce-aka-the-blackpill-hosts">
-<h3>Blackpillv2 host (now blackpill-f401cc, blackpill-f401ce and blackpill-f411ce, aka “The Blackpill hosts”)<a class="headerlink" href="#blackpillv2-host-now-blackpill-f401cc-blackpill-f401ce-and-blackpill-f411ce-aka-the-blackpill-hosts" title="Link to this heading">¶</a></h3>
+<section id="blackpillv2-host-now-blackpill-f401cc-blackpill-f401ce-and-blackpill-f411ce-aka-the-black-pill-hosts">
+<h3>Blackpillv2 host (now blackpill-f401cc, blackpill-f401ce and blackpill-f411ce, aka “The Black Pill hosts”)<a class="headerlink" href="#blackpillv2-host-now-blackpill-f401cc-blackpill-f401ce-and-blackpill-f411ce-aka-the-black-pill-hosts" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Implemented support for target power voltage sensing [lenvm]</p></li>
 <li><p>Redid the pinout for the platform to rationalise it - see #1465 for details on the new pinout [lenvm]</p></li>
@@ -319,6 +333,7 @@
 <li><p>Fixed and improved support and handling for using the in-tree DFU bootloader and the boot ROM DFU bootloader on the platform [ALTracer]</p></li>
 <li><p>Fixed the tpwr control implementation for the platform being inverted (”enable” meant off, “disable” meant on) [lenvm]</p></li>
 <li><p>Implemented the platform backend for support for the SPI remote protocol [ALTracer]</p></li>
+<li><p>Fixed an issue with the way the idle LED was being driven [lenvm]</p></li>
 </ul>
 </section>
 <section id="black-magic-debug-app-aka-pc-host">
@@ -361,26 +376,30 @@
 <li><p>Fixed a regression in the CMSIS-DAP backend for v1 (HID) interfaces that broke writes with long buffers [projectgus]</p></li>
 <li><p>Added support for J-Link v5 adaptors by honouring the capability bits of J-Link devices [ALTracer]</p></li>
 <li><p>Fixed a memory leak and handling issue with FTDI adaptors in the probe detection and scan engine [lethalbit]</p></li>
+<li><p>Improved the clarity and documentation of the FTDI interface state structure and usage [dragonmux]</p></li>
+<li><p>Fixed a bug in ADIv5 access decoding for the protocol log level that caused AP accesses to always be reported as being for AP1 [dragonmux]</p></li>
 </ul>
 </section>
 </section>
 <section id="contributors-to-v1-10-0">
 <h2>Contributors to v1.10.0<a class="headerlink" href="#contributors-to-v1-10-0" title="Link to this heading">¶</a></h2>
-<p>We have had 42 individuals contribute 1208 commits since the v1.9.2 release.</p>
-<p>Contributor (Contributions)<br />
-dragonmux (872)<br />
-perigoso (111)<br />
+<p>We have had 43 individuals contribute 1265 commits since the v1.9.2 release.</p>
+<p>Contributor (Contributions)
+dragonmux (896)<br />
+perigoso (117)<br />
+ALTracer (41)<br />
+lenvm (39)<br />
 Sid Price (37)<br />
-lenvm (37)<br />
-ALTracer (28)<br />
 Uwe Bonnes (20)<br />
 James Turton (20)<br />
 Sean Cross (13)<br />
 Vegard Storheil Eriksen (10)<br />
+Scott Shawcroft (6)<br />
+Sascha Silbe (6)<br />
+Koen De Vleeschauwer (6)<br />
 Jean-Christian de Rivaz (6)<br />
-Sascha Silbe (5)<br />
 Maciej ‘vesim’ Kuliński (5)<br />
-Koen De Vleeschauwer (4)<br />
+Sage Myers (3)<br />
 Lars Sundström (3)<br />
 TheyCallMeNobody (2)<br />
 Stoyan Shopov (2)<br />
@@ -414,7 +433,7 @@ AnantaSrikar (1)</p>
 <h2>Sponsors<a class="headerlink" href="#sponsors" title="Link to this heading">¶</a></h2>
 <p>This project is sponsored in parts by:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://1bitsquared.com/">1BitSquared</a> - Design, Manufacture and distribution of open source embedded hardware development tools and platforms, as well as educational electronics. Thank you everyone who buys Black Magic Probes from 1BitSquared directly through our <a class="reference external" href="https://1bitsquared.com/products/black-magic-probe">stores</a> or indirectly through <a class="reference external" href="https://www.adafruit.com/product/3839">Adafruit</a>. The hardware sales allow us to continue supporting the <a class="reference external" href="https://black-magic.org">Black Magic Debug</a> project.</p></li>
+<li><p><a class="reference external" href="https://1bitsquared.com/">1BitSquared</a> - Design, Manufacture and distribution of open source embedded hardware development tools and platforms, as well as educational electronics. Thank you everyone who buys Black Magic Probes from 1BitSquared directly through our <a class="reference external" href="https://1bitsquared.com/products/black-magic-probe">stores</a> or indirectly through <a class="reference external" href="https://www.adafruit.com/product/3839">Adafruit</a>. The hardware sales allow us to continue supporting the Black Magic Debug project.</p></li>
 <li><p>All the generous <a class="reference external" href="https://www.patreon.com/1bitsquared">Patrons</a> and <a class="reference external" href="https://github.com/sponsors/esden">GitHub Sponsors</a> supporting esden’s work</p></li>
 <li><p>All the generous <a class="reference external" href="https://github.com/sponsors/dragonmux">GitHub Sponsors</a> supporting dragonmux’s work</p></li>
 </ul>
@@ -432,9 +451,9 @@ AnantaSrikar (1)</p>
     
     Previous:
     
-    <a href="2023-09-16-release-v1_9_2.html">
+    <a href="2023-10-11-release-candidate-v1_10_0-rc1.html">
       
-      <span>Stable Release V1.9.2</span>
+      <span>Release Candidate V1.10.0-rc1</span>
     </a>
     
   </span>
@@ -444,8 +463,8 @@ AnantaSrikar (1)</p>
     
     Next:
     
-    <a href="2023-10-11-release-candidate-v1_10_0-rc1.html">
-      <span>Release Candidate V1.10.0-rc1</span>
+    <a href="2023-11-30-release-v1_10_1.html">
+      <span>Stable Release V1.10.1</span>
       
     </a>
     
@@ -554,14 +573,14 @@ AnantaSrikar (1)</p>
   </li>
   
   <li>
-    <a href="2023-10-28-release-v1_10_0.html">
-      28 October - Stable Release V1.10.0
+    <a href="2023-10-11-release-candidate-v1_10_0-rc1.html">
+      11 October - Release Candidate V1.10.0-rc1
     </a>
   </li>
   
   <li>
-    <a href="2023-10-11-release-candidate-v1_10_0-rc1.html">
-      11 October - Release Candidate V1.10.0-rc1
+    <a href="2023-09-17-release-candidate-v1_10_0-rc0.html">
+      17 September - Release Candidate V1.10.0-rc0
     </a>
   </li>
   

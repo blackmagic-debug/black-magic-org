@@ -2,10 +2,80 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://black-magic.org</id>
   <title>Blog</title>
-  <updated>2023-12-17T14:18:07.087271+00:00</updated>
+  <updated>2024-01-11T21:40:11.921058+00:00</updated>
   <link href="https://black-magic.org"/>
   <link href="https://black-magic.org/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.io/" version="0.11.6">ABlog</generator>
+  <entry>
+    <id>https://black-magic.org/blog/2024-01-11-release-v1_9_3.html</id>
+    <title>Stable Release V1.9.3</title>
+    <updated>2024-01-11T00:00:00+00:00</updated>
+    <author>
+      <name>Piotr Esden-Tempski</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.9.3"&gt;V1.9.3 point release&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://black-magic.org/blog/2024-01-11-release-v1_9_3.html"/>
+    <summary>We are happy to announce the V1.9.3 point release of Black Magic Debug.</summary>
+    <published>2024-01-11T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://black-magic.org/blog/2024-01-10-release-v1_10_2.html</id>
+    <title>Stable Release V1.10.2</title>
+    <updated>2024-01-10T00:00:00+00:00</updated>
+    <author>
+      <name>Piotr Esden-Tempski</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.10.2"&gt;V1.10.2 point release&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://black-magic.org/blog/2024-01-10-release-v1_10_2.html"/>
+    <summary>We are happy to announce the V1.10.2 point release of Black Magic Debug.</summary>
+    <published>2024-01-10T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://black-magic.org/blog/2023-11-30-release-v1_10_1.html</id>
+    <title>Stable Release V1.10.1</title>
+    <updated>2023-11-30T00:00:00+00:00</updated>
+    <author>
+      <name>Piotr Esden-Tempski</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.10.1"&gt;V1.10.1 point release&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://black-magic.org/blog/2023-11-30-release-v1_10_1.html"/>
+    <summary>We are happy to announce the V1.10.1 point release of Black Magic Debug.</summary>
+    <published>2023-11-30T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://black-magic.org/blog/2023-10-28-release-v1_10_0.html</id>
+    <title>Stable Release V1.10.0</title>
+    <updated>2023-10-28T00:00:00+00:00</updated>
+    <author>
+      <name>Piotr Esden-Tempski</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.10.0"&gt;V1.10.0 release&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://black-magic.org/blog/2023-10-28-release-v1_10_0.html"/>
+    <summary>We are happy to announce the V1.10.0 release of Black Magic Debug.</summary>
+    <published>2023-10-28T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://black-magic.org/blog/2023-10-11-release-candidate-v1_10_0-rc1.html</id>
+    <title>Release Candidate V1.10.0-rc1</title>
+    <updated>2023-10-11T00:00:00+00:00</updated>
+    <author>
+      <name>Piotr Esden-Tempski</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the second &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.10.0-rc1"&gt;V1.10.0 release candidate&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://black-magic.org/blog/2023-10-11-release-candidate-v1_10_0-rc1.html"/>
+    <summary>We are happy to announce the second V1.10.0 release candidate of Black Magic Debug.</summary>
+    <published>2023-10-11T00:00:00+00:00</published>
+  </entry>
   <entry>
     <id>https://black-magic.org/blog/2023-09-17-release-candidate-v1_10_0-rc0.html</id>
     <title>Release Candidate V1.10.0-rc0</title>
@@ -16,7 +86,7 @@
     <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the first &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.10.0-rc0"&gt;V1.10.0 release candidate&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;.&lt;/p&gt;
 &lt;/p&gt;
 </content>
-    <link href="https://black-magic.org/blog/2023-09-17-release-candidate-v1_10_0-rc0.html" rel="alternate"/>
+    <link href="https://black-magic.org/blog/2023-09-17-release-candidate-v1_10_0-rc0.html"/>
     <summary>We are happy to announce the first V1.10.0 release candidate of Black Magic Debug.</summary>
     <published>2023-09-17T00:00:00+00:00</published>
   </entry>
@@ -30,7 +100,7 @@
     <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.9.2"&gt;V1.9.2 bugfix point release&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;.&lt;/p&gt;
 &lt;/p&gt;
 </content>
-    <link href="https://black-magic.org/blog/2023-09-16-release-v1_9_2.html" rel="alternate"/>
+    <link href="https://black-magic.org/blog/2023-09-16-release-v1_9_2.html"/>
     <summary>We are happy to announce the V1.9.2 bugfix point release of Black Magic Debug.</summary>
     <published>2023-09-16T00:00:00+00:00</published>
   </entry>
@@ -44,7 +114,7 @@
     <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.8.3"&gt;V1.8.3 bugfix point release&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;.&lt;/p&gt;
 &lt;/p&gt;
 </content>
-    <link href="https://black-magic.org/blog/2023-09-16-release-v1_8_3.html" rel="alternate"/>
+    <link href="https://black-magic.org/blog/2023-09-16-release-v1_8_3.html"/>
     <summary>We are happy to announce the V1.8.3 bugfix point release of Black Magic Debug.</summary>
     <published>2023-09-16T00:00:00+00:00</published>
   </entry>
@@ -58,7 +128,7 @@
     <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.9.1"&gt;V1.9.1 bugfix point release&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;.&lt;/p&gt;
 &lt;/p&gt;
 </content>
-    <link href="https://black-magic.org/blog/2023-04-28-release-v1_9_1.html" rel="alternate"/>
+    <link href="https://black-magic.org/blog/2023-04-28-release-v1_9_1.html"/>
     <summary>We are happy to announce the V1.9.1 bugfix point release of Black Magic Debug.</summary>
     <published>2023-04-28T00:00:00+00:00</published>
   </entry>
@@ -72,7 +142,7 @@
     <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.9.0"&gt;V1.9.0 stable release&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;. This ended up being much larger than intended, but exciting.&lt;/p&gt;
 &lt;/p&gt;
 </content>
-    <link href="https://black-magic.org/blog/2023-01-27-release-v1_9_0.html" rel="alternate"/>
+    <link href="https://black-magic.org/blog/2023-01-27-release-v1_9_0.html"/>
     <summary>We are happy to announce the V1.9.0 stable release of Black Magic Debug. This ended up being much larger than intended, but exciting.</summary>
     <published>2023-01-27T00:00:00+00:00</published>
   </entry>
@@ -86,7 +156,7 @@
     <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the second &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.9.0-rc1"&gt;V1.9.0 release candidate&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;.&lt;/p&gt;
 &lt;/p&gt;
 </content>
-    <link href="https://black-magic.org/blog/2022-12-31-release-candidate-v1_9_0-rc1.html" rel="alternate"/>
+    <link href="https://black-magic.org/blog/2022-12-31-release-candidate-v1_9_0-rc1.html"/>
     <summary>We are happy to announce the second V1.9.0 release candidate of Black Magic Debug.</summary>
     <published>2022-12-31T00:00:00+00:00</published>
   </entry>
@@ -100,7 +170,7 @@
     <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the first &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.9.0-rc0"&gt;V1.9.0 release candidate&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;. This ended up being much larger than intended, but exciting.&lt;/p&gt;
 &lt;/p&gt;
 </content>
-    <link href="https://black-magic.org/blog/2022-11-27-release-candidate-v1_9_0-rc0.html" rel="alternate"/>
+    <link href="https://black-magic.org/blog/2022-11-27-release-candidate-v1_9_0-rc0.html"/>
     <summary>We are happy to announce the first V1.9.0 release candidate of Black Magic Debug. This ended up being much larger than intended, but exciting.</summary>
     <published>2022-11-27T00:00:00+00:00</published>
   </entry>
@@ -114,7 +184,7 @@
     <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.8.2"&gt;V1.8.2 bugfix point release&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;.&lt;/p&gt;
 &lt;/p&gt;
 </content>
-    <link href="https://black-magic.org/blog/2022-07-21-release-v1_8_2.html" rel="alternate"/>
+    <link href="https://black-magic.org/blog/2022-07-21-release-v1_8_2.html"/>
     <summary>We are happy to announce the V1.8.2 bugfix point release of Black Magic Debug.</summary>
     <published>2022-07-21T00:00:00+00:00</published>
   </entry>
@@ -128,7 +198,7 @@
     <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.8.1"&gt;V1.8.1 bugfix point release&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;.&lt;/p&gt;
 &lt;/p&gt;
 </content>
-    <link href="https://black-magic.org/blog/2022-07-13-release-v1_8_1.html" rel="alternate"/>
+    <link href="https://black-magic.org/blog/2022-07-13-release-v1_8_1.html"/>
     <summary>We are happy to announce the V1.8.1 bugfix point release of Black Magic Debug.</summary>
     <published>2022-07-13T00:00:00+00:00</published>
   </entry>
@@ -142,7 +212,7 @@
     <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.8.0"&gt;V1.8.0 release&lt;/a&gt; of Black Magic Debug. It is a big one since we did not make a stable release since October 2020!!! So this release is very much overdue. But that also means we have a lot of new and interesting things in this release.&lt;/p&gt;
 &lt;/p&gt;
 </content>
-    <link href="https://black-magic.org/blog/2022-05-30-release-v1_8_0.html" rel="alternate"/>
+    <link href="https://black-magic.org/blog/2022-05-30-release-v1_8_0.html"/>
     <summary>We are happy to announce the V1.8.0 release of Black Magic Debug. It is a big one since we did not make a stable release since October 2020!!! So this release is very much overdue. But that also means we have a lot of new and interesting things in this release.</summary>
     <published>2022-05-30T00:00:00+00:00</published>
   </entry>
@@ -156,7 +226,7 @@
     <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Hey everyone! As announced in the “New Maintainer” post we have now renamed the github organization from &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;blacksphere&lt;/span&gt;&lt;/code&gt; to &lt;a class="reference external" href="https://github.com/blackmagic-debug/"&gt;&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;blackmagic-debug&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;/p&gt;
 </content>
-    <link href="https://black-magic.org/blog/2022-01-20-organization-rename.html" rel="alternate"/>
+    <link href="https://black-magic.org/blog/2022-01-20-organization-rename.html"/>
     <summary>Hey everyone! As announced in the “New Maintainer” post we have now renamed the github organization from blacksphere to blackmagic-debug.</summary>
     <published>2022-01-20T00:00:00+00:00</published>
   </entry>
@@ -170,7 +240,7 @@
     <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;Hi everyone! As some of you might know this project was created and maintained for many years by &lt;a class="reference external" href="https://github.com/gsmcmullin"&gt;Gareth McMullin&lt;/a&gt;. He has created a wonderful tool that we all use and love. You might have also noticed that Gareth did not have much time to dedicate to the project for the last few years. He asked me a while ago if I would be able to take over the project and become an official maintainer of Black Magic Debug. I did not have the necessary resources to dedicate to the project until very recently. But it is finally time, from now on I am officially taking on the position as the Black Magic Debug maintainer. :slight_smile:&lt;/p&gt;
 &lt;/p&gt;
 </content>
-    <link href="https://black-magic.org/blog/2022-01-07-new-maintainer.html" rel="alternate"/>
+    <link href="https://black-magic.org/blog/2022-01-07-new-maintainer.html"/>
     <summary>Hi everyone! As some of you might know this project was created and maintained for many years by Gareth McMullin. He has created a wonderful tool that we all use and love. You might have also noticed that Gareth did not have much time to dedicate to the project for the last few years. He asked me a while ago if I would be able to take over the project and become an official maintainer of Black Magic Debug. I did not have the necessary resources to dedicate to the project until very recently. But it is finally time, from now on I am officially taking on the position as the Black Magic Debug maintainer. :slight_smile:</summary>
     <published>2022-01-07T00:00:00+00:00</published>
   </entry>
