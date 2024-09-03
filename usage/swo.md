@@ -114,3 +114,9 @@ scripts for target setup. Run `orbuculum` to start collecting trace data. (All O
 for ITM data and predecessor to Orbuculum. (Linux-only. Command line driven)
 * [bmtrace](https://github.com/compuphase/Black-Magic-Probe-Book) - Basic ITM stream viewer. Configures BMD and tries
 to configure your target for you. Windows binaries available. (Windows and Linux only. Graphical)
+
+## Halting SWO recovery
+
+If you wish to stop recovery of SWO, decoding of ITM data, or need to get the firmware to resynchronise with your
+target, you can run `monitor traceswo disable` to spin the SWO engine down. Note, this frees any buffers associated
+with the SWO data recovery and resets state. This is required if you wish to scan for targets over JTAG.
