@@ -8,19 +8,19 @@ BlackMagicProbe support for it is now built-in at the time of writing these line
 
 A GDB debug configuration has to be created in order to debug the target device.
 
-Head to the ``Debug Configurations`` menu.
+Head to the `Debug Configurations` menu.
 
 ![](../_assets/stm32cubeide/debugconfigurations.png)
 
-Create a new ``GDB Hardware Debugging`` configuration.
+Create a new `GDB Hardware Debugging` configuration.
 
-In the ``Debugger`` tab, select the ``Black Magic Probe`` option as the debug server.
+In the `Debugger` tab, select the `Black Magic Probe` option as the debug server.
 
 ![](../_assets/stm32cubeide/debuggertab.png)
 
-If you installed ``arm-none-eabi-gdb`` previously, change the default ``GDB Command`` to ``arm-none-eabi-gdb`` from ``gdb``.
+If you installed `arm-none-eabi-gdb` previously, change the default `GDB Command` to `arm-none-eabi-gdb` from `gdb`.
 
-In the ``Startup`` tab, enter the following information for the ``Initialization Commands``:
+In the `Startup` tab, enter the following information for the `Initialization Commands`:
 
 ```
 set logging on
@@ -37,9 +37,9 @@ The configuration should now work to debug the target STM32.
 
 STM32CubeIDE doesn't support hardware GDB run configurations.
 
-In order to support it, duplicate the ``BMP Debug`` configuration into ``BMP Run``.
+In order to support it, duplicate the `BMP Debug` configuration into `BMP Run`.
 
-In the ``Startup`` tab, enter the following information for the ``Run Commands``:
+In the Startup` tab, enter the following information for the `Run Commands`:
 
 ```
 detach 1
