@@ -2,7 +2,7 @@
 
 [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html) is an Eclipse-based IDE supplied with STM32 microcontrollers by STMicro.
 
-BlackMagicProbe support for it is now built-in at the time of writing these lines (v1.16.0).
+Black Magic Probe support for it is now built-in at the time of writing these lines (v1.16.0).
 
 ## Debug configuration
 
@@ -25,11 +25,25 @@ In the `Startup` tab, enter the following information for the `Initialization Co
 ```
 set logging on
 set mem inaccessible-by-default off
-monitor connect_rst enable
 monitor auto_scan
 attach 1
+```
+
+If the target cannot be connected to using the default software reset, the following line can be added before `monitor auto_scan`:
+
+```
+monitor connect_rst enable
+```
+
+This will enable hardware reset of the core. This cannot be used to debug an already running target.
+
+Optionnally, the target can also be erased before debugging by adding the following line after `attach 1`:
+
+```
 monitor erase_mass
 ```
+
+All the `Initialization Commands` will be run before the actual debugging.
 
 The configuration should now work to debug the target STM32.
 
@@ -42,10 +56,10 @@ In order to support it, duplicate the `BMP Debug` configuration into `BMP Run`.
 In the Startup` tab, enter the following information for the `Run Commands`:
 
 ```
-detach 1
+detach
 quit
 ```
 
 Running this configuration will start the program on the target, then let it run and quit debugging.
 
-You should now be all set up for debugging and running your code on a STM32 target with STM32CubeIDE and a BlackMagicProbe!
+You should now be all set up for debugging and running your code on a STM32 target with STM32CubeIDE and a Black Magic Probe!
