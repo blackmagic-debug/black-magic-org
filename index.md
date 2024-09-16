@@ -39,6 +39,7 @@ usage/traceswo
 usage/swo
 usage/rtt
 usage/platformio
+usage/stm32cubeide
 ```
 
 ```{toctree}
