@@ -53,7 +53,7 @@ STM32CubeIDE doesn't support hardware GDB run configurations.
 
 In order to support it, duplicate the `BMP Debug` configuration into `BMP Run`.
 
-In the Startup` tab, enter the following information for the `Run Commands`:
+In the `Startup` tab, enter the following information for the `Run Commands`:
 
 ```
 detach
