@@ -17,16 +17,16 @@
     <link rel="apple-touch-icon" sizes="144x144" type="image/png" href="../_static/favicon/apple-touch-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="../_static/favicon/apple-touch-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" type="image/png" href="../_static/favicon/apple-touch-icon-180x180.png">
-    <link rel="android-icon" sizes="192x192" type="image/png" href="../_static/favicon/android-icon-192x192.png"><meta property="og:title" content="Stable Release V1.9.3" />
+    <link rel="android-icon" sizes="192x192" type="image/png" href="../_static/favicon/android-icon-192x192.png"><meta property="og:title" content="STM32CubeIDE" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://black-magic.org/blog/2024-01-11-release-v1_9_3.html" />
+<meta property="og:url" content="https://black-magic.org/usage/stm32cubeide.html" />
 <meta property="og:site_name" content="Black Magic Debug" />
-<meta property="og:description" content="We are happy to announce the V1.9.3 point release of Black Magic Debug. In this Release: Fixed a bug in the firmware-side remote protocol initialisation logic that can in certain circumstances lead..." />
+<meta property="og:description" content="STM32CubeIDE is an Eclipse-based IDE supplied with STM32 microcontrollers by STMicro. Black Magic Probe support for it is now built-in at the time of writing these lines (v1.16.0). Debug configurat..." />
 <meta property="og:image" content="https://black-magic.org/_static/blackmagic-logo.png" />
 <meta property="og:image:alt" content="Black Magic Debug" />
-<meta name="description" content="We are happy to announce the V1.9.3 point release of Black Magic Debug. In this Release: Fixed a bug in the firmware-side remote protocol initialisation logic that can in certain circumstances lead..." />
+<meta name="description" content="STM32CubeIDE is an Eclipse-based IDE supplied with STM32 microcontrollers by STMicro. Black Magic Probe support for it is now built-in at the time of writing these lines (v1.16.0). Debug configurat..." />
 
-    <title>Stable Release V1.9.3 &#8212; Black Magic Debug  documentation</title>
+    <title>STM32CubeIDE &#8212; Black Magic Debug  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
@@ -38,9 +38,11 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/asciinema-player_3.6.3.js"></script>
     <script src="../_static/platformpicker.js"></script>
-    <link rel="canonical" href="https://black-magic.org/blog/2024-01-11-release-v1_9_3.html" />
+    <link rel="canonical" href="https://black-magic.org/usage/stm32cubeide.html" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="STM32 Targets" href="../target-usage/stm32.html" />
+    <link rel="prev" title="PlatformIO" href="platformio.html" /> 
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -64,59 +66,54 @@
           
 
           <div class="body" role="main">
-             <section id="stable-release-v1-9-3">
-<h1>Stable Release V1.9.3<a class="headerlink" href="#stable-release-v1-9-3" title="Link to this heading">¶</a></h1>
-<p>We are happy to announce the <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v1.9.3">V1.9.3 point release</a> of <a class="reference external" href="https://black-magic.org">Black Magic Debug</a>.</p>
-<section id="in-this-release">
-<h2>In this Release<a class="headerlink" href="#in-this-release" title="Link to this heading">¶</a></h2>
-<ul class="simple">
-<li><p>Fixed a bug in the firmware-side remote protocol initialisation logic that can in certain circumstances lead to the firmware crashing during remote protocol operations [dragonmux]</p></li>
-<li><p>Fixed a bug in BMDA’s <code class="docutils literal notranslate"><span class="pre">platform_buffer_write()</span></code> for Windows which would make it wrongly skip chunks of the buffer to write and corrupt the data to send [dragonmux]</p></li>
-<li><p>Fixed the initial USB CDC ACM notification packets being sent from the improper endpoints in the firmware [brainsmoke]</p></li>
-<li><p>Fixed a remote protocol UBSAN issue in BMDA [dragonmux]</p></li>
-<li><p>Fixed an issue for BMP (native) that in some cases would inhibit USB detach for DFU from being detected by the host [tlyu]</p></li>
-<li><p>Fixed a firmware bug in the SWD turnaround handling code that could trigger SWD no-response in reaction to requests on sensitive targets [tlyu]</p></li>
-</ul>
+             <section id="stm32cubeide">
+<h1>STM32CubeIDE<a class="headerlink" href="#stm32cubeide" title="Link to this heading">¶</a></h1>
+<p><a class="reference external" href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a> is an Eclipse-based IDE supplied with STM32 microcontrollers by STMicro.</p>
+<p>Black Magic Probe support for it is now built-in at the time of writing these lines (v1.16.0).</p>
+<section id="debug-configuration">
+<h2>Debug configuration<a class="headerlink" href="#debug-configuration" title="Link to this heading">¶</a></h2>
+<p>A GDB debug configuration has to be created in order to debug the target device.</p>
+<p>Head to the <code class="docutils literal notranslate"><span class="pre">Debug</span> <span class="pre">Configurations</span></code> menu.</p>
+<p><img alt="" src="../_images/debugconfigurations.png" /></p>
+<p>Create a new <code class="docutils literal notranslate"><span class="pre">GDB</span> <span class="pre">Hardware</span> <span class="pre">Debugging</span></code> configuration.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">Debugger</span></code> tab, select the <code class="docutils literal notranslate"><span class="pre">Black</span> <span class="pre">Magic</span> <span class="pre">Probe</span></code> option as the debug server.</p>
+<p><img alt="" src="../_images/debuggertab.png" /></p>
+<p>If you installed <code class="docutils literal notranslate"><span class="pre">arm-none-eabi-gdb</span></code> previously, change the default <code class="docutils literal notranslate"><span class="pre">GDB</span> <span class="pre">Command</span></code> to <code class="docutils literal notranslate"><span class="pre">arm-none-eabi-gdb</span></code> from <code class="docutils literal notranslate"><span class="pre">gdb</span></code>.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">Startup</span></code> tab, enter the following information for the <code class="docutils literal notranslate"><span class="pre">Initialization</span> <span class="pre">Commands</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">logging</span> <span class="n">on</span>
+<span class="nb">set</span> <span class="n">mem</span> <span class="n">inaccessible</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">default</span> <span class="n">off</span>
+<span class="n">monitor</span> <span class="n">auto_scan</span>
+<span class="n">attach</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>If the target cannot be connected to using the default software reset, the following line can be added before <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">auto_scan</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">monitor</span> <span class="n">connect_rst</span> <span class="n">enable</span>
+</pre></div>
+</div>
+<p>This will enable hardware reset of the core. This cannot be used to debug an already running target.</p>
+<p>Optionnally, the target can also be erased before debugging by adding the following line after <code class="docutils literal notranslate"><span class="pre">attach</span> <span class="pre">1</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">monitor</span> <span class="n">erase_mass</span>
+</pre></div>
+</div>
+<p>All the <code class="docutils literal notranslate"><span class="pre">Initialization</span> <span class="pre">Commands</span></code> will be run before the actual debugging.</p>
+<p>The configuration should now work to debug the target STM32.</p>
 </section>
-<section id="contributors-to-v1-9-3">
-<h2>Contributors to v1.9.3<a class="headerlink" href="#contributors-to-v1-9-3" title="Link to this heading">¶</a></h2>
-<p>We have had 3 individuals contribute 9 commits since the v1.9.2 release.</p>
-<p>Contributor (Contributions)</p>
-<p>dragonmux (5)<br />
-tlyu (3)<br />
-brainsmoke (1)</p>
-</section>
-<section id="sponsors">
-<h2>Sponsors<a class="headerlink" href="#sponsors" title="Link to this heading">¶</a></h2>
-<p>This project is sponsored in parts by:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://1bitsquared.com/">1BitSquared</a> - Design, Manufacture and distribution of open source embedded hardware
-development tools and platforms, as well as educational electronics.
-Thank you everyone who buys Black Magic Probes from 1BitSquared directly through our <a class="reference external" href="https://1bitsquared.com/products/black-magic-probe">stores</a> or indirectly through <a class="reference external" href="https://www.adafruit.com/product/3839">Adafruit</a>. The hardware sales allow us to continue supporting the Black Magic Debug project.</p></li>
-<li><p>All the generous <a class="reference external" href="https://www.patreon.com/1bitsquared">Patrons</a> and <a class="reference external" href="https://github.com/sponsors/esden">GitHub Sponsors</a> supporting esden’s work</p></li>
-<li><p>All the generous <a class="reference external" href="https://github.com/sponsors/dragonmux">GitHub Sponsors</a> supporting dragonmux’s work</p></li>
-</ul>
+<section id="run-configuration">
+<h2>Run configuration<a class="headerlink" href="#run-configuration" title="Link to this heading">¶</a></h2>
+<p>STM32CubeIDE doesn’t support hardware GDB run configurations.</p>
+<p>In order to support it, duplicate the <code class="docutils literal notranslate"><span class="pre">BMP</span> <span class="pre">Debug</span></code> configuration into <code class="docutils literal notranslate"><span class="pre">BMP</span> <span class="pre">Run</span></code>.</p>
+<p>In the Startup<code class="docutils literal notranslate"><span class="pre">tab,</span> <span class="pre">enter</span> <span class="pre">the</span> <span class="pre">following</span> <span class="pre">information</span> <span class="pre">for</span> <span class="pre">the</span></code>Run Commands`:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detach</span>
+<span class="n">quit</span>
+</pre></div>
+</div>
+<p>Running this configuration will start the program on the target, then let it run and quit debugging.</p>
+<p>You should now be all set up for debugging and running your code on a STM32 target with STM32CubeIDE and a Black Magic Probe!</p>
 </section>
 </section>
 
 <div class="section ablog__blog_comments">
-     
-<div class="section ablog__prev-next">
-  <span class="ablog__prev">
-      Previous:
-    
-    <a href="2024-01-10-release-v1_10_2.html">
-      
-      <span>Stable Release V1.10.2</span>
-    </a>
-    
-  </span>
-  <span class="ablog__spacer">&nbsp;</span>
-  <span class="ablog__next">
-    
-  </span>
-</div>
-  
+   
 </div>
 
           </div>
@@ -165,15 +162,15 @@ Thank you everyone who buys Black Magic Probes from 1BitSquared directly through
 <li class="toctree-l1"><a class="reference internal" href="../knowledge/links.html">Links</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-commands.html">GDB Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-automation.html">GDB Flash Automation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/semihosting.html">Semihosting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/traceswo.html">SWD - TRACESWO support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/swo.html">Serial Wire Output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/rtt.html">Using RTT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/platformio.html">PlatformIO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/stm32cubeide.html">STM32CubeIDE</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gdb-commands.html">GDB Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdb-automation.html">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traceswo.html">SWD - TRACESWO support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swo.html">Serial Wire Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rtt.html">Using RTT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platformio.html">PlatformIO</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">STM32CubeIDE</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
 <ul>
@@ -199,32 +196,32 @@ Thank you everyone who buys Black Magic Probes from 1BitSquared directly through
   <ul>
      
     <li>
-      <a href="2024-01-10-release-v1_10_2.html">
+      <a href="../blog/2024-01-11-release-v1_9_3.html">
+        11 January - Stable Release V1.9.3
+      </a>
+    </li>
+    
+    <li>
+      <a href="../blog/2024-01-10-release-v1_10_2.html">
         10 January - Stable Release V1.10.2
       </a>
     </li>
     
     <li>
-      <a href="2023-11-30-release-v1_10_1.html">
+      <a href="../blog/2023-11-30-release-v1_10_1.html">
         30 November - Stable Release V1.10.1
       </a>
     </li>
     
     <li>
-      <a href="2023-10-28-release-v1_10_0.html">
+      <a href="../blog/2023-10-28-release-v1_10_0.html">
         28 October - Stable Release V1.10.0
       </a>
     </li>
     
     <li>
-      <a href="2023-10-11-release-candidate-v1_10_0-rc1.html">
+      <a href="../blog/2023-10-11-release-candidate-v1_10_0-rc1.html">
         11 October - Release Candidate V1.10.0-rc1
-      </a>
-    </li>
-    
-    <li>
-      <a href="2023-09-17-release-candidate-v1_10_0-rc0.html">
-        17 September - Release Candidate V1.10.0-rc0
       </a>
     </li>
     
@@ -233,20 +230,20 @@ Thank you everyone who buys Black Magic Probes from 1BitSquared directly through
 
 <div class="ablog-sidebar-item ablog__archive">
   <h3>
-    <a href="archive.html">Archives</a>
+    <a href="../blog/archive.html">Archives</a>
   </h3>
   <ul>
      
     <li>
-      <a href="2024.html">2024 (2)</a>
+      <a href="../blog/2024.html">2024 (2)</a>
     </li>
       
     <li>
-      <a href="2023.html">2023 (8)</a>
+      <a href="../blog/2023.html">2023 (8)</a>
     </li>
       
     <li>
-      <a href="2022.html">2022 (7)</a>
+      <a href="../blog/2022.html">2022 (7)</a>
     </li>
      
   </ul>
@@ -255,6 +252,8 @@ Thank you everyone who buys Black Magic Probes from 1BitSquared directly through
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="platformio.html" title="previous chapter">PlatformIO</a></li>
+      <li>Next: <a href="../target-usage/stm32.html" title="next chapter">STM32 Targets</a></li>
   </ul></li>
 </ul>
 </div>
