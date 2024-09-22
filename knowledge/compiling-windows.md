@@ -30,7 +30,7 @@ Inside the MSYS2 environment run the following to update the environment and fol
 
 ```bash
 pacman -Syu
-pacman -S pactools git unzip
+pacman -S pactoys git unzip
 pacboy -S python:p make:p
 unzip $USERPROFILE/Downloads/arm-gnu-toolchain-12.2.rel1-mingw-w64-i686-arm-none-eabi.zip -d .
 export PATH=$HOME/arm-gnu-toolchain-12.2.rel1-mingw-w64-i686-arm-none-eabi/bin:$PATH
@@ -118,7 +118,7 @@ Inside the MSYS2 environment run the following to update the environment and fol
 
 ```bash
 pacman -Syu
-pacman -S pacboy git unzip
+pacman -S pactoys git unzip
 pacboy -S python:p make:p toolchain:p libusb:p hidapi:p
 ```
 
@@ -138,3 +138,21 @@ If you wish to build BMDA for only talking to BMP, the `HOSTED_BMP_ONLY=0` may b
 After the `make` step, you will have a file - `src/blackmagic.exe`, you can execute this by running `src/blackmagic`.
 This is the BMDA binary. When you run `mingw32-make clean` in the sources, this file will be kept behind. This is done
 to allow you to build BMDA, then the firmware, and then have both to use simultaneously.
+
+You may not want to require users to have an MSYS2 environment to use `blackmagic.exe`.
+
+In that case, all you need to do is copy the following files to a directory of
+your choosing:
+
+```bash
+# Optional - strip the executable to minimize it
+strip src/blackmagic.exe
+
+cp src/blackmagic.exe          /c/path/to/project
+cp /ucrt64/bin/libusb-1.0.dll  /c/path/to/project
+cp /ucrt64/bin/libhidapi-0.dll /c/path/to/project
+```
+
+Note: The file paths above assume you are still in the MSYS2 UCRT64 prompt.
+
+Now you can run `c:\path\to\project\blackmagic` from the Windows commandline or shortcut.
