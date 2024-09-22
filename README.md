@@ -34,6 +34,12 @@ brew install pango
 brew install python-tk
 ```
 
+NOTE: On a Linux system with a minimal Python 3 install you may need to
+add the following:
+```
+apt install python3-tk
+```
+
 ### fork the repository to your personal account
 If you want to contribute to the documentation it is probably a good idea to
 [fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the
