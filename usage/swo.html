@@ -21,10 +21,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://black-magic.org/usage/swo.html" />
 <meta property="og:site_name" content="Black Magic Debug" />
-<meta property="og:description" content="Serial Wire Output (SWO) allows the target to write tracing and logging to the host without using usb or serial port. All data goes over a single pin, the JTAG TDO pin. To set up SWO, you need to c..." />
+<meta property="og:description" content="Serial Wire Output (SWO) allows the target to produce tracing and logging information from your firmware without using precious peripherals such as USB or UARTs. Instead, the data is emitted via a ..." />
 <meta property="og:image" content="https://black-magic.org/_static/blackmagic-logo.png" />
 <meta property="og:image:alt" content="Black Magic Debug" />
-<meta name="description" content="Serial Wire Output (SWO) allows the target to write tracing and logging to the host without using usb or serial port. All data goes over a single pin, the JTAG TDO pin. To set up SWO, you need to c..." />
+<meta name="description" content="Serial Wire Output (SWO) allows the target to produce tracing and logging information from your firmware without using precious peripherals such as USB or UARTs. Instead, the data is emitted via a ..." />
 
     <title>Serial Wire Output &#8212; Black Magic Debug  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
@@ -68,85 +68,113 @@
           <div class="body" role="main">
              <section id="serial-wire-output">
 <h1>Serial Wire Output<a class="headerlink" href="#serial-wire-output" title="Link to this heading">¶</a></h1>
-<p>Serial Wire Output (SWO) allows the target to write tracing and logging to the host without using usb or serial port. All data goes over a single pin, the JTAG TDO pin.</p>
-<p>To set up SWO, you need to</p>
+<p>Serial Wire Output (SWO) allows the target to produce tracing and logging information from your firmware
+without using precious peripherals such as USB or UARTs. Instead, the data is emitted via a single pin,
+which is usually what would be JTAG’s TDO, but re-purposed for the purpose.</p>
+<p>To set up SWO, you need to:</p>
 <ul class="simple">
-<li><p>connect target and bmp</p></li>
-<li><p>configure the target processor</p></li>
-<li><p>configure bmp</p></li>
-<li><p>set up the viewer</p></li>
+<li><p>Wire the target to your probe running BMD</p></li>
+<li><p>Configure the target processor</p></li>
+<li><p>Enable SWO handling in BMD</p></li>
+<li><p>Set up a viewer for the tracing and logging data</p></li>
 </ul>
 <section id="wires">
 <h2>Wires<a class="headerlink" href="#wires" title="Link to this heading">¶</a></h2>
-<p>SWO needs a connection between target SWO out and BMP SWO in (PA10 on stm32f103).
-As the SWO pin is the JTAG TDO pin, you cannot run SWO when using JTAG. SWO is compatible with SWD, not with JTAG.</p>
-<p>A setup with blue pills might look like this:</p>
-<p><img alt="" src="https://raw.githubusercontent.com/koendv/Connecting-Black-Magic-Probe-and-Blue-Pill/master/bmp_bp.svg" /></p>
+<p>You will need a connection between the target’s SWO output and your probe. See your probe’s README.md for details.
+As the SWO pin is typically the JTAG TDO pin, you cannot run SWO when using JTAG. Instead you will need to access
+the target via SWD and perform a SWD scan before SWO will start working.</p>
+<p>A setup with Blue Pills might look like this:</p>
+<p><img alt="Back-to-backed Blue Pills" src="https://raw.githubusercontent.com/koendv/Connecting-Black-Magic-Probe-and-Blue-Pill/master/bmp_bp.svg" /></p>
 </section>
 <section id="target-processor-setup">
 <h2>Target processor setup<a class="headerlink" href="#target-processor-setup" title="Link to this heading">¶</a></h2>
-<p>Registers must be set up to configure the SWO pin for output. Different processors have different SWO setup.
-You can setup SWO in viewer, debugger, or target.</p>
+<p>Registers must be set up to configure the SWO pin for output. Different processors have different SWO setups.
+You can setup SWO via the chosen viewer, debugger, or directly on the target.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/compuphase/Black-Magic-Probe-Book">bmtrace</a> configures target processor in the viewer, button <em>Configure target</em>. Supports stm32 and lpc.</p></li>
-<li><p><a class="reference external" href="https://github.com/orbcode/orbuculum">orbuculum</a> has scripts to configure the target in gdb, and stm32 c source to include in your build.</p></li>
-<li><p><a class="reference external" href="https://github.com/koendv/SerialWireOutput">SerialWireOutput</a> arduino library, does stm32 set up in code. Userland source for initializing, write() and flush().</p></li>
+<li><p><a class="reference external" href="https://github.com/orbcode/orbuculum">Orbuculum</a> has scripts to configure the target in GDB, and STM32 C source to include in your build.</p></li>
+<li><p><a class="reference external" href="https://github.com/compuphase/Black-Magic-Probe-Book">bmtrace</a> configures target processor in the viewer, button <em>Configure target</em>. Supports STM32 and LPC.</p></li>
+<li><p><a class="reference external" href="https://github.com/koendv/SerialWireOutput">SerialWireOutput</a> arduino library, does stm32 set up in code. Userland source for initializing, <code class="docutils literal notranslate"><span class="pre">write()</span></code> and <code class="docutils literal notranslate"><span class="pre">flush()</span></code>.</p></li>
 </ul>
 </section>
-<section id="black-magic-probe">
-<h2>Black Magic Probe<a class="headerlink" href="#black-magic-probe" title="Link to this heading">¶</a></h2>
-<p>BMP receives SWO from the target and sends decoded SWO to a usb serial port, or undecoded SWO to a viewer. Target and probe:</p>
+<section id="black-magic-debug">
+<h2>Black Magic Debug<a class="headerlink" href="#black-magic-debug" title="Link to this heading">¶</a></h2>
+<p>When the firmware receives SWO from a target, it can do one of two things: It can send the raw capture data to the
+trace interface for use by a decoder and viewer suite, or decoded ITM data to the auxillary USB serial port.</p>
+<p>For everything to work, the target and probe:</p>
 <ul class="simple">
-<li><p>must speak the same protocol, async (NRZ) or Manchester</p></li>
-<li><p>at the same baud rate</p></li>
+<li><p>Must speak the same protocol (UART (aka Async or NRZ) or Manchester coded), and</p></li>
+<li><p>For UART, at the same baud rate - this is configured as part of enabling SWO on the probe.</p></li>
 </ul>
-<p>There are two SWO protocols: Manchester and asynchronous (aka NRZ). You can see what protocol your BMP speaks with <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">help</span></code>. The protocol is listed next to the <code class="docutils literal notranslate"><span class="pre">traceswo</span></code> command.</p>
-<p>Manchester coding auto-synchronizes. For asynchronous protocol, you have to configure the same baud rate in target and bmp. The default baud rate for async is 2250000.</p>
-<p>Black Magic Probe can do SWO decoding in the probe itself, or pass the undecoded SWO stream to an external viewer.</p>
-<section id="swo-decoding-in-bmp">
-<h3>SWO decoding in BMP<a class="headerlink" href="#swo-decoding-in-bmp" title="Link to this heading">¶</a></h3>
-<p>You can switch on traceswo decoding in BMP with</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">monitor</span> <span class="n">traceswo</span> <span class="n">decode</span>
+<p>There are two SWO transport protocols: Manchester coded and UART. You can see what protocol your probe speaks with
+<code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">help</span></code>. The protocol is listed next to the <code class="docutils literal notranslate"><span class="pre">traceswo</span></code> command.</p>
+<p>The Manchester coded SWO auto-synchronizes and the firmware auto-detects baud. However, for UART SWO, you have to
+configure the baud rate both in the target configuration and on the probe. The default baud rate for async is 2.25MBaud.</p>
+<section id="swo-decoding-in-firmware">
+<h3>SWO decoding in firmware<a class="headerlink" href="#swo-decoding-in-firmware" title="Link to this heading">¶</a></h3>
+<p>You can switch on traceswo decoding in BMD with</p>
+<div class="highlight-gdb notranslate"><div class="highlight"><pre><span></span>monitor traceswo enable decode
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">traceswo</span> <span class="pre">decode</span></code> defaults to 2250000 baud (if using async) and decoding all channels. If using async, you can specify a baud rate. Optionally you can specify which stimulus channels to decode. Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">monitor</span> <span class="n">traceswo</span> <span class="mi">4500000</span> <span class="n">decode</span> <span class="mi">0</span> <span class="mi">2</span>
+<p>This defaults decoding all ITM streams. If your probe talks async mode, you can optionally specify a baud rate
+between the <code class="docutils literal notranslate"><span class="pre">enable</span></code> verb and optionally requesting decoding. Following the <code class="docutils literal notranslate"><span class="pre">decode</span></code> verb, you can then specify
+which ITM streams you wish to have decoded. For example:</p>
+<div class="highlight-gdb notranslate"><div class="highlight"><pre><span></span>monitor traceswo enable 4500000 decode 0 2
 </pre></div>
 </div>
-<p>sets speed to 4500000 baud, and decodes only channels 0 and 2.</p>
-<p>The decoded SWO stream is written to the usb uart. Viewing SWO is simply connecting to the usb uart.</p>
+<p>This example is for an async mode probe, and configures 4.5MBaud and decoding of ITM streams 0 and 2.</p>
+<p>SWO decoding in the probe does not need any special utilities and works on every OS. For setups that use only a
+single ITM stream this may be all you need. Please note that if you use more than just the ITM, or if you use many
+ITM channels, an external viewer such as the Orbuculum suite is required.</p>
 </section>
 <section id="linux">
-<h3>linux<a class="headerlink" href="#linux" title="Link to this heading">¶</a></h3>
-<p>On linux, set up <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/blob/master/driver/99-blackmagic.rules">udev-rules</a> and type</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyBmpTarg</span>
-</pre></div>
-</div>
-<p>If you have not set up udev-rules, connect to the second of the two serial ports, e.g <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/dev/ttyACM1</span></code>.
-If the SWO stream is not shown, check baud rate.</p>
+<h3>Linux<a class="headerlink" href="#linux" title="Link to this heading">¶</a></h3>
+<p>Please first ensure that you have set up udev with the appropriate set of
+<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/driver">the project’s udev rules</a> so you get the proper
+device permissions, and the friendly serial interface names in /dev.</p>
+<p>To view the decoded data stream you can then connect in to <code class="docutils literal notranslate"><span class="pre">/dev/ttyBmpTarg</span></code> (or include your probe’s serial number
+after if you have more than one plugged in) using your favourite serial terminal program such as <code class="docutils literal notranslate"><span class="pre">screen</span></code>, <code class="docutils literal notranslate"><span class="pre">minicom</span></code>
+or, in a pinch, <code class="docutils literal notranslate"><span class="pre">cat</span></code>.</p>
+<p>If the decoded ITM stream data is not shown, check the configured baud rate on the target or on the probe.</p>
 </section>
 <section id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Link to this heading">¶</a></h3>
-<p>Black Magic Probe shows up in the device manager as two COM ports. For Windows 8 and 10, no drivers need to be installed for serial ports. For earlier versions, one can use an <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/master/driver">.inf file</a> that references the pre-installed serial driver. On Windows, connect <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuTTY</a> to the second of the two COM ports, labeled “Black Magic UART Port”.</p>
-<p>SWO decoding in the probe does not need any special utilities and works on every os. For setups that use only a single channel this may be all you need.</p>
-<p>For complex setups, especially with multiple channels, an external viewer may be more suitable.</p>
+<p>The probe shows up in Device Manager as two COM ports and two other USB interfaces. For Windows 8, 10 and 11, no
+drivers should needto be installed to use the device and all interfaces should show up properly out of the box.
+For earlier versions of Windows, you will need to use the
+<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/driver">two driver installation <code class="docutils literal notranslate"><span class="pre">.inf</span></code> files</a> to get
+Windows to bind the proper drivers to the device interfaces.</p>
+<p>Once your probe has all interfaces properly bound, connect a program such as
+<a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuTTY</a> or any other serial terminal program to
+the “Black Magic UART Port” COM port. On W8+ you will need to locate the COM port with the higher interface number
+in Device Manager. This may not be the higher numbered COM port.</p>
 </section>
 </section>
 <section id="external-viewer">
 <h2>External viewer<a class="headerlink" href="#external-viewer" title="Link to this heading">¶</a></h2>
-<p>You can switch on traceswo for external viewers with</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">monitor</span> <span class="n">traceswo</span>
+<p>You can switch on SWO for external viewers with</p>
+<div class="highlight-gdb notranslate"><div class="highlight"><pre><span></span>monitor traceswo enable
 </pre></div>
 </div>
-<p>The SWO stream is written to the usb trace port. (The usb trace port does not show up in /dev). If using async protocol, you can specify a baud rate: <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">traceswo</span> <span class="pre">1125000</span></code>. The default for async is 2250000.</p>
-<p>Viewers:</p>
+<p>The recovered SWO data is output to the USB trace interface. If using a probe that works with async mode, you can
+specify a baud rate like so: <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">traceswo</span> <span class="pre">enable</span> <span class="pre">1125000</span></code>. The default is 2.25MBaud.</p>
+<section id="viewers">
+<h3>Viewers<a class="headerlink" href="#viewers" title="Link to this heading">¶</a></h3>
+<p>The following is a (non-comprehensive) list of viewers that can work with Black Magic Debug Firmware:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/compuphase/Black-Magic-Probe-Book">bmtrace</a> (graphical, windows, ubuntu). Configures bmp and target for you. Windows binaries.
-<img alt="" src="https://github.com/compuphase/Black-Magic-Probe-Book/raw/master/doc/bmtrace.png" /></p></li>
-<li><p><a class="reference external" href="https://github.com/orbcode/orbuculum">orbuculum</a> (linux, command line) Advanced. Has gdb init scripts and target c source in the Support/ directory.</p></li>
-<li><p><a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/blob/master/scripts/swolisten.c">swo_listen</a> (linux, command line)</p></li>
-<li><p><a class="reference external" href="https://github.com/nickd4/bmp_traceswo">bmp_traceswo</a> and <a class="reference external" href="https://github.com/tristanseifert/bmp_traceswo">fork</a> (linux, command line) <a class="reference internal" href="traceswo.html"><span class="std std-doc">detailed write-up</span></a></p></li>
+<li><p><a class="reference external" href="https://github.com/orbcode/orbuculum">Orbuculum</a> - A comprehensive but easy to use suite of tools with GDB
+scripts for target setup. Run <code class="docutils literal notranslate"><span class="pre">orbuculum</span></code> to start collecting trace data. (All OSes. Command line driven)</p></li>
+<li><p><a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/blob/main/scripts/swolisten.c">swolisten</a> - Simplistic in-tree viewer
+for ITM data and predecessor to Orbuculum. (Linux-only. Command line driven)</p></li>
+<li><p><a class="reference external" href="https://github.com/compuphase/Black-Magic-Probe-Book">bmtrace</a> - Basic ITM stream viewer. Configures BMD and tries
+to configure your target for you. Windows binaries available. (Windows and Linux only. Graphical)</p></li>
 </ul>
+</section>
+</section>
+<section id="halting-swo-recovery">
+<h2>Halting SWO recovery<a class="headerlink" href="#halting-swo-recovery" title="Link to this heading">¶</a></h2>
+<p>If you wish to stop recovery of SWO, decoding of ITM data, or need to get the firmware to resynchronise with your
+target, you can run <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">traceswo</span> <span class="pre">disable</span></code> to spin the SWO engine down. Note, this frees any buffers associated
+with the SWO data recovery and resets state. This is required if you wish to scan for targets over JTAG.</p>
 </section>
 </section>
 
