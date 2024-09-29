@@ -148,9 +148,10 @@ your choosing:
 # Optional - strip the executable to minimize it
 strip src/blackmagic.exe
 
-cp src/blackmagic.exe          /c/path/to/project
-cp /ucrt64/bin/libusb-1.0.dll  /c/path/to/project
-cp /ucrt64/bin/libhidapi-0.dll /c/path/to/project
+cp src/blackmagic.exe             /c/path/to/project
+cp 3rdparty/ftdi/amd64/ftd2xx.dll /c/path/to/project
+cp /ucrt64/bin/libusb-1.0.dll     /c/path/to/project
+cp /ucrt64/bin/libhidapi-0.dll    /c/path/to/project
 ```
 
 Note: The file paths above assume you are still in the MSYS2 UCRT64 prompt.
