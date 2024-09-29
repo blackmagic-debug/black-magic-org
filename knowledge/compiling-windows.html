@@ -94,7 +94,7 @@ you will need to open the MSYS2 UCRT64 prompt from the start menu.
 That is the prompt item with this icon: <a class="reference internal" href="../_images/ucrt64.png"><img alt="UCRT64 icon" src="../_images/ucrt64.png" style="width: 32px; height: 32px;" /></a></p>
 <p>Inside the MSYS2 environment run the following to update the environment and follow all prompts provided:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pacman<span class="w"> </span>-Syu
-pacman<span class="w"> </span>-S<span class="w"> </span>pactools<span class="w"> </span>git<span class="w"> </span>unzip
+pacman<span class="w"> </span>-S<span class="w"> </span>pactoys<span class="w"> </span>git<span class="w"> </span>unzip
 pacboy<span class="w"> </span>-S<span class="w"> </span>python:p<span class="w"> </span>make:p
 unzip<span class="w"> </span><span class="nv">$USERPROFILE</span>/Downloads/arm-gnu-toolchain-12.2.rel1-mingw-w64-i686-arm-none-eabi.zip<span class="w"> </span>-d<span class="w"> </span>.
 <span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/arm-gnu-toolchain-12.2.rel1-mingw-w64-i686-arm-none-eabi/bin:<span class="nv">$PATH</span>
@@ -170,7 +170,7 @@ and follow the installation guide.</p>
 That is the prompt item with this icon: <a class="reference internal" href="../_images/ucrt64.png"><img alt="UCRT64 icon" src="../_images/ucrt64.png" style="width: 32px; height: 32px;" /></a></p>
 <p>Inside the MSYS2 environment run the following to update the environment and follow all prompts provided:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pacman<span class="w"> </span>-Syu
-pacman<span class="w"> </span>-S<span class="w"> </span>pacboy<span class="w"> </span>git<span class="w"> </span>unzip
+pacman<span class="w"> </span>-S<span class="w"> </span>pactoys<span class="w"> </span>git<span class="w"> </span>unzip
 pacboy<span class="w"> </span>-S<span class="w"> </span>python:p<span class="w"> </span>make:p<span class="w"> </span>toolchain:p<span class="w"> </span>libusb:p<span class="w"> </span>hidapi:p
 </pre></div>
 </div>
@@ -187,6 +187,20 @@ Once you have the source, building BMDA is as easy as running:</p>
 <p>After the <code class="docutils literal notranslate"><span class="pre">make</span></code> step, you will have a file - <code class="docutils literal notranslate"><span class="pre">src/blackmagic.exe</span></code>, you can execute this by running <code class="docutils literal notranslate"><span class="pre">src/blackmagic</span></code>.
 This is the BMDA binary. When you run <code class="docutils literal notranslate"><span class="pre">mingw32-make</span> <span class="pre">clean</span></code> in the sources, this file will be kept behind. This is done
 to allow you to build BMDA, then the firmware, and then have both to use simultaneously.</p>
+<p>You may not want to require users to have an MSYS2 environment to use <code class="docutils literal notranslate"><span class="pre">blackmagic.exe</span></code>.</p>
+<p>In that case, all you need to do is copy the following files to a directory of
+your choosing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Optional - strip the executable to minimize it</span>
+strip<span class="w"> </span>src/blackmagic.exe
+
+cp<span class="w"> </span>src/blackmagic.exe<span class="w">             </span>/c/path/to/project
+cp<span class="w"> </span>3rdparty/ftdi/amd64/ftd2xx.dll<span class="w"> </span>/c/path/to/project
+cp<span class="w"> </span>/ucrt64/bin/libusb-1.0.dll<span class="w">     </span>/c/path/to/project
+cp<span class="w"> </span>/ucrt64/bin/libhidapi-0.dll<span class="w">    </span>/c/path/to/project
+</pre></div>
+</div>
+<p>Note: The file paths above assume you are still in the MSYS2 UCRT64 prompt.</p>
+<p>Now you can run <code class="docutils literal notranslate"><span class="pre">c:\path\to\project\blackmagic</span></code> from the Windows commandline or shortcut.</p>
 </section>
 </section>
 </section>
