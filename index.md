@@ -65,19 +65,21 @@ hacking/target-mm32
 hacking/target-clock-generation
 ```
 
-[![](https://img.shields.io/github/v/release/blackmagic-debug/blackmagic.svg?logo=github)](https://github.com/blackmagic-debug/blackmagic/releases)
-[![](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml/badge.svg)](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml)
-[![](https://img.shields.io/github/stars/blackmagic-debug/blackmagic?logo=GitHub)](https://github.com/blackmagic-debug/blackmagic/stargazers)
-[![](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy)
+[![Current release](https://img.shields.io/github/v/release/blackmagic-debug/blackmagic.svg?logo=github)](https://github.com/blackmagic-debug/blackmagic/releases)
+[![CI flow status](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml/badge.svg)](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml)
+[![Repo starazers](https://img.shields.io/github/stars/blackmagic-debug/blackmagic?logo=GitHub)](https://github.com/blackmagic-debug/blackmagic/stargazers)
+[![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy)
 
 # Black Magic Debug: The Plug&Play MCU Debugger
 
-![](_assets/bmp_v2_3b_iso.jpg)
+![Project logo](_assets/bmp_v2_3b_iso.jpg)
 
 ## Black Magic Debug Project Goals
+
 The goal of this project is the creation of an easy to use, mostly plug-and-play, JTAG/SWD debugger for embedded microcontrollers. The project focuses on professional embedded software developers that prefer retaining control over their build systems and testing environments instead of relying on highly abstracted vendor tools that give the impression of simplicity at the cost of transparency.
 
 ## Project News
+
 ```{postlist} 10
 
 ```
@@ -87,6 +89,7 @@ The goal of this project is the creation of an easy to use, mostly plug-and-play
 In most cases Black Magic Debug takes the form of a firmware for the Black Magic Probe hardware, and implements a [GNU DeBugger (GDB)](https://www.sourceware.org/gdb/) server.
 
 The Black Magic GDB server features:
+
 * Automatic target detection
 * No need for target specific configuration scripts
 * All protocol and target specific control is done through GDB monitor commands
@@ -107,8 +110,8 @@ If anything is unclear or hard to understand [let us know](index.md#contact). Ou
 
 ## Supported Targets
 
-[![](_assets/bmpm_ARM_Cortex-M_targets-2021-12.png)](_assets/bmpm_ARM_Cortex-M_targets-2021-12.png)
-[![](_assets/bmpm_ARM_Cortex-A_alpha_targets.png)](_assets/bmpm_ARM_Cortex-A_alpha_targets.png)
+[![List of supported Cortex-M targets](_assets/bmpm_ARM_Cortex-M_targets-2021-12.png)](_assets/bmpm_ARM_Cortex-M_targets-2021-12.png)
+[![List of supported Cortex-A targets](_assets/bmpm_ARM_Cortex-A_alpha_targets.png)](_assets/bmpm_ARM_Cortex-A_alpha_targets.png)
 
 ## Quick Demo
 
@@ -121,6 +124,7 @@ Here is a quick example of a GDB session using the Black Magic Probe.
 ```
 
 The session goes through the following steps:
+
 * Connecting to BMP -> `target extended-remote <serial port>`
 * Scanning for targets using SWD -> `monitor swdp_scan`
 * Attaching to the detected target -> `attach 1`
@@ -133,6 +137,7 @@ The session goes through the following steps:
 ## Support the Project
 
 The best way to support the project is purchasing the official [Black Magic Probe hardware](#getting-hardware). If you would like to support the project beyond that please consider supporting these individuals and organizations:
+
 * [Piotr Esden-Tempski (GitHub Sponsors)](https://github.com/sponsors/esden)
 * [Rachel Mant (GitHub Sponsors)](https://github.com/sponsors/dragonmux)
 * [1BitSquared (Patreon)](https://www.patreon.com/1bitsquared)
@@ -142,26 +147,29 @@ The best way to support the project is purchasing the official [Black Magic Prob
 The official Black Magic Probe hardware was specifically designed with Black Magic Debug in mind and the proceeds from the sales directly support and further the development of the software. See the [Support the Project](#support-the-project) section for other means of sponsoring the development of Black Magic Debug.
 
 The official Black Magic Probe hardware is available from these distributors in alphabetical order:
- * DE: [1BitSquared Germany](http://1bitsquared.de/products/black-magic-probe) Black Magic Probe V2.3 (Multiple accessory options) (Newest)
- * USA: [1BitSquared US](http://1bitsquared.com/collections/frontpage/products/black-magic-probe) Black Magic Probe V2.3 (Multiple accessory options) (Newest)
- * USA: [Adafruit Industries](https://www.adafruit.com/product/3839) Black Magic Probe V2.3 (With JTAG/SWD and UART cables) (Newest)
- * NL: [Elektor](https://www.elektor.com/black-magic-probe-v2-3-jtag-swd-arm-microcontroller-debugger) Black Magic Probe V2.3 (With JTAG/SWD and UART cables and 7Pin Adapter) (Newest)
- * USA: [Mouser](https://www.mouser.com/ProductDetail/1BitSquared/BLACKMAGIC-PROBE-V2_3?qs=By6Nw2ByBD3Wgea%252Buf9FNw%3D%3D) Black Magic Probe V2.3 (With JTAG/SWD and UART cables) (Newest)
 
-## Other Hardware supported by Black Magic Debug:
+* DE: [1BitSquared Germany](http://1bitsquared.de/products/black-magic-probe) Black Magic Probe V2.3 (Multiple accessory options) (Newest)
+* USA: [1BitSquared US](http://1bitsquared.com/collections/frontpage/products/black-magic-probe) Black Magic Probe V2.3 (Multiple accessory options) (Newest)
+* USA: [Adafruit Industries](https://www.adafruit.com/product/3839) Black Magic Probe V2.3 (With JTAG/SWD and UART cables) (Newest)
+* NL: [Elektor](https://www.elektor.com/black-magic-probe-v2-3-jtag-swd-arm-microcontroller-debugger) Black Magic Probe V2.3 (With JTAG/SWD and UART cables and 7Pin Adapter) (Newest)
+* USA: [Mouser](https://www.mouser.com/ProductDetail/1BitSquared/BLACKMAGIC-PROBE-V2_3?qs=By6Nw2ByBD3Wgea%252Buf9FNw%3D%3D) Black Magic Probe V2.3 (With JTAG/SWD and UART cables) (Newest)
 
- * ST-Link v2, v2.1 and Blue Pill. See [stlink](https://github.com/blackmagic-debug/blackmagic/tree/master/src/platforms/stlink)
- * ST-Link v3. See [stlinkv3](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlinkv3)
- * STM8S Discovery (ST-Link V1). See [swlink](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/swlink)
- * F4 Discovery (STM32F407). See [f4discovery](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/f4discovery)
- * Black Pill F4 (STM32F401CC/STM32F401CE/STM32F411CE). See [blackpill-f401cc](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f401cc), [blackpill-f401ce](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f401ce), [blackpill-f411ce](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f411ce)
- * TI LaunchPad Tiva C onboard programmer. See [launchpad-icdi](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/launchpad-icdi)
- * [HydraBus](https://hydrabus.com/). See [hydrabus](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/hydrabus)
- * [96Boards Carbon](https://www.96boards.org/product/carbon/). See [96_carbon](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/96b_carbon)
+## Other Hardware supported by Black Magic Debug
+
+* ST-Link v2, v2.1 and Blue Pill. See [stlink](https://github.com/blackmagic-debug/blackmagic/tree/master/src/platforms/stlink)
+* ST-Link v3. See [stlinkv3](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/stlinkv3)
+* STM8S Discovery (ST-Link V1). See [swlink](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/swlink)
+* F4 Discovery (STM32F407). See [f4discovery](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/f4discovery)
+* Black Pill F4 (STM32F401CC/STM32F401CE/STM32F411CE). See [blackpill-f401cc](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f401cc), [blackpill-f401ce](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f401ce), [blackpill-f411ce](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/blackpill-f411ce)
+* TI LaunchPad Tiva C onboard programmer. See [launchpad-icdi](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/launchpad-icdi)
+* [HydraBus](https://hydrabus.com/). See [hydrabus](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/hydrabus)
+* [96Boards Carbon](https://www.96boards.org/product/carbon/). See [96_carbon](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms/96b_carbon)
 
 ## Black Magic Debug App (BMDA)
 
 You can also compile the Black Magic Debug as a stand alone application instead of a firmware that you can flash onto a microcontroller. This mode resembles the way OpenOCD is used as an "application in the middle". Please find more details on the [hardware page](hardware.md#black-magic-debug-app).
 
-## Contact:
-* If you have questions or suggestions feel free to join us in our chat [![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy)
+## Contact
+
+If you have questions or suggestions feel free to join us in our chat
+[![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy)
