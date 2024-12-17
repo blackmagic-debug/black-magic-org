@@ -14,11 +14,12 @@ To build the firmware on Windows you will need the following minimum requirement
 * The [ARM GNU Toolchain](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads) compiler suite for bare metal
 * A POSIX-compliant shell such as Bash
 * Git for Windows, if building from the repository instead of a release
+* Meson >= 0.63 + Ninja to run the build system
 
 The easiest way to get to a working setup is to use:
 
 * [MSYS2](https://www.msys2.org/) and follow the installation guide
-* [ARM GNU Toolchain release 12.2.Rel1](https://developer.arm.com/-/media/Files/downloads/gnu/12.2.rel1/binrel/arm-gnu-toolchain-12.2.rel1-mingw-w64-i686-arm-none-eabi.zip?rev=709f3f15b2ee4763b186c10153ee6ca9&hash=8C0761A17A1E4861B96DDB604C177F5B)
+* [ARM GNU Toolchain release 13.2.Rel1](https://developer.arm.com/-/media/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-mingw-w64-i686-arm-none-eabi.zip?rev=93fda279901c4c0299e03e5c4899b51f&hash=99EF910A1409E119125AF8FED325CF79)
 
 ### Setting up the firmware build environment
 
@@ -31,14 +32,14 @@ Inside the MSYS2 environment run the following to update the environment and fol
 ```bash
 pacman -Syu
 pacman -S pactoys git unzip
-pacboy -S python:p make:p
-unzip $USERPROFILE/Downloads/arm-gnu-toolchain-12.2.rel1-mingw-w64-i686-arm-none-eabi.zip -d .
-export PATH=$HOME/arm-gnu-toolchain-12.2.rel1-mingw-w64-i686-arm-none-eabi/bin:$PATH
+pacboy -S python:p meson:p
+unzip $USERPROFILE/Downloads/arm-gnu-toolchain-13.2.rel1-mingw-w64-i686-arm-none-eabi.zip -d .
+export PATH=$HOME/arm-gnu-toolchain-13.2.rel1-mingw-w64-i686-arm-none-eabi/bin:$PATH
 ```
 
 At this point you will have the tools required to build the firwmare and they will all be available from the shell.
 It is important that all further steps be performed in this same shell, or if you do open a new one, that you
-run the final line of this setup on each new shell you use.
+run the final line of this setup on each new shell you use (to get the firmware toolchain onto `$PATH`).
 
 ### Acquiring the source
 
@@ -81,28 +82,35 @@ Now you are in a copy of the source tree for BMD, you can build the source for y
 platform README.md for the probe as a guide for any differences to the below steps.
 
 NB: If you are building the firmware for a Blue Pill and your device does not fit one the descriptions of any in the
-`swlink` platform, you must use the `stlink` platform and defined `BLUEPILL=1` in the `make` step.
+`swlink` platform, you must use the `bluepill` virtual platform which is a special configuration of the `stlink` platform.
 
 To build the firmware and update your probe, assuming you've already acquired `bmputil` per the
 [upgrading instrucitons](../upgrade.md):
 
 ```bash
-mingw32-make PROBE_HOST=native
-bmputil flash src/blackmagic.elf
+meson setup build --cross-file=cross-file/native.ini
+cd build
+ninja
+ninja flash
 ```
 
-The `make` step will automatically clone and build libopencm3, which is one of the firmware's dependencies.
-The resulting output of this step are 4 files:
+The `meson setup` step will automatically clone and build any dependencies you are missing such as libopencm3,
+or libusb. The resulting output of this step are 3 files:
 
-* `src/blackmagic.elf` - The firmware main binary w/ debug and address space information
-* `src/blackmagic.bin` - The firmware's .text and .data sections objcopy'd into a bare file
-* `src/blackmagic_dfu.elf` - The project's bootloader w/ debug and address space information
-* `src/blackmagic_dfu.bin` - The project bootloader's .text and .data sections in a bare file
+* `build/blackmagic_native_firmware.elf` - The firmware main binary w/ debug and address space information
+* `build/blackmagic_native_firmware.bin` - The firmware's .text and .data sections objcopy'd into a bare file
+* `build/blackmagic.exe` - Black Magic Debug App
+
+Meson will skip building BMDA with the firmware if it cannot resolve one of the dependencies or is unable to
+build one of them.
+
+If you need the bootloader (for example, to provision a new probe), additionally run `ninja boot-bin` to generate
+two additional binaries:
+
+* `build/blackmagic_native_bootloader.elf` - The project's bootloader w/ debug and address space information
+* `build/blackmagic_native_bootloader.bin` - The project bootloader's .text and .data sections in a bare file
 
 When the upgrade step completes, your probe will be automatically rebooted into the new firmware and be ready to go.
-
-If you wish to build the project for a different platform or do a BMDA build, you must run `mingw32-make clean`
-between builds to remove the incompatible build outputs.
 
 ## Building BMDA on a Windows machine
 
@@ -119,7 +127,7 @@ Inside the MSYS2 environment run the following to update the environment and fol
 ```bash
 pacman -Syu
 pacman -S pactoys git unzip
-pacboy -S python:p make:p toolchain:p libusb:p hidapi:p
+pacboy -S meson:p toolchain:p
 ```
 
 At this point you will have everything needed to build BMDA in the UCRT64 environment.
@@ -130,30 +138,23 @@ With the environment set up, you will need to acquire the source same as in the 
 Once you have the source, building BMDA is as easy as running:
 
 ```bash
-mingw32-make PROBE_HOST=hosted HOSTED_BMP_ONLY=0
+meson setup build
+meson compile -C build
 ```
 
-If you wish to build BMDA for only talking to BMP, the `HOSTED_BMP_ONLY=0` may be dropped.
+This will build a full BMDA that understands how to talk with all supported probe types.
 
-After the `make` step, you will have a file - `src/blackmagic.exe`, you can execute this by running `src/blackmagic`.
-This is the BMDA binary. When you run `mingw32-make clean` in the sources, this file will be kept behind. This is done
-to allow you to build BMDA, then the firmware, and then have both to use simultaneously.
+After the build step, you will have a file - `build/blackmagic.exe`, you can execute this by running
+`build/blackmagic`. This is the BMDA binary.
 
-You may not want to require users to have an MSYS2 environment to use `blackmagic.exe`.
-
-In that case, all you need to do is copy the following files to a directory of
-your choosing:
+If you do not want to have to use an MSYS2 environment to use `blackmagic.exe`, you can now copy the
+following files into the build directory to make it usable from anywhere on the command line or via a shortcut:
 
 ```bash
-# Optional - strip the executable to minimize it
-strip src/blackmagic.exe
-
-cp src/blackmagic.exe             /c/path/to/project
-cp 3rdparty/ftdi/amd64/ftd2xx.dll /c/path/to/project
-cp /ucrt64/bin/libusb-1.0.dll     /c/path/to/project
-cp /ucrt64/bin/libhidapi-0.dll    /c/path/to/project
+cp /ucrt64/bin/libusb-1.0.dll  build
+cp /ucrt64/bin/libhidapi-0.dll build
 ```
 
-Note: The file paths above assume you are still in the MSYS2 UCRT64 prompt.
+Note: The file paths above assume you are still in the MSYS2 UCRT64 environment at the project source root.
 
 Now you can run `c:\path\to\project\blackmagic` from the Windows commandline or shortcut.
