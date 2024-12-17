@@ -4,6 +4,15 @@
    contain the root `toctree` directive.
 -->
 
+[![Current release](https://img.shields.io/github/v/release/blackmagic-debug/blackmagic.svg?logo=github)](https://github.com/blackmagic-debug/blackmagic/releases)
+[![CI flow status](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml/badge.svg)](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml)
+[![Repo starazers](https://img.shields.io/github/stars/blackmagic-debug/blackmagic?logo=GitHub)](https://github.com/blackmagic-debug/blackmagic/stargazers)
+[![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy)
+
+# Black Magic Debug: The Plug&Play MCU Debugger
+
+![Project logo](_assets/bmp_v2_3b_iso.jpg)
+
 ```{toctree}
 :hidden:
 :maxdepth: 1
@@ -64,15 +73,6 @@ hacking/target-cortex-a
 hacking/target-mm32
 hacking/target-clock-generation
 ```
-
-[![Current release](https://img.shields.io/github/v/release/blackmagic-debug/blackmagic.svg?logo=github)](https://github.com/blackmagic-debug/blackmagic/releases)
-[![CI flow status](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml/badge.svg)](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml)
-[![Repo starazers](https://img.shields.io/github/stars/blackmagic-debug/blackmagic?logo=GitHub)](https://github.com/blackmagic-debug/blackmagic/stargazers)
-[![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy)
-
-# Black Magic Debug: The Plug&Play MCU Debugger
-
-![Project logo](_assets/bmp_v2_3b_iso.jpg)
 
 ## Black Magic Debug Project Goals
 
