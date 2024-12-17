@@ -119,7 +119,7 @@ Inside the MSYS2 environment run the following to update the environment and fol
 ```bash
 pacman -Syu
 pacman -S pactoys git unzip
-pacboy -S python:p make:p toolchain:p libusb:p hidapi:p
+pacboy -S python:p make:p toolchain:p libusb:p hidapi:p libftdi:p
 ```
 
 At this point you will have everything needed to build BMDA in the UCRT64 environment.
@@ -133,7 +133,7 @@ Once you have the source, building BMDA is as easy as running:
 mingw32-make PROBE_HOST=hosted HOSTED_BMP_ONLY=0
 ```
 
-If you wish to build BMDA for only talking to BMP, the `HOSTED_BMP_ONLY=0` may be dropped.
+If you wish to build BMDA for only talking to BMP, the `HOSTED_BMP_ONLY=0` may be dropped or the 0 switched to a 1.
 
 After the `make` step, you will have a file - `src/blackmagic.exe`, you can execute this by running `src/blackmagic`.
 This is the BMDA binary. When you run `mingw32-make clean` in the sources, this file will be kept behind. This is done
@@ -145,15 +145,15 @@ In that case, all you need to do is copy the following files to a directory of
 your choosing:
 
 ```bash
-# Optional - strip the executable to minimize it
+# Optional - strip the executable to minimize its size by removing symbols
 strip src/blackmagic.exe
 
-cp src/blackmagic.exe             /c/path/to/project
-cp 3rdparty/ftdi/amd64/ftd2xx.dll /c/path/to/project
-cp /ucrt64/bin/libusb-1.0.dll     /c/path/to/project
-cp /ucrt64/bin/libhidapi-0.dll    /c/path/to/project
+cp src/blackmagic.exe          /c/path/to/project
+cp /ucrt64/bin/libusb-1.0.dll  /c/path/to/project
+cp /ucrt64/bin/libhidapi-0.dll /c/path/to/project
+cp /ucrt64/bin/libftdi1.dll    /c/path/to/project
 ```
 
-Note: The file paths above assume you are still in the MSYS2 UCRT64 prompt.
+Note: The file paths above assume you are still in the MSYS2 UCRT64 environment.
 
-Now you can run `c:\path\to\project\blackmagic` from the Windows commandline or shortcut.
+Now you can run `C:\path\to\project\blackmagic` from the Windows commandline or via a shortcut.
