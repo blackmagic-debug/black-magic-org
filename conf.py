@@ -95,6 +95,7 @@ html_sidebars = {
     '**': [
         'about.html',
         'navigation.html',
+		'version.html',
         'ablog/recentposts.html',
         'ablog/archives.html',
         'relations.html',
