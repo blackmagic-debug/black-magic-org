@@ -101,8 +101,9 @@ Attaching to Remote target
 0x080071b2 in ?? ()
 ```
 
-The command `monitor swdp_scan` may be used to use the Serial-Wire Debug Protocol instead of JTAG to connect
-to the target.
+If `auto_scan` does not find your target, or you know the target is specifically available via only one of JTAG
+or SWD (ARM's Serial-Wire Debug), you may use `monitor jtag_scan` or `monitor swd_scan` (respectively) to have
+BMD find your target.
 
 Once attached, all the standard GDB commands may be used to start and control
 the execution of the embedded application. [GDB Commands](usage/gdb-commands.md) provides a quick introduction.
