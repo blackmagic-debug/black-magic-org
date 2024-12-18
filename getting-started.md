@@ -57,22 +57,31 @@ firmware.) Windows 10 displays the BMP probe ports using the generic title, "USB
 
 ## Connecting to the software
 
-To use the Black Magic Probe, you will need an ARM cross toolchain for developing and debugging embedded ARM
-Cortex applications on your computer. The
-[gcc-arm-embedded](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads) toolchain is recommended.
-The toolchain will include the GNU Debugger, GDB, for debugging ARM applications.
+To use the Black Magic Probe, you will need a suitable toolchain for your target processor. For ARM Cortex-M based
+targets, the project can recomend the official
+[ARM GNU Toolchain](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads). For RISC-V based targets,
+the project can recomend the [RISC-V Collab GNU Toolchain](https://github.com/riscv-collab/riscv-gnu-toolchain/releases).
+These toolchains include a suitable GDB as part of the bundle. Alternatively you can use the `gdb-multilib` of your
+distribution if you're on Linux or macOS (via brew).
 
 ```sh
 user@host ~ $ arm-none-eabi-gdb
-GNU gdb (GNU Tools for ARM Embedded Processors) 7.6.0.20140228-cvs
-Copyright (C) 2013 Free Software Foundation, Inc.
+GNU gdb (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 15.2.90.20241130-git
+Copyright (C) 2024 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
-and "show warranty" for details.
-This GDB was configured as "--host=i686-linux-gnu --target=arm-none-eabi".
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "--host=x86_64-pc-linux-gnu --target=arm-none-eabi".
+Type "show configuration" for configuration details.
 For bug reporting instructions, please see:
-<http://www.gnu.org/software/gdb/bugs/>.
+<https://bugs.linaro.org/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word".
+No symbol table is loaded.  Use the "file" command.
 (gdb)
 ```
 
