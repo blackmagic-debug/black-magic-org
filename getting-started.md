@@ -91,16 +91,11 @@ your ARM GDB to the target device use the following commands:
 ```gdb
 (gdb) target extended-remote /dev/ttyBmpGdb
 Remote debugging using /dev/ttyBmpGdb
-(gdb) monitor jtag_scan
-Target voltage: 3.4V
-Device  IR Len  IDCODE      Description
-0       4       0x4BA00477  ARM Limited: ADIv5 JTAG-DP port.
-1       5       0x06413041  ST Microelectronics: STM32F4xx.
-
+(gdb) monitor auto_scan
+Target voltage: 3.3V
 Available Targets:
 No. Att Driver
- 1      STM32F4xx
-
+ 1      STM32F40x M4
 (gdb) attach 1
 Attaching to Remote target
 0x080071b2 in ?? ()
