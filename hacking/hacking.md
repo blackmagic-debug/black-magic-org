@@ -103,29 +103,36 @@ meson compile -C build
 
 This will generate one file in the build directory - `blackmagic`. This is the BMDA executable.
 
-## Enabling DEBUG() messages
+## Enabling debug messages
 
-Easiest way is to compile a PC-hosted BMP. Run blackmagic -v 1 so that all infos are printed on the controlling
-terminal. Argument to -v is a bitmask, with -v 31 very verbose. If you do not succeed in compiling PC-hosted,
-use following steps as a last resort to compile in the debug messages when building the firmware:
+All debug messages are compiled into BMDA, always. To enable more of the diagnostic output, use the `-v` flag.
+This flag is a bitmask with a maximum value of 63. There are 6 sets of diagnostics that can be enabled:
 
-```bash
-make ENABLE_DEBUG=1
-```
+* 1  - INFO: General informational diagnostics
+* 2  - GDB: GDB remote protocol diagnostics
+* 4  - TARGET: Target-specific diagnostics
+* 8  - PROTO: Target debug protocol diagnostics
+* 16 - PROBE: Probe protocol diagnostics
+* 32 - WIRE: USB communication with probe ("wire-level") diagnostics
 
-Then enable debug messages in gdb with the new command
+There are two additional always-enabled levels for BMDA - `ERROR` and `WARN`.
+
+For the firmware, pass `-Ddebug_output=true` to the end of the `meson setup` line and build. This will include
+some of the levels into the firmware such as ERROR, WARN, and INFO. You can then enable the messages at runtime
+with the `monitor` command this adds:
 
 ```gdb
 monitor debug_bmp enable
 ```
 
-The debug messages appear on the debug UART. On a BMP the USB UART device is used.
+The debug messages appear on the target debug UART. An example of its usage follows below:
 
-```bash
-screen /dev/ttyACM2 115200
+```sh
+minicom -D /dev/ttyBmpTarg -8
 ```
 
-Exit the screen session by type Crtl-A + Ctrl-\\.
+To exit `minicom`, type Ctrl + A then Q and answer "Yes" to the question about leaving without reset by typing
+Enter. This will return you to the original console.
 
 ## Updating firmware
 
