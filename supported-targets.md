@@ -31,7 +31,9 @@
 | GigaDevice        | GD32E230    | ✔ Full        | v1.8.0             | stm32f1.c      |
 | GigaDevice        | GD32E5      | ✔ Full        | v1.10.0            | stm32f1.c      |
 | ArteryTek         | AT32F40     | ✔ Full        | v1.9.0             | stm32f1.c      |
+| ArteryTek         | AT32F405    | ✔ Full        | v2.0.0             | at32f43x.c     |
 | ArteryTek         | AT32F41     | ✔ Full        | v1.9.0             | stm32f1.c      |
+| ArteryTek         | AT32F423    | ✔ Full        | v2.0.0             | at32f43x.c     |
 | ArteryTek         | AT32F43     | ✔ Full        | v1.10.0            | at32f43x.c     |
 | MindMotion        | MM32L0      | ✔ Full        | v1.10.0            | stm32f1.c      |
 | MindMotion        | MM32SPIN    | ✔ Full        | v1.10.0            | stm32f1.c      |
