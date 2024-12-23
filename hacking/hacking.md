@@ -21,28 +21,41 @@ git clone https://github.com/blackmagic-debug/blackmagic
 
 ## Compiling for the native hardware
 
-To build the firmware for the standard hardware platform run `make` in the top-level directory.
-You will require a GCC cross compiler for ARM Cortex-M3 targets. A good option is
-[gcc-arm-embedded](https://developer.arm.com/downloads/-/gnu-rm).
-The default makefile assumes the target prefix is `arm-none-eabi-`. Then only
+For the native hardware, there are 5 pre-made configurations you can pick from, and the generic configuration
+which can then be customised as you wish. The 5 configurations are as follows:
 
-```bash
-make
+* `native.ini` - Baseline configuration with support for ARM Cortex-M architecture parts. This includes the
+  target support for NXP LPC family parts, the nRF series', NXP's Kinetis and i.MXRT parts, RPi Foundation's
+  MCUs (ARM parts only), Atmel's ATSAM parts, ST's parts and TI's Stellaris/Tiva-C parts.
+* `native-remote.ini` - A special configuration which only includes the remote protocol and acceleration
+  components with absolutely no target support enabled. This is designed for use with BMDA exclusively.
+* `native-riscv.ini` - A special RISC-V configuration profile which contains only target and architecture
+  support for RISC-V devices.
+* `native-st-clones.ini` - A special configuration which supports only ST's parts and their clones. This is
+  intended for users who are dealing only with ST's parts or their clones. This includes support for parts
+  from Artery Tek, GigaDevice, WinChipHead, MindMotion, Puya and HDSC.
+* `native-uncommon.ini` - A configuration of all the uncommon parts for all ARM Cortex architectures. This
+  includes support for Energy Micro's parts, Renesas parts, Xilinx's Zynq, and Ambiq's Apollo3.
+
+We will use the native.ini configuration in the example build below. We recomend using version 12.2.Rel1 of the
+[ARM GNU Toolchain](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads) to build the firmware.
+To start, we need to create a build directory from a configuration with Meson and then ask Meson to run the build:
+
+```sh
+meson setup build --cross-file=cross-file/native.ini
+meson compile -C build
 ```
 
-is needded. If your compilers uses some other prefix,  you can override this
-on the command line like e.g.:
+This will result in the following binary files in the build directory:
 
-```bash
-make CROSS_COMPILE=arm-cortexm3-eabi-
-```
+* `blackmagic_native_firmware.elf` - ELF binary of the Black Magic debug probe.
+* `blackmagic_native_firmware.bin` - Flat binary of the Black Magic debug probe, load at `0x8002000`.
 
-This will result in the following binary files:
+If you need the bootloader as well, then `cd build` and run `ninja boot-bin` which will compile the
+bootloader and generate a .bin file for it for use with provisioning tools. This results in two files:
 
-* `blackmagic.elf` - ELF binary of the Black Magic debug probe.
-* `blackmagic.bin` - Flat binary of the Black Magic debug probe, load at `0x8002000`.
-* `blackmagic_dfu.elf` - ELF binary of the Black Magic DFU bootloader.
-* `blackmagic_dfu.bin` - Flat binary of the DFU bootloader, load at `0x8000000`.
+* `blackmagic_native_bootloader.elf` - ELF binary of the Black Magic DFU bootloader.
+* `blackmagic_native_bootloader.bin` - Flat binary of the DFU bootloader, load at `0x8000000`.
 
 ## Alternative Hardware
 
