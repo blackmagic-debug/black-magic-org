@@ -1,7 +1,7 @@
 # Firmware Hacking
 
 The Black Magic Debug firmware is under the GPLv3 open-source license, all contributions to the project
-should be either GPLv3 or compatible.
+should be either GPLv3, BSD-3-Clause or MIT licenses.
 
 Any contributed hardware designs found in the
 [hardware repository](https://github.com/blackmagic-debug/blackmagic-hardware/) is under the CC-BY-SA license.
@@ -25,21 +25,24 @@ git submodule init
 git submodule update
 ```
 
+NB: If you are using an old clone of the repository, the address of the libopencm3 repository was changed
+to a project-specific fork in the v1.10 release. This new location is
+[blackmagic-debug/libopencm3](https://github.com/blackmagic-debug/libopencm3) in the project organisation.
+
 ## Compiling for the native hardware
 
-To build the firmware for the standard hardware platform run `make` in the
-top-level directory.  You will require a GCC cross compiler for ARM Cortex-M3
-targets. A good option is [gcc-arm-embedded](https://developer.arm.com/downloads/-/gnu-rm).
+To build the firmware for the standard hardware platform run `make` in the top-level directory. You will
+require a GCC cross compiler for ARM Cortex-M3 targets. A good option is the
+[ARM GNU Toolchain](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads).
 The default makefile assumes the target prefix is `arm-none-eabi-`. Then only
 
-```bash
+```sh
 make
 ```
 
-is needded. If your compilers uses some other prefix,  you can override this
-on the command line like e.g.:
+is needded. If your compilers uses some other prefix,  you can override this on the command line like e.g.:
 
-```bash
+```sh
 make CROSS_COMPILE=arm-cortexm3-eabi-
 ```
 
@@ -64,10 +67,9 @@ make PROBE_HOST=stlink ST_BOOTLOADER=1
 
 ## Building on Windows
 
-Sid Price wrote a detailed step by step guide describing
-[how to set up CygWin and compile the Black Magic Probe firmware](http://www.sidprice.com/2018/05/23/cortex-m-debugging-probe/).
+For windows-specific instructions, please use the [Compiling on Windows](/v1.x/knowledge/compiling-windows.md) guide.
 
-### Compiling as a desktop program
+### Compiling as a host computer program
 
 The Black Magic Debug project can also be compiled as a desktop program named Black Magic Debug App.
 
@@ -77,9 +79,14 @@ Compile the application with the command:
 make PROBE_HOST=hosted
 ```
 
+```{note}
+This must be done on a clean working copy. If you try to do this with an existing firmware build's .o files
+present, you will get strange build failures.
+```
+
 ## Enabling DEBUG() messages
 
-Easiest way is to compile a PC-hosted BMP. Run blackmagic -v 1 so that all infos are printed on the controlling
+Easiest way is to compile BMDA. Run blackmagic -v 1 so that all infos are printed on the controlling
 terminal. Argument to -v is a bitmask, with -v 31 very verbose. If you do not succeed in compiling PC-hosted,
 use following steps as a last resort to compile in the debug messages when building the firmware:
 
@@ -99,7 +106,7 @@ The debug messages appear on the debug UART. On a BMP the USB UART device is use
 screen /dev/ttyACM2 115200
 ```
 
-Exit the screen session by type Crtl-A + Ctrl-\\.
+Exit the screen session by type Ctrl-A + Ctrl-\\.
 
 ## Updating firmware
 
