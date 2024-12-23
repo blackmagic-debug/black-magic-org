@@ -59,15 +59,32 @@ bootloader and generate a .bin file for it for use with provisioning tools. This
 
 ## Alternative Hardware
 
-A number of users have contributed alternative hardware designs that are compatible with the native firmware.
-Some of these designs are in the
-[hardware repo](https://github.com/blackmagic-debug/blackmagic-hardware/tree/master/contrib). Check the
-`README.md` files for details. For instance, to compile a BMP for an ST-Link v2 to run as alternative to the
-ST firmware, compile:
+There are a number of platforms that have been contributed by the community to the main repository. You can
+make use of them by subsituting out `native.ini` in the instructions for native with one of the following:
 
-```bash
-make PROBE_HOST=stlink ST_BOOTLOADER=1
-```
+* `96b_carbon.ini` - Configuration for [96Boards' Carbon](https://www.96boards.org/product/carbon/)
+* `blackpill-f401cc.ini` - Configuration for the WeAct Studio
+  [Black Pill F401CC](https://github.com/WeActStudio/WeActStudio.MiniSTM32F4x1)
+* `blackpill-f401ce.ini` - Configuration for the WeAct Studio
+  [Black Pill F401CE](https://github.com/WeActStudio/WeActStudio.MiniSTM32F4x1)
+* `blackpill-f411ce.ini` - Configuration for the WeAct Studio
+  [Black Pill F411CE](https://github.com/WeActStudio/WeActStudio.MiniSTM32F4x1)
+* `bluepill.ini` - Configuration for the WeAct Studio Blue Pill
+* `ctxlink.ini` - Configuration for [Sid Price's ctxLink](https://www.crowdsupply.com/sid-price/ctxlink)
+* `f072.ini` - Configuration for STM32F072's
+* `f3.ini` - Configuration for STM32F3's
+* `f4discovery.ini` - Configuration for ST's
+  [STM32F4 Discovery](https://www.st.com/en/evaluation-tools/stm32f4discovery.html) board
+* `hydrabus.ini` - Configuration for [HydraBus](https://hydrabus.com/)
+* `launchpad-icdi.ini` - Configuration for the ICDI on TI's Launchpad boards
+* `stlink.ini` - Configuration for ST-Link v2, and ST-Link v2.1 adaptors
+* `stlinkv3.ini` - Configuration for ST-Link v3
+* `swlink.ini` - Configuration for ST-Link and Blue Pill (read the README.md before using this)
+
+For the ST-Link platform, the default is for the project bootloader to be disabled so it can be used with
+ST's own and `stlink-tool`. If you wish to use the project's bootloader and replace ST's, then pass
+`-Dbmd_bootloader=true` on the end of the `meson setup` line and follow the bootloader build instructions
+as well to generate the files to use to start over on the ST-Link probe.
 
 ## Building on Windows
 
