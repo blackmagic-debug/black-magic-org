@@ -88,18 +88,20 @@ as well to generate the files to use to start over on the ST-Link probe.
 
 ## Building on Windows
 
-Sid Price wrote a detailed step by step guide describing
-[how to set up CygWin and compile the Black Magic Probe firmware](http://www.sidprice.com/2018/05/23/cortex-m-debugging-probe/).
+For windows-specific instructions, please use the [Compiling on Windows](/knowledge/compiling-windows.md) guide.
 
-### Compiling as a desktop program
+### Compiling as a host computer program
 
-The Black Magic Debug project can also be compiled as a desktop program named Black Magic Debug App.
+Black Magic Debug App (BMDA) is compiled by default when building the firwmare if the dependencies for it
+can be resolved. If you wish to build just BMDA on its own however, you can run the following two Meson
+commands:
 
-Compile the application with the command:
-
-```bash
-make PROBE_HOST=hosted
+```sh
+meson setup build
+meson compile -C build
 ```
+
+This will generate one file in the build directory - `blackmagic`. This is the BMDA executable.
 
 ## Enabling DEBUG() messages
 
