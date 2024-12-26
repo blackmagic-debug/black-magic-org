@@ -28,7 +28,7 @@ You can setup SWO via the chosen viewer, debugger, or directly on the target.
 
 * [Orbuculum](https://github.com/orbcode/orbuculum) has scripts to configure the target in GDB, and STM32 C source to include in your build.
 * [bmtrace](https://github.com/compuphase/Black-Magic-Probe-Book) configures target processor in the viewer, button *Configure target*. Supports STM32 and LPC.
-* [SerialWireOutput](https://github.com/koendv/SerialWireOutput) arduino library, does stm32 set up in code. Userland source for initializing, `write()` and `flush()`.
+* [SerialWireOutput](https://github.com/koendv/SerialWireOutput) arduino library, does STM32 set up in code. Userland source for initializing, `write()` and `flush()`.
 
 ## Black Magic Debug
 
@@ -48,13 +48,13 @@ configure the baud rate both in the target configuration and on the probe. The d
 
 ### SWO decoding in firmware
 
-You can switch on traceswo decoding in BMD with
+You can switch on SWO decoding in BMD with
 
 ```gdb
 monitor traceswo decode
 ```
 
-This defaults decoding all ITM streams. If your probe talks async mode, you can optionally specify a baud rate
+This defaults to decoding all ITM streams. If your probe talks async mode, you can optionally specify a baud rate
 before optionally requesting decoding. Following the `decode` verb, you can then specify which ITM streams you
 wish to have decoded. For example:
 
