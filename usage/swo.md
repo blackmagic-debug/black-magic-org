@@ -70,6 +70,15 @@ SWO decoding in the probe does not need any special utilities and works on every
 single ITM stream this may be all you need. Please note that if you use more than just the ITM, or if you use many
 ITM channels, an external viewer such as the Orbuculum suite is required.
 
+```{note}
+On a BMP or on other platforms that implement the new switchable SWO, you will need to specify which protocol
+encoding you wish to have the probe recover data from as part of the `swo enable` command. This is done by
+specifying one of either `manchester` or `uart` just after `enable` in the invocation and if omitted defaults
+to UART. Such an invocation looks like: `monitor swo enable manchester decode`.
+
+As with any other command verb, you can shorten this - eg, `mon swo en manc dec` works just fine.
+```
+
 ### Linux
 
 Please first ensure that you have set up udev with the appropriate set of
@@ -105,6 +114,15 @@ monitor swo enable
 
 The recovered SWO data is output to the USB trace interface. If using a probe that works with async mode, you can
 specify a baud rate like so: `monitor swo enable 1125000`. The default is 2.25MBaud.
+
+```{note}
+On a BMP or on other platforms that implement the new switchable SWO, you will need to specify which protocol
+encoding you wish to have the probe recover data from as part of the `swo enable` command. This is done by
+specifying one of either `manchester` or `uart` just after `enable` in the invocation and if omitted defaults
+to UART. Such an invocation looks like: `monitor swo enable manchester`.
+
+As with any other command verb, you can shorten this - eg, `mon swo en manc` works just fine.
+```
 
 ### Viewers
 
