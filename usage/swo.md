@@ -28,7 +28,7 @@ You can setup SWO via the chosen viewer, debugger, or directly on the target.
 
 * [Orbuculum](https://github.com/orbcode/orbuculum) has scripts to configure the target in GDB, and STM32 C source to include in your build.
 * [bmtrace](https://github.com/compuphase/Black-Magic-Probe-Book) configures target processor in the viewer, button *Configure target*. Supports STM32 and LPC.
-* [SerialWireOutput](https://github.com/koendv/SerialWireOutput) arduino library, does stm32 set up in code. Userland source for initializing, `write()` and `flush()`.
+* [SerialWireOutput](https://github.com/koendv/SerialWireOutput) arduino library, does STM32 set up in code. Userland source for initializing, `write()` and `flush()`.
 
 ## Black Magic Debug
 
@@ -40,26 +40,28 @@ For everything to work, the target and probe:
 * Must speak the same protocol (UART (aka Async or NRZ) or Manchester coded), and
 * For UART, at the same baud rate - this is configured as part of enabling SWO on the probe.
 
-There are two SWO transport protocols: Manchester coded and UART. You can see what protocol your probe speaks with
-`monitor help`. The protocol is listed next to the `traceswo` command.
+There are two SWO transport protocols: Manchester coded and UART (aka async). You can see what protocol your probe
+speaks with `monitor help`. The protocol is listed next to the `swo` command. In the case of BMP, and some
+third party probes, both protocols are supported in the firmware together. In this case, the protocol to decode
+is given as a part of the instruction to enable SWO.
 
 The Manchester coded SWO auto-synchronizes and the firmware auto-detects baud. However, for UART SWO, you have to
 configure the baud rate both in the target configuration and on the probe. The default baud rate for async is 2.25MBaud.
 
 ### SWO decoding in firmware
 
-You can switch on traceswo decoding in BMD with
+You can switch on SWO decoding in BMD with
 
 ```gdb
-monitor traceswo enable decode
+monitor swo enable decode
 ```
 
-This defaults decoding all ITM streams. If your probe talks async mode, you can optionally specify a baud rate
+This defaults to decoding all ITM streams. If your probe talks async mode, you can optionally specify a baud rate
 between the `enable` verb and optionally requesting decoding. Following the `decode` verb, you can then specify
 which ITM streams you wish to have decoded. For example:
 
 ```gdb
-monitor traceswo enable 4500000 decode 0 2
+monitor swo enable 4500000 decode 0 2
 ```
 
 This example is for an async mode probe, and configures 4.5MBaud and decoding of ITM streams 0 and 2.
@@ -98,11 +100,11 @@ in Device Manager. This may not be the higher numbered COM port.
 You can switch on SWO for external viewers with
 
 ```gdb
-monitor traceswo enable
+monitor swo enable
 ```
 
 The recovered SWO data is output to the USB trace interface. If using a probe that works with async mode, you can
-specify a baud rate like so: `monitor traceswo enable 1125000`. The default is 2.25MBaud.
+specify a baud rate like so: `monitor swo enable 1125000`. The default is 2.25MBaud.
 
 ### Viewers
 
@@ -118,5 +120,5 @@ to configure your target for you. Windows binaries available. (Windows and Linux
 ## Halting SWO recovery
 
 If you wish to stop recovery of SWO, decoding of ITM data, or need to get the firmware to resynchronise with your
-target, you can run `monitor traceswo disable` to spin the SWO engine down. Note, this frees any buffers associated
+target, you can run `monitor swo disable` to spin the SWO engine down. Note, this frees any buffers associated
 with the SWO data recovery and resets state. This is required if you wish to scan for targets over JTAG.
