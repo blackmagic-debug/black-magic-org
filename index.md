@@ -44,7 +44,6 @@ knowledge/links
 usage/gdb-commands
 usage/gdb-automation
 usage/semihosting
-usage/traceswo
 usage/swo
 usage/rtt
 usage/platformio
