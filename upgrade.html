@@ -28,13 +28,13 @@
 
     <title>Firmware Upgrade &#8212; Black Magic Debug  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/asciinema-player_3.6.3.css" />
     <link rel="stylesheet" type="text/css" href="_static/platformpicker.css" />
     <script src="_static/documentation_options.js?v=7f41d439"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/asciinema-player_3.6.3.js"></script>
     <script src="_static/platformpicker.js"></script>
@@ -72,9 +72,14 @@
 <h2>Linux / macOS<a class="headerlink" href="#linux-macos" title="Link to this heading">¶</a></h2>
 <p>Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection:</p>
 <ul class="simple">
-<li><p>You can find the newest pre-built binaries on the <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases">GitHub Release Page</a>.</p></li>
-<li><p>You can find the bleeding cutting edge binaries uploaded as assets on the <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml">“build and upload” GitHub actions page</a>, Click on the newest successful build and download the <code class="docutils literal notranslate"><span class="pre">blackmagic-firmware.zip</span></code> file. It contains binaries for all the supported platforms.</p></li>
-<li><p>When using the daily builds expect breaking changes. Please report issues on <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/issues">our issue page</a> or ask on our Discord server.</p></li>
+<li><p>You can find the newest pre-built binaries on the
+<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases">GitHub Release Page</a>.</p></li>
+<li><p>You can find the bleeding cutting edge binaries uploaded as assets on the
+<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml">“build and upload” GitHub actions page</a>,
+Click on the newest successful build and download the <code class="docutils literal notranslate"><span class="pre">blackmagic-firmware.zip</span></code> file. It contains binaries
+for all the supported platforms.</p></li>
+<li><p>When using the daily builds expect breaking changes. Please report issues on
+<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/issues">our issue page</a> or ask on our Discord server.</p></li>
 </ul>
 <p>Upgrade the firmware of the Black Magic Debug Probe using either:</p>
 <ul class="simple">
@@ -82,38 +87,43 @@
 <li><p>dfu-util</p></li>
 <li><p>stlink-tool</p></li>
 </ul>
-<section id="bmputil">
-<h3>bmputil<a class="headerlink" href="#bmputil" title="Link to this heading">¶</a></h3>
+<section id="bmputil-on-linux-macos">
+<h3>bmputil on Linux/macOS<a class="headerlink" href="#bmputil-on-linux-macos" title="Link to this heading">¶</a></h3>
 <p>Clone and build the <a class="reference external" href="https://github.com/blackmagic-debug/bmputil">bmputil</a> tool.</p>
 <p>Plug your Black Magic Probe into your computer and run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bmputil<span class="w"> </span>flash<span class="w"> </span>blackmagic-native.elf
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>bmputil<span class="w"> </span>flash<span class="w"> </span>blackmagic-native.elf
 </pre></div>
 </div>
 <p>Provided you have suitable udev rules in play, this will already do everything you need and automatically reboot your unit back into the new firmware.</p>
 </section>
-<section id="dfu-util">
-<h3>dfu-util<a class="headerlink" href="#dfu-util" title="Link to this heading">¶</a></h3>
-<p>Install <a class="reference external" href="http://dfu-util.sourceforge.net/"><code class="docutils literal notranslate"><span class="pre">dfu-util</span></code></a>. On macOS you can use homebrew, macports or fink depending on your preferred package manager. You will need version 0.8.0 or greater to support the dfuse commands.</p>
+<section id="dfu-util-on-linux-macos">
+<h3>dfu-util on Linux/macOS<a class="headerlink" href="#dfu-util-on-linux-macos" title="Link to this heading">¶</a></h3>
+<p>Install <a class="reference external" href="http://dfu-util.sourceforge.net/"><code class="docutils literal notranslate"><span class="pre">dfu-util</span></code></a>. On macOS you can use homebrew, macports or fink depending
+on your preferred package manager. You will need version 0.8.0 or greater to support the dfuse commands.</p>
 <p>Plug the Black Magic Probe into your computer and run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>dfu-util<span class="w"> </span>-d<span class="w"> </span>1d50:6018,:6017<span class="w"> </span>-s<span class="w"> </span>0x08002000:leave<span class="w"> </span>-D<span class="w"> </span>blackmagic-native.bin
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>dfu-util<span class="w"> </span>-d<span class="w"> </span>1d50:6018,:6017<span class="w"> </span>-s<span class="w"> </span>0x08002000:leave<span class="w"> </span>-D<span class="w"> </span>blackmagic-native.bin
 </pre></div>
 </div>
-<p>To upgrade non-native hardware see the readme of the different <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms">platforms on GitHub</a>.</p>
+<p>To upgrade non-native hardware see the READMEs of the different
+<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms">platforms on GitHub</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">dfu-util</span></code> fails to switch your BMP into bootloader mode, or you feel like you might have <strong>bricked</strong> your BMP, you can also plug in your BMP while holding down the button. This will force the BMP to stay in the bootloader on power up.</p>
 </div>
 </section>
-<section id="stlink-tool">
-<h3>stlink-tool<a class="headerlink" href="#stlink-tool" title="Link to this heading">¶</a></h3>
-<p>The firmware on an ST-Link can be upgraded using <a class="reference external" href="https://github.com/blackmagic-debug/stlink-tool">blackmagic-debug/stlink-tool</a>.</p>
+<section id="stlink-tool-on-linux-macos">
+<h3>stlink-tool on Linux/macOS<a class="headerlink" href="#stlink-tool-on-linux-macos" title="Link to this heading">¶</a></h3>
+<p>The firmware on an ST-Link can be upgraded using
+<a class="reference external" href="https://github.com/blackmagic-debug/stlink-tool">blackmagic-debug/stlink-tool</a>.</p>
 <p>To upgrade, run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>stlink-tool<span class="w"> </span>blackmagic.bin
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>stlink-tool<span class="w"> </span>blackmagic.bin
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This software upgrades the firmware of the ST-Link probe, <strong>not</strong> the firmware of a target connected to the probe. Therefore please ensure you want to upgrade the firmware of the ST-Link probe, and use a blackmagic.bin file built specifically for ST-Link.</p>
+<p>This software upgrades the firmware of the ST-Link probe, <strong>not</strong> the firmware of a target connected to the probe.
+Therefore please ensure you want to upgrade the firmware of the ST-Link probe, and use a blackmagic.bin file built
+specifically for ST-Link.</p>
 </div>
 </section>
 </section>
@@ -121,9 +131,14 @@
 <h2>Windows<a class="headerlink" href="#windows" title="Link to this heading">¶</a></h2>
 <p>Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection:</p>
 <ul class="simple">
-<li><p>You can find the newest pre-built binaries on the <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases">GitHub Release Page</a>.</p></li>
-<li><p>You can find the bleeding cutting edge binaries uploaded as assets on the <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml">“build and upload” GitHub actions page</a>, Click on the newest successful build and download the <code class="docutils literal notranslate"><span class="pre">blackmagic-firmware.zip</span></code> file. It contains binaries for all the supported platforms.</p></li>
-<li><p>When using the daily builds expect breaking changes. Please report issues on <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/issues">our issue page</a> or ask on our Discord server.</p></li>
+<li><p>You can find the newest pre-built binaries on the
+<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases">GitHub Release Page</a>.</p></li>
+<li><p>You can find the bleeding cutting edge binaries uploaded as assets on the
+<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml">“build and upload” GitHub actions page</a>,
+Click on the newest successful build and download the <code class="docutils literal notranslate"><span class="pre">blackmagic-firmware.zip</span></code> file. It contains binaries for
+all the supported platforms.</p></li>
+<li><p>When using the daily builds expect breaking changes. Please report issues on
+<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/issues">our issue page</a> or ask on our Discord server.</p></li>
 </ul>
 <p>Upgrade the firmware of the Black Magic Debug Probe using either:</p>
 <ul class="simple">
@@ -131,45 +146,54 @@
 <li><p>dfu-util</p></li>
 <li><p>stlink-tool</p></li>
 </ul>
-<section id="id1">
-<h3>bmputil<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<section id="bmputil-on-windows">
+<h3>bmputil on Windows<a class="headerlink" href="#bmputil-on-windows" title="Link to this heading">¶</a></h3>
 <p>Clone and build the <a class="reference external" href="https://github.com/blackmagic-debug/bmputil">bmputil</a> tool.</p>
 <p>Plug your Black Magic Probe into your computer and run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bmputil<span class="w"> </span>flash<span class="w"> </span>blackmagic-native.elf
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>bmputil<span class="w"> </span>flash<span class="w"> </span>blackmagic-native.elf
 </pre></div>
 </div>
 <p>bmputil will automatically take care of the needed drivers.
 Do <strong>not</strong> run Zadig on the DFU endpoint if using bmputil.</p>
 </section>
-<section id="id2">
-<h3>dfu-util<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<section id="dfu-util-on-windows">
+<h3>dfu-util on Windows<a class="headerlink" href="#dfu-util-on-windows" title="Link to this heading">¶</a></h3>
 <p>Download the Windows release of <a class="reference external" href="http://dfu-util.sourceforge.net/"><code class="docutils literal notranslate"><span class="pre">dfu-util</span></code></a>.</p>
 <p>Plug the Black Magic Probe into your computer and run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dfu-util.exe<span class="w"> </span>-d<span class="w"> </span>1d50:6018,:6017<span class="w"> </span>-s<span class="w"> </span>0x08002000:leave<span class="w"> </span>-D<span class="w"> </span>blackmagic.bin
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>dfu-util.exe<span class="w"> </span>-d<span class="w"> </span>1d50:6018,:6017<span class="w"> </span>-s<span class="w"> </span>0x08002000:leave<span class="w"> </span>-D<span class="w"> </span>blackmagic.bin
 </pre></div>
 </div>
-<p>To upgrade non-native hardware see the readme of the different <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms">platforms on GitHub</a>.</p>
-<p>You may need use <a class="reference external" href="https://tracker.iplocation.net/icsj/">Zadig</a> to install the WinUSB driver. Both PID 0x6017 and 0x6018 need to be known to <a class="reference external" href="https://tracker.iplocation.net/icsj/">Zadig</a>.</p>
+<p>To upgrade non-native hardware see the readme of the different
+<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms">platforms on GitHub</a>.</p>
+<p>You may need use <a class="reference external" href="https://tracker.iplocation.net/icsj/">Zadig</a> to install the WinUSB driver. Both PID 0x6017 and
+0x6018 need to be known to <a class="reference external" href="https://tracker.iplocation.net/icsj/">Zadig</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>On first run Zadig may not see the 6017 PID. Once the dfu exe runs and detaches the device, it should appear in Zadig. Install the WinUSB driver on it and re-run the dfu exe.</p>
+<p>On first run Zadig may not see the 6017 PID. Once the dfu exe runs and detaches the device, it should appear in
+Zadig. Install the WinUSB driver on it and re-run the dfu exe.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If <code class="docutils literal notranslate"><span class="pre">dfu-util</span></code> fails to switch your BMP into bootloader mode, or you feel like you might have <strong>bricked</strong> your BMP, you can also plug in your BMP while holding down the button. This will force the BMP to stay in the bootloader on power up.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">dfu-util</span></code> fails to switch your BMP into bootloader mode, or you feel like you might have <strong>bricked</strong> your BMP,
+you can also plug in your BMP while holding down the button. This will force the BMP to stay in the bootloader on
+power up.</p>
 </div>
 </section>
-<section id="id3">
-<h3>stlink-tool<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
-<p>The firmware on an ST-Link can be upgraded using <a class="reference external" href="https://github.com/dragonmux/stlink-tool/tree/feature/compilation-fixes">dragonmux/stlink-tool</a>.</p>
-<p>The linked repository is forked from <a class="reference external" href="https://github.com/UweBonnes/stlink-tool">UweBonnes/stlink-tool</a>, which in turn is a fork from <a class="reference external" href="https://github.com/jeanthom/stlink-tool">jeanthom/stlink-tool</a>. The link points to a specific branch named <code class="docutils literal notranslate"><span class="pre">feature/compilation-fixes</span></code>. Please ensure to checkout to to this branch after cloning the repository, as both UweBonnes and dragonmux have made fixes that are not included in the repository by jeanthom.</p>
+<section id="stlink-tool-on-windows">
+<h3>stlink-tool on Windows<a class="headerlink" href="#stlink-tool-on-windows" title="Link to this heading">¶</a></h3>
+<p>The firmware on an ST-Link can be upgraded using
+<a class="reference external" href="https://github.com/blackmagic-debug/stlink-tool">blackmagic-debug/stlink-tool</a>.</p>
+<p>The linked repository is forked from <a class="reference external" href="https://github.com/UweBonnes/stlink-tool">UweBonnes/stlink-tool</a>, which in
+turn is a fork from <a class="reference external" href="https://github.com/jeanthom/stlink-tool">jeanthom/stlink-tool</a>.</p>
 <p>To upgrade, run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>stlink-tool<span class="w"> </span>blackmagic.bin
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>stlink-tool<span class="w"> </span>blackmagic.bin
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This software upgrades the firmware of the ST-Link probe, <strong>not</strong> the firmware of a target connected to the probe. Therefore please ensure you want to upgrade the firmware of the ST-Link probe, and use a blackmagic.bin file built specifically for ST-Link.</p>
+<p>This software upgrades the firmware of the ST-Link probe, <strong>not</strong> the firmware of a target connected to the probe.
+Therefore please ensure you want to upgrade the firmware of the ST-Link probe, and use a blackmagic.bin file built
+specifically for ST-Link.</p>
 </div>
 </section>
 </section>
@@ -229,7 +253,6 @@ Do <strong>not</strong> run Zadig on the DFU endpoint if using bmputil.</p>
 <li class="toctree-l1"><a class="reference internal" href="usage/gdb-commands.html">GDB Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/gdb-automation.html">GDB Flash Automation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/semihosting.html">Semihosting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage/traceswo.html">SWD - TRACESWO support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/swo.html">Serial Wire Output</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/rtt.html">Using RTT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/platformio.html">PlatformIO</a></li>
@@ -251,7 +274,11 @@ Do <strong>not</strong> run Zadig on the DFU endpoint if using bmputil.</p>
 <li class="toctree-l1"><a class="reference internal" href="hacking/target-clock-generation.html">Target Clock Generation</a></li>
 </ul>
 
-
+<h3>Versions</h3>
+<ul>
+	<li><a href="/">BMD 2.0 (in development)</a></li>
+	<li><a href="/v1.x">BMD 1.10.2 (stable)</a></li>
+</ul>
 <div class="ablog-sidebar-item ablog__recentposts">
   <h3>
     <a href="blog.html">Recent Posts</a>
@@ -291,7 +318,7 @@ Do <strong>not</strong> run Zadig on the DFU endpoint if using bmputil.</p>
   </ul>
 </div>
 
-<div class="ablog-sidebar-item ablog__archive">
+<div class="ablog-sidebar-item ablog__archives">
   <h3>
     <a href="blog/archive.html">Archives</a>
   </h3>
@@ -346,7 +373,7 @@ Do <strong>not</strong> run Zadig on the DFU endpoint if using bmputil.</p>
       &#169;2022-2023, Piotr Esden-Tempski <piotr@esden.net>; 2022-2023, Rachel Mant <git@dragonmux.network>.
       
       |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
       &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
     </div>

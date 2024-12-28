@@ -28,13 +28,13 @@
 
     <title>Getting Started &#8212; Black Magic Debug  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/asciinema-player_3.6.3.css" />
     <link rel="stylesheet" type="text/css" href="_static/platformpicker.css" />
     <script src="_static/documentation_options.js?v=7f41d439"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/asciinema-player_3.6.3.js"></script>
     <script src="_static/platformpicker.js"></script>
@@ -79,11 +79,11 @@ enumerate as, among other bits, a pair of CDC-ACM (USB serial) devices.</p>
 <p>On Linux, the OS should present these as <code class="docutils literal notranslate"><span class="pre">ttyACM</span></code> devices. On macOS they should be presented as pairs of <code class="docutils literal notranslate"><span class="pre">tty.</span></code>
 and <code class="docutils literal notranslate"><span class="pre">cu.</span></code> devices, and on Windows they should be presented as a pair of COM ports.</p>
 <p>On Linux you can check the kernel log to find the device that was allocated:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>user@host<span class="w"> </span>~<span class="w"> </span>$<span class="w"> </span>dmesg
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>user@host<span class="w"> </span>~<span class="w"> </span>$<span class="w"> </span>sudo<span class="w"> </span>dmesg
 <span class="o">[</span><span class="m">460705</span>.378940<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">7</span>-5:<span class="w"> </span>new<span class="w"> </span>full-speed<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>number<span class="w"> </span><span class="m">24</span><span class="w"> </span>using<span class="w"> </span>ohci-pci
-<span class="o">[</span><span class="m">460705</span>.594118<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">7</span>-5:<span class="w"> </span>New<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>found,<span class="w"> </span><span class="nv">idVendor</span><span class="o">=</span>1d50,<span class="w"> </span><span class="nv">idProduct</span><span class="o">=</span><span class="m">6018</span>,<span class="w"> </span><span class="nv">bcdDevice</span><span class="o">=</span><span class="w"> </span><span class="m">1</span>.09
+<span class="o">[</span><span class="m">460705</span>.594118<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">7</span>-5:<span class="w"> </span>New<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>found,<span class="w"> </span><span class="nv">idVendor</span><span class="o">=</span>1d50,<span class="w"> </span><span class="nv">idProduct</span><span class="o">=</span><span class="m">6018</span>,<span class="w"> </span><span class="nv">bcdDevice</span><span class="o">=</span><span class="w"> </span><span class="m">2</span>.00
 <span class="o">[</span><span class="m">460705</span>.594131<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">7</span>-5:<span class="w"> </span>New<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>strings:<span class="w"> </span><span class="nv">Mfr</span><span class="o">=</span><span class="m">1</span>,<span class="w"> </span><span class="nv">Product</span><span class="o">=</span><span class="m">2</span>,<span class="w"> </span><span class="nv">SerialNumber</span><span class="o">=</span><span class="m">3</span>
-<span class="o">[</span><span class="m">460705</span>.594137<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">7</span>-5:<span class="w"> </span>Product:<span class="w"> </span>Black<span class="w"> </span>Magic<span class="w"> </span>Probe<span class="w"> </span>v1.10.0-rc0
+<span class="o">[</span><span class="m">460705</span>.594137<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">7</span>-5:<span class="w"> </span>Product:<span class="w"> </span>Black<span class="w"> </span>Magic<span class="w"> </span>Probe<span class="w"> </span>v2.0.0
 <span class="o">[</span><span class="m">460705</span>.594142<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">7</span>-5:<span class="w"> </span>Manufacturer:<span class="w"> </span>Black<span class="w"> </span>Magic<span class="w"> </span>Debug
 <span class="o">[</span><span class="m">460705</span>.594146<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">7</span>-5:<span class="w"> </span>SerialNumber:<span class="w"> </span>8BB20695
 <span class="o">[</span><span class="m">460705</span>.600355<span class="o">]</span><span class="w"> </span>cdc_acm<span class="w"> </span><span class="m">7</span>-5:1.0:<span class="w"> </span>ttyACM0:<span class="w"> </span>USB<span class="w"> </span>ACM<span class="w"> </span>device
@@ -91,66 +91,98 @@ and <code class="docutils literal notranslate"><span class="pre">cu.</span></cod
 </pre></div>
 </div>
 <p>The first interface provides the GDB server, and the second provides a USB to UART adapter.</p>
-<p>On Windows, when you first connect, the Black Magic Probe should be detected as two COM ports. The first COM port is the GDB extended remote server and the second one is USB to Serial adapter on the back of the board. To find the allocated ports, check the Device Manager:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Linux, this guide assumes you have installed the
+<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/driver">udev rules file</a>
+for your distribution from the repository.</p>
+</div>
+<p>On Windows, when you first connect, the Black Magic Probe should be detected as two COM ports. The first COM
+port is the GDB extended remote server and the second one is USB to Serial adapter on the back of the board.
+To find the allocated ports, check the Device Manager:</p>
 <p><img alt="Device Manager" src="_images/device_manager.png" /></p>
-<p><strong>Note:</strong> For older Windows versions (Windows 7 and older), you will be prompted to install a driver.  You can download the driver <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/master/driver">here</a>.</p>
-<p><strong>Note:</strong> If you are on Windows 10 and want to upgrade the firmware to the probe itself, you can install the <a class="reference external" href="https://zadig.akeo.ie/">libusbK</a> driver. This will give you access to the DFU interface of the Black Magic Probe and allow you to use dfu-util to upgrade the Black Magic Probe firmware. (You do not need to install this driver if you only plan to use the Black Magic Probe and do not need/want to upgrade the firmware.) Also, Windows 10 displays the BMP probe ports using the generic title, “USB Serial Device”, as seen below:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For older Windows versions (Windows 7 and older), you will be prompted to install a driver. You can download
+the <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/driver">driver .inf</a> from the repository.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are on Windows 10 and want to upgrade the firmware to the probe itself, you can install the
+<a class="reference external" href="https://zadig.akeo.ie/">WinUSB driver via Zadig</a>. This will give you access to the DFU interface of the
+Black Magic Probe and allow you to use dfu-util to upgrade the Black Magic Probe firmware. (You do not need
+to install this driver if you only plan to use the Black Magic Probe and do not need/want to upgrade the
+firmware.) Windows 10 displays the BMP probe ports using the generic title, “USB Serial Device”, as seen below:</p>
 <p><img alt="Device Manager Windows 10" src="_images/device_manager_w10.png" /></p>
+</div>
 </section>
 <section id="connecting-to-the-software">
 <h2>Connecting to the software<a class="headerlink" href="#connecting-to-the-software" title="Link to this heading">¶</a></h2>
-<p>To use the Black Magic Probe, you will need an ARM cross toolchain for developing and debugging embedded ARM Cortex applications on your computer.  The [gcc-arm-embedded](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads toolchain is recommended.  The toolchain will include the GNU Debugger, GDB, for debugging ARM applications.</p>
+<p>To use the Black Magic Probe, you will need a suitable toolchain for your target processor. For ARM Cortex-M based
+targets, the project can recomend the official
+<a class="reference external" href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">ARM GNU Toolchain</a>. For RISC-V based targets,
+the project can recomend the <a class="reference external" href="https://github.com/riscv-collab/riscv-gnu-toolchain/releases">RISC-V Collab GNU Toolchain</a>.
+These toolchains include a suitable GDB as part of the bundle. Alternatively you can use the <code class="docutils literal notranslate"><span class="pre">gdb-multilib</span></code> of your
+distribution if you’re on Linux or macOS (via brew).</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>user@host<span class="w"> </span>~<span class="w"> </span>$<span class="w"> </span>arm-none-eabi-gdb
-GNU<span class="w"> </span>gdb<span class="w"> </span><span class="o">(</span>GNU<span class="w"> </span>Tools<span class="w"> </span><span class="k">for</span><span class="w"> </span>ARM<span class="w"> </span>Embedded<span class="w"> </span>Processors<span class="o">)</span><span class="w"> </span><span class="m">7</span>.6.0.20140228-cvs
-Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2013</span><span class="w"> </span>Free<span class="w"> </span>Software<span class="w"> </span>Foundation,<span class="w"> </span>Inc.
+GNU<span class="w"> </span>gdb<span class="w"> </span><span class="o">(</span>Arm<span class="w"> </span>GNU<span class="w"> </span>Toolchain<span class="w"> </span><span class="m">14</span>.2.Rel1<span class="w"> </span><span class="o">(</span>Build<span class="w"> </span>arm-14.52<span class="o">))</span><span class="w"> </span><span class="m">15</span>.2.90.20241130-git
+Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2024</span><span class="w"> </span>Free<span class="w"> </span>Software<span class="w"> </span>Foundation,<span class="w"> </span>Inc.
 License<span class="w"> </span>GPLv3+:<span class="w"> </span>GNU<span class="w"> </span>GPL<span class="w"> </span>version<span class="w"> </span><span class="m">3</span><span class="w"> </span>or<span class="w"> </span>later<span class="w"> </span>&lt;http://gnu.org/licenses/gpl.html&gt;
 This<span class="w"> </span>is<span class="w"> </span>free<span class="w"> </span>software:<span class="w"> </span>you<span class="w"> </span>are<span class="w"> </span>free<span class="w"> </span>to<span class="w"> </span>change<span class="w"> </span>and<span class="w"> </span>redistribute<span class="w"> </span>it.
-There<span class="w"> </span>is<span class="w"> </span>NO<span class="w"> </span>WARRANTY,<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>extent<span class="w"> </span>permitted<span class="w"> </span>by<span class="w"> </span>law.<span class="w">  </span>Type<span class="w"> </span><span class="s2">&quot;show copying&quot;</span>
-and<span class="w"> </span><span class="s2">&quot;show warranty&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>details.
-This<span class="w"> </span>GDB<span class="w"> </span>was<span class="w"> </span>configured<span class="w"> </span>as<span class="w"> </span><span class="s2">&quot;--host=i686-linux-gnu --target=arm-none-eabi&quot;</span>.
+There<span class="w"> </span>is<span class="w"> </span>NO<span class="w"> </span>WARRANTY,<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>extent<span class="w"> </span>permitted<span class="w"> </span>by<span class="w"> </span>law.
+Type<span class="w"> </span><span class="s2">&quot;show copying&quot;</span><span class="w"> </span>and<span class="w"> </span><span class="s2">&quot;show warranty&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>details.
+This<span class="w"> </span>GDB<span class="w"> </span>was<span class="w"> </span>configured<span class="w"> </span>as<span class="w"> </span><span class="s2">&quot;--host=x86_64-pc-linux-gnu --target=arm-none-eabi&quot;</span>.
+Type<span class="w"> </span><span class="s2">&quot;show configuration&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>configuration<span class="w"> </span>details.
 For<span class="w"> </span>bug<span class="w"> </span>reporting<span class="w"> </span>instructions,<span class="w"> </span>please<span class="w"> </span>see:
-&lt;http://www.gnu.org/software/gdb/bugs/&gt;.
+&lt;https://bugs.linaro.org/&gt;.
+Find<span class="w"> </span>the<span class="w"> </span>GDB<span class="w"> </span>manual<span class="w"> </span>and<span class="w"> </span>other<span class="w"> </span>documentation<span class="w"> </span>resources<span class="w"> </span>online<span class="w"> </span>at:
+<span class="w">    </span>&lt;http://www.gnu.org/software/gdb/documentation/&gt;.
+
+For<span class="w"> </span>help,<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="s2">&quot;help&quot;</span>.
+Type<span class="w"> </span><span class="s2">&quot;apropos word&quot;</span><span class="w"> </span>to<span class="w"> </span>search<span class="w"> </span><span class="k">for</span><span class="w"> </span>commands<span class="w"> </span>related<span class="w"> </span>to<span class="w"> </span><span class="s2">&quot;word&quot;</span>.
+No<span class="w"> </span>symbol<span class="w"> </span>table<span class="w"> </span>is<span class="w"> </span>loaded.<span class="w">  </span>Use<span class="w"> </span>the<span class="w"> </span><span class="s2">&quot;file&quot;</span><span class="w"> </span>command.
 <span class="o">(</span>gdb<span class="o">)</span>
 </pre></div>
 </div>
-<p>The GDB remote debugging protocol is implemented over the Black Magic Probe’s CDC-ACM interface.  To connect your ARM GDB to the target device use the following commands:</p>
-<div class="highlight-gdb notranslate"><div class="highlight"><pre><span></span>(gdb) target extended-remote /dev/ttyACM0
-Remote debugging using /dev/ttyACM0
-(gdb) monitor jtag_scan
-Target voltage: 3.4V
-Device  IR Len  IDCODE      Description
-0       4       0x4BA00477  ARM Limited: ADIv5 JTAG-DP port.
-1       5       0x06413041  ST Microelectronics: STM32F4xx.
-
+<p>The GDB remote debugging protocol is implemented over the Black Magic Probe’s CDC-ACM interface. To connect
+your ARM GDB to the target device use the following commands:</p>
+<div class="highlight-gdb notranslate"><div class="highlight"><pre><span></span>(gdb) target extended-remote /dev/ttyBmpGdb
+Remote debugging using /dev/ttyBmpGdb
+(gdb) monitor auto_scan
+Target voltage: 3.3V
 Available Targets:
 No. Att Driver
- 1      STM32F4xx
-
+ 1      STM32F40x M4
 (gdb) attach 1
 Attaching to Remote target
 0x080071b2 in ?? ()
-
 </pre></div>
 </div>
-<p>The command <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">swdp_scan</span></code> may be used to use the Serial-Wire Debug Protocol instead of JTAG to connect to the target.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">auto_scan</span></code> does not find your target, or you know the target is specifically available via only one of JTAG
+or SWD (ARM’s Serial-Wire Debug), you may use <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">jtag_scan</span></code> or <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">swd_scan</span></code> (respectively) to have
+BMD find your target.</p>
 <p>Once attached, all the standard GDB commands may be used to start and control
 the execution of the embedded application. <a class="reference internal" href="usage/gdb-commands.html"><span class="std std-doc">GDB Commands</span></a> provides a quick introduction.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>On macOS use the <code class="docutils literal notranslate"><span class="pre">/dev/cu.usbmodem&lt;somenumber&gt;</span></code>. Don’t use the tty version of this device as this one will freeze gdb when it tries to open it.</p>
+<p>On macOS use the <code class="docutils literal notranslate"><span class="pre">/dev/cu.usbmodem&lt;somenumber&gt;</span></code>. Don’t use the tty version of this device as this one will
+freeze gdb when it tries to open it.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>By default, VCC is not enabled on either UART or JTAG/SWD, to prevent conflicts between multiple power sources. To enable the probe as a power source, you must use the <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">tpwr</span> <span class="pre">enable</span></code> gdb command.</p>
+<p>By default, VCC is not enabled on either UART or JTAG/SWD, to prevent conflicts between multiple power sources.
+To enable the probe as a power source, you must use the <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">tpwr</span> <span class="pre">enable</span></code> gdb command.</p>
 </div>
-<p>On Windows, use the the COM port instead of <code class="docutils literal notranslate"><span class="pre">/dev/ttyACM0</span></code>.  For ports &gt;= COM10, add the prefix <code class="docutils literal notranslate"><span class="pre">\\.\</span></code>, for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="n">extended</span><span class="o">-</span><span class="n">remote</span> <span class="n">COM3</span>
-<span class="n">target</span> <span class="n">extended</span><span class="o">-</span><span class="n">remote</span> \\<span class="o">.</span>\<span class="n">COM10</span>
+<p>On Windows, use the the COM port instead of <code class="docutils literal notranslate"><span class="pre">/dev/ttyBmpGdb</span></code>. For ports COM10 and higher, add the prefix <code class="docutils literal notranslate"><span class="pre">\\.\</span></code>,
+for example:</p>
+<div class="highlight-gdb notranslate"><div class="highlight"><pre><span></span>target extended-remote COM3
+target extended-remote \\.\COM10
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It is safe to always use the <code class="docutils literal notranslate"><span class="pre">\\.\</span></code> prefix even for ports &lt; COM10. So when you are writing scripts you can just always prefix the COM port number.</p>
+<p>It is safe to always use the <code class="docutils literal notranslate"><span class="pre">\\.\</span></code> prefix even for ports lower than COM10. So when you are writing scripts you
+can just always prefix the COM port number.</p>
 </div>
 </section>
 <section id="video-tutorial">
@@ -163,7 +195,8 @@ the execution of the embedded application. <a class="reference internal" href="u
 <section id="getting-started-with-open-source-cortex-m-development">
 <h2>Getting started with open-source Cortex-M development<a class="headerlink" href="#getting-started-with-open-source-cortex-m-development" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>See <a class="reference external" href="https://github.com/gsmcmullin/embedded-demo/raw/master/slides.pdf">this presentation</a>, porting a basic Unix program to an embedded Cortex-M3 using <a class="reference external" href="http://libopencm3.org/">libopencm3</a>.</p></li>
+<li><p>See <a class="reference external" href="https://github.com/gsmcmullin/embedded-demo/raw/master/slides.pdf">this presentation</a>, porting a basic
+Unix program to an embedded Cortex-M3 using <a class="reference external" href="http://libopencm3.org/">libopencm3</a>.</p></li>
 <li><p>The <a class="reference external" href="https://launchpadlibrarian.net/268329726/readme.txt">gcc-arm-embedded readme</a> is also worth a read.</p></li>
 </ul>
 </section>
@@ -223,7 +256,6 @@ the execution of the embedded application. <a class="reference internal" href="u
 <li class="toctree-l1"><a class="reference internal" href="usage/gdb-commands.html">GDB Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/gdb-automation.html">GDB Flash Automation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/semihosting.html">Semihosting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage/traceswo.html">SWD - TRACESWO support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/swo.html">Serial Wire Output</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/rtt.html">Using RTT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/platformio.html">PlatformIO</a></li>
@@ -245,7 +277,11 @@ the execution of the embedded application. <a class="reference internal" href="u
 <li class="toctree-l1"><a class="reference internal" href="hacking/target-clock-generation.html">Target Clock Generation</a></li>
 </ul>
 
-
+<h3>Versions</h3>
+<ul>
+	<li><a href="/">BMD 2.0 (in development)</a></li>
+	<li><a href="/v1.x">BMD 1.10.2 (stable)</a></li>
+</ul>
 <div class="ablog-sidebar-item ablog__recentposts">
   <h3>
     <a href="blog.html">Recent Posts</a>
@@ -285,7 +321,7 @@ the execution of the embedded application. <a class="reference internal" href="u
   </ul>
 </div>
 
-<div class="ablog-sidebar-item ablog__archive">
+<div class="ablog-sidebar-item ablog__archives">
   <h3>
     <a href="blog/archive.html">Archives</a>
   </h3>
@@ -340,7 +376,7 @@ the execution of the embedded application. <a class="reference internal" href="u
       &#169;2022-2023, Piotr Esden-Tempski <piotr@esden.net>; 2022-2023, Rachel Mant <git@dragonmux.network>.
       
       |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
       &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
     </div>
