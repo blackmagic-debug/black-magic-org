@@ -42,7 +42,9 @@ jobs:
       # Now build the website
       - name: Build
         shell: bash
-        run: .env/bin/sphinx-build -b html . build
+        run: |
+          . .env/bin/activate
+          sphinx-build -b html . build
       # Deploy the resulting files
       - name: Deploy
         if: success()
