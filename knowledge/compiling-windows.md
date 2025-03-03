@@ -32,7 +32,7 @@ Inside the MSYS2 environment run the following to update the environment and fol
 ```bash
 pacman -Syu
 pacman -S pactoys git unzip
-pacboy -S python:p meson:p
+pacboy -S python:p meson:p toolchain:p
 unzip $USERPROFILE/Downloads/arm-gnu-toolchain-13.2.rel1-mingw-w64-i686-arm-none-eabi.zip -d .
 export PATH=$HOME/arm-gnu-toolchain-13.2.rel1-mingw-w64-i686-arm-none-eabi/bin:$PATH
 ```
