@@ -38,8 +38,9 @@ rustup target add aarch64-pc-windows-msvc
 
 ## Building `bmputil`
 
-The following instructions must be executed either from in a shell that used the <> launcher to have all compilers
-available, or have <> executed to put the compilers into the available environment for the build process to find.
+The following instructions must be executed either from in a shell that used the "Developer Command Prompt" launcher
+to have all compilers available, or have <> executed to put the compilers into the available environment for the build
+process to find.
 
 Before we can run any build commands, we must first execute the following to make the WDK available:
 
