@@ -83,3 +83,29 @@ cargo build --release
 When that completes, you will have a binary available ready to run in `target/release` under the name `bmputil-cli`.
 You may then either copy this to a location found on PATH (`%PATH%` for cmd.exe, `$env:PATH` for PowerShell/pwsh)
 or run it directly as in `target/release/bmputil-cli --help`.
+
+## Cross-compiling `bmputil`
+
+It is possible to cross-compile `bmputil` for Windows from a Linux or mac OS based machine. The same pre-requisites
+apply as do the same build steps, however there are a couple of differences due to needing to use a tool like Wine
+to deal with the MSI installer for the WDK, and needing to source the development kit for the platform headers and
+link libraries. The steps are outlined below, presuming you already have `rustup` installed for your target platform.
+
+1. Install cargo-xwin to gain access to the cross-build platform infrastructure with `cargo install cargo-xwin`
+2. Install the cross-build toolchain via `rustup`:
+
+```sh
+rustup target add x86_64-pc-windows-msvc
+rustup target add aarch64-pc-windows-msvc
+```
+
+3. Install the LLVM extra tools via `rustup component add llvm-tools`
+4. Download the WDK installer with `wget -O wdk.msi https://go.microsoft.com/fwlink/p/?LinkID=253170`
+5. Install the WDK with `wine wdk.msi`, use the default location. If your Wine installation is 64-bit, then
+   the path to export will need to be adjusted to include ` (x86)` in the Program Files component.
+6. Export the newly installed WDK into the environment with
+   `export WDK_DIR=~/.wine/drive_c/Program\ Files/Windows\ Kits/8.0`
+7. Build `bmputil` by running `cargo xwin build --target x86_64-pc-windows-msvc --release`
+
+If you are intending to build for AArch64 based Windows, change the target tuple in the final step to
+`aarch-pc-windows-msvc` instead of `x86_64-pc-windows-msvc`.
