@@ -33,6 +33,7 @@ knowledge/faq
 knowledge/terminology
 knowledge/pinouts
 knowledge/compiling-windows
+knowledge/bmputil-on-windows
 knowledge/links
 ```
 
