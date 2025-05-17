@@ -39,8 +39,25 @@ rustup target add aarch64-pc-windows-msvc
 ## Building `bmputil`
 
 The following instructions must be executed either from in a shell that used the "Developer Command Prompt" launcher
-to have all compilers available, or have <> executed to put the compilers into the available environment for the build
-process to find.
+to have all compilers available, or have a shell-appropriate version of the VsDevCmd script executed to put the
+compilers into the available environment for the build process to find.
+
+If using the VsDevCmd script, you will want to run either:
+
+* cmd.exe:
+
+```sh
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\VsDevCmd.bat"
+```
+
+* PowerShell:
+
+```sh
+. "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\Launch-VsDevShell.ps1"
+```
+
+(This assumes you are using Visual Studio 2022, which is the latest available at time of writing - update as
+appropriate if you are using newer. It is ill advised to run older.)
 
 Before we can run any build commands, we must first execute the following to make the WDK available:
 
@@ -53,7 +70,7 @@ set WDK_PATH="C:\Program Files (x86)\Windows Kits\8.0"
 * PowerShell:
 
 ```sh
-export $env:WDK_PATH = "C:\Program Files (x86)\Windows Kits\8.0"
+$env:WDK_PATH = "C:\Program Files (x86)\Windows Kits\8.0"
 ```
 
 Having done that, building (assuming you have the Rust toolchain on PATH from the pre-requisites!) is thankfully quite
