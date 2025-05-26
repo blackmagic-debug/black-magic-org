@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="../_static/favicon/icon.svg">
+    <link rel="icon" sizes="16x16" type="image/png" href="../_static/favicon/favicon-16x16.png">
+    <link rel="icon" sizes="32x32" type="image/png" href="../_static/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="57x57" type="image/png" href="../_static/favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" type="image/png" href="../_static/favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" type="image/png" href="../_static/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" type="image/png" href="../_static/favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="96x96" type="image/png" href="../_static/favicon/apple-touch-icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="114x114" type="image/png" href="../_static/favicon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" type="image/png" href="../_static/favicon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" type="image/png" href="../_static/favicon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="../_static/favicon/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" type="image/png" href="../_static/favicon/apple-touch-icon-180x180.png">
+    <link rel="android-icon" sizes="192x192" type="image/png" href="../_static/favicon/android-icon-192x192.png"><meta property="og:title" content="Building bmputil on Windows" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://black-magic.org/knowledge/bmputil-on-windows.html" />
+<meta property="og:site_name" content="Black Magic Debug" />
+<meta property="og:description" content="Background: bmputil is a companion tool to the project for managing the firmware on your probes, allowing easy and fast switching and upgrade of the runing firmware. The tool is available on all ma..." />
+<meta property="og:image" content="https://black-magic.org/_static/blackmagic-logo.png" />
+<meta property="og:image:alt" content="Black Magic Debug" />
+<meta name="description" content="Background: bmputil is a companion tool to the project for managing the firmware on your probes, allowing easy and fast switching and upgrade of the runing firmware. The tool is available on all ma..." />
+
+    <title>Building bmputil on Windows &#8212; Black Magic Debug  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player_3.6.3.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/platformpicker.css" />
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/asciinema-player_3.6.3.js"></script>
+    <script src="../_static/platformpicker.js"></script>
+    <link rel="canonical" href="https://black-magic.org/knowledge/bmputil-on-windows.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Links" href="links.html" />
+    <link rel="prev" title="Compiling on Windows" href="compiling-windows.html" /> 
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../blog/atom.xml"
+  title="Blog"
+/>
+  
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+             <section id="building-bmputil-on-windows">
+<h1>Building <code class="docutils literal notranslate"><span class="pre">bmputil</span></code> on Windows<a class="headerlink" href="#building-bmputil-on-windows" title="Link to this heading">¶</a></h1>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">bmputil</span></code> is a companion tool to the project for managing the firmware on your probes, allowing easy and fast switching
+and upgrade of the runing firmware. The tool is available on all major OSes, but special attention and care must be paid
+on Windows to build it successfully and correctly.</p>
+<p>The tool may be cross-built for Windows, which is detailed after the main section on acomplishing a build on Windows
+itself.</p>
+</section>
+<section id="pre-requisites">
+<h2>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Link to this heading">¶</a></h2>
+<p>The tool requires a few pre-requisites to be available, starting with a copy of the Rust compiler and stdlib installed
+via rustup. Due to how one of the dependencies works, you will need a working installation of Visual Studio or at least
+the build tools component as well. It must feature both x86_64 and AArch64 support. Said same dependency also requires a
+working installation of the WDK (Windows Driver Kit) development kit version 8.0 to be available.</p>
+<p>Details of how to acomplish all that are outlined below:</p>
+<ol class="arabic simple">
+<li><p>Everything starts by installing Visual Studio or Build Tools for Visual Studio - the rustup book provides
+a good <a class="reference external" href="https://rust-lang.github.io/rustup/installation/windows-msvc.html">guide for acomplishing this</a>, though
+it must be noted that for <code class="docutils literal notranslate"><span class="pre">bmputil</span></code> you must install both the “x64/x86 build tools” component as well as the
+“ARM64 build tools” component as we require both MSVC compiler flavours.</p></li>
+<li><p>Install <a class="reference external" href="https://rustup.rs/">rustup</a>, which is a toolchain manager for Rust. Follow those instructions on their
+website, and then continue here at 3.</p></li>
+<li><p>Install Rust stable via rustup - run the following (presuming x86_64 Windows) on a console that has rustup on path:</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rustup<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default-host<span class="w"> </span>x86_64-pc-windows-msvc
+rustup<span class="w"> </span>toolchain<span class="w"> </span>install<span class="w"> </span>stable
+rustup<span class="w"> </span>target<span class="w"> </span>add<span class="w"> </span>aarch64-pc-windows-msvc
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Install the <a class="reference external" href="https://go.microsoft.com/fwlink/p/?LinkID=253170">WDK v8.0 redistributable components</a> to the default
+path the installer chooses (you can do it to a different one but will have to adjust the path for the environment
+in the build steps below).</p></li>
+</ol>
+</section>
+<section id="building-bmputil">
+<h2>Building <code class="docutils literal notranslate"><span class="pre">bmputil</span></code><a class="headerlink" href="#building-bmputil" title="Link to this heading">¶</a></h2>
+<p>The following instructions must be executed either from in a shell that used the “Developer Command Prompt” launcher
+to have all compilers available, or have a shell-appropriate version of the VsDevCmd script executed to put the
+compilers into the available environment for the build process to find.</p>
+<p>If using the VsDevCmd script, you will want to run either:</p>
+<ul class="simple">
+<li><p>cmd.exe:</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\VsDevCmd.bat&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>PowerShell:</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span><span class="s2">&quot;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\Launch-VsDevShell.ps1&quot;</span>
+</pre></div>
+</div>
+<p>(This assumes you are using Visual Studio 2022, which is the latest available at time of writing - update as
+appropriate if you are using newer. It is ill advised to run older.)</p>
+<p>Before we can run any build commands, we must first execute the following to make the WDK available:</p>
+<ul class="simple">
+<li><p>cmd.exe:</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="w"> </span><span class="nv">WDK_PATH</span><span class="o">=</span><span class="s2">&quot;C:\Program Files (x86)\Windows Kits\8.0&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>PowerShell:</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">$env</span>:WDK_PATH<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\Program Files (x86)\Windows Kits\8.0&quot;</span>
+</pre></div>
+</div>
+<p>Having done that, building (assuming you have the Rust toolchain on PATH from the pre-requisites!) is thankfully quite
+simple - run:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cargo<span class="w"> </span>build<span class="w"> </span>--release
+</pre></div>
+</div>
+<p>When that completes, you will have a binary available ready to run in <code class="docutils literal notranslate"><span class="pre">target/release</span></code> under the name <code class="docutils literal notranslate"><span class="pre">bmputil-cli</span></code>.
+You may then either copy this to a location found on PATH (<code class="docutils literal notranslate"><span class="pre">%PATH%</span></code> for cmd.exe, <code class="docutils literal notranslate"><span class="pre">$env:PATH</span></code> for PowerShell/pwsh)
+or run it directly as in <code class="docutils literal notranslate"><span class="pre">target/release/bmputil-cli</span> <span class="pre">--help</span></code>.</p>
+</section>
+<section id="cross-compiling-bmputil">
+<h2>Cross-compiling <code class="docutils literal notranslate"><span class="pre">bmputil</span></code><a class="headerlink" href="#cross-compiling-bmputil" title="Link to this heading">¶</a></h2>
+<p>It is possible to cross-compile <code class="docutils literal notranslate"><span class="pre">bmputil</span></code> for Windows from a Linux or mac OS based machine. The same pre-requisites
+apply as do the same build steps, however there are a couple of differences due to needing to use a tool like Wine
+to deal with the MSI installer for the WDK, and needing to source the development kit for the platform headers and
+link libraries. The steps are outlined below, presuming you already have <code class="docutils literal notranslate"><span class="pre">rustup</span></code> installed for your target platform.</p>
+<ol class="arabic simple">
+<li><p>Install cargo-xwin to gain access to the cross-build platform infrastructure with <code class="docutils literal notranslate"><span class="pre">cargo</span> <span class="pre">install</span> <span class="pre">cargo-xwin</span></code></p></li>
+<li><p>Install the cross-build toolchain via <code class="docutils literal notranslate"><span class="pre">rustup</span></code>:</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rustup<span class="w"> </span>target<span class="w"> </span>add<span class="w"> </span>x86_64-pc-windows-msvc
+rustup<span class="w"> </span>target<span class="w"> </span>add<span class="w"> </span>aarch64-pc-windows-msvc
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Install the LLVM extra tools via <code class="docutils literal notranslate"><span class="pre">rustup</span> <span class="pre">component</span> <span class="pre">add</span> <span class="pre">llvm-tools</span></code></p></li>
+<li><p>Download the WDK installer with <code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">-O</span> <span class="pre">wdk.msi</span> <span class="pre">https://go.microsoft.com/fwlink/p/?LinkID=253170</span></code></p></li>
+<li><p>Install the WDK with <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">wdk.msi</span></code>, use the default location. If your Wine installation is 64-bit, then
+the path to export will need to be adjusted to include <code class="docutils literal notranslate"> <span class="pre">(x86)</span></code> in the Program Files component.</p></li>
+<li><p>Export the newly installed WDK into the environment with
+<code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">WDK_DIR=~/.wine/drive_c/Program\</span> <span class="pre">Files/Windows\</span> <span class="pre">Kits/8.0</span></code></p></li>
+<li><p>Build <code class="docutils literal notranslate"><span class="pre">bmputil</span></code> by running <code class="docutils literal notranslate"><span class="pre">cargo</span> <span class="pre">xwin</span> <span class="pre">build</span> <span class="pre">--target</span> <span class="pre">x86_64-pc-windows-msvc</span> <span class="pre">--release</span></code></p></li>
+</ol>
+<p>If you are intending to build for AArch64 based Windows, change the target tuple in the final step to
+<code class="docutils literal notranslate"><span class="pre">aarch-pc-windows-msvc</span></code> instead of <code class="docutils literal notranslate"><span class="pre">x86_64-pc-windows-msvc</span></code>.</p>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/blackmagic-logo.svg" alt="Logo" />
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">The Plug&Play MCU Debugger</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=blackmagic-debug&repo=blackmagic&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Intro</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware.html">Supported Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrade.html">Firmware Upgrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supported-targets.html">Supported Targets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pinouts.html">Pinout Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiling-windows.html">Compiling on Windows</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Building <code class="docutils literal notranslate"><span class="pre">bmputil</span></code> on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-commands.html">GDB Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/gdb-automation.html">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/swo.html">Serial Wire Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/rtt.html">Using RTT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/platformio.html">PlatformIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/stm32cubeide.html">STM32CubeIDE</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/stm32.html">STM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../target-usage/sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hacking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/contrib.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/hacking.html">Firmware Hacking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-drivers.html">Adding Target Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-m.html">Cortex-M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-a.html">Cortex A Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-mm32.html">MindMotion MM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hacking/target-clock-generation.html">Target Clock Generation</a></li>
+</ul>
+
+<h3>Versions</h3>
+<ul>
+	<li><a href="/">BMD 2.0 (in development)</a></li>
+	<li><a href="/v1.x">BMD 1.10.2 (stable)</a></li>
+</ul>
+<div class="ablog-sidebar-item ablog__recentposts">
+  <h3>
+    <a href="../blog.html">Recent Posts</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../blog/2024-01-11-release-v1_9_3.html">
+        11 January - Stable Release V1.9.3
+      </a>
+    </li>
+    
+    <li>
+      <a href="../blog/2024-01-10-release-v1_10_2.html">
+        10 January - Stable Release V1.10.2
+      </a>
+    </li>
+    
+    <li>
+      <a href="../blog/2023-11-30-release-v1_10_1.html">
+        30 November - Stable Release V1.10.1
+      </a>
+    </li>
+    
+    <li>
+      <a href="../blog/2023-10-28-release-v1_10_0.html">
+        28 October - Stable Release V1.10.0
+      </a>
+    </li>
+    
+    <li>
+      <a href="../blog/2023-10-11-release-candidate-v1_10_0-rc1.html">
+        11 October - Release Candidate V1.10.0-rc1
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+<div class="ablog-sidebar-item ablog__archives">
+  <h3>
+    <a href="../blog/archive.html">Archives</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../blog/2024.html">2024 (2)</a>
+    </li>
+      
+    <li>
+      <a href="../blog/2023.html">2023 (8)</a>
+    </li>
+      
+    <li>
+      <a href="../blog/2022.html">2022 (7)</a>
+    </li>
+     
+  </ul>
+</div>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="compiling-windows.html" title="previous chapter">Compiling on Windows</a></li>
+      <li>Next: <a href="links.html" title="next chapter">Links</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022-2023, Piotr Esden-Tempski <piotr@esden.net>; 2022-2023, Rachel Mant <git@dragonmux.network>.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
