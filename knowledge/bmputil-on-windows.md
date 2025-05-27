@@ -39,6 +39,10 @@ rustup target add aarch64-pc-windows-msvc
    path the installer chooses (you can do it to a different one but will have to adjust the path for the environment
    in the build steps below).
 
+**NB:** Please note that environments like MSYS2 and Cygwin cannot be used for this. They provide their own `rustup`,
+and cannot run the launch scripts for the MSVC toolchain, thus resulting in being closer to the cross-compilation
+steps below. You must use either the cmd.exe shell or PowerShell to successfully complete these steps.
+
 ## Building `bmputil`
 
 The following instructions must be executed either from in a shell that used the "Developer Command Prompt" launcher
