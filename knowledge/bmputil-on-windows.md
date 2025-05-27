@@ -9,6 +9,9 @@ on Windows to build it successfully and correctly.
 The tool may be cross-built for Windows, which is detailed after the main section on acomplishing a build on Windows
 itself.
 
+**NB:** This process is quite tricky and fragile. Unless you have cause to build your own binaries, we strongly recomend
+use of the pre-built ones from the release, or a different platform if possible.
+
 ## Pre-requisites
 
 The tool requires a few pre-requisites to be available, starting with a copy of the Rust compiler and stdlib installed
