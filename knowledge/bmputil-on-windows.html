@@ -75,6 +75,8 @@ and upgrade of the runing firmware. The tool is available on all major OSes, but
 on Windows to build it successfully and correctly.</p>
 <p>The tool may be cross-built for Windows, which is detailed after the main section on acomplishing a build on Windows
 itself.</p>
+<p><strong>NB:</strong> This process is quite tricky and fragile. Unless you have cause to build your own binaries, we strongly recomend
+use of the pre-built ones from the release, or a different platform if possible.</p>
 </section>
 <section id="pre-requisites">
 <h2>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Link to this heading">¶</a></h2>
@@ -102,6 +104,9 @@ rustup<span class="w"> </span>target<span class="w"> </span>add<span class="w"> 
 path the installer chooses (you can do it to a different one but will have to adjust the path for the environment
 in the build steps below).</p></li>
 </ol>
+<p><strong>NB:</strong> Please note that environments like MSYS2 and Cygwin cannot be used for this. They provide their own <code class="docutils literal notranslate"><span class="pre">rustup</span></code>,
+and cannot run the launch scripts for the MSVC toolchain, thus resulting in being closer to the cross-compilation
+steps below. You must use either the cmd.exe shell or PowerShell to successfully complete these steps.</p>
 </section>
 <section id="building-bmputil">
 <h2>Building <code class="docutils literal notranslate"><span class="pre">bmputil</span></code><a class="headerlink" href="#building-bmputil" title="Link to this heading">¶</a></h2>
