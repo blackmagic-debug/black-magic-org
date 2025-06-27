@@ -19,8 +19,8 @@ The JTAG/SWD connector is a 0.05" (50mil/1.27mm) pitch, 2 row 10pin connector. T
 
 * Amphenol FCI 20021121-00010C4LF unshrouded SMD (Buy: [Digi-key](https://www.digikey.com/product-detail/en/amphenol-fci/20021121-00010C4LF/609-3695-1-ND/2209147))
 * Amphenol FCI 20021111-00010T4LF unshrouded TH (Buy: [Digi-key](https://www.digikey.com/product-detail/en/amphenol-fci/20021111-00010T4LF/609-3712-ND/2209072))
-* Amphenol FCI 20021521-00010T1LF shrouded SMD (Buy: [Digi-key](https://www.digikey.com/product-detail/en/amphenol-fci/20021521-00010T1LF/609-4054-ND/2414951))
-* Amphenol FCI 20021211-00010T1LF shrouded TH (Buy: [Digi-key](https://www.digikey.com/product-detail/en/amphenol-fci/20021211-00010T1LF/20021211-00010T1LF-ND/4244146))
+* Samtec FTSH-105-01-L-DV-K-P shrouded SMD (Buy: [Digi-key](https://www.digikey.com/en/products/detail/samtec-inc/FTSH-105-01-L-DV-K-P/6613384))
+* Samtec FTSH-105-01-L-D-K shrouded TH (Buy: [Digi-key](https://www.digikey.com/en/products/detail/samtec-inc/FTSH-105-01-L-D-K/2649979))
 * CNC Tech 3220-10-0300-00 shrouded SMD (Buy: [Digi-key](https://www.digikey.com/product-detail/en/cnc-tech/3220-10-0300-00/1175-1629-ND/3883266))
 * CNC Tech 3220-10-0100-00 shrouded TH (Buy: [Digi-key](https://www.digikey.com/product-detail/en/cnc-tech/3220-10-0100-00/1175-1627-ND/3883661))
 * And many many more ... 😸
