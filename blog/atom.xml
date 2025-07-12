@@ -2,10 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://black-magic.org</id>
   <title>Blog</title>
-  <updated>2025-06-27T06:47:22.265457+00:00</updated>
+  <updated>2025-07-12T23:37:51.570919+00:00</updated>
   <link href="https://black-magic.org"/>
   <link href="https://black-magic.org/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
+  <entry>
+    <id>https://black-magic.org/blog/2025-03-03-release-candidate-v2_0_0-rc2.html</id>
+    <title>Release Candidate V2.0.0-rc2</title>
+    <updated>2025-03-03T00:00:00+00:00</updated>
+    <author>
+      <name>Piotr Esden-Tempski</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the second &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v2.0.0-rc2"&gt;v2.0.0 release candidate&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;. This is the first major release of the v2 series.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://black-magic.org/blog/2025-03-03-release-candidate-v2_0_0-rc2.html"/>
+    <summary>We are happy to announce the second v2.0.0 release candidate of Black Magic Debug. This is the first major release of the v2 series.</summary>
+    <published>2025-03-03T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://black-magic.org/blog/2025-01-07-release-candidate-v2_0_0-rc1.html</id>
+    <title>Release Candidate V2.0.0-rc1</title>
+    <updated>2025-01-07T00:00:00+00:00</updated>
+    <author>
+      <name>Piotr Esden-Tempski</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the first &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v2.0.0-rc1"&gt;v2.0.0 release candidate&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;. This is the first major release of the v2 series.&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://black-magic.org/blog/2025-01-07-release-candidate-v2_0_0-rc1.html"/>
+    <summary>We are happy to announce the first v2.0.0 release candidate of Black Magic Debug. This is the first major release of the v2 series.</summary>
+    <published>2025-01-07T00:00:00+00:00</published>
+  </entry>
   <entry>
     <id>https://black-magic.org/blog/2024-01-11-release-v1_9_3.html</id>
     <title>Stable Release V1.9.3</title>
