@@ -21,10 +21,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://black-magic.org/upgrade.html" />
 <meta property="og:site_name" content="Black Magic Debug" />
-<meta property="og:description" content="Linux / macOS: Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection: You can find the newest pre-built binaries on the GitHub Release Page., You can find the bleed..." />
+<meta property="og:description" content="There are many ways to update your Black Magic Probe. For most users the stable release firmware will be sufficient and in most cases will not require to compile anything. We recommend updating the..." />
 <meta property="og:image" content="https://black-magic.org/_static/blackmagic-logo.png" />
 <meta property="og:image:alt" content="Black Magic Debug" />
-<meta name="description" content="Linux / macOS: Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection: You can find the newest pre-built binaries on the GitHub Release Page., You can find the bleed..." />
+<meta name="description" content="There are many ways to update your Black Magic Probe. For most users the stable release firmware will be sufficient and in most cases will not require to compile anything. We recommend updating the..." />
 
     <title>Firmware Upgrade &#8212; Black Magic Debug  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
@@ -68,34 +68,116 @@
           <div class="body" role="main">
              <section id="firmware-upgrade">
 <h1>Firmware Upgrade<a class="headerlink" href="#firmware-upgrade" title="Link to this heading">¶</a></h1>
-<section id="linux-macos">
-<h2>Linux / macOS<a class="headerlink" href="#linux-macos" title="Link to this heading">¶</a></h2>
+<p>There are many ways to update your Black Magic Probe. For most users the stable release firmware will be sufficient and
+in most cases will not require to compile anything. We recommend updating the firmware using <code class="docutils literal notranslate"><span class="pre">bmputil</span></code>. It is also
+possible to use <code class="docutils literal notranslate"><span class="pre">dfu-util</span></code> that used to be the recommended way in the past, you can find the instructions for <em>other</em>
+tools at the end of this document. If you have trouble using <code class="docutils literal notranslate"><span class="pre">bmputil</span></code> please let us know, we strive to make the
+experience as easy as possible.</p>
+<section id="install-bmputil-cli">
+<h2>Install bmputil-cli<a class="headerlink" href="#install-bmputil-cli" title="Link to this heading">¶</a></h2>
+<p>Binary releases for Linux, mac OS (amd64/AArch64) and Windows (amd64/AArch64) are now available with every
+<a class="reference external" href="https://github.com/blackmagic-debug/bmputil/releases">release</a>. These should work out-of-the-box with no
+extra dependencies or software needing to be installed.</p>
+<p>Alternatively <code class="docutils literal notranslate"><span class="pre">cargo</span> <span class="pre">binstall</span></code> can be used. Which allows for easy updates of <code class="docutils literal notranslate"><span class="pre">bmputil-cli</span></code>.
+We recommend the following order of operations:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://rustup.rs/">Install rustup</a></p></li>
+<li><p><a class="reference external" href="https://github.com/cargo-bins/cargo-binstall?tab=readme-ov-file#installation">Install cargo-binstall</a></p></li>
+<li><p>Install bmputil by invoking</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">cargo</span> <span class="pre">binstall</span> <span class="pre">bmputil</span></code> for the stable release</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cargo</span> <span class="pre">binstall</span> <span class="pre">bmputil&#64;1.0.0-rc.2</span></code> for a release candidate</p></li>
+</ul>
+</li>
+</ul>
+<p>The tool will be available as <code class="docutils literal notranslate"><span class="pre">bmputil-cli</span></code> starting with v1.0.0 and <code class="docutils literal notranslate"><span class="pre">bmputil</span></code> for older releases.</p>
+<p>Another alternative is to use <code class="docutils literal notranslate"><span class="pre">cargo</span> <span class="pre">install</span></code> instead of <code class="docutils literal notranslate"><span class="pre">cargo</span> <span class="pre">binstall</span></code> which will install the tool from source. In
+such case <code class="docutils literal notranslate"><span class="pre">cargo-binstall</span></code> can be skipped in the instructions above. The <code class="docutils literal notranslate"><span class="pre">binstall</span></code> path will fall back to source
+compilation if a binary build is not available for the specific os/architecture combination.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you decide to choose the <code class="docutils literal notranslate"><span class="pre">cargo</span> <span class="pre">install</span></code> path on Windows. Please refer to the
+<a class="reference internal" href="knowledge/bmputil-on-windows.html"><span class="std std-doc">detailed documentation about the process</span></a> as it is not trivial.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">bmputil</span></code> on Windows will automatically setup driver installation on first run for a probe if appropriate.  This will
+require administrator access when it occurs, and uses the Windows Driver Installer framework.</p>
+</section>
+<section id="setup-permissions">
+<h2>Setup permissions<a class="headerlink" href="#setup-permissions" title="Link to this heading">¶</a></h2>
+<p>In case you are using Linux we highly recommend setting up the official project
+<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/driver">udev rules</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>On Windows <code class="docutils literal notranslate"><span class="pre">bmputil-cli</span></code> will automatically take care of the needed drivers.
+Do <strong>not</strong> run Zadig on the DFU endpoint if using bmputil.</p>
+</div>
+<p>You can check if everything is working correctly by running:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>bmputil-cli<span class="w"> </span>probe<span class="w"> </span>info
+</pre></div>
+</div>
+<p>The tool should be able to find and list the Black Magic Probe connected to the system. Which will look something like
+this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Found: Black Magic Probe 2.0.0
+  Serial: 81C5797B
+  Port:  0-85000192
+</pre></div>
+</div>
+</section>
+<section id="automatic-update">
+<h2>Automatic Update<a class="headerlink" href="#automatic-update" title="Link to this heading">¶</a></h2>
+<p>This is the recommended procedure.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This procedure is currently only supported by the <a class="reference internal" href="hardware.html#native-hardware"><span class="std std-ref">native</span></a> hardware. Third party
+hardware running Black Magic Firmware is not currently supported and the appropriate firmware has to be manually built.
+Refer to the <a class="reference internal" href="#manual-update">Manual Update</a> for instructions.</p>
+</div>
+<section id="run-update">
+<h3>Run update<a class="headerlink" href="#run-update" title="Link to this heading">¶</a></h3>
+<p>To upgrade the firmware on the connected Black Magic Probe all that should be necessary is running:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>bmputil-cli<span class="w"> </span>probe<span class="w"> </span>update
+</pre></div>
+</div>
+<p>And follow the instructions.</p>
+<p>If you would like to update the firmware to the latest release candidate you can run the following:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>bmputil-cli<span class="w"> </span>probe<span class="w"> </span>update<span class="w"> </span>--use-rc
+</pre></div>
+</div>
+</section>
+</section>
+<section id="manual-update">
+<h2>Manual Update<a class="headerlink" href="#manual-update" title="Link to this heading">¶</a></h2>
+<p>This procedure is necessary when the host platform is not the native hardware. We currently do not offer an automatic
+update path for third party hardware.</p>
+<p>This is also the procedure to follow if you are have some other reason to build the firmware manually. For example you
+are addinng new hardware support.</p>
+<section id="download-or-build-the-firmware">
+<h3>Download or build the firmware<a class="headerlink" href="#download-or-build-the-firmware" title="Link to this heading">¶</a></h3>
 <p>Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection:</p>
 <ul class="simple">
 <li><p>You can find the newest pre-built binaries on the
 <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases">GitHub Release Page</a>.</p></li>
-<li><p>You can find the bleeding cutting edge binaries uploaded as assets on the
-<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml">“build and upload” GitHub actions page</a>,
-Click on the newest successful build and download the <code class="docutils literal notranslate"><span class="pre">blackmagic-firmware.zip</span></code> file. It contains binaries
-for all the supported platforms.</p></li>
-<li><p>When using the daily builds expect breaking changes. Please report issues on
+<li><p>You can download cutting edge binaries built with every commit to the main branch
+<a class="reference external" href="https://nightly.link/blackmagic-debug/blackmagic/workflows/build-and-upload/main">here</a>.  When using the daily builds</p></li>
+<li><p>expect breaking changes. Please report issues on
 <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/issues">our issue page</a> or ask on our Discord server.</p></li>
+<li><p>You can also build your own firmware from the cloned sources. Follow the [build instructions in the project</p></li>
+<li><p><a class="reference external" href="https://github.com/blackmagic-debug/blackmagic?tab=readme-ov-file#building">README</a>.</p></li>
 </ul>
-<p>Upgrade the firmware of the Black Magic Debug Probe using either:</p>
-<ul class="simple">
-<li><p>bmputil</p></li>
-<li><p>dfu-util</p></li>
-<li><p>stlink-tool</p></li>
-</ul>
-<section id="bmputil-on-linux-macos">
-<h3>bmputil on Linux/macOS<a class="headerlink" href="#bmputil-on-linux-macos" title="Link to this heading">¶</a></h3>
-<p>Clone and build the <a class="reference external" href="https://github.com/blackmagic-debug/bmputil">bmputil</a> tool.</p>
-<p>Plug your Black Magic Probe into your computer and run the following command:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>bmputil<span class="w"> </span>flash<span class="w"> </span>blackmagic-native.elf
+</section>
+<section id="flash-using-bmputil">
+<h3>Flash Using <code class="docutils literal notranslate"><span class="pre">bmputil</span></code><a class="headerlink" href="#flash-using-bmputil" title="Link to this heading">¶</a></h3>
+<p>To flash a downloaded or manually built binary, the resulting <code class="docutils literal notranslate"><span class="pre">.elf</span></code> file can be provided to the <code class="docutils literal notranslate"><span class="pre">bmputil-cli</span> <span class="pre">probe</span> <span class="pre">update</span></code> command.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>bmputil-cli<span class="w"> </span>probe<span class="w"> </span>update<span class="w"> </span>blackmagic-binary.elf
 </pre></div>
 </div>
-<p>Provided you have suitable udev rules in play, this will already do everything you need and automatically reboot your unit back into the new firmware.</p>
 </section>
+</section>
+<section id="update-using-other-tools">
+<h2>Update using <em>other</em> tools<a class="headerlink" href="#update-using-other-tools" title="Link to this heading">¶</a></h2>
+<p>Besides <code class="docutils literal notranslate"><span class="pre">bmputil</span></code> you can also update the firmware on your Black Magic Probe using <code class="docutils literal notranslate"><span class="pre">dfu-util</span></code> or <code class="docutils literal notranslate"><span class="pre">stlink-tool</span></code>. Both can
+be useful if you have trouble getting <code class="docutils literal notranslate"><span class="pre">bmputil</span></code> to work on your system, and/or your Black Magic host platform is not the
+<a class="reference internal" href="hardware.html#native-hardware"><span class="std std-ref">native</span></a> and is not supported by <code class="docutils literal notranslate"><span class="pre">bmputil</span></code>.</p>
 <section id="dfu-util-on-linux-macos">
 <h3>dfu-util on Linux/macOS<a class="headerlink" href="#dfu-util-on-linux-macos" title="Link to this heading">¶</a></h3>
 <p>Install <a class="reference external" href="http://dfu-util.sourceforge.net/"><code class="docutils literal notranslate"><span class="pre">dfu-util</span></code></a>. On macOS you can use homebrew, macports or fink depending
@@ -108,7 +190,8 @@ on your preferred package manager. You will need version 0.8.0 or greater to sup
 <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms">platforms on GitHub</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If <code class="docutils literal notranslate"><span class="pre">dfu-util</span></code> fails to switch your BMP into bootloader mode, or you feel like you might have <strong>bricked</strong> your BMP, you can also plug in your BMP while holding down the button. This will force the BMP to stay in the bootloader on power up.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">dfu-util</span></code> fails to switch your BMP into bootloader mode, or you feel like you might have <strong>bricked</strong> your BMP, you
+can also plug in your BMP while holding down the button. This will force the BMP to stay in the bootloader on power up.</p>
 </div>
 </section>
 <section id="stlink-tool-on-linux-macos">
@@ -125,36 +208,6 @@ on your preferred package manager. You will need version 0.8.0 or greater to sup
 Therefore please ensure you want to upgrade the firmware of the ST-Link probe, and use a blackmagic.bin file built
 specifically for ST-Link.</p>
 </div>
-</section>
-</section>
-<section id="windows">
-<h2>Windows<a class="headerlink" href="#windows" title="Link to this heading">¶</a></h2>
-<p>Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection:</p>
-<ul class="simple">
-<li><p>You can find the newest pre-built binaries on the
-<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases">GitHub Release Page</a>.</p></li>
-<li><p>You can find the bleeding cutting edge binaries uploaded as assets on the
-<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml">“build and upload” GitHub actions page</a>,
-Click on the newest successful build and download the <code class="docutils literal notranslate"><span class="pre">blackmagic-firmware.zip</span></code> file. It contains binaries for
-all the supported platforms.</p></li>
-<li><p>When using the daily builds expect breaking changes. Please report issues on
-<a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/issues">our issue page</a> or ask on our Discord server.</p></li>
-</ul>
-<p>Upgrade the firmware of the Black Magic Debug Probe using either:</p>
-<ul class="simple">
-<li><p>bmputil</p></li>
-<li><p>dfu-util</p></li>
-<li><p>stlink-tool</p></li>
-</ul>
-<section id="bmputil-on-windows">
-<h3>bmputil on Windows<a class="headerlink" href="#bmputil-on-windows" title="Link to this heading">¶</a></h3>
-<p>Clone and build the <a class="reference external" href="https://github.com/blackmagic-debug/bmputil">bmputil</a> tool.</p>
-<p>Plug your Black Magic Probe into your computer and run the following command:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>bmputil<span class="w"> </span>flash<span class="w"> </span>blackmagic-native.elf
-</pre></div>
-</div>
-<p>bmputil will automatically take care of the needed drivers.
-Do <strong>not</strong> run Zadig on the DFU endpoint if using bmputil.</p>
 </section>
 <section id="dfu-util-on-windows">
 <h3>dfu-util on Windows<a class="headerlink" href="#dfu-util-on-windows" title="Link to this heading">¶</a></h3>
