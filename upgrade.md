@@ -1,6 +1,10 @@
 # Firmware Upgrade
 
-There are many ways to update your Black Magic Probe. For most users the stable release firmware will be sufficient and in most cases will not require to compile anything. We recommend updating the firmware using `bmputil`. It is also possible to use `dfu-util` that used to be the recommended way in the past, you can find the instructions for *other* tools at the end of this document. If you have trouble using `bmputil` please let us know, we strive to make the experience as easy as possible.
+There are many ways to update your Black Magic Probe. For most users the stable release firmware will be sufficient and
+in most cases will not require to compile anything. We recommend updating the firmware using `bmputil`. It is also
+possible to use `dfu-util` that used to be the recommended way in the past, you can find the instructions for *other*
+tools at the end of this document. If you have trouble using `bmputil` please let us know, we strive to make the
+experience as easy as possible.
 
 ## Install bmputil-cli
 
@@ -10,6 +14,7 @@ extra dependencies or software needing to be installed.
 
 Alternatively `cargo binstall` can be used. Which allows for easy updates of `bmputil-cli`.
 We recommend the following order of operations:
+
 * [Install rustup](https://rustup.rs/)
 * [Install cargo-binstall](https://github.com/cargo-bins/cargo-binstall?tab=readme-ov-file#installation)
 * Install bmputil by invoking
@@ -23,15 +28,17 @@ such case `cargo-binstall` can be skipped in the instructions above. The `binsta
 compilation if a binary build is not available for the specific os/architecture combination.
 
 ```{note}
-If you decide to choose the `cargo install` path on Windows. Please refer to the [detailed documentation about the process](knowledge/bmputil-on-windows.md) as it is not trivial.
+If you decide to choose the `cargo install` path on Windows. Please refer to the
+[detailed documentation about the process](knowledge/bmputil-on-windows.md) as it is not trivial.
 ```
 
-`bmputil` on Windows will automatically setup driver installation on first run for a probe if appropriate.
-This will require administrator access when it occurs, and uses the Windows Driver Installer framework.
+`bmputil` on Windows will automatically setup driver installation on first run for a probe if appropriate.  This will
+require administrator access when it occurs, and uses the Windows Driver Installer framework.
 
 ## Setup permissions
 
-In case you are using Linux we highly recommend setting up the official project [udev rules](https://github.com/blackmagic-debug/blackmagic/tree/main/driver).
+In case you are using Linux we highly recommend setting up the official project
+[udev rules](https://github.com/blackmagic-debug/blackmagic/tree/main/driver).
 
 ```{warning}
 On Windows `bmputil-cli` will automatically take care of the needed drivers.
@@ -44,7 +51,8 @@ You can check if everything is working correctly by running:
 bmputil-cli probe info
 ```
 
-The tool should be able to find and list the Black Magic Probe connected to the system. Which will look something like this:
+The tool should be able to find and list the Black Magic Probe connected to the system. Which will look something like
+this:
 
 ```text
 Found: Black Magic Probe 2.0.0
@@ -57,7 +65,9 @@ Found: Black Magic Probe 2.0.0
 This is the recommended procedure.
 
 ```{note}
-This procedure is currently only supported by the [native](hardware.md#native-hardware) hardware. Third party hardware running Black Magic Firmware is not currently supported and the appropriate firmware has to be manually built. Refer to the [Manual Update](#manual-update) for instructions.
+This procedure is currently only supported by the [native](hardware.md#native-hardware) hardware. Third party
+hardware running Black Magic Firmware is not currently supported and the appropriate firmware has to be manually built.
+Refer to the [Manual Update](#manual-update) for instructions.
 ```
 
 ### Run update
@@ -70,7 +80,7 @@ bmputil-cli probe update
 
 And follow the instructions.
 
-If you would like to update the firmware to a release candidate you can run the following:
+If you would like to update the firmware to the latest release candidate you can run the following:
 
 ```sh
 bmputil-cli probe update --use-rc
@@ -78,26 +88,29 @@ bmputil-cli probe update --use-rc
 
 ## Manual Update
 
-This procedure is necessary when the host platform is not the native hardware. We currently do not offer an automatic update path for third party hardware.
+This procedure is necessary when the host platform is not the native hardware. We currently do not offer an automatic
+update path for third party hardware.
 
-This is also the procedure to follow if you are have some other reason to build the firmware manually. For example you are addinng new hardware support.
+This is also the procedure to follow if you are have some other reason to build the firmware manually. For example you
+are addinng new hardware support.
 
 ### Download or build the firmware
+
 Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware selection:
 
 * You can find the newest pre-built binaries on the
   [GitHub Release Page](https://github.com/blackmagic-debug/blackmagic/releases).
-* You can find the bleeding cutting edge binaries uploaded as assets on the
-  ["build and upload" GitHub actions page](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml),
-  Click on the newest successful build and download the `blackmagic-firmware.zip` file. It contains binaries for
-  all the supported platforms.
-* When using the daily builds expect breaking changes. Please report issues on
+* You can download cutting edge binaries built with every commit to the main branch
+  [here](https://nightly.link/blackmagic-debug/blackmagic/workflows/build-and-upload/main).  When using the daily builds
+* expect breaking changes. Please report issues on
   [our issue page](https://github.com/blackmagic-debug/blackmagic/issues) or ask on our Discord server.
-* You can also build your own firmware from the cloned sources. Follow the [build instructions in the project README](https://github.com/blackmagic-debug/blackmagic?tab=readme-ov-file#building).
+* You can also build your own firmware from the cloned sources. Follow the [build instructions in the project
+* README](https://github.com/blackmagic-debug/blackmagic?tab=readme-ov-file#building).
 
 ### Flash Using `bmputil`
 
-To flash a downloaded or manually built binary, the resulting `.elf` file can be provided to the `bmputil-cli probe update` command.
+To flash a downloaded or manually built binary, the resulting `.elf` file can be provided to the `bmputil-cli probe
+update` command.
 
 ```sh
 bmputil-cli probe update blackmagic-binary.elf
@@ -105,7 +118,9 @@ bmputil-cli probe update blackmagic-binary.elf
 
 ## Update using *other* tools
 
-Besides `bmputil` you can also update the firmware on your Black Magic Probe using `dfu-util` or `stlink-tool`. Both can be useful if you have trouble getting `bmputil` to work on your system, and/or your Black Magic host platform is not the [native](hardware.md#native-hardware) and is not supported by `bmputil`.
+Besides `bmputil` you can also update the firmware on your Black Magic Probe using `dfu-util` or `stlink-tool`. Both can
+be useful if you have trouble getting `bmputil` to work on your system, and/or your Black Magic host platform is not the
+[native](hardware.md#native-hardware) and is not supported by `bmputil`.
 
 ### dfu-util on Linux/macOS
 
@@ -122,7 +137,8 @@ To upgrade non-native hardware see the READMEs of the different
 [platforms on GitHub](https://github.com/blackmagic-debug/blackmagic/tree/main/src/platforms).
 
 ```{note}
-If `dfu-util` fails to switch your BMP into bootloader mode, or you feel like you might have **bricked** your BMP, you can also plug in your BMP while holding down the button. This will force the BMP to stay in the bootloader on power up.
+If `dfu-util` fails to switch your BMP into bootloader mode, or you feel like you might have **bricked** your BMP, you
+can also plug in your BMP while holding down the button. This will force the BMP to stay in the bootloader on power up.
 ```
 
 ### stlink-tool on Linux/macOS
