@@ -105,7 +105,7 @@ Download or compile the Black Magic Debug (BMD) firmware. Regarding firmware sel
 * expect breaking changes. Please report issues on
   [our issue page](https://github.com/blackmagic-debug/blackmagic/issues) or ask on our Discord server.
 * You can also build your own firmware from the cloned sources. Follow the [build instructions in the project
-* [README](https://github.com/blackmagic-debug/blackmagic?tab=readme-ov-file#building).
+  README](https://github.com/blackmagic-debug/blackmagic?tab=readme-ov-file#building).
 
 ### Flash Using `bmputil`
 
