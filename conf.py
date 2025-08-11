@@ -12,9 +12,9 @@ import os
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# from sys import path
-# from pathlib import Path
-# path.insert(0, str(Path('.').resolve()))
+from sys import path
+from pathlib import Path
+path.insert(0, str(Path('.').resolve()))
 
 
 # -- Project information -----------------------------------------------------
@@ -73,10 +73,8 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'env', 'README.md', '.ve
 
 # -- Options for HTML output -------------------------------------------------
 
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-html_theme = 'alabaster'
+blog_baseurl = "https://black-magic.org"
+html_theme = 'furo'
 html_copy_source = False
 
 html_theme_options = {
@@ -84,6 +82,20 @@ html_theme_options = {
     'github_user': 'blackmagic-debug',
     'github_repo': 'blackmagic',
     'description': 'The Plug&Play MCU Debugger',
+	# 'light_css_variables': {
+	# 	'color-brand-primary': '#2672a8',
+	# 	'color-brand-content': '#2672a8',
+	# 	'color-announcement-background': '#ffab87',
+	# 	'color-announcement-text': '#494453',
+	# },
+	# 'dark_css_variables': {
+	# 	'color-brand-primary': '#85C2FE',
+	# 	'color-brand-content': '#85C2FE',
+	# 	'color-announcement-background': '#ffab87',
+	# 	'color-announcement-text': '#494453',
+	# },
+	'source_repository': 'https://github.com/blackmagic-debug/black-magic-org/',
+	'source_branch': 'main',
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -93,18 +105,18 @@ html_static_path = ['_static']
 
 html_sidebars = {
     '**': [
-        'about.html',
-        'navigation.html',
-		'version.html',
+        #'about.html',
+        'sidebar/search.html',
+        'sidebar/scroll-start.html',
+        'sidebar/navigation.html',
+        'version.html',
         'ablog/recentposts.html',
         'ablog/archives.html',
-        'relations.html',
-        'searchbox.html',
-        'donate.html',
+        # 'relations.html',
+        # 'donate.html',
+        'sidebar/scroll-end.html'
     ]
 }
-
-blog_baseurl = "https://black-magic.org"
 
 blog_authors = {
     'esden': ('Piotr Esden-Tempski', 'https://github.com/esden'),
@@ -203,4 +215,4 @@ ogp_image = "_static/blackmagic-logo.png"
 
 # Generate pinout diagrams
 
-os.system('./_pinouts/generate.py')
+#os.system('./_pinouts/generate.py')
