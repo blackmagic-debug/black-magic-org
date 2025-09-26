@@ -8,9 +8,7 @@ the host:
  * Real-Time Transfer (RTT).
 
 To enable RTT in [Black Magic Debug](https://black-magic.org) (BMD) Firmware, the `ENABLE_RTT=1` flag has to be
-set during compilation. With the Meson build system, that would be done by setting the `rtt_support` flag to true.
-Look at the firmware building [instructions](https://github.com/blackmagic-debug/blackmagic?tab=readme-ov-file#building-the-firmware)
-for more details.
+set during compilation. For more details refer to the [Build Instructions](#build-instructions) section.
 
 The RTT solution implemented in BMD uses a novel way to detect RTT automatically, making it fast and convenient.
 
@@ -295,6 +293,29 @@ circumstances. Test target is an stm32f103 blue pill running an [Arduino
 sketch](https://github.com/koendv/Arduino-RTTStream/blob/main/examples/SpeedTest/SpeedTest.ino).
 Default `monitor rtt poll` settings on debugger. Default RTT buffer size in target and
 debugger. Overhead for printf() calls included.
+
+## Build instructions
+
+To compile with RTT support, add `ENABLE_RTT=1`.
+
+Eg. for Black Magic Probe (native) hardware:
+```
+make clean
+make ENABLE_RTT=1
+```
+
+Setting an ident string is optional. But if you wish, you can set the default RTT ident at
+compile time.
+
+Eg. for Black Magic Probe (native) hardware:
+```
+make clean
+make ENABLE_RTT=1 "RTT_IDENT=IDENT\ STR"
+```
+Note the backslash \\ before the space.
+
+When compiling for other targets like bluepill, blackpill or stlink, the `PROBE_HOST` variable
+has to be also set appropriately, selecting the correct host target.
 
 ## Links
  - [OpenOCD](https://openocd.org/doc/html/General-Commands.html#Real-Time-Transfer-_0028RTT_0029)
