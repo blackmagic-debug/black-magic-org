@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 
-<html lang="en" data-content_root="../">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="../_static/favicon/icon.svg">
-    <link rel="icon" sizes="16x16" type="image/png" href="../_static/favicon/favicon-16x16.png">
-    <link rel="icon" sizes="32x32" type="image/png" href="../_static/favicon/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="57x57" type="image/png" href="../_static/favicon/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" type="image/png" href="../_static/favicon/apple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" type="image/png" href="../_static/favicon/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" type="image/png" href="../_static/favicon/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="96x96" type="image/png" href="../_static/favicon/apple-touch-icon-96x96.png">
-    <link rel="apple-touch-icon" sizes="114x114" type="image/png" href="../_static/favicon/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" type="image/png" href="../_static/favicon/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" type="image/png" href="../_static/favicon/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="../_static/favicon/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" type="image/png" href="../_static/favicon/apple-touch-icon-180x180.png">
-    <link rel="android-icon" sizes="192x192" type="image/png" href="../_static/favicon/android-icon-192x192.png"><meta property="og:title" content="Using RTT" />
+    <link rel="icon" type="image/svg+xml" href="../../_static/favicon/icon.svg">
+    <link rel="icon" sizes="16x16" type="image/png" href="../../_static/favicon/favicon-16x16.png">
+    <link rel="icon" sizes="32x32" type="image/png" href="../../_static/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="57x57" type="image/png" href="../../_static/favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" type="image/png" href="../../_static/favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" type="image/png" href="../../_static/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" type="image/png" href="../../_static/favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="96x96" type="image/png" href="../../_static/favicon/apple-touch-icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="114x114" type="image/png" href="../../_static/favicon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" type="image/png" href="../../_static/favicon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" type="image/png" href="../../_static/favicon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="../../_static/favicon/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" type="image/png" href="../../_static/favicon/apple-touch-icon-180x180.png">
+    <link rel="android-icon" sizes="192x192" type="image/png" href="../../_static/favicon/android-icon-192x192.png"><meta property="og:title" content="Using RTT" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://black-magic.org/usage/rtt.html" />
+<meta property="og:url" content="https://black-magic.org/v1.x/usage/rtt.html" />
 <meta property="og:site_name" content="Black Magic Debug" />
 <meta property="og:description" content="When debugging ARM processors, there are multiple ways for the target to print debug messages on the host: a dedicated UART port (USB to Serial) aka. AUX Serial, Semihosting, Serial Wire Output (SW..." />
 <meta property="og:image" content="https://black-magic.org/_static/blackmagic-logo.png" />
@@ -27,24 +27,22 @@
 <meta name="description" content="When debugging ARM processors, there are multiple ways for the target to print debug messages on the host: a dedicated UART port (USB to Serial) aka. AUX Serial, Semihosting, Serial Wire Output (SW..." />
 
     <title>Using RTT &#8212; Black Magic Debug  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
-    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../_static/asciinema-player_3.6.3.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/platformpicker.css" />
-    <script src="../_static/documentation_options.js?v=7f41d439"></script>
-    <script src="../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/asciinema-player_3.6.3.js"></script>
-    <script src="../_static/platformpicker.js"></script>
-    <link rel="canonical" href="https://black-magic.org/usage/rtt.html" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="PlatformIO" href="platformio.html" />
-    <link rel="prev" title="Serial Wire Output" href="swo.html" /> 
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/asciinema-player_3.6.3.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/platformpicker.css" />
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/asciinema-player_3.6.3.js"></script>
+    <script src="../../_static/platformpicker.js"></script>
+    <link rel="canonical" href="https://black-magic.org/v1.x/usage/rtt.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
    
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
 
   
@@ -53,7 +51,7 @@
 <link
   rel="alternate"
   type="application/atom+xml"
-  href="../blog/atom.xml"
+  href="../../blog/atom.xml"
   title="Blog"
 />
   
@@ -77,9 +75,7 @@ the host:</p>
 <li><p>Real-Time Transfer (RTT).</p></li>
 </ul>
 <p>To enable RTT in <a class="reference external" href="https://black-magic.org">Black Magic Debug</a> (BMD) Firmware, the <code class="docutils literal notranslate"><span class="pre">ENABLE_RTT=1</span></code> flag has to be
-set during compilation. With the Meson build system, that would be done by setting the <code class="docutils literal notranslate"><span class="pre">rtt_support</span></code> flag to true.
-Look at the firmware building <a class="reference external" href="https://github.com/blackmagic-debug/blackmagic?tab=readme-ov-file#building-the-firmware">instructions</a>
-for more details.</p>
+set during compilation. For more details refer to the <a class="reference internal" href="#build-instructions">Build Instructions</a> section.</p>
 <p>The RTT solution implemented in BMD uses a novel way to detect RTT automatically, making it fast and convenient.</p>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
@@ -359,6 +355,25 @@ sketch</a>.
 Default <code class="docutils literal notranslate"><span class="pre">monitor</span> <span class="pre">rtt</span> <span class="pre">poll</span></code> settings on debugger. Default RTT buffer size in target and
 debugger. Overhead for printf() calls included.</p>
 </section>
+<section id="build-instructions">
+<h2>Build instructions<a class="headerlink" href="#build-instructions" title="Link to this heading">¶</a></h2>
+<p>To compile with RTT support, add <code class="docutils literal notranslate"><span class="pre">ENABLE_RTT=1</span></code>.</p>
+<p>Eg. for Black Magic Probe (native) hardware:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">clean</span>
+<span class="n">make</span> <span class="n">ENABLE_RTT</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Setting an ident string is optional. But if you wish, you can set the default RTT ident at
+compile time.</p>
+<p>Eg. for Black Magic Probe (native) hardware:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">clean</span>
+<span class="n">make</span> <span class="n">ENABLE_RTT</span><span class="o">=</span><span class="mi">1</span> <span class="s2">&quot;RTT_IDENT=IDENT\ STR&quot;</span>
+</pre></div>
+</div>
+<p>Note the backslash \ before the space.</p>
+<p>When compiling for other targets like bluepill, blackpill or stlink, the <code class="docutils literal notranslate"><span class="pre">PROBE_HOST</span></code> variable
+has to be also set appropriately, selecting the correct host target.</p>
+</section>
 <section id="links">
 <h2>Links<a class="headerlink" href="#links" title="Link to this heading">¶</a></h2>
 <ul class="simple">
@@ -381,8 +396,8 @@ debugger. Overhead for printf() calls included.</p>
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
 <p class="logo">
-  <a href="../index.html">
-    <img class="logo" src="../_static/blackmagic-logo.svg" alt="Logo" />
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/blackmagic-logo.svg" alt="Logo" />
     
   </a>
 </p>
@@ -406,44 +421,44 @@ debugger. Overhead for printf() calls included.</p>
 <h3>Navigation</h3>
 <p class="caption" role="heading"><span class="caption-text">Intro</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../hardware.html">Supported Hardware</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../upgrade.html">Firmware Upgrade</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../supported-targets.html">Supported Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware.html">Supported Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrade.html">Firmware Upgrade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../supported-targets.html">Supported Targets</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Knowledgebase</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../knowledge/faq.html">FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../knowledge/terminology.html">Terminology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../knowledge/pinouts.html">Pinout Glossary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../knowledge/compiling-windows.html">Compiling on Windows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../knowledge/bmputil-on-windows.html">Building <code class="docutils literal notranslate"><span class="pre">bmputil</span></code> on Windows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../knowledge/links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../knowledge/faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../knowledge/terminology.html">Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../knowledge/pinouts.html">Pinout Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../knowledge/compiling-windows.html">Compiling on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../knowledge/bmputil-on-windows.html">Building <code class="docutils literal notranslate"><span class="pre">bmputil</span></code> on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../knowledge/links.html">Links</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="gdb-commands.html">GDB Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gdb-automation.html">GDB Flash Automation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="semihosting.html">Semihosting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="swo.html">Serial Wire Output</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using RTT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="platformio.html">PlatformIO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stm32cubeide.html">STM32CubeIDE</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/gdb-commands.html">GDB Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/gdb-automation.html">GDB Flash Automation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/semihosting.html">Semihosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/swo.html">Serial Wire Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/rtt.html">Using RTT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/platformio.html">PlatformIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/stm32cubeide.html">STM32CubeIDE</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Target Specific Usage</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../target-usage/stm32.html">STM32 Targets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../target-usage/sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../target-usage/stm32.html">STM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../target-usage/sam3x-4x-x7x.html">SAM3x-4x-x7x</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Hacking</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../hacking/contrib.html">Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hacking/hacking.html">Firmware Hacking</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hacking/target-drivers.html">Adding Target Drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-m.html">Cortex-M Targets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hacking/target-cortex-a.html">Cortex A Targets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hacking/target-mm32.html">MindMotion MM32 Targets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../hacking/target-clock-generation.html">Target Clock Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hacking/contrib.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hacking/hacking.html">Firmware Hacking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hacking/target-drivers.html">Adding Target Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hacking/target-cortex-m.html">Cortex-M Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hacking/target-cortex-a.html">Cortex A Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hacking/target-mm32.html">MindMotion MM32 Targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hacking/target-clock-generation.html">Target Clock Generation</a></li>
 </ul>
 
 <h3>Versions</h3>
@@ -453,36 +468,36 @@ debugger. Overhead for printf() calls included.</p>
 </ul>
 <div class="ablog-sidebar-item ablog__recentposts">
   <h3>
-    <a href="../blog.html">Recent Posts</a>
+    <a href="../../blog.html">Recent Posts</a>
   </h3>
   <ul>
      
     <li>
-      <a href="../blog/2025-03-03-release-candidate-v2_0_0-rc2.html">
+      <a href="../../blog/2025-03-03-release-candidate-v2_0_0-rc2.html">
         03 March - Release Candidate V2.0.0-rc2
       </a>
     </li>
     
     <li>
-      <a href="../blog/2025-01-07-release-candidate-v2_0_0-rc1.html">
+      <a href="../../blog/2025-01-07-release-candidate-v2_0_0-rc1.html">
         07 January - Release Candidate V2.0.0-rc1
       </a>
     </li>
     
     <li>
-      <a href="../blog/2024-01-11-release-v1_9_3.html">
+      <a href="../../blog/2024-01-11-release-v1_9_3.html">
         11 January - Stable Release V1.9.3
       </a>
     </li>
     
     <li>
-      <a href="../blog/2024-01-10-release-v1_10_2.html">
+      <a href="../../blog/2024-01-10-release-v1_10_2.html">
         10 January - Stable Release V1.10.2
       </a>
     </li>
     
     <li>
-      <a href="../blog/2023-11-30-release-v1_10_1.html">
+      <a href="../../blog/2023-11-30-release-v1_10_1.html">
         30 November - Stable Release V1.10.1
       </a>
     </li>
@@ -492,24 +507,24 @@ debugger. Overhead for printf() calls included.</p>
 
 <div class="ablog-sidebar-item ablog__archives">
   <h3>
-    <a href="../blog/archive.html">Archives</a>
+    <a href="../../blog/archive.html">Archives</a>
   </h3>
   <ul>
      
     <li>
-      <a href="../blog/2025.html">2025 (2)</a>
+      <a href="../../blog/2025.html">2025 (2)</a>
     </li>
       
     <li>
-      <a href="../blog/2024.html">2024 (2)</a>
+      <a href="../../blog/2024.html">2024 (2)</a>
     </li>
       
     <li>
-      <a href="../blog/2023.html">2023 (8)</a>
+      <a href="../../blog/2023.html">2023 (8)</a>
     </li>
       
     <li>
-      <a href="../blog/2022.html">2022 (7)</a>
+      <a href="../../blog/2022.html">2022 (7)</a>
     </li>
      
   </ul>
@@ -517,16 +532,14 @@ debugger. Overhead for printf() calls included.</p>
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="swo.html" title="previous chapter">Serial Wire Output</a></li>
-      <li>Next: <a href="platformio.html" title="next chapter">PlatformIO</a></li>
+  <li><a href="../../index.html">Documentation overview</a><ul>
   </ul></li>
 </ul>
 </div>
 <search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
+    <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
