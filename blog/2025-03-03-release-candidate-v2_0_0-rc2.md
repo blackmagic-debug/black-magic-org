@@ -1,4 +1,4 @@
-# Release Candidate V2.0.0-rc2
+# Black Magic Debug V2.0.0-rc2 Release Candidate
 
 ```{post} March 03, 2025
 :author: esden

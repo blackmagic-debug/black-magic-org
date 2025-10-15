@@ -1,4 +1,4 @@
-# Release Candidate V1.10.0-rc0
+# Black Magic Debug V1.10.0-rc0 Release Candidate
 
 ```{post} September 17, 2023
 :author: esden
