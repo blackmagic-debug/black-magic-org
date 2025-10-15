@@ -2,13 +2,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://black-magic.org</id>
   <title>Blog</title>
-  <updated>2025-10-15T20:29:29.084786+00:00</updated>
+  <updated>2025-10-15T20:59:45.968303+00:00</updated>
   <link href="https://black-magic.org"/>
   <link href="https://black-magic.org/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
   <entry>
+    <id>https://black-magic.org/blog/2025-07-12-bmputil-release-v1_0_0.html</id>
+    <title>bmputil V1.0.0 Stable Release</title>
+    <updated>2025-07-19T00:00:00+00:00</updated>
+    <author>
+      <name>Piotr Esden-Tempski</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/bmputil/releases/tag/v1.0.0"&gt;v1.0.0&lt;/a&gt; first stable release of &lt;a class="reference external" href="https://github.com/blackmagic-debug/bmputil"&gt;Black Magic Probe Utility&lt;/a&gt;!&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://black-magic.org/blog/2025-07-12-bmputil-release-v1_0_0.html"/>
+    <summary>We are happy to announce the v1.0.0 first stable release of Black Magic Probe Utility!</summary>
+    <published>2025-07-19T00:00:00+00:00</published>
+  </entry>
+  <entry>
     <id>https://black-magic.org/blog/2025-07-19-bmd-release-v2_0_0.html</id>
-    <title>Release Candidate V2.0.0</title>
+    <title>Black Magic Debug V2.0.0 Stable Release</title>
     <updated>2025-07-19T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -22,7 +36,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2025-03-03-release-candidate-v2_0_0-rc2.html</id>
-    <title>Release Candidate V2.0.0-rc2</title>
+    <title>Black Magic Debug V2.0.0-rc2 Release Candidate</title>
     <updated>2025-03-03T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -36,7 +50,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2025-01-07-release-candidate-v2_0_0-rc1.html</id>
-    <title>Release Candidate V2.0.0-rc1</title>
+    <title>Black Magic Debug V2.0.0-rc1 Release Candidate</title>
     <updated>2025-01-07T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -50,7 +64,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2024-01-11-release-v1_9_3.html</id>
-    <title>Stable Release V1.9.3</title>
+    <title>Black Magic Debug V1.9.3 Stable Release</title>
     <updated>2024-01-11T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -64,7 +78,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2024-01-10-release-v1_10_2.html</id>
-    <title>Stable Release V1.10.2</title>
+    <title>Black Magic Debug V1.10.2 Stable Release</title>
     <updated>2024-01-10T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -78,7 +92,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2023-11-30-release-v1_10_1.html</id>
-    <title>Stable Release V1.10.1</title>
+    <title>Black Magic Debug V1.10.1 Stable Release</title>
     <updated>2023-11-30T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -92,7 +106,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2023-10-28-release-v1_10_0.html</id>
-    <title>Stable Release V1.10.0</title>
+    <title>Black Magic Debug V1.10.0 Stable Release</title>
     <updated>2023-10-28T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -106,7 +120,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2023-10-11-release-candidate-v1_10_0-rc1.html</id>
-    <title>Release Candidate V1.10.0-rc1</title>
+    <title>Black Magic Debug V1.10.0-rc1 Release Candidate</title>
     <updated>2023-10-11T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -120,7 +134,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2023-09-17-release-candidate-v1_10_0-rc0.html</id>
-    <title>Release Candidate V1.10.0-rc0</title>
+    <title>Black Magic Debug V1.10.0-rc0 Release Candidate</title>
     <updated>2023-09-17T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -134,7 +148,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2023-09-16-release-v1_9_2.html</id>
-    <title>Stable Release V1.9.2</title>
+    <title>Black Magic Debug V1.9.2 Stable Release</title>
     <updated>2023-09-16T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -148,7 +162,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2023-09-16-release-v1_8_3.html</id>
-    <title>Stable Release V1.8.3</title>
+    <title>Black Magic Debug V1.8.3 Stable Release</title>
     <updated>2023-09-16T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -162,7 +176,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2023-04-28-release-v1_9_1.html</id>
-    <title>Stable Release V1.9.1</title>
+    <title>Black Magic Debug V1.9.1 Stable Release</title>
     <updated>2023-04-28T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -176,7 +190,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2023-01-27-release-v1_9_0.html</id>
-    <title>Stable Release V1.9.0</title>
+    <title>Black Magic Debug V1.9.0 Stable Release</title>
     <updated>2023-01-27T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -190,7 +204,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2022-12-31-release-candidate-v1_9_0-rc1.html</id>
-    <title>Release Candidate V1.9.0-rc1</title>
+    <title>Black Magic Debug V1.9.0-rc1 Release Candidate</title>
     <updated>2022-12-31T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -204,7 +218,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2022-11-27-release-candidate-v1_9_0-rc0.html</id>
-    <title>Release Candidate V1.9.0-rc0</title>
+    <title>Black Magic Debug V1.9.0-rc0 Release Candidate</title>
     <updated>2022-11-27T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -218,7 +232,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2022-07-21-release-v1_8_2.html</id>
-    <title>Stable Release V1.8.2</title>
+    <title>Black Magic Debug V1.8.2 Stable Release</title>
     <updated>2022-07-21T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -232,7 +246,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2022-07-13-release-v1_8_1.html</id>
-    <title>Stable Release V1.8.1</title>
+    <title>Black Magic Debug V1.8.1 Stable Release</title>
     <updated>2022-07-13T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
@@ -246,7 +260,7 @@
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2022-05-30-release-v1_8_0.html</id>
-    <title>Stable Release V1.8.0</title>
+    <title>Black Magic Debug V1.8.0 Stable Release</title>
     <updated>2022-05-30T00:00:00+00:00</updated>
     <author>
       <name>Piotr Esden-Tempski</name>
