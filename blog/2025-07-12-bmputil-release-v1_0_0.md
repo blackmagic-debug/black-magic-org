@@ -1,6 +1,6 @@
 # bmputil V1.0.0 Stable Release
 
-```{post} July 19, 2025
+```{post} July 12, 2025
 :author: esden
 ```
 
@@ -29,7 +29,7 @@ The behaviour of `probe update` and `probe switch` have also changed slightly.
 The `probe switch` command now only functions as a *firmware variant* selector. *firmware variants* are being introduced in Black Magic Firmware V2.0 series allowing the partitioning of firmware functionality to work around the flash size limitation of the Black Magic Probe hardware.
 
 Following is a screenshot of the tool called without any parameters to illustrate what namespaces mean.
-<img width="664" height="286" alt="Screenshot 2025-07-12 at 9 35 04 PM" src="https://github.com/user-attachments/assets/a44abe13-e18d-4da8-851c-fc679f1cdd0c" />
+<img width="664" height="286" alt="bmputil v1.0.0 help output" src="2025-assets/bmputil-cli-v1_0_0-help-output.png" />
 
 
 ## In this release
