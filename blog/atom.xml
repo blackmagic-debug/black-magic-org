@@ -2,24 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://black-magic.org</id>
   <title>Blog</title>
-  <updated>2025-10-15T20:59:45.968303+00:00</updated>
+  <updated>2025-10-15T21:34:01.383060+00:00</updated>
   <link href="https://black-magic.org"/>
   <link href="https://black-magic.org/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
-  <entry>
-    <id>https://black-magic.org/blog/2025-07-12-bmputil-release-v1_0_0.html</id>
-    <title>bmputil V1.0.0 Stable Release</title>
-    <updated>2025-07-19T00:00:00+00:00</updated>
-    <author>
-      <name>Piotr Esden-Tempski</name>
-    </author>
-    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/bmputil/releases/tag/v1.0.0"&gt;v1.0.0&lt;/a&gt; first stable release of &lt;a class="reference external" href="https://github.com/blackmagic-debug/bmputil"&gt;Black Magic Probe Utility&lt;/a&gt;!&lt;/p&gt;
-&lt;/p&gt;
-</content>
-    <link href="https://black-magic.org/blog/2025-07-12-bmputil-release-v1_0_0.html"/>
-    <summary>We are happy to announce the v1.0.0 first stable release of Black Magic Probe Utility!</summary>
-    <published>2025-07-19T00:00:00+00:00</published>
-  </entry>
   <entry>
     <id>https://black-magic.org/blog/2025-07-19-bmd-release-v2_0_0.html</id>
     <title>Black Magic Debug V2.0.0 Stable Release</title>
@@ -33,6 +19,20 @@
     <link href="https://black-magic.org/blog/2025-07-19-bmd-release-v2_0_0.html"/>
     <summary>We are happy to announce the second v2.0.0 of Black Magic Debug. This is the first major release of the v2 series.</summary>
     <published>2025-07-19T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://black-magic.org/blog/2025-07-12-bmputil-release-v1_0_0.html</id>
+    <title>bmputil V1.0.0 Stable Release</title>
+    <updated>2025-07-12T00:00:00+00:00</updated>
+    <author>
+      <name>Piotr Esden-Tempski</name>
+    </author>
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the &lt;a class="reference external" href="https://github.com/blackmagic-debug/bmputil/releases/tag/v1.0.0"&gt;v1.0.0&lt;/a&gt; first stable release of &lt;a class="reference external" href="https://github.com/blackmagic-debug/bmputil"&gt;Black Magic Probe Utility&lt;/a&gt;!&lt;/p&gt;
+&lt;/p&gt;
+</content>
+    <link href="https://black-magic.org/blog/2025-07-12-bmputil-release-v1_0_0.html"/>
+    <summary>We are happy to announce the v1.0.0 first stable release of Black Magic Probe Utility!</summary>
+    <published>2025-07-12T00:00:00+00:00</published>
   </entry>
   <entry>
     <id>https://black-magic.org/blog/2025-03-03-release-candidate-v2_0_0-rc2.html</id>
