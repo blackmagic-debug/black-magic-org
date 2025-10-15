@@ -2,12 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://black-magic.org</id>
   <title>Blog</title>
-  <updated>2025-10-15T20:19:25.805818+00:00</updated>
+  <updated>2025-10-15T20:29:29.084786+00:00</updated>
   <link href="https://black-magic.org"/>
   <link href="https://black-magic.org/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
   <entry>
-    <id>https://black-magic.org/blog/2025-07-19-release-candidate-v2_0_0.html</id>
+    <id>https://black-magic.org/blog/2025-07-19-bmd-release-v2_0_0.html</id>
     <title>Release Candidate V2.0.0</title>
     <updated>2025-07-19T00:00:00+00:00</updated>
     <author>
@@ -16,7 +16,7 @@
     <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;We are happy to announce the second &lt;a class="reference external" href="https://github.com/blackmagic-debug/blackmagic/releases/tag/v2.0.0"&gt;v2.0.0&lt;/a&gt; of &lt;a class="reference external" href="https://black-magic.org"&gt;Black Magic Debug&lt;/a&gt;. This is the first major release of the v2 series.&lt;/p&gt;
 &lt;/p&gt;
 </content>
-    <link href="https://black-magic.org/blog/2025-07-19-release-candidate-v2_0_0.html"/>
+    <link href="https://black-magic.org/blog/2025-07-19-bmd-release-v2_0_0.html"/>
     <summary>We are happy to announce the second v2.0.0 of Black Magic Debug. This is the first major release of the v2 series.</summary>
     <published>2025-07-19T00:00:00+00:00</published>
   </entry>
