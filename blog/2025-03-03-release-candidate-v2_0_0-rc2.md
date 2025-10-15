@@ -47,6 +47,6 @@ Georg Brandl (1)
 
 This project is sponsored in parts by:
 
-- [[1BitSquared](https://1bitsquared.com/)](https://1bitsquared.com/) - Design, Manufacture and distribution of open source embedded hardware development tools and platforms, as well as educational electronics. Thank you everyone who buys Black Magic Probes from 1BitSquared directly through our [[stores](https://1bitsquared.com/products/black-magic-probe)](https://1bitsquared.com/products/black-magic-probe) or indirectly through [[Adafruit.](https://www.adafruit.com/product/3839)](https://www.adafruit.com/product/3839) The hardware sales allow us to continue supporting the Black Magic Debug project.
-- All the generous [[Patrons](https://www.patreon.com/1bitsquared)](https://www.patreon.com/1bitsquared) and [[GitHub Sponsors](https://github.com/sponsors/esden)](https://github.com/sponsors/esden) supporting esden’s work
-- All the generous [[GitHub Sponsors](https://github.com/sponsors/dragonmux)](https://github.com/sponsors/dragonmux) supporting dragonmux’s work
+- [1BitSquared](https://1bitsquared.com/) - Design, Manufacture and distribution of open source embedded hardware development tools and platforms, as well as educational electronics. Thank you everyone who buys Black Magic Probes from 1BitSquared directly through our [stores](https://1bitsquared.com/products/black-magic-probe) or indirectly through [Adafruit.](https://www.adafruit.com/product/3839) The hardware sales allow us to continue supporting the Black Magic Debug project.
+- All the generous [Patrons](https://www.patreon.com/1bitsquared) and [GitHub Sponsors](https://github.com/sponsors/esden) supporting esden’s work
+- All the generous [GitHub Sponsors](https://github.com/sponsors/dragonmux) supporting dragonmux’s work
