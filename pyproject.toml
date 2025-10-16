@@ -9,6 +9,7 @@ dependencies = [
     "livereload>=2.7.1",
     "myst-parser>=4.0.1",
     "pinout>=0.0.20",
+    "setuptools>=80.9.0",
     "sphinx>=8.2.3",
     "sphinx-favicon>=1.0.1",
     "sphinxcontrib-asciinema>=0.4.2",
