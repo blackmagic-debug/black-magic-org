@@ -11,7 +11,7 @@
 
 # Black Magic Debug: The Plug&Play MCU Debugger
 
-![Project logo](_assets/bmp_v2_3b_iso.jpg)
+![Black Magic Probe Native V2.3b](_assets/bmp_v2_3b_iso.jpg)
 
 ```{toctree}
 :hidden:
@@ -119,7 +119,7 @@ Here is a quick example of a GDB session using the Black Magic Probe.
 
 ```{asciinema} _assets/bmp_demo.cast
 :preload: 1
-:font-size: 15px
+:terminalfontsize: 15px
 :theme: monokai
 ```
 
