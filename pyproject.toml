@@ -3,7 +3,7 @@ name = "black-magic-org-git"
 version = "0.1.0"
 requires-python = ">=3.14"
 dependencies = [
-    "ablog",
+    "ablog@git+https://github.com/ABD-01/ablog_with_furo",
     "cairosvg>=2.8.2",
     "furo>=2025.9.25",
     "livereload>=2.7.1",
@@ -17,5 +17,3 @@ dependencies = [
     "sphinxext-opengraph>=0.13.0",
 ]
 
-[tool.uv.sources]
-ablog = { git = "https://github.com/ABD-01/ablog_with_furo" }
