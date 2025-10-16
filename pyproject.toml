@@ -1,0 +1,21 @@
+[project]
+name = "black-magic-org-git"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "ablog",
+    "cairosvg>=2.8.2",
+    "furo>=2025.9.25",
+    "livereload>=2.7.1",
+    "myst-parser>=4.0.1",
+    "pinout>=0.0.20",
+    "sphinx>=8.2.3",
+    "sphinx-favicon>=1.0.1",
+    "sphinxcontrib-asciinema>=0.4.2",
+    "sphinxcontrib-platformpicker>=1.4",
+    "sphinxcontrib-youtube>=1.4.1",
+    "sphinxext-opengraph>=0.13.0",
+]
+
+[tool.uv.sources]
+ablog = { git = "https://github.com/ABD-01/ablog_with_furo" }
