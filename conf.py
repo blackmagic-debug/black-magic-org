@@ -211,4 +211,4 @@ ogp_image = "_static/blackmagic-logo.png"
 
 # Generate pinout diagrams
 
-#os.system('./_pinouts/generate.py')
+os.system('./_pinouts/generate.py')
