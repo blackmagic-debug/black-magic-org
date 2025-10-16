@@ -2,12 +2,12 @@ sphinx
 livereload
 myst-parser
 #sphinxcontrib-asciinema
-git+https://github.com/esden/sphinxcontrib.asciinema
+sphinxcontrib-asciinema @ git+https://github.com/esden/sphinxcontrib.asciinema@wip
 sphinxcontrib-youtube
 sphinxcontrib-platformpicker
 sphinx-favicon
 sphinxext-opengraph
-git+https://github.com/ABD-01/ablog_with_furo
+ablog @ git+https://github.com/ABD-01/ablog_with_furo
 pinout
 cairosvg
 furo
