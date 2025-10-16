@@ -72,15 +72,19 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'env', 'README.md', '.ve
 
 # -- Options for HTML output -------------------------------------------------
 
+# Add any paths that contain custom static files (such as style sheets) here,
+# relative to this directory. They are copied after the builtin static files,
+# so a file named "default.css" will overwrite the builtin "default.css".
+html_static_path = ['_static']
+
 blog_baseurl = "https://black-magic.org"
 html_theme = 'furo'
 html_copy_source = False
 
+html_logo = '_static/blackmagic-logo.svg'
+html_title = 'Black Magic Debug'
+
 html_theme_options = {
-    'logo': 'blackmagic-logo.svg',
-    'github_user': 'blackmagic-debug',
-    'github_repo': 'blackmagic',
-    'description': 'The Plug&Play MCU Debugger',
 	# 'light_css_variables': {
 	# 	'color-brand-primary': '#2672a8',
 	# 	'color-brand-content': '#2672a8',
@@ -97,22 +101,15 @@ html_theme_options = {
 	'source_branch': 'main',
 }
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
-
 html_sidebars = {
     '**': [
-        #'about.html',
+        'sidebar/brand.html',
         'sidebar/search.html',
         'sidebar/scroll-start.html',
         'sidebar/navigation.html',
         'version.html',
         'ablog/recentposts.html',
         'ablog/archives.html',
-        # 'relations.html',
-        # 'donate.html',
         'sidebar/scroll-end.html'
     ]
 }
