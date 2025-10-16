@@ -33,6 +33,7 @@ knowledge/compiling-windows
 :caption: Usage
 
 usage/swo
+usage/rtt
 ```
 
 ```{toctree}
