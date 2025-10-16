@@ -60,6 +60,10 @@ Found: Black Magic Probe 2.0.0
   Port:  0-85000192
 ```
 
+## Update using bmputil
+
+::::{tab} Automatic
+
 ## Automatic Update
 
 This is the recommended procedure.
@@ -86,13 +90,16 @@ If you would like to update the firmware to the latest release candidate you can
 bmputil-cli probe update --use-rc
 ```
 
+::::
+::::{tab} Manual
+
 ## Manual Update
 
 This procedure is necessary when the host platform is not the native hardware. We currently do not offer an automatic
 update path for third party hardware.
 
 This is also the procedure to follow if you are have some other reason to build the firmware manually. For example you
-are addinng new hardware support.
+are adding new hardware support.
 
 ### Download or build the firmware
 
@@ -116,11 +123,16 @@ update` command.
 bmputil-cli probe update blackmagic-binary.elf
 ```
 
+::::
+
 ## Update using *other* tools
 
 Besides `bmputil` you can also update the firmware on your Black Magic Probe using `dfu-util` or `stlink-tool`. Both can
 be useful if you have trouble getting `bmputil` to work on your system, and/or your Black Magic host platform is not the
 [native](hardware.md#native-hardware) and is not supported by `bmputil`.
+
+:::::{tab} dfu-util
+::::{tab} Linux/macOS
 
 ### dfu-util on Linux/macOS
 
@@ -141,22 +153,8 @@ If `dfu-util` fails to switch your BMP into bootloader mode, or you feel like yo
 can also plug in your BMP while holding down the button. This will force the BMP to stay in the bootloader on power up.
 ```
 
-### stlink-tool on Linux/macOS
-
-The firmware on an ST-Link can be upgraded using
-[blackmagic-debug/stlink-tool](https://github.com/blackmagic-debug/stlink-tool).
-
-To upgrade, run the following command:
-
-```sh
-stlink-tool blackmagic.bin
-```
-
-```{note}
-This software upgrades the firmware of the ST-Link probe, **not** the firmware of a target connected to the probe.
-Therefore please ensure you want to upgrade the firmware of the ST-Link probe, and use a blackmagic.bin file built
-specifically for ST-Link.
-```
+::::
+::::{tab} Windows
 
 ### dfu-util on Windows
 
@@ -185,6 +183,31 @@ you can also plug in your BMP while holding down the button. This will force the
 power up.
 ```
 
+::::
+:::::
+:::::{tab} stlink-tool
+::::{tab} Linux/macOS
+
+### stlink-tool on Linux/macOS
+
+The firmware on an ST-Link can be upgraded using
+[blackmagic-debug/stlink-tool](https://github.com/blackmagic-debug/stlink-tool).
+
+To upgrade, run the following command:
+
+```sh
+stlink-tool blackmagic.bin
+```
+
+```{note}
+This software upgrades the firmware of the ST-Link probe, **not** the firmware of a target connected to the probe.
+Therefore please ensure you want to upgrade the firmware of the ST-Link probe, and use a blackmagic.bin file built
+specifically for ST-Link.
+```
+
+::::
+::::{tab} Windows
+
 ### stlink-tool on Windows
 
 The firmware on an ST-Link can be upgraded using
@@ -204,3 +227,6 @@ This software upgrades the firmware of the ST-Link probe, **not** the firmware o
 Therefore please ensure you want to upgrade the firmware of the ST-Link probe, and use a blackmagic.bin file built
 specifically for ST-Link.
 ```
+
+::::
+:::::

@@ -4,7 +4,7 @@ myst-parser
 #sphinxcontrib-asciinema
 sphinxcontrib-asciinema @ git+https://github.com/esden/sphinxcontrib.asciinema@wip
 sphinxcontrib-youtube
-sphinxcontrib-platformpicker
+sphinx_inline_tabs
 sphinx-favicon
 sphinxext-opengraph
 ablog @ git+https://github.com/ABD-01/ablog_with_furo

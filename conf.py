@@ -36,7 +36,7 @@ extensions = [
     'sphinx.ext.githubpages',
     'sphinx.ext.graphviz',
     'sphinx.ext.napoleon',
-    'sphinxcontrib.platformpicker',
+    'sphinx_inline_tabs',
     'sphinxcontrib.asciinema',
     'sphinxcontrib.youtube',
     'sphinx_favicon',
@@ -57,6 +57,7 @@ todo_include_todos = True
 myst_heading_anchors = 3
 myst_enable_extensions = (
 	"attrs_inline",
+    "colon_fence",
 )
 
 napoleon_use_ivar = True
