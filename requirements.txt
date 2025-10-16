@@ -1,7 +1,8 @@
 sphinx
 livereload
 myst-parser
-sphinxcontrib-asciinema
+#sphinxcontrib-asciinema
+git+https://github.com/esden/sphinxcontrib.asciinema
 sphinxcontrib-youtube
 sphinxcontrib-platformpicker
 sphinx-favicon

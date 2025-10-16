@@ -1,9 +1,9 @@
 [project]
-name = "black-magic-org-git"
+name = "black-magic-org"
 version = "0.1.0"
 requires-python = ">=3.14"
 dependencies = [
-    "ablog@git+https://github.com/ABD-01/ablog_with_furo",
+    "ablog @ git+https://github.com/ABD-01/ablog_with_furo",
     "cairosvg>=2.8.2",
     "furo>=2025.9.25",
     "livereload>=2.7.1",
@@ -12,7 +12,7 @@ dependencies = [
     "setuptools>=80.9.0",
     "sphinx>=8.2.3",
     "sphinx-favicon>=1.0.1",
-    "sphinxcontrib-asciinema>=0.4.2",
+    "sphinxcontrib-asciinema @ git+https://github.com/esden/sphinxcontrib.asciinema@wip",
     "sphinxcontrib-platformpicker>=1.4",
     "sphinxcontrib-youtube>=1.4.1",
     "sphinxext-opengraph>=0.13.0",

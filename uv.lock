@@ -60,7 +60,7 @@ wheels = [
 ]
 
 [[package]]
-name = "black-magic-org-git"
+name = "black-magic-org"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
@@ -90,7 +90,7 @@ requires-dist = [
     { name = "setuptools", specifier = ">=80.9.0" },
     { name = "sphinx", specifier = ">=8.2.3" },
     { name = "sphinx-favicon", specifier = ">=1.0.1" },
-    { name = "sphinxcontrib-asciinema", specifier = ">=0.4.2" },
+    { name = "sphinxcontrib-asciinema", git = "https://github.com/esden/sphinxcontrib.asciinema?rev=wip" },
     { name = "sphinxcontrib-platformpicker", specifier = ">=1.4" },
     { name = "sphinxcontrib-youtube", specifier = ">=1.4.1" },
     { name = "sphinxext-opengraph", specifier = ">=0.13.0" },
@@ -667,11 +667,10 @@ wheels = [
 [[package]]
 name = "sphinxcontrib-asciinema"
 version = "0.4.2"
-source = { registry = "https://pypi.org/simple" }
+source = { git = "https://github.com/esden/sphinxcontrib.asciinema?rev=wip#585153fc872c6d8c028bbd7bcbfe8da8d248f294" }
 dependencies = [
     { name = "sphinx" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c8/b8/a5e405c1c5eae37e466866ed4053613c5a4d75531819426941825a042228/sphinxcontrib.asciinema-0.4.2.tar.gz", hash = "sha256:ab38b3e376f335d3e87f445e3ecbd0524e61bab380760c54c32ee4d4a95c3a59", size = 76686, upload-time = "2024-05-11T03:01:32.368Z" }
 
 [[package]]
 name = "sphinxcontrib-devhelp"
