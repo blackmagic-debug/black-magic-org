@@ -1,7 +1,7 @@
 [project]
 name = "black-magic-org"
 version = "0.1.0"
-requires-python = ">=3.14"
+requires-python = ">=3.11"
 dependencies = [
     "ablog @ git+https://github.com/ABD-01/ablog_with_furo",
     "cairosvg>=2.8.2",
