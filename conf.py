@@ -30,18 +30,18 @@ html_baseurl = 'https://black-magic.org'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'myst_parser',
-    'sphinx.ext.autosectionlabel',
-    'sphinx.ext.todo',
-    'sphinx.ext.githubpages',
-    'sphinx.ext.graphviz',
-    'sphinx.ext.napoleon',
-    'sphinx_inline_tabs',
-    'sphinxcontrib.asciinema',
-    'sphinxcontrib.youtube',
-    'sphinx_favicon',
-    'sphinxext.opengraph',
-    'ablog',
+	'myst_parser',
+	'sphinx.ext.autosectionlabel',
+	'sphinx.ext.todo',
+	'sphinx.ext.githubpages',
+	'sphinx.ext.graphviz',
+	'sphinx.ext.napoleon',
+	'sphinx_inline_tabs',
+	'sphinxcontrib.asciinema',
+	'sphinxcontrib.youtube',
+	'sphinx_favicon',
+	'sphinxext.opengraph',
+	'ablog',
 ]
 
 source_suffix = {
@@ -57,7 +57,7 @@ todo_include_todos = True
 myst_heading_anchors = 3
 myst_enable_extensions = (
 	"attrs_inline",
-    "colon_fence",
+	"colon_fence",
 )
 
 napoleon_use_ivar = True
@@ -103,16 +103,16 @@ html_theme_options = {
 }
 
 html_sidebars = {
-    '**': [
-        'sidebar/brand.html',
-        'sidebar/search.html',
-        'sidebar/scroll-start.html',
-        'sidebar/navigation.html',
-        'version.html',
-        'ablog/recentposts.html',
-        'ablog/archives.html',
-        'sidebar/scroll-end.html'
-    ]
+	'**': [
+		'sidebar/brand.html',
+		'sidebar/search.html',
+		'sidebar/scroll-start.html',
+		'sidebar/navigation.html',
+		'version.html',
+		'ablog/recentposts.html',
+		'ablog/archives.html',
+		'sidebar/scroll-end.html'
+	]
 }
 
 blog_authors = {
@@ -121,89 +121,89 @@ blog_authors = {
 
 # Favicon settings
 favicons = [
-    {
-        "rel": "icon",
-        "static-file": "favicon/icon.svg",  # => use `_static/icon.svg`
-        "type": "image/svg+xml",
-    },
-    {
-        "rel": "icon",
-        "sizes": "16x16",
-        "static-file": "favicon/favicon-16x16.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "icon",
-        "sizes": "32x32",
-        "static-file": "favicon/favicon-32x32.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "apple-touch-icon",
-        "sizes": "57x57",
-        "static-file": "favicon/apple-touch-icon-57x57.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "apple-touch-icon",
-        "sizes": "60x60",
-        "static-file": "favicon/apple-touch-icon-60x60.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "apple-touch-icon",
-        "sizes": "72x72",
-        "static-file": "favicon/apple-touch-icon-72x72.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "apple-touch-icon",
-        "sizes": "76x76",
-        "static-file": "favicon/apple-touch-icon-76x76.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "apple-touch-icon",
-        "sizes": "96x96",
-        "static-file": "favicon/apple-touch-icon-96x96.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "apple-touch-icon",
-        "sizes": "114x114",
-        "static-file": "favicon/apple-touch-icon-114x114.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "apple-touch-icon",
-        "sizes": "120x120",
-        "static-file": "favicon/apple-touch-icon-120x120.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "apple-touch-icon",
-        "sizes": "144x144",
-        "static-file": "favicon/apple-touch-icon-144x144.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "apple-touch-icon",
-        "sizes": "152x152",
-        "static-file": "favicon/apple-touch-icon-152x152.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "apple-touch-icon",
-        "sizes": "180x180",
-        "static-file": "favicon/apple-touch-icon-180x180.png",
-        "type": "image/png",
-    },
-    {
-        "rel": "android-icon",
-        "sizes": "192x192",
-        "static-file": "favicon/android-icon-192x192.png",
-        "type": "image/png",
-    },
+	{
+		"rel": "icon",
+		"static-file": "favicon/icon.svg",  # => use `_static/icon.svg`
+		"type": "image/svg+xml",
+	},
+	{
+		"rel": "icon",
+		"sizes": "16x16",
+		"static-file": "favicon/favicon-16x16.png",
+		"type": "image/png",
+	},
+	{
+		"rel": "icon",
+		"sizes": "32x32",
+		"static-file": "favicon/favicon-32x32.png",
+		"type": "image/png",
+	},
+	{
+		"rel": "apple-touch-icon",
+		"sizes": "57x57",
+		"static-file": "favicon/apple-touch-icon-57x57.png",
+		"type": "image/png",
+	},
+	{
+		"rel": "apple-touch-icon",
+		"sizes": "60x60",
+		"static-file": "favicon/apple-touch-icon-60x60.png",
+		"type": "image/png",
+	},
+	{
+		"rel": "apple-touch-icon",
+		"sizes": "72x72",
+		"static-file": "favicon/apple-touch-icon-72x72.png",
+		"type": "image/png",
+	},
+	{
+		"rel": "apple-touch-icon",
+		"sizes": "76x76",
+		"static-file": "favicon/apple-touch-icon-76x76.png",
+		"type": "image/png",
+	},
+	{
+		"rel": "apple-touch-icon",
+		"sizes": "96x96",
+		"static-file": "favicon/apple-touch-icon-96x96.png",
+		"type": "image/png",
+	},
+	{
+		"rel": "apple-touch-icon",
+		"sizes": "114x114",
+		"static-file": "favicon/apple-touch-icon-114x114.png",
+		"type": "image/png",
+	},
+	{
+		"rel": "apple-touch-icon",
+		"sizes": "120x120",
+		"static-file": "favicon/apple-touch-icon-120x120.png",
+		"type": "image/png",
+	},
+	{
+		"rel": "apple-touch-icon",
+		"sizes": "144x144",
+		"static-file": "favicon/apple-touch-icon-144x144.png",
+		"type": "image/png",
+	},
+	{
+		"rel": "apple-touch-icon",
+		"sizes": "152x152",
+		"static-file": "favicon/apple-touch-icon-152x152.png",
+		"type": "image/png",
+	},
+	{
+		"rel": "apple-touch-icon",
+		"sizes": "180x180",
+		"static-file": "favicon/apple-touch-icon-180x180.png",
+		"type": "image/png",
+	},
+	{
+		"rel": "android-icon",
+		"sizes": "192x192",
+		"static-file": "favicon/android-icon-192x192.png",
+		"type": "image/png",
+	},
 ]
 
 ogp_site_url = "https://black-magic.org"
