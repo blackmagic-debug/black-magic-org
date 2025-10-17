@@ -1,0 +1,155 @@
+/* .sidebar-container {
+    width: 16em;
+} */
+
+/* Sidebar scroll */
+/* .sidebar-scroll {
+    flex-grow: unset;
+    flex-shrink: unset;
+    overflow: unset;
+    scroll-behavior: unset;
+} */
+/* using these properties for .sidebar-drawer */
+/* .sidebar-sticky {
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-grow: 1;
+    flex-shrink: 1;
+    scroll-behavior: smooth;
+    position: sticky;
+    top: 0;
+    left: 0;
+    max-height: 100vh;
+    scrollbar-color: var(--color-foreground-secondary) var(--color-background-secondary);
+    scrollbar-width: thin;
+    z-index: 1019;
+} */
+
+
+.ablog-post-metainfo {
+    color: var(--color-foreground-secondary);
+    font-size: .875rem;
+    a {
+        color: var(--color-foreground-secondary);
+        text-decoration: none;
+        &:hover {
+            color: var(--color-link--hover);
+            font-weight: bold;
+        }
+    }
+}
+
+.ablog-post-title {
+    margin-bottom: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.h1 { 
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+.h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+.h3 { 
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+.h4 { 
+    display: block;
+    margin-top: 1.33em;
+    margin-bottom: 1.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+.h5 { 
+    display: block;
+    font-size: .83em;
+    margin-top: 1.67em;
+    margin-bottom: 1.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+.h6 { 
+    display: block;
+    font-size: .67em;
+    margin-top: 2.33em;
+    margin-bottom: 2.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.ablog-dot {
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.ablog__prev-next {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0; /* Adjust as needed */
+}
+
+.ablog__prev, .ablog__next {
+    flex: 0 0 auto; /* Don't grow or shrink, stay at auto width */
+    width: 50%;
+}
+
+.ablog__prev a, .ablog__next a {
+    display: flex;
+    align-items: center;
+}
+
+.ablog__prev a {
+    justify-content: flex-start;
+}
+
+.ablog__next a {
+    justify-content: flex-end;
+}
+
+.ablog__prev i, .ablog__next i {
+    font-size: 1.2em; /* Adjust size as needed */
+}
+
+.ablog__prev span, .ablog__next span {
+    margin: 0 10px; /* Space between icon and text */
+}
+
+/* Optional: Hide empty spans if there's no previous/next post */
+.ablog__prev:empty, .ablog__next:empty {
+    display: none;
+}
+
+.ablog__prev span, .ablog__next span {
+    max-width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hiddenh1 > h1:first-of-type {
+    display: none;
+}
