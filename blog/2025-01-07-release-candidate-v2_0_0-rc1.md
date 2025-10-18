@@ -35,7 +35,7 @@ Here are some of the highlights:
 For more details please refer to the ChangeLog down below.
 
 # Release Artifact Notes
-With this release we are now officially releasing the [Black Magic Debug Application (aka. BMDA)](https://black-magic.org/knowledge/terminology.html) binaries for Linux, MacOS and Windows. You can find them as `blackmagic-[OS NAME]-[VERSION].zip` files attached to the release.
+With this release we are now officially releasing the [Black Magic Debug Application (aka. BMDA)](/knowledge/terminology.md) binaries for Linux, MacOS and Windows. You can find them as `blackmagic-[OS NAME]-[VERSION].zip` files attached to the release.
  
 In this release we are officially beyond the flash capacity of the native hardware MCU flash memory. This means we are splitting the firmware up into 4 versions, each firmware supports a subset of targets and architectures. You can find the firmware binaries as `blackmagic-[FIRMWARE TYPE]-[VERSION].(elf|bin|hex)`. Here is the legend of supported targets in each firmware type:
 

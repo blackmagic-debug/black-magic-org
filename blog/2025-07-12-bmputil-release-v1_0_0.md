@@ -14,7 +14,7 @@ You can find the [installation instructions in the project README](https://githu
 
 # Usage
 
-Please refer to our [website for usage instructions](https://black-magic.org/upgrade.html).
+Please refer to our [website for usage instructions](/upgrade.md).
 
 ## Command Line Interface improvements
 
