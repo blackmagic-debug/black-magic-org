@@ -464,12 +464,12 @@
 <li><p>Interface to the host computer is a standard USB CDC ACM device (virtual serial port), which does not require special drivers on Linux or macOS.</p></li>
 <li><p>Targets ARM Cortex-M and Cortex-A based microcontrollers</p></li>
 <li><p>Provides full debugging functionality, including: watchpoints, flash memory breakpoints, memory and register examination, flash memory programming, etc.</p></li>
-<li><p>[Semihosting / Host IO support] as well as [Serial Wire Debug TRACESWO support].</p></li>
-<li><p>Implements USB DFU class for easy firmware upgrade as updates become available.</p></li>
-<li><p>Works with Windows, Linux and Mac environments.</p></li>
+<li><p><a class="reference internal" href="usage/semihosting.html"><span class="std std-doc">Semihosting/Host IO support</span></a> as well as <a class="reference internal" href="usage/swo.html"><span class="std std-doc">Serial Wire Output (SWO) support</span></a>.</p></li>
+<li><p>Implements the USB DFU class for <a class="reference internal" href="upgrade.html"><span class="std std-doc">easy firmware upgrades</span></a> as soon as they become available.</p></li>
+<li><p>Works with Windows, Linux, and Mac environments.</p></li>
 </ul>
 <p>All you need is to install the <a class="reference external" href="https://en.wikipedia.org/wiki/Cross_compiler">GNU cross compilation toolchain</a>, containing <a class="reference external" href="https://gcc.gnu.org/">GCC</a> and <a class="reference external" href="https://www.sourceware.org/gdb/">GDB</a> for your microcontroller. Plug the Black Magic Probe hardware, running the Black Magic Debug firmware, into your computer. Instruct your GDB to use the BMP as your remote target using the <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">extended-remote</span> <span class="pre">*serial_port*</span></code> command and you are off to the races. Further details are found in <a class="reference internal" href="getting-started.html"><span class="std std-doc">Getting Started</span></a>.</p>
-<p>If you are an embedded development beginner Black Magic Probe is also a great choice for you. But expect more of a Unix command line experience than a Windows <a class="reference external" href="https://www.urbandictionary.com/define.php?term=klickibunti"><em>klickybunti</em></a> GUI.</p>
+<p>If you are an embedded development beginner, Black Magic Probe is also a great choice for you. But expect more of a Unix command line experience than a Windows <a class="reference external" href="https://www.urbandictionary.com/define.php?term=klickibunti"><em>klickybunti</em></a> GUI.</p>
 <p>If anything is unclear or hard to understand <a class="reference internal" href="#contact"><span class="std std-ref">let us know</span></a>. Our goal is to make the documentation on this website comprehensive enough that it is all you need to get started with microcontroller development and debugging using the Black Magic Probe.</p>
 </section>
 <section id="supported-targets">
