@@ -8,6 +8,7 @@
 [![CI flow status](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml/badge.svg)](https://github.com/blackmagic-debug/blackmagic/actions/workflows/build-and-upload.yml)
 [![Repo starazers](https://img.shields.io/github/stars/blackmagic-debug/blackmagic?logo=GitHub)](https://github.com/blackmagic-debug/blackmagic/stargazers)
 [![Discord](https://img.shields.io/discord/613131135903596547?logo=discord)](https://discord.gg/P7FYThy)
+[![AI free project](https://badges.ws/badge/NO-AI-ff0000)](https://github.com/blackmagic-debug/blackmagic/blob/main/CONTRIBUTING.md#contributing)
 
 # Black Magic Debug: The Plug&Play MCU Debugger
 
